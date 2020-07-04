@@ -30,7 +30,10 @@ namespace DevEdu_project
         //Метод, который должен заменять Bitmap на TmpBitmap
         public static void Update()
         {
-            Bitmap = (Bitmap)TmpBitmap.Clone();
+            if (TmpBitmap != null)
+            {
+                Bitmap = (Bitmap)TmpBitmap.Clone();
+            }
         }        
     }
 }
