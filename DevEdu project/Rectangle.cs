@@ -10,17 +10,6 @@ namespace DevEdu_project
     public class Rectangle
     {
         public Rectangle() { }
-        private int abs(int n)
-        {
-            if (n > 0)
-            {
-                return n;
-            }
-            else
-            {
-                return n * -1;
-            }
-        }
         public Bitmap DrawSquare(int X0, int Y0, int X1, int Y1, Color currentColor)
         {
             int dx = X1 - X0;//абсолютное значение
@@ -35,8 +24,8 @@ namespace DevEdu_project
 
             for (int i = 0; i <= d; i++)
             {
-                StaticBitmap.SetPixel((int)X, (int)Y, currentColor);
-                StaticBitmap.SetPixel((int)X, (int)Y+d, currentColor);
+                StaticBitmap.SetPixel((int)X+1, (int)Y, currentColor);
+                StaticBitmap.SetPixel((int)X+1, (int)Y+d, currentColor);
                 X += Xinc;
             }
             for (int j = 0; j <= d; j++)
