@@ -65,6 +65,8 @@ namespace DevEdu_project
                         break;
                     case "rectangle":
                         //прямоугольник
+                        CurrentPoint = e.Location;
+                        pictureBox1.Image = rectangle.DrawRectangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
 
                     case "square":
