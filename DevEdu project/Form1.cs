@@ -10,7 +10,7 @@ namespace DevEdu_project
     public partial class BetterThanPhotoshop : Form
     {
         Line line = new Line();
-       
+        Ellips ellips = new Ellips();
 
         Color currentColor = Color.Black;
         private bool mousePress;
@@ -37,8 +37,7 @@ namespace DevEdu_project
         }
 
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
-        {
-            
+        {            
             if (mousePress)
             {
                 switch (ToolButton)
@@ -55,10 +54,14 @@ namespace DevEdu_project
                         pictureBox1.Image = line.DrawLine(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
 
-                    case "ellips":
-                        //эллипс
+                    case "ellipse":
+                        CurrentPoint = e.Location;
+                        pictureBox1.Image = ellips.DrawEllipse(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);                        
                         break;
-
+                    case "circle":
+                        CurrentPoint = e.Location;
+                        pictureBox1.Image = ellips.DrawCircle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        break;
                     case "rectangle":
                         //прямоугольник
                         break;
@@ -85,7 +88,7 @@ namespace DevEdu_project
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             CurrentPoint = e.Location;
-            mousePress = false;
+            mousePress = false;            
             StaticBitmap.Update();
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -101,12 +104,7 @@ namespace DevEdu_project
         private void LineButton_Click(object sender, EventArgs e)
         {
             ToolButton = "line";
-        }
-
-        private void EllipseButton_Click(object sender, EventArgs e)
-        {
-            ToolButton = "ellips";
-        }
+        }        
 
         private void RectangleDropDownButton1_Click(object sender, EventArgs e)
         {
@@ -142,8 +140,23 @@ namespace DevEdu_project
         {
             ToolButton = "right triangle"; //прямоугольный треугольник по гипотенузе
         }
+
+        private void EllipseButton_Click_1(object sender, EventArgs e)
+        {
+            ToolButton = "ellipse";
+        }
+
+        private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolButton = "ellipse";
+        }
+
+        private void circleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolButton = "circle";
+        }
         #endregion
-     
+
         #region Color
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
@@ -169,7 +182,11 @@ namespace DevEdu_project
         {
             currentColor = Color.Blue;
         }
+
+
         #endregion
+
+        
     }
 }
 
