@@ -61,7 +61,7 @@ namespace DevEdu_project
                     case "ellipse":
                         CurrentPoint = e.Location;
                         StaticBitmap.Copy();
-                        pictureBox1.Image = ellips.DrawEllipse(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);                        
+                        pictureBox1.Image = ellips.DrawEllipse(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);                                            
                         break;
                     case "circle":
                         CurrentPoint = e.Location;
