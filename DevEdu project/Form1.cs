@@ -11,6 +11,7 @@ namespace DevEdu_project
     {
         Line line = new Line();
         Ellipse ellips = new Ellipse();
+        Rectangle rectangle = new Rectangle();
 
         Color currentColor = Color.Black;
         private bool mousePress;
@@ -68,6 +69,8 @@ namespace DevEdu_project
 
                     case "square":
                         //квадрат
+                        CurrentPoint = e.Location;
+                        pictureBox1.Image = rectangle.DrawSquare(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
 
                     case "arbirtrary triangle":
