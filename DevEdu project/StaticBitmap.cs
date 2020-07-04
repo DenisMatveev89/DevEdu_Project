@@ -31,7 +31,7 @@ namespace DevEdu_project
         //Метод, который должен заменять Bitmap на TmpBitmap
         public static void Update()
         {
-            Bitmap= TmpBitmap;
+            Bitmap = TmpBitmap;
         }        
     }
 }
