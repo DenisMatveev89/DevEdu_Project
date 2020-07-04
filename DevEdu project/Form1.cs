@@ -70,6 +70,9 @@ namespace DevEdu_project
                         break;
                     case "rectangle":
                         //прямоугольник
+                        CurrentPoint = e.Location;
+                        StaticBitmap.Copy();
+                        pictureBox1.Image = rectangle.DrawRectangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
 
                     case "square":
@@ -196,9 +199,34 @@ namespace DevEdu_project
         }
 
 
+
         #endregion
 
-        
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                SaveFileDialog savedialog = new SaveFileDialog();
+                savedialog.Title = "Сохранить картинку как...";
+                savedialog.OverwritePrompt = true;
+                savedialog.CheckPathExists = true;
+
+                savedialog.Filter = "Image Files(*.PNG)|*.PNG|All files (*.*)|*.*";
+                savedialog.ShowHelp = true;
+                if (savedialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        StaticBitmap.Bitmap.Save(savedialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Невозможно сохранить изображение", "Ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }
 
