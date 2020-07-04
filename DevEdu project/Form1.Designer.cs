@@ -38,12 +38,6 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.labelX1 = new System.Windows.Forms.Label();
-            this.labelY1 = new System.Windows.Forms.Label();
-            this.labelX2 = new System.Windows.Forms.Label();
-            this.labelY2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.PencilButton = new System.Windows.Forms.ToolStripButton();
             this.LineButton = new System.Windows.Forms.ToolStripButton();
@@ -78,7 +72,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Location = new System.Drawing.Point(0, 76);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(800, 362);
+            this.pictureBox1.Size = new System.Drawing.Size(1072, 509);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
@@ -92,7 +86,7 @@
             this.menuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1072, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -132,60 +126,6 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // labelX1
-            // 
-            this.labelX1.AutoSize = true;
-            this.labelX1.Location = new System.Drawing.Point(72, 467);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(20, 13);
-            this.labelX1.TabIndex = 2;
-            this.labelX1.Text = "X1";
-            // 
-            // labelY1
-            // 
-            this.labelY1.AutoSize = true;
-            this.labelY1.Location = new System.Drawing.Point(134, 467);
-            this.labelY1.Name = "labelY1";
-            this.labelY1.Size = new System.Drawing.Size(20, 13);
-            this.labelY1.TabIndex = 3;
-            this.labelY1.Text = "Y1";
-            // 
-            // labelX2
-            // 
-            this.labelX2.AutoSize = true;
-            this.labelX2.Location = new System.Drawing.Point(199, 467);
-            this.labelX2.Name = "labelX2";
-            this.labelX2.Size = new System.Drawing.Size(20, 13);
-            this.labelX2.TabIndex = 4;
-            this.labelX2.Text = "X2";
-            // 
-            // labelY2
-            // 
-            this.labelY2.AutoSize = true;
-            this.labelY2.Location = new System.Drawing.Point(266, 467);
-            this.labelY2.Name = "labelY2";
-            this.labelY2.Size = new System.Drawing.Size(20, 13);
-            this.labelY2.TabIndex = 5;
-            this.labelY2.Text = "Y2";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(506, 467);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "e.X";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(608, 467);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(23, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "e.Y";
-            // 
             // toolStrip1
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -201,7 +141,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(800, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1072, 27);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -359,7 +299,7 @@
             this.toolStripButton9});
             this.toolStrip2.Location = new System.Drawing.Point(0, 51);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(1072, 25);
             this.toolStrip2.TabIndex = 9;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -422,18 +362,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 497);
+            this.ClientSize = new System.Drawing.Size(1072, 586);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.labelY2);
-            this.Controls.Add(this.labelX2);
-            this.Controls.Add(this.labelY1);
-            this.Controls.Add(this.labelX1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1088, 625);
+            this.MinimumSize = new System.Drawing.Size(1088, 625);
             this.Name = "BetterThanPhotoshop";
             this.RightToLeftLayout = true;
             this.Text = "BTN - Better Than Photoshop";
@@ -460,12 +397,6 @@
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Label labelX1;
-        private System.Windows.Forms.Label labelY1;
-        private System.Windows.Forms.Label labelX2;
-        private System.Windows.Forms.Label labelY2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton PencilButton;
         private System.Windows.Forms.ToolStripButton LineButton;
