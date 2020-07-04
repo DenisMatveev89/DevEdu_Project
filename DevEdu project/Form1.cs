@@ -10,7 +10,7 @@ namespace DevEdu_project
     public partial class BetterThanPhotoshop : Form
     {
         Line line = new Line();
-        Ellips ellips = new Ellips();
+        Ellipse ellips = new Ellipse();
 
         Color currentColor = Color.Black;
         private bool mousePress;

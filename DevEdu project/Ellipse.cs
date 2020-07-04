@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project
 {
-    public class Ellips
+    public class Ellipse
     {
-        public Ellips() { }
+        public Ellipse() { }
 
         public Bitmap DrawCircle(int X0, int Y0, int X1, int Y1, Color currentColor)
         {
