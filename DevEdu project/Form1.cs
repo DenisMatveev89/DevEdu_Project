@@ -11,6 +11,8 @@ namespace DevEdu_project
     {
         Line line = new Line();
         Ellipse ellips = new Ellipse();
+        Rectangle rectangle = new Rectangle();
+        Triangle triangle = new Triangle();
 
         Color currentColor = Color.Black;
         private bool mousePress;
@@ -45,21 +47,25 @@ namespace DevEdu_project
                     case "pencil":
                         PrevPoint = CurrentPoint;
                         CurrentPoint = e.Location;
+                        StaticBitmap.Copy();
                         pictureBox1.Image = line.DrawLine(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         StaticBitmap.Update();
                         break;
 
                     case "line":
                         CurrentPoint = e.Location;
+                        StaticBitmap.Copy();
                         pictureBox1.Image = line.DrawLine(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
 
                     case "ellipse":
                         CurrentPoint = e.Location;
+                        StaticBitmap.Copy();
                         pictureBox1.Image = ellips.DrawEllipse(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);                        
                         break;
                     case "circle":
                         CurrentPoint = e.Location;
+                        StaticBitmap.Copy();
                         pictureBox1.Image = ellips.DrawCircle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
                     case "rectangle":
@@ -68,6 +74,9 @@ namespace DevEdu_project
 
                     case "square":
                         //квадрат
+                        CurrentPoint = e.Location;
+                        StaticBitmap.Copy();
+                        pictureBox1.Image = rectangle.DrawSquare(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
 
                     case "arbirtrary triangle":
@@ -80,6 +89,9 @@ namespace DevEdu_project
 
                     case "right triangle":
                         //прямоугольный треугольник по гипотенузе
+                        CurrentPoint = e.Location;
+                        StaticBitmap.Copy();
+                        pictureBox1.Image = triangle.RightTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
                 }
             }
