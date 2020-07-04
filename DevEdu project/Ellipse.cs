@@ -13,7 +13,7 @@ namespace DevEdu_project
 
         public Bitmap DrawCircle(int X0, int Y0, int X1, int Y1, Color currentColor)
         {
-            StaticBitmap.TmpBitmap = new Bitmap(StaticBitmap.Bitmap);
+          
             double R = Math.Sqrt(Math.Pow((X1 - X0), 2) + Math.Pow((Y1 - Y0), 2));
 
             int x = 0;
@@ -45,7 +45,7 @@ namespace DevEdu_project
 
         public Bitmap DrawEllipse(int X0, int Y0, int X1, int Y1, Color currentColor)
         {
-            StaticBitmap.TmpBitmap = new Bitmap(StaticBitmap.Bitmap);
+        
 
             double RX = Math.Sqrt(Math.Pow((X1 - X0), 2));
             double RY = Math.Sqrt(Math.Pow((Y1 - Y0), 2));

@@ -10,7 +10,8 @@ namespace DevEdu_project
     public partial class BetterThanPhotoshop : Form
     {
         Line line = new Line();
-        Ellipse ellips = new Ellipse();
+        Ellipse ellipse = new Ellipse();
+        Triangle triangle = new Triangle();
 
         Color currentColor = Color.Black;
         private bool mousePress;
@@ -45,22 +46,26 @@ namespace DevEdu_project
                     case "pencil":
                         PrevPoint = CurrentPoint;
                         CurrentPoint = e.Location;
+                        StaticBitmap.Copy();
                         pictureBox1.Image = line.DrawLine(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         StaticBitmap.Update();
                         break;
 
                     case "line":
                         CurrentPoint = e.Location;
+                        StaticBitmap.Copy();
                         pictureBox1.Image = line.DrawLine(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
 
                     case "ellipse":
                         CurrentPoint = e.Location;
-                        pictureBox1.Image = ellips.DrawEllipse(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);                        
+                        StaticBitmap.Copy();
+                        pictureBox1.Image = ellipse.DrawEllipse(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);                        
                         break;
                     case "circle":
                         CurrentPoint = e.Location;
-                        pictureBox1.Image = ellips.DrawCircle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        StaticBitmap.Copy();
+                        pictureBox1.Image = ellipse.DrawCircle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
                     case "rectangle":
                         //прямоугольник
@@ -80,6 +85,10 @@ namespace DevEdu_project
 
                     case "right triangle":
                         //прямоугольный треугольник по гипотенузе
+                        CurrentPoint = e.Location;
+                        StaticBitmap.Copy();
+                        triangle.RightTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        pictureBox1.Image = StaticBitmap.TmpBitmap;
                         break;
                 }
             }
