@@ -22,16 +22,15 @@ namespace DevEdu_project
         }
 
         //Метод, который должен заменять TmpBitmap на Bitmap
-        public static Bitmap Copy(Bitmap bitmapFrom, Bitmap bitmapTo)
+        public static void Copy()
         {
-            bitmapTo = bitmapFrom;
-            return bitmapTo;
+            TmpBitmap = (Bitmap)Bitmap.Clone();
         }
 
         //Метод, который должен заменять Bitmap на TmpBitmap
         public static void Update()
         {
-            Bitmap = TmpBitmap;
+            Bitmap = (Bitmap)TmpBitmap.Clone();
         }        
     }
 }
