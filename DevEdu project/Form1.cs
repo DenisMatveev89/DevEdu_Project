@@ -13,6 +13,7 @@ namespace DevEdu_project
         Ellipse ellips = new Ellipse();
         Rectangle rectangle = new Rectangle();
         Triangle triangle = new Triangle();
+        Dialog dialog = new Dialog();
 
         Color currentColor = Color.Black;
         private bool mousePress;
@@ -206,25 +207,7 @@ namespace DevEdu_project
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
             {
-                SaveFileDialog savedialog = new SaveFileDialog();
-                savedialog.Title = "Сохранить картинку как...";
-                savedialog.OverwritePrompt = true;
-                savedialog.CheckPathExists = true;
-
-                savedialog.Filter = "Image Files(*.PNG)|*.PNG|All files (*.*)|*.*";
-                savedialog.ShowHelp = true;
-                if (savedialog.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        StaticBitmap.Bitmap.Save(savedialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Невозможно сохранить изображение", "Ошибка",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
+                dialog.SaveDialog();
             }
         }
 
@@ -233,36 +216,11 @@ namespace DevEdu_project
 
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
             {
-                string message = "Do you want to save changes?";
-                string caption = "Clear All and create new image";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
-                System.Windows.MessageBoxImage icon = System.Windows.MessageBoxImage.Warning;
-                DialogResult result;
-
-                result = MessageBox.Show(message, caption, buttons, (MessageBoxIcon)icon);
-
+                DialogResult result = dialog.NewDialog();
                 switch (result)
                 {
                     case DialogResult.Yes:
-                        SaveFileDialog savedialog = new SaveFileDialog();
-                        savedialog.Title = "Save image as...";
-                        savedialog.OverwritePrompt = true;
-                        savedialog.CheckPathExists = true;
-
-                        savedialog.Filter = "Image Files(*.PNG)|*.PNG|All files (*.*)|*.*";
-                        savedialog.ShowHelp = true;
-                        if (savedialog.ShowDialog() == DialogResult.OK)
-                        {
-                            try
-                            {
-                                StaticBitmap.Bitmap.Save(savedialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
-                            }
-                            catch
-                            {
-                                MessageBox.Show("Unable to save image", "Error",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
+                        dialog.SaveDialog();
                         break;
                     case DialogResult.No:
                         pictureBox1.Image = null;
@@ -271,10 +229,7 @@ namespace DevEdu_project
                     case DialogResult.Cancel:
                         break;
                 }
-            }
-
-
-                       
+            }            
         }
     }
 }
