@@ -198,24 +198,12 @@ namespace DevEdu_project
         #endregion
 
         #region Menu
+        //Menu Exit
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (pictureBox1.Image != null) //если в pictureBox есть изображение
-            {
-                DialogResult result = dialog.NewDialog();
-                switch (result)
-                {
-                    case DialogResult.Yes:
-                        dialog.SaveDialog();
-                        break;
-                    case DialogResult.No:
-                        Application.Exit();
-                        break;
-                    case DialogResult.Cancel:
-                        break;
-                }
-            }
+            Application.Exit();
         }
+        //Menu SaveAs
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
@@ -223,29 +211,20 @@ namespace DevEdu_project
                 dialog.SaveDialog();
             }
         }
+        //Create new
         private void clearCanvasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            if (pictureBox1.Image != null) //если в pictureBox есть изображение
-            {
-                DialogResult result = dialog.NewDialog();
-                switch (result)
-                {
-                    case DialogResult.Yes:
-                        dialog.SaveDialog();
-                        break;
-                    case DialogResult.No:
-                        pictureBox1.Image = null;
-                        StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-                        break;
-                    case DialogResult.Cancel:
-                        break;
-                }
-            }            
+            EventNew();       
+        }
+        //Application Closed
+        private void BetterThanPhotoshop_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            EventClose();
+            Application.Exit();
         }
         #endregion
 
-        private void BetterThanPhotoshop_FormClosed(object sender, FormClosedEventArgs e)
+        private void EventClose()
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
             {
@@ -257,6 +236,29 @@ namespace DevEdu_project
                         break;
                     case DialogResult.No:
                         Application.Exit();
+                        break;
+                    case DialogResult.Cancel:
+                        break;
+                }
+            }
+            Application.Exit();
+        }
+
+        private void EventNew()
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                DialogResult result = dialog.NewDialog();
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        dialog.SaveDialog();
+                        pictureBox1.Image = null;
+                        StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                        break;
+                    case DialogResult.No:
+                        pictureBox1.Image = null;
+                        StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
                         break;
                     case DialogResult.Cancel:
                         break;
