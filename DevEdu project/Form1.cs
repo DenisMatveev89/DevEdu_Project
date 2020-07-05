@@ -1,8 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Windows.Shapes;
 using Color = System.Drawing.Color;
 
 namespace DevEdu_project
@@ -13,10 +11,11 @@ namespace DevEdu_project
         Ellipse ellips = new Ellipse();
         Rectangle rectangle = new Rectangle();
         Triangle triangle = new Triangle();
+        Dialog dialog = new Dialog();
 
         Color currentColor = Color.Black;
         private bool mousePress;
-        string ToolButton; //кнопка выбора инструмента рисования
+        string ToolButton = "pencil"; //кнопка выбора инструмента рисования
 
         Point CurrentPoint;
         Point PrevPoint;
@@ -105,10 +104,6 @@ namespace DevEdu_project
             CurrentPoint = e.Location;
             mousePress = false;            
             StaticBitmap.Update();
-        }
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
         #region ToolBox
         private void Pencil_Click(object sender, EventArgs e)
@@ -202,28 +197,71 @@ namespace DevEdu_project
 
         #endregion
 
+        #region Menu
+        //Menu Exit
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        //Menu SaveAs
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
             {
-                SaveFileDialog savedialog = new SaveFileDialog();
-                savedialog.Title = "Сохранить картинку как...";
-                savedialog.OverwritePrompt = true;
-                savedialog.CheckPathExists = true;
+                dialog.SaveDialog();
+            }
+        }
+        //Create new
+        private void clearCanvasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EventNew();       
+        }
+        //Application Closed
+        private void BetterThanPhotoshop_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            EventClose();
+            Application.Exit();
+        }
+        #endregion
 
-                savedialog.Filter = "Image Files(*.PNG)|*.PNG|All files (*.*)|*.*";
-                savedialog.ShowHelp = true;
-                if (savedialog.ShowDialog() == DialogResult.OK)
+        private void EventClose()
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                DialogResult result = dialog.NewDialog();
+                switch (result)
                 {
-                    try
-                    {
-                        StaticBitmap.Bitmap.Save(savedialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Невозможно сохранить изображение", "Ошибка",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    case DialogResult.Yes:
+                        dialog.SaveDialog();
+                        break;
+                    case DialogResult.No:
+                        Application.Exit();
+                        break;
+                    case DialogResult.Cancel:
+                        break;
+                }
+            }
+            Application.Exit();
+        }
+
+        private void EventNew()
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                DialogResult result = dialog.NewDialog();
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        dialog.SaveDialog();
+                        pictureBox1.Image = null;
+                        StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                        break;
+                    case DialogResult.No:
+                        pictureBox1.Image = null;
+                        StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                        break;
+                    case DialogResult.Cancel:
+                        break;
                 }
             }
         }
