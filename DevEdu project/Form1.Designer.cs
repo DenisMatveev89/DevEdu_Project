@@ -379,10 +379,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1088, 625);
-            this.MinimumSize = new System.Drawing.Size(1088, 625);
+            this.MinimumSize = new System.Drawing.Size(400, 200);
             this.Name = "BetterThanPhotoshop";
             this.RightToLeftLayout = true;
             this.Text = "BTN - Better Than Photoshop";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BetterThanPhotoshop_FormClosed);
             this.Load += new System.EventHandler(this.BetterThanPhotoshop_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

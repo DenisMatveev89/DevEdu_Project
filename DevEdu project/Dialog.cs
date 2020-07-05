@@ -12,7 +12,7 @@ namespace DevEdu_project
         public void SaveDialog()
         {
             SaveFileDialog savedialog = new SaveFileDialog();
-            savedialog.Title = "Сохранить картинку как...";
+            savedialog.Title = "Save image as...";
             savedialog.OverwritePrompt = true;
             savedialog.CheckPathExists = true;
 
@@ -26,7 +26,7 @@ namespace DevEdu_project
                 }
                 catch
                 {
-                    MessageBox.Show("Невозможно сохранить изображение", "Ошибка",
+                    MessageBox.Show("Unable to save image", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

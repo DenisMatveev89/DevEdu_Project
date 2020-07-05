@@ -1,8 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Windows.Shapes;
 using Color = System.Drawing.Color;
 
 namespace DevEdu_project
@@ -107,10 +105,6 @@ namespace DevEdu_project
             mousePress = false;            
             StaticBitmap.Update();
         }
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
         #region ToolBox
         private void Pencil_Click(object sender, EventArgs e)
         {
@@ -203,6 +197,25 @@ namespace DevEdu_project
 
         #endregion
 
+        #region Menu
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                DialogResult result = dialog.NewDialog();
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        dialog.SaveDialog();
+                        break;
+                    case DialogResult.No:
+                        Application.Exit();
+                        break;
+                    case DialogResult.Cancel:
+                        break;
+                }
+            }
+        }
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
@@ -210,7 +223,6 @@ namespace DevEdu_project
                 dialog.SaveDialog();
             }
         }
-
         private void clearCanvasToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -230,6 +242,26 @@ namespace DevEdu_project
                         break;
                 }
             }            
+        }
+        #endregion
+
+        private void BetterThanPhotoshop_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                DialogResult result = dialog.NewDialog();
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        dialog.SaveDialog();
+                        break;
+                    case DialogResult.No:
+                        Application.Exit();
+                        break;
+                    case DialogResult.Cancel:
+                        break;
+                }
+            }
         }
     }
 }
