@@ -13,7 +13,6 @@ namespace DevEdu_project
         Ellipse ellips = new Ellipse();
         Rectangle rectangle = new Rectangle();
         Triangle triangle = new Triangle();
-        Brush brushAll = new Brush();
 
         Color currentColor = Color.Black;
         private bool mousePress;

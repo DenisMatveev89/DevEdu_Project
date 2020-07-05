@@ -32,13 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BetterThanPhotoshop));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearCanvasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.createNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.PencilButton = new System.Windows.Forms.ToolStripButton();
             this.LineButton = new System.Windows.Forms.ToolStripButton();
             this.EllipseButton = new System.Windows.Forms.ToolStripDropDownButton();
@@ -55,13 +58,9 @@
             this.FillColorButton = new System.Windows.Forms.ToolStripButton();
             this.EraserButton = new System.Windows.Forms.ToolStripButton();
             this.AngleButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.clearCanvasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -83,37 +82,17 @@
             // 
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clearCanvasToolStripMenuItem,
-            this.createNewToolStripMenuItem,
             this.saveAsToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
-            // clearCanvasToolStripMenuItem
-            // 
-            this.clearCanvasToolStripMenuItem.Name = "clearCanvasToolStripMenuItem";
-            this.clearCanvasToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.clearCanvasToolStripMenuItem.Text = "Clear all and create new image";
-            this.clearCanvasToolStripMenuItem.Click += new System.EventHandler(this.clearCanvasToolStripMenuItem_Click);
-            // 
-            // createNewToolStripMenuItem
-            // 
-            this.createNewToolStripMenuItem.Name = "createNewToolStripMenuItem";
-            this.createNewToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.createNewToolStripMenuItem.Text = "Create New";
-            // 
-            // saveAsToolStripMenuItem
-            // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.saveAsToolStripMenuItem.Text = "Save As";
-            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
-            // 
             // exitToolStripMenuItem
             // 
+            this.exitToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(239, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -141,154 +120,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(1072, 27);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // PencilButton
-            // 
-            this.PencilButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.PencilButton.Image = ((System.Drawing.Image)(resources.GetObject("PencilButton.Image")));
-            this.PencilButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.PencilButton.Name = "PencilButton";
-            this.PencilButton.Size = new System.Drawing.Size(24, 24);
-            this.PencilButton.Text = "Pencil";
-            this.PencilButton.Click += new System.EventHandler(this.Pencil_Click);
-            // 
-            // LineButton
-            // 
-            this.LineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.LineButton.Image = ((System.Drawing.Image)(resources.GetObject("LineButton.Image")));
-            this.LineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.LineButton.Name = "LineButton";
-            this.LineButton.Size = new System.Drawing.Size(24, 24);
-            this.LineButton.Text = "Line";
-            this.LineButton.Click += new System.EventHandler(this.LineButton_Click);
-            // 
-            // EllipseButton
-            // 
-            this.EllipseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.EllipseButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ellipseToolStripMenuItem,
-            this.circleToolStripMenuItem});
-            this.EllipseButton.Image = ((System.Drawing.Image)(resources.GetObject("EllipseButton.Image")));
-            this.EllipseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.EllipseButton.Name = "EllipseButton";
-            this.EllipseButton.Size = new System.Drawing.Size(33, 24);
-            this.EllipseButton.Text = "Ellipse";
-            this.EllipseButton.Click += new System.EventHandler(this.EllipseButton_Click_1);
-            // 
-            // ellipseToolStripMenuItem
-            // 
-            this.ellipseToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.oval;
-            this.ellipseToolStripMenuItem.Name = "ellipseToolStripMenuItem";
-            this.ellipseToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.ellipseToolStripMenuItem.Text = "Ellipse";
-            this.ellipseToolStripMenuItem.Click += new System.EventHandler(this.ellipseToolStripMenuItem_Click);
-            // 
-            // circleToolStripMenuItem
-            // 
-            this.circleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.circle;
-            this.circleToolStripMenuItem.Name = "circleToolStripMenuItem";
-            this.circleToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.circleToolStripMenuItem.Text = "Circle";
-            this.circleToolStripMenuItem.Click += new System.EventHandler(this.circleToolStripMenuItem_Click);
-            // 
-            // RectangleDropDownButton1
-            // 
-            this.RectangleDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RectangleDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.rectangleToolStripMenuItem,
-            this.squareToolStripMenuItem});
-            this.RectangleDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("RectangleDropDownButton1.Image")));
-            this.RectangleDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.RectangleDropDownButton1.Name = "RectangleDropDownButton1";
-            this.RectangleDropDownButton1.Size = new System.Drawing.Size(33, 24);
-            this.RectangleDropDownButton1.Text = "Rectangle";
-            this.RectangleDropDownButton1.Click += new System.EventHandler(this.RectangleDropDownButton1_Click);
-            // 
-            // rectangleToolStripMenuItem
-            // 
-            this.rectangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.rectangle;
-            this.rectangleToolStripMenuItem.Name = "rectangleToolStripMenuItem";
-            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.rectangleToolStripMenuItem.Text = "Rectangle";
-            this.rectangleToolStripMenuItem.Click += new System.EventHandler(this.rectangleToolStripMenuItem_Click);
-            // 
-            // squareToolStripMenuItem
-            // 
-            this.squareToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.times_square;
-            this.squareToolStripMenuItem.Name = "squareToolStripMenuItem";
-            this.squareToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
-            this.squareToolStripMenuItem.Text = "Square";
-            this.squareToolStripMenuItem.Click += new System.EventHandler(this.squareToolStripMenuItem_Click);
-            // 
-            // TriangleDropDownButton1
-            // 
-            this.TriangleDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.TriangleDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.arbitraryTriangleToolStripMenuItem,
-            this.isoscelesTriangleToolStripMenuItem,
-            this.rightTriangleToolStripMenuItem,
-            this.squareTriangleToolStripMenuItem});
-            this.TriangleDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("TriangleDropDownButton1.Image")));
-            this.TriangleDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.TriangleDropDownButton1.Name = "TriangleDropDownButton1";
-            this.TriangleDropDownButton1.Size = new System.Drawing.Size(33, 24);
-            this.TriangleDropDownButton1.Text = "Triangle";
-            this.TriangleDropDownButton1.Click += new System.EventHandler(this.triangleDropDownButton1_Click);
-            // 
-            // arbitraryTriangleToolStripMenuItem
-            // 
-            this.arbitraryTriangleToolStripMenuItem.Name = "arbitraryTriangleToolStripMenuItem";
-            this.arbitraryTriangleToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.arbitraryTriangleToolStripMenuItem.Text = "Arbitrary triangle";
-            this.arbitraryTriangleToolStripMenuItem.Click += new System.EventHandler(this.arbitraryTriangleToolStripMenuItem_Click);
-            // 
-            // isoscelesTriangleToolStripMenuItem
-            // 
-            this.isoscelesTriangleToolStripMenuItem.Name = "isoscelesTriangleToolStripMenuItem";
-            this.isoscelesTriangleToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.isoscelesTriangleToolStripMenuItem.Text = "Isosceles triangle";
-            this.isoscelesTriangleToolStripMenuItem.Click += new System.EventHandler(this.isoscelesTriangleToolStripMenuItem_Click);
-            // 
-            // rightTriangleToolStripMenuItem
-            // 
-            this.rightTriangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.play;
-            this.rightTriangleToolStripMenuItem.Name = "rightTriangleToolStripMenuItem";
-            this.rightTriangleToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.rightTriangleToolStripMenuItem.Text = "Right triangle";
-            this.rightTriangleToolStripMenuItem.Click += new System.EventHandler(this.rightTriangleToolStripMenuItem_Click);
-            // 
-            // squareTriangleToolStripMenuItem
-            // 
-            this.squareTriangleToolStripMenuItem.Name = "squareTriangleToolStripMenuItem";
-            this.squareTriangleToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.squareTriangleToolStripMenuItem.Text = "Square triangle";
-            // 
-            // FillColorButton
-            // 
-            this.FillColorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.FillColorButton.Image = ((System.Drawing.Image)(resources.GetObject("FillColorButton.Image")));
-            this.FillColorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.FillColorButton.Name = "FillColorButton";
-            this.FillColorButton.Size = new System.Drawing.Size(24, 24);
-            this.FillColorButton.Text = "Color";
-            // 
-            // EraserButton
-            // 
-            this.EraserButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.EraserButton.Image = ((System.Drawing.Image)(resources.GetObject("EraserButton.Image")));
-            this.EraserButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.EraserButton.Name = "EraserButton";
-            this.EraserButton.Size = new System.Drawing.Size(24, 24);
-            this.EraserButton.Text = "Eraser";
-            // 
-            // AngleButton
-            // 
-            this.AngleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AngleButton.Image = ((System.Drawing.Image)(resources.GetObject("AngleButton.Image")));
-            this.AngleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AngleButton.Name = "AngleButton";
-            this.AngleButton.Size = new System.Drawing.Size(24, 24);
-            this.AngleButton.Text = "Angle Modify";
             // 
             // toolStrip2
             // 
@@ -360,6 +191,154 @@
             this.toolStripButton9.Text = "toolStripButton9";
             this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
             // 
+            // PencilButton
+            // 
+            this.PencilButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.PencilButton.Image = ((System.Drawing.Image)(resources.GetObject("PencilButton.Image")));
+            this.PencilButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.PencilButton.Name = "PencilButton";
+            this.PencilButton.Size = new System.Drawing.Size(24, 24);
+            this.PencilButton.Text = "Pencil";
+            this.PencilButton.Click += new System.EventHandler(this.Pencil_Click);
+            // 
+            // LineButton
+            // 
+            this.LineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.LineButton.Image = ((System.Drawing.Image)(resources.GetObject("LineButton.Image")));
+            this.LineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LineButton.Name = "LineButton";
+            this.LineButton.Size = new System.Drawing.Size(24, 24);
+            this.LineButton.Text = "Line";
+            this.LineButton.Click += new System.EventHandler(this.LineButton_Click);
+            // 
+            // EllipseButton
+            // 
+            this.EllipseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.EllipseButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ellipseToolStripMenuItem,
+            this.circleToolStripMenuItem});
+            this.EllipseButton.Image = ((System.Drawing.Image)(resources.GetObject("EllipseButton.Image")));
+            this.EllipseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.EllipseButton.Name = "EllipseButton";
+            this.EllipseButton.Size = new System.Drawing.Size(33, 24);
+            this.EllipseButton.Text = "Ellipse";
+            this.EllipseButton.Click += new System.EventHandler(this.EllipseButton_Click_1);
+            // 
+            // ellipseToolStripMenuItem
+            // 
+            this.ellipseToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.oval;
+            this.ellipseToolStripMenuItem.Name = "ellipseToolStripMenuItem";
+            this.ellipseToolStripMenuItem.Size = new System.Drawing.Size(111, 26);
+            this.ellipseToolStripMenuItem.Text = "Ellipse";
+            this.ellipseToolStripMenuItem.Click += new System.EventHandler(this.ellipseToolStripMenuItem_Click);
+            // 
+            // circleToolStripMenuItem
+            // 
+            this.circleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.circle;
+            this.circleToolStripMenuItem.Name = "circleToolStripMenuItem";
+            this.circleToolStripMenuItem.Size = new System.Drawing.Size(111, 26);
+            this.circleToolStripMenuItem.Text = "Circle";
+            this.circleToolStripMenuItem.Click += new System.EventHandler(this.circleToolStripMenuItem_Click);
+            // 
+            // RectangleDropDownButton1
+            // 
+            this.RectangleDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.RectangleDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rectangleToolStripMenuItem,
+            this.squareToolStripMenuItem});
+            this.RectangleDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("RectangleDropDownButton1.Image")));
+            this.RectangleDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.RectangleDropDownButton1.Name = "RectangleDropDownButton1";
+            this.RectangleDropDownButton1.Size = new System.Drawing.Size(33, 24);
+            this.RectangleDropDownButton1.Text = "Rectangle";
+            this.RectangleDropDownButton1.Click += new System.EventHandler(this.RectangleDropDownButton1_Click);
+            // 
+            // rectangleToolStripMenuItem
+            // 
+            this.rectangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.rectangle;
+            this.rectangleToolStripMenuItem.Name = "rectangleToolStripMenuItem";
+            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
+            this.rectangleToolStripMenuItem.Text = "Rectangle";
+            this.rectangleToolStripMenuItem.Click += new System.EventHandler(this.rectangleToolStripMenuItem_Click);
+            // 
+            // squareToolStripMenuItem
+            // 
+            this.squareToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.times_square;
+            this.squareToolStripMenuItem.Name = "squareToolStripMenuItem";
+            this.squareToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
+            this.squareToolStripMenuItem.Text = "Square";
+            this.squareToolStripMenuItem.Click += new System.EventHandler(this.squareToolStripMenuItem_Click);
+            // 
+            // TriangleDropDownButton1
+            // 
+            this.TriangleDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.TriangleDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.arbitraryTriangleToolStripMenuItem,
+            this.isoscelesTriangleToolStripMenuItem,
+            this.rightTriangleToolStripMenuItem,
+            this.squareTriangleToolStripMenuItem});
+            this.TriangleDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("TriangleDropDownButton1.Image")));
+            this.TriangleDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TriangleDropDownButton1.Name = "TriangleDropDownButton1";
+            this.TriangleDropDownButton1.Size = new System.Drawing.Size(33, 24);
+            this.TriangleDropDownButton1.Text = "Triangle";
+            this.TriangleDropDownButton1.Click += new System.EventHandler(this.triangleDropDownButton1_Click);
+            // 
+            // arbitraryTriangleToolStripMenuItem
+            // 
+            this.arbitraryTriangleToolStripMenuItem.Name = "arbitraryTriangleToolStripMenuItem";
+            this.arbitraryTriangleToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.arbitraryTriangleToolStripMenuItem.Text = "Arbitrary triangle";
+            this.arbitraryTriangleToolStripMenuItem.Click += new System.EventHandler(this.arbitraryTriangleToolStripMenuItem_Click);
+            // 
+            // isoscelesTriangleToolStripMenuItem
+            // 
+            this.isoscelesTriangleToolStripMenuItem.Name = "isoscelesTriangleToolStripMenuItem";
+            this.isoscelesTriangleToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.isoscelesTriangleToolStripMenuItem.Text = "Isosceles triangle";
+            this.isoscelesTriangleToolStripMenuItem.Click += new System.EventHandler(this.isoscelesTriangleToolStripMenuItem_Click);
+            // 
+            // rightTriangleToolStripMenuItem
+            // 
+            this.rightTriangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.play;
+            this.rightTriangleToolStripMenuItem.Name = "rightTriangleToolStripMenuItem";
+            this.rightTriangleToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.rightTriangleToolStripMenuItem.Text = "Right triangle";
+            this.rightTriangleToolStripMenuItem.Click += new System.EventHandler(this.rightTriangleToolStripMenuItem_Click);
+            // 
+            // squareTriangleToolStripMenuItem
+            // 
+            this.squareTriangleToolStripMenuItem.Name = "squareTriangleToolStripMenuItem";
+            this.squareTriangleToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
+            this.squareTriangleToolStripMenuItem.Text = "Square triangle";
+            // 
+            // FillColorButton
+            // 
+            this.FillColorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.FillColorButton.Image = ((System.Drawing.Image)(resources.GetObject("FillColorButton.Image")));
+            this.FillColorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.FillColorButton.Name = "FillColorButton";
+            this.FillColorButton.Size = new System.Drawing.Size(24, 24);
+            this.FillColorButton.Text = "Color";
+            // 
+            // EraserButton
+            // 
+            this.EraserButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.EraserButton.Image = ((System.Drawing.Image)(resources.GetObject("EraserButton.Image")));
+            this.EraserButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.EraserButton.Name = "EraserButton";
+            this.EraserButton.Size = new System.Drawing.Size(24, 24);
+            this.EraserButton.Text = "Eraser";
+            // 
+            // AngleButton
+            // 
+            this.AngleButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AngleButton.Image = ((System.Drawing.Image)(resources.GetObject("AngleButton.Image")));
+            this.AngleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AngleButton.Name = "AngleButton";
+            this.AngleButton.Size = new System.Drawing.Size(24, 24);
+            this.AngleButton.Text = "Angle Modify";
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
@@ -371,6 +350,22 @@
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove_1);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseUp);
+            // 
+            // clearCanvasToolStripMenuItem
+            // 
+            this.clearCanvasToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.createnew;
+            this.clearCanvasToolStripMenuItem.Name = "clearCanvasToolStripMenuItem";
+            this.clearCanvasToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.clearCanvasToolStripMenuItem.Text = "Create New";
+            this.clearCanvasToolStripMenuItem.Click += new System.EventHandler(this.clearCanvasToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.save;
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(239, 26);
+            this.saveAsToolStripMenuItem.Text = "Save As";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // BetterThanPhotoshop
             // 
@@ -407,7 +402,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem createNewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
