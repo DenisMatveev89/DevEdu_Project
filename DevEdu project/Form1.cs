@@ -16,7 +16,7 @@ namespace DevEdu_project
 
         Color currentColor = Color.Black;
         private bool mousePress;
-        string ToolButton; //кнопка выбора инструмента рисования
+        string ToolButton = "pencil"; //кнопка выбора инструмента рисования
 
         Point CurrentPoint;
         Point PrevPoint;
@@ -226,6 +226,12 @@ namespace DevEdu_project
                     }
                 }
             }
+        }
+
+        private void clearCanvasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = null;
+            StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);            
         }
     }
 }
