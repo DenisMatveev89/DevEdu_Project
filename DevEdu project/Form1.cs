@@ -87,13 +87,26 @@ namespace DevEdu_project
 
                     case "isosceles triangle":
                         //равнобедренный треугольник по одной из граней
+                        CurrentPoint = e.Location;
+                        StaticBitmap.Copy();
+                        triangle.IsoscelesTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        pictureBox1.Image = StaticBitmap.TmpBitmap;
                         break;
 
                     case "right triangle":
                         //прямоугольный треугольник по гипотенузе
                         CurrentPoint = e.Location;
                         StaticBitmap.Copy();
-                        pictureBox1.Image = triangle.RightTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        triangle.RightTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        pictureBox1.Image = StaticBitmap.TmpBitmap;
+                        break;
+
+                    case "equilateral triangle":
+                        //равносторонний треугольник по одной стороне
+                        CurrentPoint = e.Location;
+                        StaticBitmap.Copy();
+                        triangle.EquilateralTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        pictureBox1.Image = StaticBitmap.TmpBitmap;
                         break;
                 }
             }
@@ -151,6 +164,10 @@ namespace DevEdu_project
             ToolButton = "right triangle"; //прямоугольный треугольник по гипотенузе
         }
 
+        private void equilateralTriangleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolButton = "equilateral triangle"; //равносторонний треугольник по одной стороне
+        }
         private void EllipseButton_Click_1(object sender, EventArgs e)
         {
             ToolButton = "ellipse";
@@ -265,6 +282,8 @@ namespace DevEdu_project
                 }
             }
         }
+
+       
     }
 }
 

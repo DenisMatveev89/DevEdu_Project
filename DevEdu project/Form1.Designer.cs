@@ -50,7 +50,7 @@
             this.arbitraryTriangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.isoscelesTriangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rightTriangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.squareTriangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.equilateralTriangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FillColorButton = new System.Windows.Forms.ToolStripButton();
             this.EraserButton = new System.Windows.Forms.ToolStripButton();
             this.AngleButton = new System.Windows.Forms.ToolStripButton();
@@ -224,7 +224,7 @@
             this.arbitraryTriangleToolStripMenuItem,
             this.isoscelesTriangleToolStripMenuItem,
             this.rightTriangleToolStripMenuItem,
-            this.squareTriangleToolStripMenuItem});
+            this.equilateralTriangleToolStripMenuItem});
             this.TriangleDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("TriangleDropDownButton1.Image")));
             this.TriangleDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TriangleDropDownButton1.Name = "TriangleDropDownButton1";
@@ -235,14 +235,14 @@
             // arbitraryTriangleToolStripMenuItem
             // 
             this.arbitraryTriangleToolStripMenuItem.Name = "arbitraryTriangleToolStripMenuItem";
-            this.arbitraryTriangleToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.arbitraryTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.arbitraryTriangleToolStripMenuItem.Text = "Arbitrary triangle";
             this.arbitraryTriangleToolStripMenuItem.Click += new System.EventHandler(this.arbitraryTriangleToolStripMenuItem_Click);
             // 
             // isoscelesTriangleToolStripMenuItem
             // 
             this.isoscelesTriangleToolStripMenuItem.Name = "isoscelesTriangleToolStripMenuItem";
-            this.isoscelesTriangleToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.isoscelesTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.isoscelesTriangleToolStripMenuItem.Text = "Isosceles triangle";
             this.isoscelesTriangleToolStripMenuItem.Click += new System.EventHandler(this.isoscelesTriangleToolStripMenuItem_Click);
             // 
@@ -250,15 +250,16 @@
             // 
             this.rightTriangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.play;
             this.rightTriangleToolStripMenuItem.Name = "rightTriangleToolStripMenuItem";
-            this.rightTriangleToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.rightTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.rightTriangleToolStripMenuItem.Text = "Right triangle";
             this.rightTriangleToolStripMenuItem.Click += new System.EventHandler(this.rightTriangleToolStripMenuItem_Click);
             // 
-            // squareTriangleToolStripMenuItem
+            // equilateralTriangleToolStripMenuItem
             // 
-            this.squareTriangleToolStripMenuItem.Name = "squareTriangleToolStripMenuItem";
-            this.squareTriangleToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.squareTriangleToolStripMenuItem.Text = "Square triangle";
+            this.equilateralTriangleToolStripMenuItem.Name = "equilateralTriangleToolStripMenuItem";
+            this.equilateralTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.equilateralTriangleToolStripMenuItem.Text = "Equilateral triangle";
+            this.equilateralTriangleToolStripMenuItem.Click += new System.EventHandler(this.equilateralTriangleToolStripMenuItem_Click);
             // 
             // FillColorButton
             // 
@@ -428,7 +429,7 @@
         private System.Windows.Forms.ToolStripDropDownButton RectangleDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem rectangleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem squareToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem squareTriangleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem equilateralTriangleToolStripMenuItem;
         private System.Windows.Forms.ToolStripDropDownButton EllipseButton;
         private System.Windows.Forms.ToolStripMenuItem ellipseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem circleToolStripMenuItem;
