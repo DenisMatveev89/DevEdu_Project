@@ -4,11 +4,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 
 namespace DevEdu_project.Figure
 {
     public class StraightLine: IFigure
     {
+        public StraightLine() { }
+        public StraightLine(Point StartPoint, Point EndPoint) { }
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
         public Point StartPoint;
         public Point EndPoint;
@@ -58,17 +61,6 @@ namespace DevEdu_project.Figure
             {
                 return n * -1;
             }
-        }
-
-        //Метод, который проходится по листу от первой до последней точки и рисует каждую точку на TmpBitmap
-        public Bitmap Draw(List<Point> linePoints, Color color)
-        {
-            foreach (Point i in linePoints)
-            {
-                StaticBitmap.SetPixel(i.X, i.Y, color);
-            }
-
-            return StaticBitmap.TmpBitmap;
         }
     }
 }

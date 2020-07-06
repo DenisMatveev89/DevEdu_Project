@@ -15,14 +15,16 @@ namespace DevEdu_project
 
         //Эти классы будут внутри методов SelectFigure
         //Line line = new Line();
-        Ellipse ellips = new Ellipse();
-        Rectangle rectangle = new Rectangle();
-        Triangle triangle = new Triangle();
+        
+
+       //Ellipse ellips = new Ellipse();
+       // Rectangle rectangle = new Rectangle();
+        //Triangle triangle = new Triangle();
         Dialog dialog = new Dialog();
 
         Color currentColor = Color.Black;
         private bool mousePress;
-        string ToolButton = "pencil"; //кнопка выбора инструмента рисования
+        string ToolButton = "pencil"; // инструмента рисования поумолчанию
 
         Point CurrentPoint;
         Point PrevPoint;
@@ -45,7 +47,7 @@ namespace DevEdu_project
             mousePress = true;
             
         }
-
+        
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
         {            
             if (mousePress)
@@ -54,10 +56,9 @@ namespace DevEdu_project
                 {
                     case "pencil":
                         PrevPoint = CurrentPoint;
+                        CurrentPoint = e.Location;
                         StaticBitmap.Copy();
                         SelectLine(PrevPoint, CurrentPoint);
-                                                  
-                            //pictureBox1.Image = line.DrawLine(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         StaticBitmap.Update();
                         break;
 
@@ -67,32 +68,32 @@ namespace DevEdu_project
                         SelectLine(PrevPoint, CurrentPoint);
 
                         //StraightLine.Draw(figure.GetPoints(), currentColor); // так было у Максима
-
-                        //pictureBox1.Image = line.DrawLine(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
 
                     case "ellipse":
                         CurrentPoint = e.Location;
                         StaticBitmap.Copy();
-                        pictureBox1.Image = ellips.DrawEllipse(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);                                            
+                        //pictureBox1.Image = ellips.DrawEllipse(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);                                            
                         break;
                     case "circle":
                         CurrentPoint = e.Location;
                         StaticBitmap.Copy();
-                        pictureBox1.Image = ellips.DrawCircle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        //pictureBox1.Image = ellips.DrawCircle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
                     case "rectangle":
                         //прямоугольник
                         CurrentPoint = e.Location;
                         StaticBitmap.Copy();
-                        pictureBox1.Image = rectangle.DrawRectangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        SelectRectangle(PrevPoint, CurrentPoint);
+                        // pictureBox1.Image = rectangle.DrawRectangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
 
                     case "square":
                         //квадрат
                         CurrentPoint = e.Location;
                         StaticBitmap.Copy();
-                        pictureBox1.Image = rectangle.DrawSquare(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        SelectRectangleSquar(PrevPoint, CurrentPoint);
+                        //pictureBox1.Image = rectangle.DrawSquare(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
 
                     case "arbirtrary triangle":
@@ -103,7 +104,7 @@ namespace DevEdu_project
                         //равнобедренный треугольник по одной из граней
                         CurrentPoint = e.Location;
                         StaticBitmap.Copy();
-                        triangle.IsoscelesTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        //triangle.IsoscelesTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         pictureBox1.Image = StaticBitmap.TmpBitmap;
                         break;
 
@@ -111,7 +112,7 @@ namespace DevEdu_project
                         //прямоугольный треугольник по гипотенузе
                         CurrentPoint = e.Location;
                         StaticBitmap.Copy();
-                        triangle.RightTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        //triangle.RightTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         pictureBox1.Image = StaticBitmap.TmpBitmap;
                         break;
 
@@ -119,7 +120,7 @@ namespace DevEdu_project
                         //равносторонний треугольник по одной стороне
                         CurrentPoint = e.Location;
                         StaticBitmap.Copy();
-                        triangle.EquilateralTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        //triangle.EquilateralTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         pictureBox1.Image = StaticBitmap.TmpBitmap;
                         break;
                 }
@@ -137,13 +138,34 @@ namespace DevEdu_project
             line.StartPoint = Start;
             line.EndPoint = End;
 
-            //Вызываем математику: метод, который сохраняет в лист точки нашей линии
-            List<Point> finalLine = line.GetPoints();
-
             //Берем лист с полученными точками и передаем его в метод Draw,
             //который проходится по листу и рисует каждую точку
-            pictureBox1.Image = StaticBitmap.Draw(finalLine, currentColor);
+            pictureBox1.Image = StaticBitmap.Draw(line.GetPoints(), currentColor);
         }
+
+
+        public void SelectRectangleSquar(Point Start, Point End)
+        {
+            RectangleSquar squar = new RectangleSquar();
+            
+
+            //Задаем координаты
+            squar.StartPoint = Start;
+            squar.EndPoint = End;
+
+            pictureBox1.Image = StaticBitmap.Draw(squar.GetPoints(), currentColor);
+        }
+        public void SelectRectangle(Point Start, Point End)
+        {
+            Rectangle rect = new Rectangle();
+
+            //Задаем координаты
+            rect.StartPoint = Start;
+            rect.EndPoint = End;
+
+            pictureBox1.Image = StaticBitmap.Draw(rect.GetPoints(), currentColor);
+        }
+
 
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {

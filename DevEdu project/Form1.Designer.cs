@@ -235,14 +235,15 @@
             // arbitraryTriangleToolStripMenuItem
             // 
             this.arbitraryTriangleToolStripMenuItem.Name = "arbitraryTriangleToolStripMenuItem";
-            this.arbitraryTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.arbitraryTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.arbitraryTriangleToolStripMenuItem.Text = "Arbitrary triangle";
             this.arbitraryTriangleToolStripMenuItem.Click += new System.EventHandler(this.arbitraryTriangleToolStripMenuItem_Click);
             // 
             // isoscelesTriangleToolStripMenuItem
             // 
+            this.isoscelesTriangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.img_2020_07_05_16_12_02;
             this.isoscelesTriangleToolStripMenuItem.Name = "isoscelesTriangleToolStripMenuItem";
-            this.isoscelesTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.isoscelesTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.isoscelesTriangleToolStripMenuItem.Text = "Isosceles triangle";
             this.isoscelesTriangleToolStripMenuItem.Click += new System.EventHandler(this.isoscelesTriangleToolStripMenuItem_Click);
             // 
@@ -250,14 +251,14 @@
             // 
             this.rightTriangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.play;
             this.rightTriangleToolStripMenuItem.Name = "rightTriangleToolStripMenuItem";
-            this.rightTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.rightTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.rightTriangleToolStripMenuItem.Text = "Right triangle";
             this.rightTriangleToolStripMenuItem.Click += new System.EventHandler(this.rightTriangleToolStripMenuItem_Click);
             // 
             // equilateralTriangleToolStripMenuItem
             // 
             this.equilateralTriangleToolStripMenuItem.Name = "equilateralTriangleToolStripMenuItem";
-            this.equilateralTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.equilateralTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.equilateralTriangleToolStripMenuItem.Text = "Equilateral triangle";
             this.equilateralTriangleToolStripMenuItem.Click += new System.EventHandler(this.equilateralTriangleToolStripMenuItem_Click);
             // 
@@ -362,6 +363,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Location = new System.Drawing.Point(34, 52);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1038, 534);
