@@ -167,17 +167,17 @@ namespace DevEdu_project
 
         private void isoscelesTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToolButton = "isosceles triangle"; //равнобедренный треугольник по одной из граней
+            Figure = new TriangleIsosceles(PrevPoint, CurrentPoint); //равнобедренный треугольник по одной из граней
         }
 
         private void rightTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToolButton = "right triangle"; //прямоугольный треугольник по гипотенузе
+            Figure = new TriangleRight(PrevPoint, CurrentPoint); //прямоугольный треугольник по гипотенузе
         }
 
         private void equilateralTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToolButton = "equilateral triangle"; //равносторонний треугольник по одной стороне
+            Figure = new TriangleEquilateral(PrevPoint, CurrentPoint); //равносторонний треугольник по одной стороне
         }
         private void EllipseButton_Click_1(object sender, EventArgs e)
         {

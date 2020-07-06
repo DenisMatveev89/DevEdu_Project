@@ -52,9 +52,12 @@
     <Compile Include="Brush.cs" />
     <Compile Include="Figure\Ellipse.cs" />
     <Compile Include="Figure\Figure.cs" />
+    <Compile Include="Figure\TriangleIsosceles.cs" />
     <Compile Include="Figure\Pencil.cs" />
     <Compile Include="Figure\Rectangle.cs" />
+    <Compile Include="Figure\TriangleRight.cs" />
     <Compile Include="Figure\StraightLine.cs" />
+    <Compile Include="Figure\TriangleEquilateral.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
