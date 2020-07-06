@@ -11,7 +11,7 @@ namespace DevEdu_project
     public partial class BetterThanPhotoshop : Form
     {
         //Объявляем интерфейс IFigure
-        static IFigure Figure= new Pencil();
+        static IFigure Figure= new StraightLine();
 
         Dialog dialog = new Dialog();
 
@@ -135,9 +135,9 @@ namespace DevEdu_project
         #region ToolBox
         private void Pencil_Click(object sender, EventArgs e)
         {
-
-            Figure = new Pencil();
-            Figure.Update(Location, CurrentPoint);
+            PrevPoint = CurrentPoint;
+            //Figure.Update(PrevPoint, CurrentPoint);
+            Figure = new Pencil(PrevPoint, CurrentPoint);
         }
 
         private void LineButton_Click(object sender, EventArgs e)

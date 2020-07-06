@@ -29,10 +29,7 @@ namespace DevEdu_project.Figure
 
         public List<Point> GetPoints()
         {
-            List<Point> listPoints = new List<Point>();
-            listPoints.Add(StartPoint);
-            listPoints.AddRange(StaticBitmap.ConnectTwoPoints(EndPoint, EndPoint));
-            return listPoints;
+            return StaticBitmap.ConnectTwoPoints(StartPoint, EndPoint);
             #region old version
             //Записываем в этот лист первую точку
             /* linePoints.Add(StartPoint);
