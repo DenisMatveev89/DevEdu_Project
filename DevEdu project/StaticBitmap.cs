@@ -62,13 +62,13 @@ namespace DevEdu_project
             int dx = EndPoint.X - StartPoint.X;//абсолютное значение
             int dy = EndPoint.Y - StartPoint.Y;
             int steps;
-            if (abs(dx) > abs(dy))
+            if (Abs(dx) > Abs(dy))
             {
-                steps = abs(dx); //количество шагов
+                steps = Abs(dx); //количество шагов
             }
             else
             {
-                steps = abs(dy);
+                steps = Abs(dy);
             }
 
             float Xinc = dx / (float)steps;//приращение для каждого шага 
@@ -86,7 +86,7 @@ namespace DevEdu_project
 
             return linePoints;
         }
-        private static int abs(int n)
+        public static int Abs(int n)
         {
             if (n > 0)
             {

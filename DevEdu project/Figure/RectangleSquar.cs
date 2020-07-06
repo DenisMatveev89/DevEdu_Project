@@ -17,12 +17,11 @@ namespace DevEdu_project
 
         public List<Point> GetPoints()
         {
-            List<Point> listPoint = new List<Point>();
-            int dx = EndPoint.X - StartPoint.X;//абсолютное значение
-            int dy = dx;
-            int d = dx; //длина диагонали
+            #region old version
+            //int dy = dx;
+            // int d = dx; //длина диагонали
 
-            float Xinc = dx / (float)d;//приращение для каждого шага 
+            /*float Xinc = dx / (float)d;//приращение для каждого шага 
             float Yinc = dy / (float)d;
 
             float X = StartPoint.X;// кладем пиксель для каждого шага 
@@ -39,7 +38,17 @@ namespace DevEdu_project
                 listPoint.Add(new Point((int)X, (int)Y));
                 listPoint.Add(new Point((int)X - d, (int)Y));
                 Y += Yinc;
-            }
+            }*/
+            #endregion
+            List<Point> listPoint = new List<Point>();
+            int d = EndPoint.X - StartPoint.X;//длина одной стороны, все остальные равны ей
+            int X0 = StartPoint.X;
+            int Y0 = StartPoint.Y;
+            int X1 = EndPoint.X;
+            listPoint.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X0, Y0), new Point(X1, Y0)));
+            listPoint.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X0, Y0+d), new Point(X1, Y0+d)));
+            listPoint.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X0, Y0), new Point(X0, Y0+d)));
+            listPoint.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X0+d, Y0), new Point(X0+d, Y0+d)));
             return listPoint;
         }
     }

@@ -18,6 +18,7 @@ namespace DevEdu_project.Figure
 
         public List<Point> GetPoints()
         {
+
             //StaticBitmap.ConnectTwoPoints(StartPoint, EndPoint);
             //Создаем новый лист с точками координат
             List<Point> linePoints = new List<Point>();
@@ -27,13 +28,13 @@ namespace DevEdu_project.Figure
             int dx = EndPoint.X - StartPoint.X;//абсолютное значение
             int dy = EndPoint.Y - StartPoint.Y;
             int steps;
-            if (abs(dx) > abs(dy))
+            if (StaticBitmap.Abs(dx) > StaticBitmap.Abs(dy))
             {
-                steps = abs(dx); //количество шагов
+                steps = StaticBitmap.Abs(dx); //количество шагов
             }
             else
             {
-                steps = abs(dy);
+                steps = StaticBitmap.Abs(dy);
             }
 
             float Xinc = dx / (float)steps;//приращение для каждого шага 
@@ -50,18 +51,6 @@ namespace DevEdu_project.Figure
             }
 
             return linePoints;
-        }
-
-        private int abs(int n)
-        {
-            if (n > 0)
-            {
-                return n;
-            }
-            else
-            {
-                return n * -1;
-            }
         }
     }
 }
