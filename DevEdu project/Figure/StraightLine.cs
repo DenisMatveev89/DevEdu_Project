@@ -18,6 +18,7 @@ namespace DevEdu_project.Figure
 
         public List<Point> GetPoints()
         {
+            //StaticBitmap.ConnectTwoPoints(StartPoint, EndPoint);
             //Создаем новый лист с точками координат
             List<Point> linePoints = new List<Point>();
             //Записываем в этот лист первую точку

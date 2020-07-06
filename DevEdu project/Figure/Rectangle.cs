@@ -16,32 +16,15 @@ namespace DevEdu_project
 
         public List<Point> GetPoints()
         {
-
             int X0 = StartPoint.X;
             int Y0 = StartPoint.Y;
             int X1 = EndPoint.X;
             int Y1 = EndPoint.Y;
-           
-            List<Point> points = new List<Point>();
             List<Point> listPoints = new List<Point>();
-
-            points.Add(new Point(X0, Y0));
-            points.Add(new Point(X1, Y0));
-            points.Add(new Point(X1, Y0));
-            points.Add(new Point(X1, Y0));
-            points.Add(new Point(X1, Y1));
-            points.Add(new Point(X1, Y1));
-            points.Add(new Point(X0, Y1));
-            points.Add(new Point(X0, Y1));
-            points.Add(new Point(X0, Y0));
-
-            for (int i=0; i<8; i++)
-            {
-                StraightLine line = new StraightLine();
-                line.StartPoint = points[i];
-                line.EndPoint = points[i+1];
-                listPoints.AddRange(line.GetPoints());
-            }
+            listPoints.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X0, Y0), new Point(X1, Y0)));
+            listPoints.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X1, Y0), new Point(X1, Y1)));
+            listPoints.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X1, Y1), new Point(X0, Y1)));
+            listPoints.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
             return listPoints;
         }
     }

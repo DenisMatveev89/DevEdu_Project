@@ -9,7 +9,7 @@ namespace DevEdu_project
 {
     public class Ellipse
     {
-        public Ellipse() { }
+       /* public Ellipse() { }
 
         public Bitmap DrawCircle(int X0, int Y0, int X1, int Y1, Color currentColor)
         {
@@ -106,7 +106,7 @@ namespace DevEdu_project
                 }
             }
             return StaticBitmap.TmpBitmap;
-        }      
+        }  */    
         
     }
 }

@@ -9,7 +9,7 @@ namespace DevEdu_project
 {
     public class Triangle
     {
-        Line line = new Line();
+       /* Line line = new Line();
 
        
         public void IsoscelesTriangle(int x0, int y0, int x1, int y1, Color currentColor)
@@ -38,6 +38,6 @@ namespace DevEdu_project
             //Рисуем линию развернутую на 60 градусов
             line.DrawLine(x1, y1, x2, y2, currentColor);
             line.DrawLine(x2, y2, x0, y0, currentColor);
-        }
+        }*/
     }
 }

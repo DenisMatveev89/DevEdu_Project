@@ -140,7 +140,9 @@ namespace DevEdu_project
 
             //Берем лист с полученными точками и передаем его в метод Draw,
             //который проходится по листу и рисует каждую точку
-            pictureBox1.Image = StaticBitmap.Draw(line.GetPoints(), currentColor);
+            //pictureBox1.Image = StaticBitmap.Draw(line.GetPoints(), currentColor);
+
+            pictureBox1.Image= StaticBitmap.Draw(StaticBitmap.ConnectTwoPoints(Start, End), currentColor);
         }
 
 
