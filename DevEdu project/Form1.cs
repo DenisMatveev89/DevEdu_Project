@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DevEdu_project.Figure;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using Color = System.Drawing.Color;
 
@@ -7,7 +10,11 @@ namespace DevEdu_project
 {
     public partial class BetterThanPhotoshop : Form
     {
-        Line line = new Line();
+        //Объявляем интерфейс IFigure
+        static IFigure figure;
+
+        //Эти классы будут внутри методов SelectFigure
+        //Line line = new Line();
         Ellipse ellips = new Ellipse();
         Rectangle rectangle = new Rectangle();
         Triangle triangle = new Triangle();
@@ -28,6 +35,7 @@ namespace DevEdu_project
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
         {
             StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            StaticBitmap.TmpBitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
         }
 
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -35,6 +43,7 @@ namespace DevEdu_project
             CurrentPoint = e.Location;
             PrevPoint = e.Location;
             mousePress = true;
+            
         }
 
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
@@ -45,16 +54,21 @@ namespace DevEdu_project
                 {
                     case "pencil":
                         PrevPoint = CurrentPoint;
-                        CurrentPoint = e.Location;
                         StaticBitmap.Copy();
-                        pictureBox1.Image = line.DrawLine(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        SelectLine(PrevPoint, CurrentPoint);
+                                                  
+                            //pictureBox1.Image = line.DrawLine(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         StaticBitmap.Update();
                         break;
 
                     case "line":
                         CurrentPoint = e.Location;
                         StaticBitmap.Copy();
-                        pictureBox1.Image = line.DrawLine(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                        SelectLine(PrevPoint, CurrentPoint);
+
+                        //StraightLine.Draw(figure.GetPoints(), currentColor); // так было у Максима
+
+                        //pictureBox1.Image = line.DrawLine(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
                         break;
 
                     case "ellipse":
@@ -112,10 +126,29 @@ namespace DevEdu_project
             }
         }
 
+        public void SelectLine(Point Start, Point End)
+        {
+            //figure = new StraightLine(); - эта строка нам понадобится потом, когда разберёмся с интерфейсами
+            
+            //Создаем экземпляр класса линии (это класс-наследник IFigure)
+            StraightLine line = new StraightLine();
+
+            //Задаем координаты
+            line.StartPoint = Start;
+            line.EndPoint = End;
+
+            //Вызываем математику: метод, который сохраняет в лист точки нашей линии
+            List<Point> finalLine = line.GetPoints();
+
+            //Берем лист с полученными точками и передаем его в метод Draw,
+            //который проходится по листу и рисует каждую точку
+            pictureBox1.Image = StaticBitmap.Draw(finalLine, currentColor);
+        }
+
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             CurrentPoint = e.Location;
-            mousePress = false;            
+            mousePress = false;
             StaticBitmap.Update();
         }
         #region ToolBox

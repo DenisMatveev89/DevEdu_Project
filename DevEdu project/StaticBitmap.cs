@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Collections.Generic;
 
 namespace DevEdu_project
 {
@@ -19,9 +20,9 @@ namespace DevEdu_project
             {
                 TmpBitmap.SetPixel(x, y, color);
             }
-        }
+        }   
 
-        //Метод, который должен заменять TmpBitmap на Bitmap
+        //Метод, который заменяет TmpBitmap на Bitmap
         public static void Copy()
         {
             if (Bitmap != null)
@@ -30,13 +31,25 @@ namespace DevEdu_project
             }
         }
 
-        //Метод, который должен заменять Bitmap на TmpBitmap
+        //Метод, который заменяет Bitmap на TmpBitmap
         public static void Update()
         {
             if (TmpBitmap != null)
             {
                 Bitmap = (Bitmap)TmpBitmap.Clone();
             }
-        }        
+        }
+
+        // Метод, который проходится по листу от первой до последней точки
+        // и рисует каждую точку на TmpBitmap
+        public static Bitmap Draw(List<Point> linePoints, Color color)
+        {
+            foreach (Point i in linePoints)
+            {
+                SetPixel(i.X, i.Y, color);
+            }
+
+            return TmpBitmap;
+        }
     }
 }

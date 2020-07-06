@@ -24,7 +24,6 @@ namespace DevEdu_project
         }
         public Image DrawLine(int X0, int Y0, int X1, int Y1, Color currentColor)
         {
-            
             int dx = X1 - X0;//абсолютное значение
             int dy = Y1 - Y0;
             int steps;
@@ -49,6 +48,7 @@ namespace DevEdu_project
                 Y += Yinc;
             }
             return StaticBitmap.TmpBitmap;
-        }
+        }        
     }
+    
 }
