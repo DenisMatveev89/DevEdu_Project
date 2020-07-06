@@ -199,7 +199,6 @@
             this.RectangleDropDownButton1.Name = "RectangleDropDownButton1";
             this.RectangleDropDownButton1.Size = new System.Drawing.Size(31, 24);
             this.RectangleDropDownButton1.Text = "Rectangle";
-            this.RectangleDropDownButton1.Click += new System.EventHandler(this.RectangleDropDownButton1_Click);
             // 
             // rectangleToolStripMenuItem
             // 

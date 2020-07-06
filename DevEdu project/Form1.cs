@@ -11,15 +11,8 @@ namespace DevEdu_project
     public partial class BetterThanPhotoshop : Form
     {
         //Объявляем интерфейс IFigure
-        static IFigure figure;
+        static IFigure Figure= new Pencil();
 
-        //Эти классы будут внутри методов SelectFigure
-        //Line line = new Line();
-        
-
-       //Ellipse ellips = new Ellipse();
-       // Rectangle rectangle = new Rectangle();
-        //Triangle triangle = new Triangle();
         Dialog dialog = new Dialog();
 
         Color currentColor = Color.Black;
@@ -52,123 +45,87 @@ namespace DevEdu_project
         {            
             if (mousePress)
             {
-                switch (ToolButton)
-                {
-                    case "pencil":
-                        PrevPoint = CurrentPoint;
-                        CurrentPoint = e.Location;
-                        StaticBitmap.Copy();
-                        SelectLine(PrevPoint, CurrentPoint);
-                        StaticBitmap.Update();
-                        break;
+                CurrentPoint = e.Location;
+                StaticBitmap.Copy();
+                pictureBox1.Image = StaticBitmap.Draw(Figure.GetPoints(), currentColor);
+                Figure.Update(PrevPoint, CurrentPoint);
+                #region old switch
+                /* switch (ToolButton)
+                 {
+                     case "pencil":
+                         PrevPoint = CurrentPoint;
+                         CurrentPoint = e.Location;
+                         StaticBitmap.Copy();
+                         SelectLine(PrevPoint, CurrentPoint);
+                         StaticBitmap.Update();
+                         break;
 
-                    case "line":
-                        CurrentPoint = e.Location;
-                        StaticBitmap.Copy();
-                        SelectLine(PrevPoint, CurrentPoint);
+                     case "line":
+                         CurrentPoint = e.Location;
+                         StaticBitmap.Copy();
+                         SelectLine(PrevPoint, CurrentPoint);
 
-                        //StraightLine.Draw(figure.GetPoints(), currentColor); // так было у Максима
-                        break;
+                         //StraightLine.Draw(figure.GetPoints(), currentColor); // так было у Максима
+                         break;
 
-                    case "ellipse":
-                        CurrentPoint = e.Location;
-                        StaticBitmap.Copy();
-                        //pictureBox1.Image = ellips.DrawEllipse(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);                                            
-                        break;
-                    case "circle":
-                        CurrentPoint = e.Location;
-                        StaticBitmap.Copy();
-                        //pictureBox1.Image = ellips.DrawCircle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
-                        break;
-                    case "rectangle":
-                        //прямоугольник
-                        CurrentPoint = e.Location;
-                        StaticBitmap.Copy();
-                        SelectRectangle(PrevPoint, CurrentPoint);
-                        // pictureBox1.Image = rectangle.DrawRectangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
-                        break;
+                     case "ellipse":
+                         CurrentPoint = e.Location;
+                         StaticBitmap.Copy();
+                         //pictureBox1.Image = ellips.DrawEllipse(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);                                            
+                         break;
+                     case "circle":
+                         CurrentPoint = e.Location;
+                         StaticBitmap.Copy();
+                         //pictureBox1.Image = ellips.DrawCircle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                         break;
+                     case "rectangle":
+                         //прямоугольник
+                         CurrentPoint = e.Location;
+                         StaticBitmap.Copy();
+                         SelectRectangle(PrevPoint, CurrentPoint);
 
-                    case "square":
-                        //квадрат
-                        CurrentPoint = e.Location;
-                        StaticBitmap.Copy();
-                        SelectRectangleSquar(PrevPoint, CurrentPoint);
-                        //pictureBox1.Image = rectangle.DrawSquare(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
-                        break;
+                         // pictureBox1.Image = rectangle.DrawRectangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                         break;
 
-                    case "arbirtrary triangle":
-                        //произвольный треугольник по трем точкам
-                        break;
+                     case "square":
+                         //квадрат
+                         CurrentPoint = e.Location;
+                         StaticBitmap.Copy();
+                         SelectRectangleSquar(PrevPoint, CurrentPoint);
+                         //pictureBox1.Image = rectangle.DrawSquare(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                         break;
 
-                    case "isosceles triangle":
-                        //равнобедренный треугольник по одной из граней
-                        CurrentPoint = e.Location;
-                        StaticBitmap.Copy();
-                        //triangle.IsoscelesTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
-                        pictureBox1.Image = StaticBitmap.TmpBitmap;
-                        break;
+                     case "arbirtrary triangle":
+                         //произвольный треугольник по трем точкам
+                         break;
 
-                    case "right triangle":
-                        //прямоугольный треугольник по гипотенузе
-                        CurrentPoint = e.Location;
-                        StaticBitmap.Copy();
-                        //triangle.RightTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
-                        pictureBox1.Image = StaticBitmap.TmpBitmap;
-                        break;
+                     case "isosceles triangle":
+                         //равнобедренный треугольник по одной из граней
+                         CurrentPoint = e.Location;
+                         StaticBitmap.Copy();
+                         //triangle.IsoscelesTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                         pictureBox1.Image = StaticBitmap.TmpBitmap;
+                         break;
 
-                    case "equilateral triangle":
-                        //равносторонний треугольник по одной стороне
-                        CurrentPoint = e.Location;
-                        StaticBitmap.Copy();
-                        //triangle.EquilateralTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
-                        pictureBox1.Image = StaticBitmap.TmpBitmap;
-                        break;
-                }
+                     case "right triangle":
+                         //прямоугольный треугольник по гипотенузе
+                         CurrentPoint = e.Location;
+                         StaticBitmap.Copy();
+                         //triangle.RightTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                         pictureBox1.Image = StaticBitmap.TmpBitmap;
+                         break;
+
+                     case "equilateral triangle":
+                         //равносторонний треугольник по одной стороне
+                         CurrentPoint = e.Location;
+                         StaticBitmap.Copy();
+                         //triangle.EquilateralTriangle(PrevPoint.X, PrevPoint.Y, CurrentPoint.X, CurrentPoint.Y, currentColor);
+                         pictureBox1.Image = StaticBitmap.TmpBitmap;
+                         break;
+                 }*/
+                #endregion
             }
         }
-
-        public void SelectLine(Point Start, Point End)
-        {
-            //figure = new StraightLine(); - эта строка нам понадобится потом, когда разберёмся с интерфейсами
-            
-            //Создаем экземпляр класса линии (это класс-наследник IFigure)
-            StraightLine line = new StraightLine();
-
-            //Задаем координаты
-            line.StartPoint = Start;
-            line.EndPoint = End;
-
-            //Берем лист с полученными точками и передаем его в метод Draw,
-            //который проходится по листу и рисует каждую точку
-            pictureBox1.Image = StaticBitmap.Draw(line.GetPoints(), currentColor);
-            //можно рисовать и так без создания объекта
-            //pictureBox1.Image= StaticBitmap.Draw(StaticBitmap.ConnectTwoPoints(Start, End), currentColor);
-        }
-
-
-        public void SelectRectangleSquar(Point Start, Point End)
-        {
-            RectangleSquar squar = new RectangleSquar();
-            
-
-            //Задаем координаты
-            squar.StartPoint = Start;
-            squar.EndPoint = End;
-
-            pictureBox1.Image = StaticBitmap.Draw(squar.GetPoints(), currentColor);
-        }
-        public void SelectRectangle(Point Start, Point End)
-        {
-            Rectangle rect = new Rectangle();
-
-            //Задаем координаты
-            rect.StartPoint = Start;
-            rect.EndPoint = End;
-
-            pictureBox1.Image = StaticBitmap.Draw(rect.GetPoints(), currentColor);
-        }
-
-
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             CurrentPoint = e.Location;
@@ -178,27 +135,24 @@ namespace DevEdu_project
         #region ToolBox
         private void Pencil_Click(object sender, EventArgs e)
         {
-            ToolButton = "pencil";
+
+            Figure = new Pencil();
+            Figure.Update(Location, CurrentPoint);
         }
 
         private void LineButton_Click(object sender, EventArgs e)
         {
-            ToolButton = "line";
+            Figure = new StraightLine(PrevPoint, CurrentPoint);
         }        
-
-        private void RectangleDropDownButton1_Click(object sender, EventArgs e)
-        {
-            ToolButton = "rectangle";
-        }
 
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToolButton = "rectangle";
+            Figure = new Rectangle(PrevPoint, CurrentPoint);
         }
 
         private void squareToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToolButton = "square";
+            Figure = new RectangleSquar(PrevPoint, CurrentPoint);
         }
 
         private void triangleDropDownButton1_Click(object sender, EventArgs e)

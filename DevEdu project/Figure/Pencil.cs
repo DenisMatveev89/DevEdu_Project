@@ -4,31 +4,35 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Documents;
 
 namespace DevEdu_project.Figure
 {
-    public class StraightLine: IFigure
+    public class Pencil : IFigure
     {
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
         public Point StartPoint;
         public Point EndPoint;
 
-        public StraightLine() { }
-        public StraightLine(Point StartPoint, Point EndPoint)
+        public Pencil() { }
+        public Pencil(Point StartPoint, Point EndPoint)
         {
             this.StartPoint = StartPoint;
             this.EndPoint = EndPoint;
         }
         public void Update(Point Start, Point End)
         {
-            StartPoint = Start;
+            
+            StartPoint = EndPoint;
             EndPoint = End;
+            StaticBitmap.Update();
         }
 
         public List<Point> GetPoints()
         {
-            return StaticBitmap.ConnectTwoPoints(StartPoint, EndPoint);
+            List<Point> listPoints = new List<Point>();
+            listPoints.Add(StartPoint);
+            listPoints.AddRange(StaticBitmap.ConnectTwoPoints(EndPoint, EndPoint));
+            return listPoints;
             #region old version
             //Записываем в этот лист первую точку
             /* linePoints.Add(StartPoint);
@@ -58,7 +62,7 @@ namespace DevEdu_project.Figure
                  Y += Yinc;
              }
  */
-            #endregion 
+            #endregion
         }
     }
 }

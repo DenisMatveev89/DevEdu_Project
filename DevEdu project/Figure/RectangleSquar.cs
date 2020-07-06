@@ -14,7 +14,17 @@ namespace DevEdu_project
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
         public Point StartPoint;
         public Point EndPoint;
-
+        public RectangleSquar() { }
+        public RectangleSquar(Point StartPoint, Point EndPoint)
+        {
+            this.StartPoint = StartPoint;
+            this.EndPoint = EndPoint;
+        }
+        public void Update(Point Start, Point End)
+        {
+            StartPoint = Start;
+            EndPoint = End;
+        }
         public List<Point> GetPoints()
         {
             #region old version

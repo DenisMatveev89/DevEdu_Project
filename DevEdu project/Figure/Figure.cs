@@ -9,7 +9,7 @@ namespace DevEdu_project
         //GetPoints - обязательное поле для каждого класса, который унаследует IFigure
         //- публичный метод, который возвращает список Point
         //реализация этого метода у каждого наследника будет своя
-
+        void Update(Point Start, Point End);
         List<Point> GetPoints();
     }
 }
