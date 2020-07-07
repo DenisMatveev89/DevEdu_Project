@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -24,22 +24,20 @@ namespace DevEdu_project
 
         //Метод, который заменяет TmpBitmap на Bitmap
         public static void Copy()
-        {
-            TmpBitmap = (Bitmap)Bitmap.Clone();
-            //if (Bitmap != null)
-            //{
-            //    TmpBitmap = (Bitmap)Bitmap.Clone();
-            //}
+        {            
+            if (Bitmap != null)
+            {
+                TmpBitmap = (Bitmap)Bitmap.Clone();
+            }
         }
 
         //Метод, который заменяет Bitmap на TmpBitmap
         public static void Update()
-        {
-            Bitmap = (Bitmap)TmpBitmap.Clone();
-            //if (TmpBitmap != null)
-            //{
-            //    Bitmap = (Bitmap)TmpBitmap.Clone();
-            //}
+        {           
+            if (TmpBitmap != null)
+            {
+                Bitmap = (Bitmap)TmpBitmap.Clone();
+            }
         }
 
         // Метод, который проходится по листу от первой до последней точки
