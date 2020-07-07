@@ -12,7 +12,7 @@ namespace DevEdu_project
     public partial class BetterThanPhotoshop : Form
     {
         //Объявляем интерфейс IFigure
-        static IFigure Figure; //Здесь не нужно ни к чему приравнивать Figure
+        static IFigure Figure = new Pencil(); //Здесь не нужно ни к чему приравнивать Figure
 
         Dialog dialog = new Dialog();
 
@@ -45,12 +45,12 @@ namespace DevEdu_project
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
         {
             if (mousePress)
-            {                
+            {
                 CurrentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
                 StaticBitmap.Copy();
                 Figure.Update(PrevPoint, CurrentPoint);
                 pictureBox1.Image = StaticBitmap.Draw(Figure.GetPoints(), currentColor);
-            }            
+            }
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {            
@@ -98,17 +98,17 @@ namespace DevEdu_project
         }
         private void EllipseButton_Click_1(object sender, EventArgs e)
         {
-            ToolButton = "ellipse";
+            Figure = new Ellipse();
         }
 
         private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToolButton = "ellipse";
+            Figure = new Ellipse();
         }
 
         private void circleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToolButton = "circle";
+            Figure = new Circle();
         }
         #endregion
 
