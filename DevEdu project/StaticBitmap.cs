@@ -56,8 +56,6 @@ namespace DevEdu_project
         {
             //Создаем новый лист с точками координат
             List<Point> linePoints = new List<Point>();
-            //Записываем в этот лист первую точку
-            linePoints.Add(StartPoint);
 
             int dx = EndPoint.X - StartPoint.X;//абсолютное значение
             int dy = EndPoint.Y - StartPoint.Y;
