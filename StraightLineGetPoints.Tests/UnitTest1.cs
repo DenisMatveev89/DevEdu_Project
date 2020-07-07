@@ -28,5 +28,20 @@ namespace StraightLineGetPoints.Tests
 
             CollectionAssert.AreEqual(Exp, Act);
         }
+        [TestCase(1, 1, 1, 5, 5)]
+        [TestCase(2, 0, 0, 0, 0)]
+        [TestCase(3, 0, 0, 2, 2)]
+        public void RectangleSquarGetPointsTest(int i, int x1, int y1, int x2, int y2)
+        {
+
+            Figure = new RectangleSquar(x1, y1, x2, y2);
+
+            RectangleSquarMoks squarMocks = new RectangleSquarMoks();
+
+            List<Point> Exp = squarMocks.Get(i);
+            List<Point> Act = Figure.GetPoints();
+
+            CollectionAssert.AreEqual(Exp, Act);
+        }
     }
 }

@@ -25,6 +25,13 @@ namespace DevEdu_project
             StartPoint = Start;
             EndPoint = End;
         }
+        public RectangleSquar(int x1, int y1, int x2, int y2)
+        {
+            this.StartPoint.X = x1;
+            this.StartPoint.Y = y1;
+            this.EndPoint.X = x2;
+            this.EndPoint.Y = y2;
+        }
         public void Update()
         {
         }
