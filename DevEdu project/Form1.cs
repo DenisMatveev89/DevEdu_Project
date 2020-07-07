@@ -18,8 +18,6 @@ namespace DevEdu_project
 
         Color currentColor = Color.Black;
         private bool mousePress;
-        string ToolButton = "pencil"; // инструмента рисования поумолчанию
-
         Point CurrentPoint;
         Point PrevPoint;
 
@@ -31,7 +29,7 @@ namespace DevEdu_project
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
         {
             StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            StaticBitmap.TmpBitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height); //Эта строчка нужна, чтобы не было ошибок
+            //StaticBitmap.TmpBitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height); //Эта строчка нужна, чтобы не было ошибок
         }
 
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
