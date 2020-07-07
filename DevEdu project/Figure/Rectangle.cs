@@ -12,12 +12,26 @@ namespace DevEdu_project
     {
         public Point StartPoint;
         public Point EndPoint;
+        private int x1;
+        private int y1;
+        private int x2;
+        private int y2;
+
         public Rectangle() { }
         public Rectangle(Point StartPoint, Point EndPoint) 
         {
             this.StartPoint = StartPoint;
             this.EndPoint = EndPoint;
         }
+
+        public Rectangle(int x1, int y1, int x2, int y2)
+        {
+            this.StartPoint.X = x1;
+            this.StartPoint.Y = y1;
+            this.EndPoint.X = x2;
+            this.EndPoint.Y = y2;
+        }
+
         public void Update(Point Start, Point End)
         {
             StartPoint = Start;
