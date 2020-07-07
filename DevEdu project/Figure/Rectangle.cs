@@ -35,8 +35,7 @@ namespace DevEdu_project
         public void Update(Point Start, Point End)
         {
             StartPoint = Start;
-            EndPoint = End;
-
+            EndPoint = End;            
         }
         public void Update(){}
 

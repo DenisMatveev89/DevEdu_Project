@@ -11,28 +11,67 @@ namespace DevEdu_project.Figure
     public class Pencil : IFigure //Перо
     {
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
-        public Point StartPoint;
-        public Point EndPoint;
+        public Point StartPoint = new Point(0, 0);
+        public Point EndPoint = new Point(0, 0);        
 
-        public Pencil() { }
-        public Pencil(Point StartPoint, Point EndPoint)
-        {
-            this.StartPoint = StartPoint;
-            this.EndPoint = EndPoint;
-        }
+        List<Point> linePoints = new List<Point>();
+        
         public void Update()
         {
+            StartPoint = new Point(0, 0);
         }
         public void Update(Point Start, Point End)
         {
-            StaticBitmap.Update();
-            StartPoint = EndPoint;
-            EndPoint = End;
-        }
+            if(StartPoint == new Point(0, 0))
+            {
+                StartPoint = Start;
+            }
+            else 
+            {
+                StartPoint = EndPoint;
+            }
+                 
+            EndPoint = End;            
+        }       
 
         public List<Point> GetPoints()
-        {
-            return StaticBitmap.ConnectTwoPoints(StartPoint, EndPoint);
+        {            
+            int dx = EndPoint.X - StartPoint.X;
+            int dy = EndPoint.Y - StartPoint.Y;
+            int steps;
+            if (Math.Abs(dx) > Math.Abs(dy))
+            {
+                steps = Math.Abs(dx);
+            }
+            else
+            {
+                steps = Math.Abs(dy);
+            }
+
+            float Xinc = dx / (float)steps;
+            float Yinc = dy / (float)steps;
+
+            float X;
+            float Y;
+            if (StartPoint == new Point(0, 0))
+            {
+                X = EndPoint.X;
+                Y = EndPoint.Y;
+            }
+            else 
+            {
+                X = StartPoint.X;
+                Y = StartPoint.Y;
+            }
+            for (int i = 0; i <= steps; i++)
+            {
+                //Добавляем в лист каждую точку, полученную в ходе вычислений
+                linePoints.Add(new Point((int)X, (int)Y));
+                X += Xinc;
+                Y += Yinc;
+            }
+            
+            return linePoints;
         }
     }
 }

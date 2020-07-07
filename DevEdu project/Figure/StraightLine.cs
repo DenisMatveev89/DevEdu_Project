@@ -13,13 +13,7 @@ namespace DevEdu_project.Figure
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
         public Point StartPoint;
         public Point EndPoint;
-
-        public StraightLine() { }
-        public StraightLine(Point StartPoint, Point EndPoint)
-        {
-            this.StartPoint = StartPoint;
-            this.EndPoint = EndPoint;
-        }
+        
         public void Update(Point Start, Point End)
         {
             StartPoint = Start;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -24,7 +24,7 @@ namespace DevEdu_project
 
         //Метод, который заменяет TmpBitmap на Bitmap
         public static void Copy()
-        {
+        {            
             if (Bitmap != null)
             {
                 TmpBitmap = (Bitmap)Bitmap.Clone();
@@ -33,7 +33,7 @@ namespace DevEdu_project
 
         //Метод, который заменяет Bitmap на TmpBitmap
         public static void Update()
-        {
+        {           
             if (TmpBitmap != null)
             {
                 Bitmap = (Bitmap)TmpBitmap.Clone();
@@ -83,6 +83,6 @@ namespace DevEdu_project
             }
 
             return linePoints;
-        }
+        }        
     }
 }
