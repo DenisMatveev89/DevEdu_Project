@@ -17,7 +17,7 @@ namespace DevEdu_project
         {
             StartPoint = Start;
             EndPoint = End;
-            R = Math.Sqrt(Math.Pow((EndPoint.X - StartPoint.X), 2) + Math.Pow((EndPoint.Y - StartPoint.Y), 2));            
+            R = Math.Sqrt(Math.Pow((EndPoint.X - StartPoint.X), 2) + Math.Pow((EndPoint.Y - StartPoint.Y), 2));
         }
         public void Update() { }
 

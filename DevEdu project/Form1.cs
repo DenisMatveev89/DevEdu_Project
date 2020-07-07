@@ -1,4 +1,4 @@
-﻿using DevEdu_project.Figure;
+using DevEdu_project.Figure;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
