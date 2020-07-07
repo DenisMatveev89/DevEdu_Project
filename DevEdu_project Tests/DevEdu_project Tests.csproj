@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DevEdu project\DevEdu project.csproj" />
+    <ProjectReference Include="..\StraightLineGetPoints.Tests\StraightLineGetPoints.Tests.csproj" />
   </ItemGroup>
 
 </Project>

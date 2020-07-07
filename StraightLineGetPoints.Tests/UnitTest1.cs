@@ -1,7 +1,9 @@
 using DevEdu_project;
+using DevEdu_project.Figure;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Net.Http.Headers;
 using Rectangle = DevEdu_project.Rectangle;
 
 namespace StraightLineGetPoints.Tests
