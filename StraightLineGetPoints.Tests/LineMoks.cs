@@ -5,7 +5,7 @@ using System.Text;
 
 namespace StraightLineGetPoints.Tests
 {
-    class LineMoks
+    class lineMoks
     {
         public List<Point> Get(int a)
         {
@@ -15,9 +15,25 @@ namespace StraightLineGetPoints.Tests
                     return new List<Point>()
                     {
                         new Point(1,1),
-                        new Point(1,2),
+                        new Point(2,1),
+                        new Point(3,1),
+                        new Point(4,1),
                         new Point(5,1),
-                        new Point(1,7),
+                    };
+                case 2:
+                    return new List<Point>()
+                    {
+                        new Point(0,0),
+                        new Point(1,0),
+                        new Point(2,0),
+                        new Point(3,0),
+                        new Point(4,0),
+                        new Point(5,0),
+                    };
+                case 3:
+                    return new List<Point>()
+                    {
+                        new Point(0,0),
                     };
 
                 default:
