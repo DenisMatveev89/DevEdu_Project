@@ -35,7 +35,7 @@ namespace DevEdu_project.Figure
         }       
 
         public List<Point> GetPoints()
-        {            
+        {
             int dx = EndPoint.X - StartPoint.X;
             int dy = EndPoint.Y - StartPoint.Y;
             int steps;

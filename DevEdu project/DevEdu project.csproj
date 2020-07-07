@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Brush.cs" />
+    <Compile Include="Figure\Circle.cs" />
     <Compile Include="Figure\Ellipse.cs" />
     <Compile Include="Figure\Figure.cs" />
     <Compile Include="Figure\TriangleIsosceles.cs" />

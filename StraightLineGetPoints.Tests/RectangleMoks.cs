@@ -60,6 +60,35 @@ namespace StraightLineGetPoints.Tests
                         new Point(0,0),
                         
                     };
+                case 4:
+                    return new List<Point>()
+                    {
+                        new Point(1,1),
+                        new Point(2,1),
+                        new Point(3,1),
+                        new Point(4,1),
+                        new Point(5,1),
+                        new Point(5,1),
+                        new Point(5,2),
+                        new Point(5,3),
+                        new Point(5,4),
+                        new Point(5,5),
+                        new Point(5,6),
+                        new Point(5,7),
+                        new Point(5,7),
+                        new Point(4,7),
+                        new Point(3,7),
+                        new Point(2,7),
+                        new Point(1,7),
+                        new Point(1,7),
+                        new Point(1,6),
+                        new Point(1,5),
+                        new Point(1,4),
+                        new Point(1,3),
+                        new Point(1,2),
+                        new Point(1,1),
+                        
+                    };
                 default:
                     return new List<Point>();
             }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Collections.Generic;
 
@@ -24,7 +24,7 @@ namespace DevEdu_project
 
         //Метод, который заменяет TmpBitmap на Bitmap
         public static void Copy()
-        {
+        {            
             if (Bitmap != null)
             {
                 TmpBitmap = (Bitmap)Bitmap.Clone();
@@ -33,7 +33,7 @@ namespace DevEdu_project
 
         //Метод, который заменяет Bitmap на TmpBitmap
         public static void Update()
-        {
+        {           
             if (TmpBitmap != null)
             {
                 Bitmap = (Bitmap)TmpBitmap.Clone();
@@ -60,13 +60,13 @@ namespace DevEdu_project
             int dx = EndPoint.X - StartPoint.X;//абсолютное значение
             int dy = EndPoint.Y - StartPoint.Y;
             int steps;
-            if (Abs(dx) > Abs(dy))
+            if (Math.Abs(dx) > Math.Abs(dy))
             {
-                steps = Abs(dx); //количество шагов
+                steps = Math.Abs(dx); //количество шагов
             }
             else
             {
-                steps = Abs(dy);
+                steps = Math.Abs(dy);
             }
 
             float Xinc = dx / (float)steps;//приращение для каждого шага 
@@ -83,17 +83,6 @@ namespace DevEdu_project
             }
 
             return linePoints;
-        }
-        public static int Abs(int n)
-        {
-            if (n > 0)
-            {
-                return n;
-            }
-            else
-            {
-                return n * -1;
-            }
-        }
+        }        
     }
 }

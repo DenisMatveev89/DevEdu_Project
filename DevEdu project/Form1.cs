@@ -1,4 +1,4 @@
-﻿using DevEdu_project.Figure;
+using DevEdu_project.Figure;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,14 +12,12 @@ namespace DevEdu_project
     public partial class BetterThanPhotoshop : Form
     {
         //Объявляем интерфейс IFigure
-        static IFigure Figure; //Здесь не нужно ни к чему приравнивать Figure
+        static IFigure Figure = new Pencil(); //Здесь не нужно ни к чему приравнивать Figure
 
         Dialog dialog = new Dialog();
 
         Color currentColor = Color.Black;
         private bool mousePress;
-        string ToolButton = "pencil"; // инструмента рисования поумолчанию
-
         Point CurrentPoint;
         Point PrevPoint;
 
@@ -31,7 +29,7 @@ namespace DevEdu_project
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
         {
             StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            StaticBitmap.TmpBitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height); //Эта строчка нужна, чтобы не было ошибок
+            //StaticBitmap.TmpBitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height); //Эта строчка нужна, чтобы не было ошибок
         }
 
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -45,12 +43,12 @@ namespace DevEdu_project
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
         {
             if (mousePress)
-            {                
+            {
                 CurrentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
                 StaticBitmap.Copy();
                 Figure.Update(PrevPoint, CurrentPoint);
                 pictureBox1.Image = StaticBitmap.Draw(Figure.GetPoints(), currentColor);
-            }            
+            }
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {            
@@ -98,17 +96,17 @@ namespace DevEdu_project
         }
         private void EllipseButton_Click_1(object sender, EventArgs e)
         {
-            ToolButton = "ellipse";
+            Figure = new Ellipse();
         }
 
         private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToolButton = "ellipse";
+            Figure = new Ellipse();
         }
 
         private void circleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToolButton = "circle";
+            Figure = new Circle();
         }
         #endregion
 

@@ -18,6 +18,7 @@ namespace StraightLineGetPoints.Tests
         [TestCase(1, 1, 1, 5, 5)]
         [TestCase(2, 0, 0, 0, 0)]
         [TestCase(3, 0, 0, 2, 2)]
+        [TestCase(4, 1, 1, 5, 7)]
         public void RectangleGetPointsTest(int i, int x1, int y1, int x2, int y2)
         {
             
@@ -45,5 +46,19 @@ namespace StraightLineGetPoints.Tests
 
             CollectionAssert.AreEqual(Exp, Act);
         }
+        [TestCase(1, 1, 1, 5, 1)]
+        [TestCase(2, 0, 0, 5, 0)]
+        [TestCase(3, 0, 0, 0, 0)]
+        public void LineGetPointsTest(int i, int x1, int y1, int x2, int y2)
+        {
+            Figure = new StraightLine(x1, y1, x2, y2);
+            lineMoks lineMoks = new lineMoks();
+
+            List<Point> Exp = lineMoks.Get(i);
+            List<Point> Act = Figure.GetPoints();
+
+            CollectionAssert.AreEqual(Exp, Act);
+        }
+
     }
 }
