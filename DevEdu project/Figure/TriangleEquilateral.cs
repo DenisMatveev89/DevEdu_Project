@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Figure
 {
-    public class TriangleEquilateral : IFigure
+    public class TriangleEquilateral : IFigure//Треугольник Равносторонний
     {
         public Point StartPoint;
         public Point EndPoint;
@@ -22,6 +22,7 @@ namespace DevEdu_project.Figure
             StartPoint = Start;
             EndPoint = End;
         }
+        public void Update() { }
 
         public List<Point> GetPoints()
         {

@@ -69,7 +69,6 @@
     <Compile Include="Figure\RectangleSquar.cs" />
     <Compile Include="Dialog.cs" />
     <Compile Include="StaticBitmap.cs" />
-    <Compile Include="Figure\Triangle.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -8,7 +8,7 @@ using DevEdu_project.Figure;
 
 namespace DevEdu_project
 {
-    public class Rectangle : IFigure // Через зад мне кажется, переделать по возможности
+    public class Rectangle : IFigure // Прямоугольник
     {
         public Point StartPoint;
         public Point EndPoint;
@@ -22,8 +22,9 @@ namespace DevEdu_project
         {
             StartPoint = Start;
             EndPoint = End;
+
         }
-        //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
+        public void Update(){}
 
         public List<Point> GetPoints()
         {

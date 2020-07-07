@@ -8,7 +8,7 @@ using DevEdu_project.Figure;
 
 namespace DevEdu_project
 {
-    public class RectangleSquar:IFigure
+    public class RectangleSquar:IFigure //Квадрат
     {
 
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
@@ -24,6 +24,9 @@ namespace DevEdu_project
         {
             StartPoint = Start;
             EndPoint = End;
+        }
+        public void Update()
+        {
         }
         public List<Point> GetPoints()
         {

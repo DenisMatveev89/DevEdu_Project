@@ -16,7 +16,7 @@ namespace DevEdu_project
         //Обратите внимание, он рисует на TmpBitmap
         public static void SetPixel(int x, int y, Color color)
         {
-            if (x >= 0 && x < TmpBitmap.Width && y >= 0 && y < TmpBitmap.Height)
+            if (x >= 0 && x < Bitmap.Width && y >= 0 && y < Bitmap.Height)
             {
                 TmpBitmap.SetPixel(x, y, color);
             }

@@ -8,7 +8,7 @@ using System.Windows.Documents;
 
 namespace DevEdu_project.Figure
 {
-    public class StraightLine: IFigure
+    public class StraightLine: IFigure //Линия
     {
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
         public Point StartPoint;
@@ -25,6 +25,8 @@ namespace DevEdu_project.Figure
             StartPoint = Start;
             EndPoint = End;
         }
+        public void Update(){ }
+        
 
         public List<Point> GetPoints()
         {

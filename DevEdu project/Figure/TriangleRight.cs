@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Figure
 {
-    public class TriangleRight : IFigure
+    public class TriangleRight : IFigure//правильный треугольник
     {
         public Point StartPoint;
         public Point EndPoint;
@@ -18,6 +18,7 @@ namespace DevEdu_project.Figure
             this.StartPoint = StartPoint;
             this.EndPoint = EndPoint;
         }
+        public void Update() { }
         public void Update(Point Start, Point End)
         {
             StartPoint = Start;
