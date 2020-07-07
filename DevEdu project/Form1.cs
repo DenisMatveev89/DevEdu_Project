@@ -12,8 +12,7 @@ namespace DevEdu_project
     public partial class BetterThanPhotoshop : Form
     {
         //Объявляем интерфейс IFigure
-
-        static IFigure Figure = new StraightLine();
+        static IFigure Figure; //Здесь не нужно ни к чему приравнивать Figure
 
         Dialog dialog = new Dialog();
 
@@ -32,49 +31,50 @@ namespace DevEdu_project
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
         {
             StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            StaticBitmap.TmpBitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height); //Эта строчка нужна, чтобы не было ошибок
         }
 
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
         {
-            PrevPoint = e.Location;
-           // CurrentPoint = e.Location;
             mousePress = true;
+            PrevPoint = e.Location;            
+            CurrentPoint = e.Location;
+            Figure.Update(); //это обновление нужно, чтобы карандаш работал правильно
         }
         
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
         {
-            CurrentPoint = e.Location;
-            if(mousePress)
-            {
+            if (mousePress)
+            {                
+                CurrentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
                 StaticBitmap.Copy();
-                pictureBox1.Image = StaticBitmap.Draw(Figure.GetPoints(), currentColor);
                 Figure.Update(PrevPoint, CurrentPoint);
-            }   
+                pictureBox1.Image = StaticBitmap.Draw(Figure.GetPoints(), currentColor);
+            }            
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
-        {
+        {            
+            CurrentPoint = e.Location;            
             mousePress = false;
-            PrevPoint = e.Location;
             StaticBitmap.Update();
         }
         #region ToolBox
         private void Pencil_Click(object sender, EventArgs e)
         {
-            CurrentPoint = PrevPoint;
-            Figure = new Pencil(PrevPoint, CurrentPoint);
+            Figure = new Pencil();            
         }
 
         private void LineButton_Click(object sender, EventArgs e)
         {
-            Figure = new StraightLine(PrevPoint, CurrentPoint);
+            Figure = new StraightLine();
         }        
         private void squareToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new RectangleSquar(PrevPoint, CurrentPoint);
+            Figure = new RectangleSquar();
         }
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new Rectangle(PrevPoint, CurrentPoint);
+            Figure = new Rectangle();
         }
 
         private void arbitraryTriangleToolStripMenuItem_Click(object sender, EventArgs e)
