@@ -93,6 +93,16 @@ namespace DevEdu_project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap img_2020_07_05_16_12_02 {
+            get {
+                object obj = ResourceManager.GetObject("img-2020-07-05-16-12-02", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap oval {
             get {
                 object obj = ResourceManager.GetObject("oval", resourceCulture);

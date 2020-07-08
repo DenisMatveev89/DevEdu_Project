@@ -199,13 +199,12 @@
             this.RectangleDropDownButton1.Name = "RectangleDropDownButton1";
             this.RectangleDropDownButton1.Size = new System.Drawing.Size(31, 24);
             this.RectangleDropDownButton1.Text = "Rectangle";
-            this.RectangleDropDownButton1.Click += new System.EventHandler(this.RectangleDropDownButton1_Click);
             // 
             // rectangleToolStripMenuItem
             // 
             this.rectangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.rectangle;
             this.rectangleToolStripMenuItem.Name = "rectangleToolStripMenuItem";
-            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.rectangleToolStripMenuItem.Text = "Rectangle";
             this.rectangleToolStripMenuItem.Click += new System.EventHandler(this.rectangleToolStripMenuItem_Click);
             // 
@@ -213,7 +212,7 @@
             // 
             this.squareToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.times_square;
             this.squareToolStripMenuItem.Name = "squareToolStripMenuItem";
-            this.squareToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.squareToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.squareToolStripMenuItem.Text = "Square";
             this.squareToolStripMenuItem.Click += new System.EventHandler(this.squareToolStripMenuItem_Click);
             // 
@@ -230,35 +229,39 @@
             this.TriangleDropDownButton1.Name = "TriangleDropDownButton1";
             this.TriangleDropDownButton1.Size = new System.Drawing.Size(31, 24);
             this.TriangleDropDownButton1.Text = "Triangle";
-            this.TriangleDropDownButton1.Click += new System.EventHandler(this.triangleDropDownButton1_Click);
             // 
             // arbitraryTriangleToolStripMenuItem
             // 
             this.arbitraryTriangleToolStripMenuItem.Name = "arbitraryTriangleToolStripMenuItem";
-            this.arbitraryTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.arbitraryTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.arbitraryTriangleToolStripMenuItem.Text = "Arbitrary triangle";
+            this.arbitraryTriangleToolStripMenuItem.ToolTipText = "произвольный треугольник по трем точкам";
             this.arbitraryTriangleToolStripMenuItem.Click += new System.EventHandler(this.arbitraryTriangleToolStripMenuItem_Click);
             // 
             // isoscelesTriangleToolStripMenuItem
             // 
+            this.isoscelesTriangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.img_2020_07_05_16_12_02;
             this.isoscelesTriangleToolStripMenuItem.Name = "isoscelesTriangleToolStripMenuItem";
-            this.isoscelesTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.isoscelesTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.isoscelesTriangleToolStripMenuItem.Text = "Isosceles triangle";
+            this.isoscelesTriangleToolStripMenuItem.ToolTipText = "равнобедренный треугольник по одной из граней";
             this.isoscelesTriangleToolStripMenuItem.Click += new System.EventHandler(this.isoscelesTriangleToolStripMenuItem_Click);
             // 
             // rightTriangleToolStripMenuItem
             // 
             this.rightTriangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.play;
             this.rightTriangleToolStripMenuItem.Name = "rightTriangleToolStripMenuItem";
-            this.rightTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.rightTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.rightTriangleToolStripMenuItem.Text = "Right triangle";
+            this.rightTriangleToolStripMenuItem.ToolTipText = "прямоугольный треугольник по гипотенузе";
             this.rightTriangleToolStripMenuItem.Click += new System.EventHandler(this.rightTriangleToolStripMenuItem_Click);
             // 
             // equilateralTriangleToolStripMenuItem
             // 
             this.equilateralTriangleToolStripMenuItem.Name = "equilateralTriangleToolStripMenuItem";
-            this.equilateralTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.equilateralTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.equilateralTriangleToolStripMenuItem.Text = "Equilateral triangle";
+            this.equilateralTriangleToolStripMenuItem.ToolTipText = "равносторонний треугольник по одной стороне";
             this.equilateralTriangleToolStripMenuItem.Click += new System.EventHandler(this.equilateralTriangleToolStripMenuItem_Click);
             // 
             // FillColorButton
@@ -362,6 +365,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Location = new System.Drawing.Point(34, 52);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1038, 534);

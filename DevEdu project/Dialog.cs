@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace DevEdu_project
 {
@@ -34,8 +29,8 @@ namespace DevEdu_project
         public DialogResult NewDialog()
         {
             string message = "Do you want to save changes?";
-            string caption = "Clear All and create new image";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNoCancel;
+            string caption = "Saving changes";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             System.Windows.MessageBoxImage icon = System.Windows.MessageBoxImage.Warning;
             return MessageBox.Show(message, caption, buttons, (MessageBoxIcon)icon);
         }
