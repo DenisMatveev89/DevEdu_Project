@@ -20,6 +20,7 @@ namespace DevEdu_project
         private bool mousePress;
         Point CurrentPoint;
         Point PrevPoint;
+        BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
 
         public BetterThanPhotoshop()
         {
@@ -28,8 +29,10 @@ namespace DevEdu_project
 
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
         {
-            StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            //StaticBitmap.TmpBitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height); //Эта строчка нужна, чтобы не было ошибок
+            
+            sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
+            //StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            ///StaticBitmap.TmpBitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height); //Эта строчка нужна, чтобы не было ошибок
         }
 
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -45,16 +48,17 @@ namespace DevEdu_project
             if (mousePress)
             {
                 CurrentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
-                StaticBitmap.Copy();
+                
+                sBitmap.Copy();
                 Figure.Update(PrevPoint, CurrentPoint);
-                pictureBox1.Image = StaticBitmap.Draw(Figure.GetPoints(), currentColor);
+                pictureBox1.Image = sBitmap.Draw(Figure.GetPoints(), currentColor);
             }
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {            
             CurrentPoint = e.Location;            
             mousePress = false;
-            StaticBitmap.Update();
+            sBitmap.Update();
         }
         #region ToolBox
         private void Pencil_Click(object sender, EventArgs e)
@@ -197,11 +201,11 @@ namespace DevEdu_project
                     case DialogResult.Yes:
                         dialog.SaveDialog();
                         pictureBox1.Image = null;
-                        StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                        sBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
                         break;
                     case DialogResult.No:
                         pictureBox1.Image = null;
-                        StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                        sBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
                         break;
                     case DialogResult.Cancel:
                         break;

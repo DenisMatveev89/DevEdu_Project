@@ -52,7 +52,7 @@
     <Compile Include="Brush.cs" />
     <Compile Include="Figure\Circle.cs" />
     <Compile Include="Figure\Ellipse.cs" />
-    <Compile Include="Figure\Figure.cs" />
+    <Compile Include="Figure\IFigure.cs" />
     <Compile Include="Figure\TriangleIsosceles.cs" />
     <Compile Include="Figure\Pencil.cs" />
     <Compile Include="Figure\Rectangle.cs" />
@@ -69,7 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Figure\RectangleSquar.cs" />
     <Compile Include="Dialog.cs" />
-    <Compile Include="StaticBitmap.cs" />
+    <Compile Include="BitmapSingletone.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

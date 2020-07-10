@@ -11,7 +11,8 @@ namespace DevEdu_project.Figure
     {
         public Point StartPoint;
         public Point EndPoint;
-       
+        BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
+
         public TriangleRight() { }
         public TriangleRight(Point StartPoint, Point EndPoint) 
         {
@@ -40,9 +41,9 @@ namespace DevEdu_project.Figure
             int Y1 = EndPoint.Y;
             List<Point> listPoint = new List<Point>();
 
-            listPoint.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X0, Y0), new Point(X1, Y1)));
-            listPoint.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X1, Y1), new Point(X0, Y1)));
-            listPoint.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
+            listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(X0, Y0), new Point(X1, Y1)));
+            listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(X1, Y1), new Point(X0, Y1)));
+            listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
             return listPoint;
            
         }

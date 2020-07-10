@@ -11,7 +11,7 @@ namespace DevEdu_project.Figure
     {
         public Point StartPoint;
         public Point EndPoint;
-
+        BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         public TriangleIsosceles() { }
         public TriangleIsosceles(Point StartPoint, Point EndPoint)
         {
@@ -32,9 +32,9 @@ namespace DevEdu_project.Figure
             int y1 = EndPoint.Y;
             List<Point> listPoint = new List<Point>();
 
-            listPoint.AddRange(StaticBitmap.ConnectTwoPoints(new Point(x0, y0), new Point(x1, y1)));
-            listPoint.AddRange(StaticBitmap.ConnectTwoPoints(new Point(x1, y1), new Point((x0 - (x1 - x0)), y1)));
-            listPoint.AddRange(StaticBitmap.ConnectTwoPoints(new Point((x0 - (x1 - x0)), y1), new Point(x0, y0)));
+            listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(x0, y0), new Point(x1, y1)));
+            listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(x1, y1), new Point((x0 - (x1 - x0)), y1)));
+            listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point((x0 - (x1 - x0)), y1), new Point(x0, y0)));
             return listPoint;
             
         }

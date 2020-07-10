@@ -12,7 +12,7 @@ namespace DevEdu_project
     {
         public Point StartPoint;
         public Point EndPoint;
-
+        BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         public Rectangle() { }
         public Rectangle(Point StartPoint, Point EndPoint) 
         {
@@ -42,10 +42,10 @@ namespace DevEdu_project
             int X1 = EndPoint.X;
             int Y1 = EndPoint.Y;
             List<Point> listPoints = new List<Point>();
-            listPoints.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X0, Y0), new Point(X1, Y0)));
-            listPoints.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X1, Y0), new Point(X1, Y1)));
-            listPoints.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X1, Y1), new Point(X0, Y1)));
-            listPoints.AddRange(StaticBitmap.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
+            listPoints.AddRange(sBitmap.ConnectTwoPoints(new Point(X0, Y0), new Point(X1, Y0)));
+            listPoints.AddRange(sBitmap.ConnectTwoPoints(new Point(X1, Y0), new Point(X1, Y1)));
+            listPoints.AddRange(sBitmap.ConnectTwoPoints(new Point(X1, Y1), new Point(X0, Y1)));
+            listPoints.AddRange(sBitmap.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
             return listPoints;
         }
     }

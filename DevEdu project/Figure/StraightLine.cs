@@ -10,6 +10,7 @@ namespace DevEdu_project.Figure
 {
     public class StraightLine: IFigure //Линия
     {
+        BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
         public Point StartPoint;
         public Point EndPoint;
@@ -32,7 +33,7 @@ namespace DevEdu_project.Figure
 
         public List<Point> GetPoints()
         {
-            return StaticBitmap.ConnectTwoPoints(StartPoint, EndPoint);
+            return sBitmap.ConnectTwoPoints(StartPoint, EndPoint);
             #region old version
             //Записываем в этот лист первую точку
             /* linePoints.Add(StartPoint);
