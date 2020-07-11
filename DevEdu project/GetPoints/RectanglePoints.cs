@@ -20,6 +20,12 @@ namespace DevEdu_project.GetPoints
         public RectanglePoints()
         {
         }
+        public void Update(Point Start, Point End)
+        {
+            StartPoint = Start;
+            EndPoint = End;
+        }
+        public void Update() { }
         public List<Point> GetPoints()
         {
             int X0 = StartPoint.X;

@@ -1,4 +1,6 @@
 ﻿using DevEdu_project.GetPoints;
+using DevEdu_project.GetPoints.Update;
+using DocumentFormat.OpenXml.Drawing.Wordprocessing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,11 +13,9 @@ namespace DevEdu_project.Figure
 {
     public class PencilPoints : IGetPoints //Перо
     {
-        //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
-        public Point StartPoint = new Point(0, 0);
-        public Point EndPoint = new Point(0, 0);
+        protected Point StartPoint;
+        protected Point EndPoint;
 
-        List<Point> points = new List<Point>();
         public void Update()
         {
             StartPoint = new Point(0, 0);
@@ -33,6 +33,8 @@ namespace DevEdu_project.Figure
 
             EndPoint = End;
         }
+
+        List<Point> points = new List<Point>();
 
         public List<Point> GetPoints()
         {
@@ -70,8 +72,9 @@ namespace DevEdu_project.Figure
                 X += Xinc;
                 Y += Yinc;
             }
-            
+            //Update();
             return points;
         }
+        
     }
 }

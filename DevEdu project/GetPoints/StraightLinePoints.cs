@@ -16,7 +16,12 @@ namespace DevEdu_project.Figure
         public Point StartPoint;
         public Point EndPoint;
         public StraightLinePoints() { }
-
+        public void Update(Point Start, Point End)
+        {
+            StartPoint = Start;
+            EndPoint = End;
+        }
+        public void Update() { }
         public List<Point> GetPoints()
         {
             return sBitmap.ConnectTwoPoints(StartPoint, EndPoint);

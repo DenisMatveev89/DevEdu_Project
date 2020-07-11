@@ -9,25 +9,21 @@ namespace DevEdu_project
 {
     public class Ellipse : AFigure
     {
+        public Point StartPoint;
+        public Point EndPoint;
         public Ellipse()
         {
             fill = new Brush.ElipseFill();
             getPoints = new EllipsePoints();
         }
 
-        public Point StartPoint;
-        public Point EndPoint;
-        double RX;
-        double RY;
-
-        public override void Update(Point Start, Point End)
+        public Ellipse(Point StartPoint, Point EndPoint)
         {
-            StartPoint = Start;
-            EndPoint = End;
-            RX = Math.Sqrt(Math.Pow((EndPoint.X - StartPoint.X), 2));
-            RY = Math.Sqrt(Math.Pow((EndPoint.Y - StartPoint.Y), 2));
+            this.StartPoint = StartPoint;
+            this.EndPoint = EndPoint;
+            fill = new Brush.ElipseFill();
+            getPoints = new EllipsePoints();
         }
-        public override void Update() { }
 
         /*public override List<Point> GetPoints()
         {
@@ -94,6 +90,6 @@ namespace DevEdu_project
             }
 
             return ellipse;
-        }      */  
+        }      */
     }
 }

@@ -1,6 +1,7 @@
 using DevEdu_project.Brush;
 using DevEdu_project.Figure;
 using DevEdu_project.GetPoints;
+using DevEdu_project.Update;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -15,7 +16,7 @@ namespace DevEdu_project
     {
         //Объявляем интерфейс IFigure
 
-        AFigure figure = new Pencil();
+        AFigure figure;
         
         Dialog dialog = new Dialog();
 
@@ -44,7 +45,8 @@ namespace DevEdu_project
             mousePress = true;
             PrevPoint = e.Location;            
             CurrentPoint = e.Location;
-            figure.Update(); //это обновление нужно, чтобы карандаш работал правильно
+            //figure.Update(); //это обновление нужно, чтобы карандаш работал правильно
+            figure.Update(PrevPoint, CurrentPoint);
         }
         
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
@@ -52,10 +54,11 @@ namespace DevEdu_project
             if (mousePress)
             {
                 CurrentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
-                figure.StartPoint = PrevPoint;
-                figure.EndPoint = CurrentPoint;
+                figure._startPoint = PrevPoint;
+                figure._endPoint = CurrentPoint;
                 sBitmap.Copy();
                 figure.Update(PrevPoint, CurrentPoint);
+                //figure.Update();
                 pictureBox1.Image = sBitmap.Draw(figure.GetPoints(), currentColor);
             }
         }
@@ -68,7 +71,7 @@ namespace DevEdu_project
         #region ToolBox
         private void Pencil_Click(object sender, EventArgs e)
         {
-            figure = new Pencil();
+            figure = new Pencil(PrevPoint, CurrentPoint);
         }
 
         private void LineButton_Click(object sender, EventArgs e)

@@ -11,7 +11,7 @@ namespace DevEdu_project.Figure
     {
         public Point StartPoint;
         public Point EndPoint;
-        BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
+        //BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         public TriangleRight()
         {
             fill = new Brush.TriangleRightFill();
@@ -23,19 +23,13 @@ namespace DevEdu_project.Figure
             this.EndPoint = EndPoint;
         }
 
-        public TriangleRight(int x1, int y1, int x2, int y2)
+       /* public TriangleRight(int x1, int y1, int x2, int y2)
         {
             this.StartPoint.X = x1;
             this.StartPoint.Y = y1;
             this.EndPoint.X = x2;
             this.EndPoint.Y = y2;
-        }
-        public override void Update() { }
-        public override void Update(Point Start, Point End)
-        {
-            StartPoint = Start;
-            EndPoint = End;
-        }
+        }*/
      /*   public override List<Point> GetPoints()
         {
             int X0 = StartPoint.X;

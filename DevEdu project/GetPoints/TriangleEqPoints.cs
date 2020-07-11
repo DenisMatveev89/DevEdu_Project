@@ -19,6 +19,12 @@ namespace DevEdu_project.Figure
             this.StartPoint = StartPoint;
             this.EndPoint = EndPoint;
         }
+        public void Update(Point Start, Point End)
+        {
+            StartPoint = Start;
+            EndPoint = End;
+        }
+        public void Update() { }
         public List<Point> GetPoints()
         {
             int x0 = StartPoint.X;

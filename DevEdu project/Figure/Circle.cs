@@ -9,23 +9,22 @@ namespace DevEdu_project
 {
     public class Circle : AFigure
     {
+        public Point StartPoint;
+        public Point EndPoint;
         public Circle()
         {
             fill = new Brush.CircleFill();
             getPoints = new CirclePoints();
         }
-
-        public Point StartPoint;
-        public Point EndPoint;
-        double R;
-
-        public override void Update(Point Start, Point End)
+        public Circle(Point StartPoint, Point EndPoint)
         {
-            StartPoint = Start;
-            EndPoint = End;
-            R = Math.Sqrt(Math.Pow((EndPoint.X - StartPoint.X), 2) + Math.Pow((EndPoint.Y - StartPoint.Y), 2));
+            this.StartPoint = StartPoint;
+            this.EndPoint = EndPoint;
+            fill = new Brush.CircleFill();
+            getPoints = new CirclePoints();
         }
-        public override void Update() { }
+
+
 
         /*public override List<Point> GetPoints()
         {

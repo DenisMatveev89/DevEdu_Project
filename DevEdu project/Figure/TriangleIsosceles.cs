@@ -11,7 +11,7 @@ namespace DevEdu_project.Figure
     {
         public Point StartPoint;
         public Point EndPoint;
-        BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
+        //BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         public TriangleIsosceles()
         {
             fill = new Brush.TriangleIsoFill();
@@ -21,26 +21,29 @@ namespace DevEdu_project.Figure
         {
             this.StartPoint = StartPoint;
             this.EndPoint = EndPoint;
+            fill = new Brush.TriangleIsoFill();
+            getPoints = new TriangleIsoPoints();
         }
-        public override void Update(Point Start, Point End)
+        /* public TriangleRight(int x1, int y1, int x2, int y2)
         {
-            StartPoint = Start;
-            EndPoint = End;
-        }
-        public override void Update() { }
-      /*  public override List<Point> GetPoints()
-        {
-            int x0 = StartPoint.X;
-            int y0 = StartPoint.Y;
-            int x1 = EndPoint.X;
-            int y1 = EndPoint.Y;
-            List<Point> listPoint = new List<Point>();
-
-            listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(x0, y0), new Point(x1, y1)));
-            listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(x1, y1), new Point((x0 - (x1 - x0)), y1)));
-            listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point((x0 - (x1 - x0)), y1), new Point(x0, y0)));
-            return listPoint;
-            
+            this.StartPoint.X = x1;
+            this.StartPoint.Y = y1;
+            this.EndPoint.X = x2;
+            this.EndPoint.Y = y2;
         }*/
+        /*  public override List<Point> GetPoints()
+          {
+              int x0 = StartPoint.X;
+              int y0 = StartPoint.Y;
+              int x1 = EndPoint.X;
+              int y1 = EndPoint.Y;
+              List<Point> listPoint = new List<Point>();
+
+              listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(x0, y0), new Point(x1, y1)));
+              listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(x1, y1), new Point((x0 - (x1 - x0)), y1)));
+              listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point((x0 - (x1 - x0)), y1), new Point(x0, y0)));
+              return listPoint;
+
+          }*/
     }
 }

@@ -20,7 +20,12 @@ namespace DevEdu_project.Figure
             this.StartPoint = StartPoint;
             this.EndPoint = EndPoint;
         }
-
+        public void Update(Point Start, Point End)
+        {
+            StartPoint = Start;
+            EndPoint = End;
+        }
+        public void Update() { }
         public TriangleRightPoints(int x1, int y1, int x2, int y2)
         {
             this.StartPoint.X = x1;
