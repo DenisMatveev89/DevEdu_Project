@@ -1,3 +1,4 @@
+using DevEdu_project.Brush;
 using DevEdu_project.Figure;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace DevEdu_project
         //Объявляем интерфейс AFigure
         static AFigure figure; 
 
+        
         Dialog dialog = new Dialog();
 
         Color currentColor = Color.Black;
@@ -29,6 +31,7 @@ namespace DevEdu_project
         public BetterThanPhotoshop()
         {
             InitializeComponent();
+            
         }
 
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)

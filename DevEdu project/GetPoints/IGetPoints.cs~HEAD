@@ -9,6 +9,7 @@ namespace DevEdu_project.GetPoints
 {
     public interface IGetPoints
     {
-        List<Point> GetPoints(Point start, Point end);
+        List<Point> GetPoints();
+        void Update();
     }
 }

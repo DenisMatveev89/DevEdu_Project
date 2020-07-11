@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevEdu_project
+namespace DevEdu_project.GetPoints
 {
-    public class Brush //класс заливки
+    public interface IGetPoints
     {
-
+        List<Point> GetPoints(Point start, Point end);
     }
 }

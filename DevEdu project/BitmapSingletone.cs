@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DevEdu_project.GetPoints;
 
 namespace DevEdu_project
 {
@@ -61,47 +62,15 @@ namespace DevEdu_project
 
         // Метод, который проходится по листу от первой до последней точки
         // и рисует каждую точку на TmpBitmap
-        public Bitmap Draw(List<Point> linePoints, Color color)
+        public Bitmap Draw(List<Point> points, Color color)
         {
-            foreach (Point i in linePoints)
+            
+            foreach (Point i in points)
             {
                 SetPixel(i.X, i.Y, color);
             }
 
             return _tmpBitmap;
-        }
-
-        public List<Point> ConnectTwoPoints(Point StartPoint, Point EndPoint)
-        {
-            //Создаем новый лист с точками координат
-            List<Point> linePoints = new List<Point>();
-
-            int dx = EndPoint.X - StartPoint.X;//абсолютное значение
-            int dy = EndPoint.Y - StartPoint.Y;
-            int steps;
-            if (Math.Abs(dx) > Math.Abs(dy))
-            {
-                steps = Math.Abs(dx); //количество шагов
-            }
-            else
-            {
-                steps = Math.Abs(dy);
-            }
-
-            float Xinc = dx / (float)steps;//приращение для каждого шага 
-            float Yinc = dy / (float)steps;
-
-            float X = StartPoint.X;// кладем пиксель для каждого шага 
-            float Y = StartPoint.Y;
-            for (int i = 0; i <= steps; i++)
-            {
-                //Добавляем в лист каждую точку, полученную в ходе вычислений
-                linePoints.Add(new Point((int)X, (int)Y));
-                X += Xinc;
-                Y += Yinc;
-            }
-
-            return linePoints;
         }
     }
 }

@@ -9,13 +9,17 @@ namespace DevEdu_project.Factory
 {
     public class CircleFactory : IFactory
     {
+        //public AFigure Create(Point start, Point end)
+        //{
+        //    //Circle circle = new Circle();
+        //    //circle._startPoint = start;
+        //    //circle._endPoint = end;
+        //    //circle.R = Math.Sqrt(Math.Pow((end.X - start.X), 2) + Math.Pow((end.Y - start.Y), 2));
+        //    //return circle;
+        //}
         public AFigure Create(Point start, Point end)
         {
-            Circle circle = new Circle();
-            circle._startPoint = start;
-            circle._endPoint = end;
-            circle.R = Math.Sqrt(Math.Pow((end.X - start.X), 2) + Math.Pow((end.Y - start.Y), 2));
-            return circle;
+            throw new NotImplementedException();
         }
     }
 }

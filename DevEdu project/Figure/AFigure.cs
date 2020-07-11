@@ -12,12 +12,13 @@ namespace DevEdu_project
         //реализация этого метода у каждого наследника будет своя 
 
         protected IGetPoints getPoints;
+        protected Brush.IBrush fill;
 
         public Point _startPoint;
         public Point _endPoint;
 
         public List<Point> GetPoints()
-        {            
+        {
             return getPoints.GetPoints(_startPoint, _endPoint);
         }
     }
