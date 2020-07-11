@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Brush
 {
-    public class RectSquarFill : IBrush
+    public class RectSquareFill : IBrush
     {
         public void Fill()
         {
