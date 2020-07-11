@@ -1,41 +1,4 @@
-<<<<<<< HEAD
-﻿using System;
-using System.Windows;
-using System.Collections.Generic;
-using System.Drawing;
-using Point = System.Drawing.Point;
-using DocumentFormat.OpenXml.Drawing.Wordprocessing;
-
-namespace DevEdu_project.GetPoints
-{
-    public class RectanglePoints : IGetPoints
-    {
-        BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-        Point startPoint;
-        Point endPoint;
-        public RectanglePoints(Point a, Point b)
-        {
-            this.startPoint = a;
-            this.endPoint = b;
-        }
-        public void Update() { }
-        public List<Point> GetPoints()
-        {
-            int X0 = startPoint.X;
-            int Y0 = startPoint.Y;
-            int X1 = endPoint.X;
-            int Y1 = endPoint.Y;
-            List<Point> listPoints = new List<Point>();
-            listPoints.AddRange(sBitmap.ConnectTwoPoints(new Point(X0, Y0), new Point(X1, Y0)));
-            listPoints.AddRange(sBitmap.ConnectTwoPoints(new Point(X1, Y0), new Point(X1, Y1)));
-            listPoints.AddRange(sBitmap.ConnectTwoPoints(new Point(X1, Y1), new Point(X0, Y1)));
-            listPoints.AddRange(sBitmap.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
-            return listPoints;
-        }
-    }
-}
-=======
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -46,10 +9,7 @@ namespace DevEdu_project.GetPoints
 {
     public class RectanglePoints : IGetPoints
     {        
-        public RectanglePoints() { }
-
         ConnectPoints cp = new ConnectPoints();         
-        
         public List<Point> GetPoints(Point startPoint, Point endPoint)
         {
             int X0 = startPoint.X;
@@ -63,6 +23,12 @@ namespace DevEdu_project.GetPoints
             listPoints.AddRange(cp.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
             return listPoints;
         }
+        //public RectanglePoints(int x1, int y1, int x2, int y2)
+        //{
+        //    this.startPoint.X = x1;
+        //    this.StartPoint.Y = y1;
+        //    this.EndPoint.X = x2;
+        //    this.EndPoint.Y = y2;
+        //}
     }
 }
->>>>>>> Factory

@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.GetPoints
 {
-    public class CirclePoints : IGetPoints
+    public interface IGetPoints
     {
-        public List<Point> GetPoints(Point start, Point end)
-        {
-            throw new NotImplementedException();
-        }
+        List<Point> GetPoints(Point start, Point end);
     }
 }

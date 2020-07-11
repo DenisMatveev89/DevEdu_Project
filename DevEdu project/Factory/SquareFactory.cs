@@ -11,7 +11,7 @@ namespace DevEdu_project.Factory
     {
         public AFigure Create(Point start, Point end)
         {
-            RectangleSquare square = new RectangleSquare();
+            RectangleSquar square = new RectangleSquar();
             square._startPoint = start;
             square._endPoint = end;
             return square;
