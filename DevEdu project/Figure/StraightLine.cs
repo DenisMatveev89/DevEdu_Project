@@ -8,14 +8,14 @@ using System.Windows.Documents;
 
 namespace DevEdu_project.Figure
 {
-    public class StraightLine: IFigure //Линия
+    public class StraightLine: AFigure //Линия
     {
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
         public Point StartPoint;
         public Point EndPoint;
         
-        public void Update(Point Start, Point End)
+        public override void Update(Point Start, Point End)
         {
             StartPoint = Start;
             EndPoint = End;
@@ -28,10 +28,10 @@ namespace DevEdu_project.Figure
             this.EndPoint.X = x2;
             this.EndPoint.Y = y2;
         }
-        public void Update(){ }
+        public override void Update(){ }
         
 
-        public List<Point> GetPoints()
+        public override List<Point> GetPoints()
         {
             return sBitmap.ConnectTwoPoints(StartPoint, EndPoint);
             #region old version

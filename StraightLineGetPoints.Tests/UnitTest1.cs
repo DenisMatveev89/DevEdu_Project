@@ -10,7 +10,7 @@ namespace StraightLineGetPoints.Tests
 {
     public class Tests
     {
-        static IFigure Figure;
+        static AFigure Figure;
         [SetUp]
         public void Setup()
         {

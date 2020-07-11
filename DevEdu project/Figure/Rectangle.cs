@@ -8,7 +8,7 @@ using DevEdu_project.Figure;
 
 namespace DevEdu_project
 {
-    public class Rectangle : IFigure // Прямоугольник
+    public class Rectangle : AFigure // Прямоугольник
     {
         public Point StartPoint;
         public Point EndPoint;
@@ -28,14 +28,14 @@ namespace DevEdu_project
             this.EndPoint.Y = y2;
         }
 
-        public void Update(Point Start, Point End)
+        public override void Update(Point Start, Point End)
         {
             StartPoint = Start;
             EndPoint = End;            
         }
-        public void Update(){}
+        public override void Update(){}
 
-        public List<Point> GetPoints()
+        public override List<Point> GetPoints()
         {
             int X0 = StartPoint.X;
             int Y0 = StartPoint.Y;

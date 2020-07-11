@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace DevEdu_project.Figure
 {
-    public class Pencil : IFigure //Перо
+    public class Pencil : AFigure //Карандаш
     {
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
         public Point StartPoint = new Point(0, 0);
@@ -16,11 +16,12 @@ namespace DevEdu_project.Figure
 
         List<Point> linePoints = new List<Point>();
         
-        public void Update()
+        public override void Update()
         {
             StartPoint = new Point(0, 0);
+            linePoints = new List<Point>();
         }
-        public void Update(Point Start, Point End)
+        public override void Update(Point Start, Point End)
         {
             if(StartPoint == new Point(0, 0))
             {
@@ -34,7 +35,7 @@ namespace DevEdu_project.Figure
             EndPoint = End;            
         }       
 
-        public List<Point> GetPoints()
+        public override List<Point> GetPoints()
         {
             int dx = EndPoint.X - StartPoint.X;
             int dy = EndPoint.Y - StartPoint.Y;

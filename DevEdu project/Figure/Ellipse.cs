@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project
 {
-    public class Ellipse : IFigure
+    public class Ellipse : AFigure
     {
         public Ellipse() { }
 
@@ -16,16 +16,16 @@ namespace DevEdu_project
         double RX;
         double RY;
 
-        public void Update(Point Start, Point End)
+        public override void Update(Point Start, Point End)
         {
             StartPoint = Start;
             EndPoint = End;
             RX = Math.Sqrt(Math.Pow((EndPoint.X - StartPoint.X), 2));
             RY = Math.Sqrt(Math.Pow((EndPoint.Y - StartPoint.Y), 2));
         }
-        public void Update() { }
+        public override void Update() { }
 
-        public List<Point> GetPoints()
+        public override List<Point> GetPoints()
         {
             List<Point> ellipse = new List<Point>();
 

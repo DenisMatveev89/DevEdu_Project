@@ -52,7 +52,7 @@
     <Compile Include="Brush.cs" />
     <Compile Include="Figure\Circle.cs" />
     <Compile Include="Figure\Ellipse.cs" />
-    <Compile Include="Figure\IFigure.cs" />
+    <Compile Include="Figure\AFigure.cs" />
     <Compile Include="Figure\TriangleIsosceles.cs" />
     <Compile Include="Figure\Pencil.cs" />
     <Compile Include="Figure\Rectangle.cs" />

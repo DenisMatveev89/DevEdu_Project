@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project
 {
-    public class Circle : IFigure
+    public class Circle : AFigure
     {
         public Point StartPoint;
         public Point EndPoint;
         double R;
 
-        public void Update(Point Start, Point End)
+        public override void Update(Point Start, Point End)
         {
             StartPoint = Start;
             EndPoint = End;
             R = Math.Sqrt(Math.Pow((EndPoint.X - StartPoint.X), 2) + Math.Pow((EndPoint.Y - StartPoint.Y), 2));
         }
-        public void Update() { }
+        public override void Update() { }
 
-        public List<Point> GetPoints()
+        public override List<Point> GetPoints()
         {
             List<Point> circle = new List<Point>();
             int X0 = StartPoint.X;

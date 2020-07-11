@@ -12,7 +12,7 @@ namespace DevEdu_project
     public partial class BetterThanPhotoshop : Form
     {
         //Объявляем интерфейс IFigure
-        static IFigure Figure = new Pencil(); //Здесь не нужно ни к чему приравнивать Figure
+        static AFigure Figure = new Pencil(); 
 
         Dialog dialog = new Dialog();
 
@@ -28,11 +28,8 @@ namespace DevEdu_project
         }
 
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
-        {
-            
+        {            
             sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
-            //StaticBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            ///StaticBitmap.TmpBitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height); //Эта строчка нужна, чтобы не было ошибок
         }
 
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
