@@ -32,5 +32,11 @@ namespace DevEdu_project
         {
             return getPoints.GetPoints();
         }
+        public void Update(Point Start, Point End)
+        {
+            _startPoint = Start;
+            _endPoint = End;
+        }
+        public void Update() { }
     }
 }

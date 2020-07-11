@@ -1,5 +1,4 @@
 ﻿using DevEdu_project.GetPoints;
-using DevEdu_project.GetPoints.Update;
 using DocumentFormat.OpenXml.Drawing.Wordprocessing;
 using System;
 using System.Collections.Generic;

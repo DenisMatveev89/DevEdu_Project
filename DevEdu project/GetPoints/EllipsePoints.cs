@@ -17,14 +17,14 @@ namespace DevEdu_project
         double RX;
         double RY;
 
-        public override void Update(Point Start, Point End)
+        public void Update(Point Start, Point End)
         {
             StartPoint = Start;
             EndPoint = End;
             RX = Math.Sqrt(Math.Pow((EndPoint.X - StartPoint.X), 2));
             RY = Math.Sqrt(Math.Pow((EndPoint.Y - StartPoint.Y), 2));
         }
-        public override void Update() { }
+        public void Update() { }
 
         public List<Point> GetPoints()
         {
