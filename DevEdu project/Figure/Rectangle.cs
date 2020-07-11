@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using DevEdu_project.Figure;
+<<<<<<< HEAD
 using DevEdu_project.GetPoints;
 
 namespace DevEdu_project
@@ -30,5 +31,28 @@ namespace DevEdu_project
             listPoints.AddRange(sBitmap.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
             return listPoints;
         }*/
+=======
+using DevEdu_project.Factory;
+using DevEdu_project.GetPoints;
+
+namespace DevEdu_project
+{
+    public class Rectangle : AFigure // Прямоугольник
+    {        
+        public Rectangle()
+        {
+            getPoints = new RectanglePoints();
+        }        
+
+        public Rectangle(int x1, int y1, int x2, int y2)
+        {
+            this._startPoint.X = x1;
+            this._startPoint.Y = y1;
+            this._endPoint.X = x2;
+            this._endPoint.Y = y2;
+        }
+
+        
+>>>>>>> Factory
     }
 }

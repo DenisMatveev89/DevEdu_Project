@@ -9,17 +9,26 @@ namespace DevEdu_project
 {
     public class Ellipse : AFigure
     {
+<<<<<<< HEAD
         public Ellipse()
         {
             fill = new Brush.ElipseFill();
             getPoints = new EllipsePoints();
         }
         /*public override List<Point> GetPoints()
+=======
+        public Ellipse() { }
+
+        public double RX;
+        public double RY;
+
+        public new List<Point> GetPoints()
+>>>>>>> Factory
         {
             List<Point> ellipse = new List<Point>();
 
-            int centerX = StartPoint.X;
-            int centerY = StartPoint.Y;            
+            int centerX = _startPoint.X;
+            int centerY = _startPoint.Y;            
             int radiusX = (int)RX;
             int radiusY = (int)RY;
 

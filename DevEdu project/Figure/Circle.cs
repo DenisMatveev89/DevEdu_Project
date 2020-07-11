@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace DevEdu_project
 {
     public class Circle : AFigure
+<<<<<<< HEAD
     {
         public Circle()
         {
@@ -15,10 +16,16 @@ namespace DevEdu_project
             getPoints = new CirclePoints();
         }
         /*public override List<Point> GetPoints()
+=======
+    {
+        public double R;   
+
+        public new List<Point> GetPoints()
+>>>>>>> Factory
         {
             List<Point> circle = new List<Point>();
-            int X0 = StartPoint.X;
-            int Y0 = StartPoint.Y;
+            int X0 = _startPoint.X;
+            int Y0 = _startPoint.Y;
             int x = 0;
             int y = (int)R;
             int delta = 1 - 2 * (int)R;
