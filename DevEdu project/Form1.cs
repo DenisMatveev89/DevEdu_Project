@@ -21,7 +21,7 @@ namespace DevEdu_project
         Dialog dialog = new Dialog();
 
         Color currentColor = Color.Black;
-        private bool mousePress;
+        private bool mousePress;        
         Point _currentPoint;
         Point _prevPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
@@ -40,7 +40,11 @@ namespace DevEdu_project
         {
             mousePress = true;
             _prevPoint = e.Location;            
-            _currentPoint = e.Location;
+            
+            if(factory is PencilFactory) //проверка для карандаша
+            {
+                factory = new PencilFactory();
+            }            
         }
         
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
@@ -56,7 +60,8 @@ namespace DevEdu_project
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {            
-            _currentPoint = e.Location;            
+            _currentPoint = e.Location;
+            _prevPoint = new Point(0, 0);
             mousePress = false;
             sBitmap.Update();
         }

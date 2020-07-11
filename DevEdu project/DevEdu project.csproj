@@ -79,6 +79,7 @@
     <Compile Include="GetPoints\ConnectPoints.cs" />
     <Compile Include="GetPoints\EllipsePoints.cs" />
     <Compile Include="GetPoints\IGetPoints.cs" />
+    <Compile Include="GetPoints\PencilPoints.cs" />
     <Compile Include="GetPoints\RectanglePoints.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

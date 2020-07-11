@@ -10,14 +10,12 @@ namespace DevEdu_project.Factory
 {
     public class PencilFactory : IFactory
     {
+        Pencil pencil = new Pencil();
+        
         public AFigure Create(Point start, Point end)
         {
-            Pencil pencil = new Pencil();
-            //pencil.Update();
-            pencil.Update(start, end);
-            //pencil._startPoint = start;
-            //pencil._startPoint = pencil._endPoint;
-            //pencil._endPoint = end;
+            pencil._startPoint = start;
+            pencil._endPoint = end;
             return pencil;
         }
     }
