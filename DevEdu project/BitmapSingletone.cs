@@ -10,13 +10,13 @@ namespace DevEdu_project
         private BitmapSingletone() { }
 
         //Временный и Основной битмап, на котором должны осуществляться все методы рисования
-        public  Bitmap TmpBitmap;
-        public Bitmap Bitmap;
+        public Bitmap _tmpBitmap;
+        public Bitmap _bitmap;
 
         public void CreateBitmaps(int width, int height)
         {
-            Bitmap = new Bitmap(width, height);
-            TmpBitmap = new Bitmap(width, height);
+            _bitmap = new Bitmap(width, height);
+            _tmpBitmap = new Bitmap(width, height);
         }
         private static BitmapSingletone _instance;
 
@@ -35,27 +35,27 @@ namespace DevEdu_project
         //Обратите внимание, он рисует на TmpBitmap
         public void SetPixel(int x, int y, Color color)
         {
-            if (x >= 0 && x < Bitmap.Width && y >= 0 && y < Bitmap.Height)
+            if (x >= 0 && x < _bitmap.Width && y >= 0 && y < _bitmap.Height)
             {
-                TmpBitmap.SetPixel(x, y, color);
+                _tmpBitmap.SetPixel(x, y, color);
             }
         }   
 
         //Метод, который заменяет TmpBitmap на Bitmap
         public void Copy()
         {            
-            if (Bitmap != null)
+            if (_bitmap != null)
             {
-                TmpBitmap = (Bitmap)Bitmap.Clone();
+                _tmpBitmap = (Bitmap)_bitmap.Clone();
             }
         }
 
         //Метод, который заменяет Bitmap на TmpBitmap
         public void Update()
         {           
-            if (TmpBitmap != null)
+            if (_tmpBitmap != null)
             {
-                Bitmap = (Bitmap)TmpBitmap.Clone();
+                _bitmap = (Bitmap)_tmpBitmap.Clone();
             }
         }
 
@@ -68,7 +68,7 @@ namespace DevEdu_project
                 SetPixel(i.X, i.Y, color);
             }
 
-            return TmpBitmap;
+            return _tmpBitmap;
         }
 
         public List<Point> ConnectTwoPoints(Point StartPoint, Point EndPoint)

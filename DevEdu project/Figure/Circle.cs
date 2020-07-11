@@ -9,23 +9,15 @@ namespace DevEdu_project
 {
     public class Circle : AFigure
     {
-        public Point StartPoint;
-        public Point EndPoint;
-        double R;
-
-        public override void Update(Point Start, Point End)
-        {
-            StartPoint = Start;
-            EndPoint = End;
-            R = Math.Sqrt(Math.Pow((EndPoint.X - StartPoint.X), 2) + Math.Pow((EndPoint.Y - StartPoint.Y), 2));
-        }
-        public override void Update() { }
+        public Point _startPoint;
+        public Point _endPoint;
+        public double R;   
 
         public override List<Point> GetPoints()
         {
             List<Point> circle = new List<Point>();
-            int X0 = StartPoint.X;
-            int Y0 = StartPoint.Y;
+            int X0 = _startPoint.X;
+            int Y0 = _startPoint.Y;
             int x = 0;
             int y = (int)R;
             int delta = 1 - 2 * (int)R;

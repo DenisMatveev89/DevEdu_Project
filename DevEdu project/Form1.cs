@@ -6,20 +6,24 @@ using System.Net;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using Color = System.Drawing.Color;
+using DevEdu_project.Factory;
 
 namespace DevEdu_project
 {
     public partial class BetterThanPhotoshop : Form
     {
-        //Объявляем интерфейс IFigure
-        static AFigure Figure = new Pencil(); 
+        //Объявляем фабрику
+        public IFactory factory;
+        
+        //Объявляем интерфейс AFigure
+        static AFigure figure = new Pencil(); 
 
         Dialog dialog = new Dialog();
 
         Color currentColor = Color.Black;
         private bool mousePress;
-        Point CurrentPoint;
-        Point PrevPoint;
+        Point _currentPoint;
+        Point _prevPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
 
         public BetterThanPhotoshop()
@@ -35,45 +39,45 @@ namespace DevEdu_project
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             mousePress = true;
-            PrevPoint = e.Location;            
-            CurrentPoint = e.Location;
-            Figure.Update(); //это обновление нужно, чтобы карандаш работал правильно
+            _prevPoint = e.Location;            
+            _currentPoint = e.Location;
         }
         
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
         {
             if (mousePress)
             {
-                CurrentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
+                _currentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
                 
                 sBitmap.Copy();
-                Figure.Update(PrevPoint, CurrentPoint);
-                pictureBox1.Image = sBitmap.Draw(Figure.GetPoints(), currentColor);
+                figure = factory.Create(_prevPoint, _currentPoint);
+                pictureBox1.Image = sBitmap.Draw(figure.GetPoints(), currentColor);
             }
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {            
-            CurrentPoint = e.Location;            
+            _currentPoint = e.Location;            
             mousePress = false;
             sBitmap.Update();
         }
         #region ToolBox
         private void Pencil_Click(object sender, EventArgs e)
         {
-            Figure = new Pencil();            
+            factory = new PencilFactory();            
         }
 
         private void LineButton_Click(object sender, EventArgs e)
         {
-            Figure = new StraightLine();
+            factory = new LineFactory();
         }        
         private void squareToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new RectangleSquar();
+
+            factory = new SquareFactory();
         }
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new Rectangle();
+            factory = new RectangleFactory();
         }
 
         private void arbitraryTriangleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -83,31 +87,31 @@ namespace DevEdu_project
         
         private void isoscelesTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new TriangleIsosceles(PrevPoint, CurrentPoint); //равнобедренный треугольник по одной из граней
+            factory = new TriangleIsoscelesFactory(); //равнобедренный треугольник по одной из граней
         }
 
         private void rightTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new TriangleRight(PrevPoint, CurrentPoint); //прямоугольный треугольник по гипотенузе
+            factory = new TriangleRightFactory(); //прямоугольный треугольник по гипотенузе
         }
 
         private void equilateralTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new TriangleEquilateral(PrevPoint, CurrentPoint); //равносторонний треугольник по одной стороне
+            factory = new TriangleEquilateralFactory(); //равносторонний треугольник по одной стороне
         }
         private void EllipseButton_Click_1(object sender, EventArgs e)
         {
-            Figure = new Ellipse();
+            factory = new EllipseFactory();
         }
 
         private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new Ellipse();
+            factory = new EllipseFactory();
         }
 
         private void circleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new Circle();
+            factory = new CircleFactory();
         }
         #endregion
 
@@ -198,11 +202,11 @@ namespace DevEdu_project
                     case DialogResult.Yes:
                         dialog.SaveDialog();
                         pictureBox1.Image = null;
-                        sBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                        sBitmap._bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
                         break;
                     case DialogResult.No:
                         pictureBox1.Image = null;
-                        sBitmap.Bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                        sBitmap._bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
                         break;
                     case DialogResult.Cancel:
                         break;

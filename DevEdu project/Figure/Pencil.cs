@@ -11,34 +11,37 @@ namespace DevEdu_project.Figure
     public class Pencil : AFigure //Карандаш
     {
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
-        public Point StartPoint = new Point(0, 0);
-        public Point EndPoint = new Point(0, 0);        
+        public Point _startPoint = new Point(0, 0);
+        public Point _endPoint = new Point(0, 0);
 
-        List<Point> linePoints = new List<Point>();
+        //public Point _startPoint;
+        //public Point _endPoint;
+
+        List<Point> _linePoints = new List<Point>();
         
-        public override void Update()
+        public void Update()
         {
-            StartPoint = new Point(0, 0);
-            linePoints = new List<Point>();
+            _startPoint = new Point(0, 0);
+            _linePoints = new List<Point>();
         }
-        public override void Update(Point Start, Point End)
+        public void Update(Point Start, Point End)
         {
-            if(StartPoint == new Point(0, 0))
+            if(_startPoint == new Point(0, 0))
             {
-                StartPoint = Start;
+                _startPoint = Start;
             }
             else 
             {
-                StartPoint = EndPoint;
+                _startPoint = _endPoint;
             }
                  
-            EndPoint = End;            
+            _endPoint = End;            
         }       
 
         public override List<Point> GetPoints()
         {
-            int dx = EndPoint.X - StartPoint.X;
-            int dy = EndPoint.Y - StartPoint.Y;
+            int dx = _endPoint.X - _startPoint.X;
+            int dy = _endPoint.Y - _startPoint.Y;
             int steps;
             if (Math.Abs(dx) > Math.Abs(dy))
             {
@@ -54,25 +57,25 @@ namespace DevEdu_project.Figure
 
             float X;
             float Y;
-            if (StartPoint == new Point(0, 0))
+            if (_startPoint == new Point(0, 0))
             {
-                X = EndPoint.X;
-                Y = EndPoint.Y;
+                X = _endPoint.X;
+                Y = _endPoint.Y;
             }
             else 
             {
-                X = StartPoint.X;
-                Y = StartPoint.Y;
+                X = _startPoint.X;
+                Y = _startPoint.Y;
             }
             for (int i = 0; i <= steps; i++)
             {
                 //Добавляем в лист каждую точку, полученную в ходе вычислений
-                linePoints.Add(new Point((int)X, (int)Y));
+                _linePoints.Add(new Point((int)X, (int)Y));
                 X += Xinc;
                 Y += Yinc;
             }
             
-            return linePoints;
+            return _linePoints;
         }
     }
 }

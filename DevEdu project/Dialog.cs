@@ -17,7 +17,7 @@ namespace DevEdu_project
             {
                 try
                 {
-                    BitmapSingletone.GetInstance().Bitmap.Save(savedialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                    BitmapSingletone.GetInstance()._bitmap.Save(savedialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
                 }
                 catch
                 {

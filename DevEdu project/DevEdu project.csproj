@@ -50,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Brush.cs" />
+    <Compile Include="Factory\PencilFactory.cs" />
+    <Compile Include="Factory\RectangleFactory.cs" />
+    <Compile Include="Factory\SquareFactory.cs" />
+    <Compile Include="Factory\TriangleEquilateralFactory.cs" />
+    <Compile Include="Factory\TriangleRightFactory.cs" />
+    <Compile Include="Factory\TriangleIsoscelesFactory.cs" />
     <Compile Include="Figure\Circle.cs" />
     <Compile Include="Figure\Ellipse.cs" />
     <Compile Include="Figure\AFigure.cs" />
@@ -65,9 +71,13 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Factory\CircleFactory.cs" />
+    <Compile Include="Factory\EllipseFactory.cs" />
+    <Compile Include="Factory\IFactory.cs" />
+    <Compile Include="Factory\LineFactory.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Figure\RectangleSquar.cs" />
+    <Compile Include="Figure\RectangleSquare.cs" />
     <Compile Include="Dialog.cs" />
     <Compile Include="BitmapSingletone.cs" />
     <EmbeddedResource Include="Form1.resx">

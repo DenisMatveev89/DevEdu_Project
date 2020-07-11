@@ -9,27 +9,21 @@ namespace DevEdu_project.Figure
 {
     public class TriangleIsosceles : AFigure//Равнобедренный треугольник
     {
-        public Point StartPoint;
-        public Point EndPoint;
+        public Point _startPoint;
+        public Point _endPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         public TriangleIsosceles() { }
         public TriangleIsosceles(Point StartPoint, Point EndPoint)
         {
-            this.StartPoint = StartPoint;
-            this.EndPoint = EndPoint;
+            this._startPoint = StartPoint;
+            this._endPoint = EndPoint;
         }
-        public override void Update(Point Start, Point End)
-        {
-            StartPoint = Start;
-            EndPoint = End;
-        }
-        public override void Update() { }
         public override List<Point> GetPoints()
         {
-            int x0 = StartPoint.X;
-            int y0 = StartPoint.Y;
-            int x1 = EndPoint.X;
-            int y1 = EndPoint.Y;
+            int x0 = _startPoint.X;
+            int y0 = _startPoint.Y;
+            int x1 = _endPoint.X;
+            int y1 = _endPoint.Y;
             List<Point> listPoint = new List<Point>();
 
             listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(x0, y0), new Point(x1, y1)));

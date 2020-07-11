@@ -18,8 +18,8 @@ namespace DevEdu_project_Tests
         {
 
             TriangleRight triangleRight = new TriangleRight();
-            triangleRight.StartPoint = new Point(x1, y1);
-            triangleRight.EndPoint = new Point(x2, y2);
+            triangleRight._startPoint = new Point(x1, y1);
+            triangleRight._endPoint = new Point(x2, y2);
 
             TriangleRightMoks triangleRightMoks = new TriangleRightMoks();
 
@@ -35,8 +35,8 @@ namespace DevEdu_project_Tests
         public void TriangleIsoscelesTest(int i, int x1, int y1, int x2, int y2)
         {
             TriangleIsosceles triangleIsosceles = new TriangleIsosceles();
-            triangleIsosceles.StartPoint = new Point(x1, y1);
-            triangleIsosceles.EndPoint = new Point(x2, y2);
+            triangleIsosceles._startPoint = new Point(x1, y1);
+            triangleIsosceles._endPoint = new Point(x2, y2);
 
             TriangleIsoscelesMoks triangleIsoscelesMoks = new TriangleIsoscelesMoks();
 
@@ -53,8 +53,8 @@ namespace DevEdu_project_Tests
         public void TriangleEquilateralTest(int i, int x1, int y1, int x2, int y2)
         {
             TriangleEquilateral triangleEquilateral = new TriangleEquilateral();
-            triangleEquilateral.StartPoint = new Point(x1, y1);
-            triangleEquilateral.EndPoint = new Point(x2, y2);
+            triangleEquilateral._startPoint = new Point(x1, y1);
+            triangleEquilateral._endPoint = new Point(x2, y2);
 
             TriangleEquilateralMoks triangleEquilateralMoks = new TriangleEquilateralMoks();
 

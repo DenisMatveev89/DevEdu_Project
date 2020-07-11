@@ -12,28 +12,21 @@ namespace DevEdu_project.Figure
     {
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
-        public Point StartPoint;
-        public Point EndPoint;
+        public Point _startPoint;
+        public Point _endPoint;        
         
-        public override void Update(Point Start, Point End)
-        {
-            StartPoint = Start;
-            EndPoint = End;
-        }
         public StraightLine() { }
         public StraightLine(int x1, int y1, int x2, int y2)
         {
-            this.StartPoint.X = x1;
-            this.StartPoint.Y = y1;
-            this.EndPoint.X = x2;
-            this.EndPoint.Y = y2;
-        }
-        public override void Update(){ }
-        
+            this._startPoint.X = x1;
+            this._startPoint.Y = y1;
+            this._endPoint.X = x2;
+            this._endPoint.Y = y2;
+        }        
 
         public override List<Point> GetPoints()
         {
-            return sBitmap.ConnectTwoPoints(StartPoint, EndPoint);
+            return sBitmap.ConnectTwoPoints(_startPoint, _endPoint);
             #region old version
             //Записываем в этот лист первую точку
             /* linePoints.Add(StartPoint);

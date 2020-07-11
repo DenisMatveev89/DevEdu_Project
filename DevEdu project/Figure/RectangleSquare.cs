@@ -8,33 +8,27 @@ using DevEdu_project.Figure;
 
 namespace DevEdu_project
 {
-    public class RectangleSquar:AFigure //Квадрат
+    public class RectangleSquare:AFigure //Квадрат
     {
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
-        public Point StartPoint;
-        public Point EndPoint;
-        public RectangleSquar() { }
-        public RectangleSquar(Point StartPoint, Point EndPoint)
+        public Point _startPoint;
+        public Point _endPoint;
+        public RectangleSquare() { }
+        public RectangleSquare(Point StartPoint, Point EndPoint)
         {
-            this.StartPoint = StartPoint;
-            this.EndPoint = EndPoint;
+            this._startPoint = StartPoint;
+            this._endPoint = EndPoint;
         }
-        public override void Update(Point Start, Point End)
+
+        public RectangleSquare(int x1, int y1, int x2, int y2)
         {
-            StartPoint = Start;
-            EndPoint = End;
+            this._startPoint.X = x1;
+            this._startPoint.Y = y1;
+            this._endPoint.X = x2;
+            this._endPoint.Y = y2;
         }
-        public RectangleSquar(int x1, int y1, int x2, int y2)
-        {
-            this.StartPoint.X = x1;
-            this.StartPoint.Y = y1;
-            this.EndPoint.X = x2;
-            this.EndPoint.Y = y2;
-        }
-        public override void Update()
-        {
-        }
+
         public override List<Point> GetPoints()
         {
             #region old version
@@ -61,10 +55,10 @@ namespace DevEdu_project
             }*/
             #endregion
             List<Point> listPoint = new List<Point>();
-            int d = EndPoint.X - StartPoint.X;//длина одной стороны, все остальные равны ей
-            int X0 = StartPoint.X;
-            int Y0 = StartPoint.Y;
-            int X1 = EndPoint.X;
+            int d = _endPoint.X - _startPoint.X;//длина одной стороны, все остальные равны ей
+            int X0 = _startPoint.X;
+            int Y0 = _startPoint.Y;
+            int X1 = _endPoint.X;
             listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(X0, Y0), new Point(X1, Y0)));
             listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(X0, Y0+d), new Point(X1, Y0+d)));
             listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(X0, Y0), new Point(X0, Y0+d)));

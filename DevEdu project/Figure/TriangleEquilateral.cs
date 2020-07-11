@@ -9,28 +9,22 @@ namespace DevEdu_project.Figure
 {
     public class TriangleEquilateral : AFigure//Треугольник Равносторонний
     {
-        public Point StartPoint;
-        public Point EndPoint;
+        public Point _startPoint;
+        public Point _endPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         public TriangleEquilateral() { }
         public TriangleEquilateral(Point StartPoint, Point EndPoint)
         {
-            this.StartPoint = StartPoint;
-            this.EndPoint = EndPoint;
-        }
-        public override void Update(Point Start, Point End)
-        {
-            StartPoint = Start;
-            EndPoint = End;
-        }
-        public override void Update() { }
+            this._startPoint = StartPoint;
+            this._endPoint = EndPoint;
+        }        
 
         public override List<Point> GetPoints()
         {
-            int x0 = StartPoint.X;
-            int y0 = StartPoint.Y;
-            int x1 = EndPoint.X;
-            int y1 = EndPoint.Y;
+            int x0 = _startPoint.X;
+            int y0 = _startPoint.Y;
+            int x1 = _endPoint.X;
+            int y1 = _endPoint.Y;
             double angleRadian = 60 * Math.PI / 180;
             //Находим вторую пару координат линии, которую мы разворачиваем на 60 градусов.
             int x2 = (int)((x0 - x1) * Math.Cos(angleRadian) - (y0 - y1) * Math.Sin(angleRadian) + x1);

@@ -11,26 +11,17 @@ namespace DevEdu_project
     {
         public Ellipse() { }
 
-        public Point StartPoint;
-        public Point EndPoint;
-        double RX;
-        double RY;
-
-        public override void Update(Point Start, Point End)
-        {
-            StartPoint = Start;
-            EndPoint = End;
-            RX = Math.Sqrt(Math.Pow((EndPoint.X - StartPoint.X), 2));
-            RY = Math.Sqrt(Math.Pow((EndPoint.Y - StartPoint.Y), 2));
-        }
-        public override void Update() { }
+        public Point _startPoint;
+        public Point _endPoint;
+        public double RX;
+        public double RY;
 
         public override List<Point> GetPoints()
         {
             List<Point> ellipse = new List<Point>();
 
-            int centerX = StartPoint.X;
-            int centerY = StartPoint.Y;            
+            int centerX = _startPoint.X;
+            int centerY = _startPoint.Y;            
             int radiusX = (int)RX;
             int radiusY = (int)RY;
 

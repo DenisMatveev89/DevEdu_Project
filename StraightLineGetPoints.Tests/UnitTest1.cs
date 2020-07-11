@@ -37,7 +37,7 @@ namespace StraightLineGetPoints.Tests
         public void RectangleSquarGetPointsTest(int i, int x1, int y1, int x2, int y2)
         {
 
-            Figure = new RectangleSquar(x1, y1, x2, y2);
+            Figure = new RectangleSquare(x1, y1, x2, y2);
 
             RectangleSquarMoks squarMocks = new RectangleSquarMoks();
 
