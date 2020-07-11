@@ -11,6 +11,5 @@ namespace DevEdu_project.GetPoints
     {
         List<Point> GetPoints();
         void Update();
-        void Update(Point startPoint, Point ebdPoint);
     }
 }

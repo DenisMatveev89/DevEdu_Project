@@ -9,22 +9,11 @@ namespace DevEdu_project
 {
     public class Ellipse : AFigure
     {
-        public Point StartPoint;
-        public Point EndPoint;
         public Ellipse()
         {
             fill = new Brush.ElipseFill();
             getPoints = new EllipsePoints();
         }
-
-        public Ellipse(Point StartPoint, Point EndPoint)
-        {
-            this.StartPoint = StartPoint;
-            this.EndPoint = EndPoint;
-            fill = new Brush.ElipseFill();
-            getPoints = new EllipsePoints();
-        }
-
         /*public override List<Point> GetPoints()
         {
             List<Point> ellipse = new List<Point>();

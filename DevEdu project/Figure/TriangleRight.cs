@@ -9,18 +9,10 @@ namespace DevEdu_project.Figure
 {
     public class TriangleRight : AFigure//правильный треугольник
     {
-        public Point StartPoint;
-        public Point EndPoint;
-        //BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         public TriangleRight()
         {
             fill = new Brush.TriangleRightFill();
             getPoints = new TriangleRightPoints();
-        }
-        public TriangleRight(Point StartPoint, Point EndPoint) 
-        {
-            this.StartPoint = StartPoint;
-            this.EndPoint = EndPoint;
         }
 
        /* public TriangleRight(int x1, int y1, int x2, int y2)

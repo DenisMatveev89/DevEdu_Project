@@ -14,7 +14,6 @@ namespace DevEdu_project
     {
         //Объявляем интерфейс IFigure
 
-        AFigure figure = new Pencil();
         
         Dialog dialog = new Dialog();
 
@@ -22,6 +21,7 @@ namespace DevEdu_project
         private bool mousePress;
         Point CurrentPoint;
         Point PrevPoint;
+        AFigure figure;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
 
         public BetterThanPhotoshop()
@@ -43,7 +43,8 @@ namespace DevEdu_project
             mousePress = true;
             PrevPoint = e.Location;            
             CurrentPoint = e.Location;
-            //figure.Update(); //это обновление нужно, чтобы карандаш работал правильно
+            figure.Update(); //это обновление нужно, чтобы карандаш работал правильно
+            //figure.Update(PrevPoint, CurrentPoint);
             sBitmap.Update();
         }
         
@@ -52,12 +53,10 @@ namespace DevEdu_project
             if (mousePress)
             {
                 CurrentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
-                
-                figure._startPoint = PrevPoint;
-                figure._endPoint = CurrentPoint;
                 sBitmap.Copy();
-                figure.Update();
                 pictureBox1.Image = sBitmap.Draw(figure.GetPoints(), currentColor);
+                figure.Update();
+                sBitmap.Update();
             }
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
@@ -82,7 +81,7 @@ namespace DevEdu_project
         }
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            figure = new Rectangle();
+            figure = new Rectangle(PrevPoint, CurrentPoint);
         }
 
         private void arbitraryTriangleToolStripMenuItem_Click(object sender, EventArgs e)

@@ -10,35 +10,23 @@ namespace DevEdu_project.Figure
 {
     public class TriangleRightPoints : IGetPoints//правильный треугольник
     {
-        public Point StartPoint;
-        public Point EndPoint;
+        Point startPoint;
+        Point endPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-
-        public TriangleRightPoints() { }
-        public TriangleRightPoints(Point StartPoint, Point EndPoint) 
-        {
-            this.StartPoint = StartPoint;
-            this.EndPoint = EndPoint;
-        }
-        public void Update(Point Start, Point End)
-        {
-            StartPoint = Start;
-            EndPoint = End;
-        }
+        /*        public TriangleRightPoints(int x1, int y1, int x2, int y2)
+                {
+                    this.StartPoint.X = x1;
+                    this.StartPoint.Y = y1;
+                    this.EndPoint.X = x2;
+                    this.EndPoint.Y = y2;
+                }*/
         public void Update() { }
-        public TriangleRightPoints(int x1, int y1, int x2, int y2)
-        {
-            this.StartPoint.X = x1;
-            this.StartPoint.Y = y1;
-            this.EndPoint.X = x2;
-            this.EndPoint.Y = y2;
-        }
         public List<Point> GetPoints()
         {
-            int X0 = StartPoint.X;
-            int Y0 = StartPoint.Y;
-            int X1 = EndPoint.X;
-            int Y1 = EndPoint.Y;
+            int X0 = startPoint.X;
+            int Y0 = startPoint.Y;
+            int X1 = endPoint.X;
+            int Y1 = endPoint.Y;
             List<Point> listPoint = new List<Point>();
 
             listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(X0, Y0), new Point(X1, Y1)));

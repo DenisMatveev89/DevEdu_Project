@@ -11,23 +11,11 @@ namespace DevEdu_project
 {
     public class RectangleSquar: AFigure //Квадрат
     {
-        //BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-        //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
-        public Point StartPoint;
-        public Point EndPoint;
         public RectangleSquar()
         {
             fill = new Brush.RectSquarFill();
             getPoints = new RectSquarePoints();
         }
-        public RectangleSquar(Point StartPoint, Point EndPoint)
-        {
-            this.StartPoint = StartPoint;
-            this.EndPoint = EndPoint;
-            fill = new Brush.RectSquarFill();
-            getPoints = new RectSquarePoints();
-        }
-        
         
      /*   public RectangleSquar(int x1, int y1, int x2, int y2)
         {

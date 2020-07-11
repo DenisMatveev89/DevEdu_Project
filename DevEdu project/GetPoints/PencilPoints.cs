@@ -12,33 +12,48 @@ namespace DevEdu_project.Figure
 {
     public class PencilPoints : IGetPoints //Перо
     {
-        protected Point StartPoint;
-        protected Point EndPoint;
+        protected Point startPoint;
+        protected Point endPoint;
+
+        public PencilPoints(Point a, Point b)
+        {
+            this.startPoint = a;
+            this.endPoint = b;
+        }
 
         public void Update()
         {
-            StartPoint = new Point(0, 0);
-        }
-        public void Update(Point Start, Point End)
-        {
-            if (StartPoint == new Point(0, 0))
+            if (startPoint == new Point(0, 0))
             {
-                StartPoint = Start;
+                startPoint = startPoint;
             }
             else
             {
-                StartPoint = EndPoint;
+                startPoint = endPoint;
             }
 
-            EndPoint = End;
+            endPoint = endPoint;
+        }
+        public void Update(Point Start, Point End)
+        {
+            if (startPoint == new Point(0, 0))
+            {
+                startPoint = Start;
+            }
+            else
+            {
+                startPoint = endPoint;
+            }
+
+            endPoint = End;
         }
 
         List<Point> points = new List<Point>();
 
         public List<Point> GetPoints()
         {
-            int dx = EndPoint.X - StartPoint.X;
-            int dy = EndPoint.Y - StartPoint.Y;
+            int dx = endPoint.X - startPoint.X;
+            int dy = endPoint.Y - startPoint.Y;
             int steps;
             if (Math.Abs(dx) > Math.Abs(dy))
             {
@@ -54,15 +69,15 @@ namespace DevEdu_project.Figure
 
             float X;
             float Y;
-            if (StartPoint == new Point(0, 0))
+            if (startPoint == new Point(0, 0))
             {
-                X = EndPoint.X;
-                Y = EndPoint.Y;
+                X = endPoint.X;
+                Y = endPoint.Y;
             }
             else 
             {
-                X = StartPoint.X;
-                Y = StartPoint.Y;
+                X = startPoint.X;
+                Y = startPoint.Y;
             }
             for (int i = 0; i <= steps; i++)
             {

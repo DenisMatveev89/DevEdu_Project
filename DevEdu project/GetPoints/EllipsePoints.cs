@@ -12,26 +12,30 @@ namespace DevEdu_project
     {
         public EllipsePoints() { }
 
-        public Point StartPoint;
-        public Point EndPoint;
+        Point startPoint;
+        Point endPoint;
         double RX;
         double RY;
 
         public void Update(Point Start, Point End)
         {
-            StartPoint = Start;
-            EndPoint = End;
-            RX = Math.Sqrt(Math.Pow((EndPoint.X - StartPoint.X), 2));
-            RY = Math.Sqrt(Math.Pow((EndPoint.Y - StartPoint.Y), 2));
+            startPoint = Start;
+            endPoint = End;
+            RX = Math.Sqrt(Math.Pow((endPoint.X - startPoint.X), 2));
+            RY = Math.Sqrt(Math.Pow((endPoint.Y - startPoint.Y), 2));
         }
-        public void Update() { }
+        public void Update()
+        {
+            RX = Math.Sqrt(Math.Pow((endPoint.X - startPoint.X), 2));
+            RY = Math.Sqrt(Math.Pow((endPoint.Y - startPoint.Y), 2));
+        }
 
         public List<Point> GetPoints()
         {
             List<Point> ellipse = new List<Point>();
 
-            int centerX = StartPoint.X;
-            int centerY = StartPoint.Y;            
+            int centerX = startPoint.X;
+            int centerY = startPoint.Y;            
             int radiusX = (int)RX;
             int radiusY = (int)RY;
 

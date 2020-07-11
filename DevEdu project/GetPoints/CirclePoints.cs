@@ -10,23 +10,26 @@ namespace DevEdu_project
 {
     public class CirclePoints : IGetPoints
     {
-        public Point StartPoint;
-        public Point EndPoint;
+        Point startPoint;
+        Point endPoint;
         double R;
 
         public void Update(Point Start, Point End)
         {
-            StartPoint = Start;
-            EndPoint = End;
-            R = Math.Sqrt(Math.Pow((EndPoint.X - StartPoint.X), 2) + Math.Pow((EndPoint.Y - StartPoint.Y), 2));
+            startPoint = Start;
+            endPoint = End;
+            R = Math.Sqrt(Math.Pow((endPoint.X - startPoint.X), 2) + Math.Pow((endPoint.Y - startPoint.Y), 2));
         }
-        public void Update() { }
+        public void Update()
+        {
+            R = Math.Sqrt(Math.Pow((endPoint.X - startPoint.X), 2) + Math.Pow((endPoint.Y - startPoint.Y), 2));
+        }
 
         public List<Point> GetPoints()
         {
             List<Point> circle = new List<Point>();
-            int X0 = StartPoint.X;
-            int Y0 = StartPoint.Y;
+            int X0 = startPoint.X;
+            int Y0 = startPoint.Y;
             int x = 0;
             int y = (int)R;
             int delta = 1 - 2 * (int)R;

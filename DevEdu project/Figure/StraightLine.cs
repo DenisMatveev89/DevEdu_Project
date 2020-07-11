@@ -10,19 +10,8 @@ namespace DevEdu_project.Figure
 {
     public class StraightLine: AFigure //Линия
     {
-        //BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-        //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
-        public Point StartPoint;
-        public Point EndPoint;
         public StraightLine()
         {
-            fill = new Brush.EmptyFill();
-            getPoints = new StraightLinePoints();
-        }
-        public StraightLine(Point StartPoint, Point EndPoint)
-        {
-            this.StartPoint = StartPoint;
-            this.EndPoint = EndPoint;
             fill = new Brush.EmptyFill();
             getPoints = new StraightLinePoints();
         }

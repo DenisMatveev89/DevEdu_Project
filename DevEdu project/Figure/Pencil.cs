@@ -12,20 +12,10 @@ namespace DevEdu_project.Figure
 {
     public class Pencil : AFigure //Перо
     {
-        public Point StartPoint;
-        public Point EndPoint;
-        //BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-        public Pencil()
+        public Pencil(Point a, Point b)
         {
-            getPoints = new PencilPoints();
-            
-        }
-        public Pencil(Point StartPoint, Point EndPoint)
-        {
-            this.StartPoint = StartPoint;
-            this.EndPoint = EndPoint;
+            getPoints = new PencilPoints(a,b);
             fill = new Brush.EmptyFill();
-            getPoints = new PencilPoints();
         }
 
         /*   public override List<Point> GetPoints()

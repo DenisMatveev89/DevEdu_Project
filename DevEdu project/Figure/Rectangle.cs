@@ -11,20 +11,10 @@ namespace DevEdu_project
 {
     public class Rectangle : AFigure // Прямоугольник
     {
-        public Point StartPoint;
-        public Point EndPoint;
-        //BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-        public Rectangle()
+        public Rectangle(Point a, Point b)
         {
             fill = new Brush.RectangleFill();
-            getPoints = new RectanglePoints();
-        }
-        public Rectangle(Point StartPoint, Point EndPoint)
-        {
-            this.StartPoint = StartPoint;
-            this.EndPoint = EndPoint;
-            fill = new Brush.RectangleFill();
-            getPoints = new RectanglePoints();
+            getPoints = new RectanglePoints(a, b);
         }
 
         /*public override List<Point> GetPoints()

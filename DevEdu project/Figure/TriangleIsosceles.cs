@@ -9,18 +9,8 @@ namespace DevEdu_project.Figure
 {
     public class TriangleIsosceles : AFigure//Равнобедренный треугольник
     {
-        public Point StartPoint;
-        public Point EndPoint;
-        //BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         public TriangleIsosceles()
         {
-            fill = new Brush.TriangleIsoFill();
-            getPoints = new TriangleIsoPoints();
-        }
-        public TriangleIsosceles(Point StartPoint, Point EndPoint)
-        {
-            this.StartPoint = StartPoint;
-            this.EndPoint = EndPoint;
             fill = new Brush.TriangleIsoFill();
             getPoints = new TriangleIsoPoints();
         }

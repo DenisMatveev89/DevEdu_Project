@@ -12,17 +12,8 @@ namespace DevEdu_project
     {
         protected IBrush fill;
         protected IGetPoints getPoints;
-
-        public Point _startPoint;
-        public Point _endPoint;
-        public AFigure(Point start, Point end)
-        {
-            _startPoint = start;
-            _endPoint = end;
-        }
-        public AFigure() { }
-
-
+        public Point a;
+        public Point b;
         public void Brush()
         {
             fill.Fill();
@@ -30,13 +21,12 @@ namespace DevEdu_project
 
         public List<Point> GetPoints()
         {
+            getPoints.Update();
             return getPoints.GetPoints();
         }
-        public void Update(Point Start, Point End)
+        public void Update()
         {
-            _startPoint = Start;
-            _endPoint = End;
+            getPoints.Update();
         }
-        public void Update() { }
     }
 }
