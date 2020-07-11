@@ -16,7 +16,7 @@ namespace DevEdu_project
         public IFactory factory;
         
         //Объявляем интерфейс AFigure
-        static AFigure figure = new Pencil(); 
+        static AFigure figure; 
 
         Dialog dialog = new Dialog();
 

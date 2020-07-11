@@ -9,11 +9,9 @@ namespace DevEdu_project
 {
     public class Circle : AFigure
     {
-        public Point _startPoint;
-        public Point _endPoint;
         public double R;   
 
-        public override List<Point> GetPoints()
+        public new List<Point> GetPoints()
         {
             List<Point> circle = new List<Point>();
             int X0 = _startPoint.X;

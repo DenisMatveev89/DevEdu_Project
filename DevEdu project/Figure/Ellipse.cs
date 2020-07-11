@@ -11,12 +11,10 @@ namespace DevEdu_project
     {
         public Ellipse() { }
 
-        public Point _startPoint;
-        public Point _endPoint;
         public double RX;
         public double RY;
 
-        public override List<Point> GetPoints()
+        public new List<Point> GetPoints()
         {
             List<Point> ellipse = new List<Point>();
 

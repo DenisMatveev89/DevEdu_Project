@@ -102,6 +102,6 @@ namespace DevEdu_project
             }
 
             return linePoints;
-        }        
+        }
     }
 }

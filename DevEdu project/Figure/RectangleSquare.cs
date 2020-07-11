@@ -12,14 +12,8 @@ namespace DevEdu_project
     {
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
-        public Point _startPoint;
-        public Point _endPoint;
-        public RectangleSquare() { }
-        public RectangleSquare(Point StartPoint, Point EndPoint)
-        {
-            this._startPoint = StartPoint;
-            this._endPoint = EndPoint;
-        }
+        
+        public RectangleSquare() { }        
 
         public RectangleSquare(int x1, int y1, int x2, int y2)
         {
@@ -29,7 +23,7 @@ namespace DevEdu_project
             this._endPoint.Y = y2;
         }
 
-        public override List<Point> GetPoints()
+        public new List<Point> GetPoints()
         {
             #region old version
             //int dy = dx;

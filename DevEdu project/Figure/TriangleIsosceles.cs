@@ -8,17 +8,11 @@ using System.Threading.Tasks;
 namespace DevEdu_project.Figure
 {
     public class TriangleIsosceles : AFigure//Равнобедренный треугольник
-    {
-        public Point _startPoint;
-        public Point _endPoint;
+    {        
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         public TriangleIsosceles() { }
-        public TriangleIsosceles(Point StartPoint, Point EndPoint)
-        {
-            this._startPoint = StartPoint;
-            this._endPoint = EndPoint;
-        }
-        public override List<Point> GetPoints()
+        
+        public new List<Point> GetPoints()
         {
             int x0 = _startPoint.X;
             int y0 = _startPoint.Y;

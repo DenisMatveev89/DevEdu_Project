@@ -9,17 +9,10 @@ namespace DevEdu_project.Figure
 {
     public class TriangleEquilateral : AFigure//Треугольник Равносторонний
     {
-        public Point _startPoint;
-        public Point _endPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-        public TriangleEquilateral() { }
-        public TriangleEquilateral(Point StartPoint, Point EndPoint)
-        {
-            this._startPoint = StartPoint;
-            this._endPoint = EndPoint;
-        }        
+        public TriangleEquilateral() { }              
 
-        public override List<Point> GetPoints()
+        public new List<Point> GetPoints()
         {
             int x0 = _startPoint.X;
             int y0 = _startPoint.Y;

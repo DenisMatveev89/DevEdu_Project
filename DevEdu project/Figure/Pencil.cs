@@ -38,7 +38,7 @@ namespace DevEdu_project.Figure
             _endPoint = End;            
         }       
 
-        public override List<Point> GetPoints()
+        public new List<Point> GetPoints()
         {
             int dx = _endPoint.X - _startPoint.X;
             int dy = _endPoint.Y - _startPoint.Y;
