@@ -14,11 +14,13 @@ namespace DevEdu_project
     public partial class BetterThanPhotoshop : Form
     {
         //Объявляем фабрику
-        IFactory factory = new PencilFactory();
+        AFactory factory = new PencilFactory();
         //Объявляем интерфейс AFigure
         AFigure figure; 
         //Диалоговые окошки
         Dialog dialog = new Dialog();
+
+        Storage storage = new Storage();
 
         Color currentColor = Color.Black;
         private bool mousePress;        
@@ -55,14 +57,15 @@ namespace DevEdu_project
                 _currentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
                 
                 sBitmap.Copy();
-                figure = factory.Create(_prevPoint, _currentPoint);
+                figure = factory.Create(_prevPoint, _currentPoint, currentColor);
                 pictureBox1.Image = sBitmap.Draw(figure.GetPoints(), currentColor);
             }
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {            
             _currentPoint = e.Location;
-            _prevPoint = new Point(0, 0);
+            //storage.saveFigure(figure);
+            storage.saveFigures(figure);
             mousePress = false;
             sBitmap.Update();
         }
@@ -218,6 +221,11 @@ namespace DevEdu_project
                         break;
                 }
             }
+        }
+
+        private void EraserButton_Click(object sender, EventArgs e)
+        {
+            pictureBox1.Image = sBitmap.DrawAllFigures(storage.figureList);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace DevEdu_project.GetPoints
         Point start = new Point(0, 0);
         Point end = new Point(0, 0);
 
-        public List<Point> GetPoints(Point startPoint, Point endPoint)
+        public List<Point> GetPoints(Point startPoint, Point endPoint, double o, double o2)
         {
             if (start == new Point(0, 0))
             {

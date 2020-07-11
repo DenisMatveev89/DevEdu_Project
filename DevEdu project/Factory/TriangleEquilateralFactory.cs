@@ -8,15 +8,20 @@ using DevEdu_project.Figure;
 
 namespace DevEdu_project.Factory
 {
-    public class TriangleEquilateralFactory : IFactory
+    public class TriangleEquilateralFactory : AFactory
     {
-        public AFigure Create(Point start, Point end)
+        public TriangleEquilateralFactory()
         {
-            TriangleEquilateral triangle = new TriangleEquilateral();
-            triangle._startPoint = start;
-            triangle._endPoint = end;
-            return triangle;
+            figure = new TriangleEquilateral();
         }
+
+        //public AFigure Create(Point start, Point end)
+        //{
+        //    TriangleEquilateral triangle = new TriangleEquilateral();
+        //    triangle._startPoint = start;
+        //    triangle._endPoint = end;
+        //    return triangle;
+        //}
     }
 }
 

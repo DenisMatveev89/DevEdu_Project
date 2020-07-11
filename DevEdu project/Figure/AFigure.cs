@@ -17,7 +17,9 @@ namespace DevEdu_project
         public Point _startPoint;
         public Point _endPoint;
 
-        public List<Point> GetPoints()
+        public Color _colorLine;
+
+        public virtual List<Point> GetPoints()
         {
             return getPoints.GetPoints(_startPoint, _endPoint);
         }

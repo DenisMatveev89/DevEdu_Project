@@ -10,7 +10,7 @@ namespace DevEdu_project.GetPoints
     public class TriangleEqPoints : IGetPoints
     {
         ConnectPoints cp = new ConnectPoints();
-        public List<Point> GetPoints(Point startPoint, Point endPoint)
+        public List<Point> GetPoints(Point startPoint, Point endPoint, double o, double o2)
         {
             int x0 = startPoint.X;
             int y0 = startPoint.Y;

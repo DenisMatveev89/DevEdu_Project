@@ -26,11 +26,10 @@ namespace DevEdu_project
             if (_instance == null)
             {
                 _instance = new BitmapSingletone();
-                
+
             }
             return _instance;
         }
-
 
         //Наш собственный метод SetPixel, благодаря которому не возникает ошибки при выходе за границы холста
         //Обратите внимание, он рисует на TmpBitmap
@@ -40,11 +39,11 @@ namespace DevEdu_project
             {
                 _tmpBitmap.SetPixel(x, y, color);
             }
-        }   
+        }
 
         //Метод, который заменяет TmpBitmap на Bitmap
         public void Copy()
-        {            
+        {
             if (_bitmap != null)
             {
                 _tmpBitmap = (Bitmap)_bitmap.Clone();
@@ -53,7 +52,7 @@ namespace DevEdu_project
 
         //Метод, который заменяет Bitmap на TmpBitmap
         public void Update()
-        {           
+        {
             if (_tmpBitmap != null)
             {
                 _bitmap = (Bitmap)_tmpBitmap.Clone();
@@ -64,12 +63,26 @@ namespace DevEdu_project
         // и рисует каждую точку на TmpBitmap
         public Bitmap Draw(List<Point> points, Color color)
         {
-            
+
             foreach (Point i in points)
             {
                 SetPixel(i.X, i.Y, color);
             }
 
+            return _tmpBitmap;
+        }
+
+        //Метод, который рисует все фигуры из листа фигур
+        public Bitmap DrawAllFigures(List<AFigure> figure)
+        {
+            foreach (AFigure i in figure)
+            {
+                List<Point> figurePoints = i.GetPoints();
+                foreach (Point j in figurePoints)
+                {
+                    SetPixel(j.X, j.Y, i._colorLine);
+                }
+            }
             return _tmpBitmap;
         }
     }
