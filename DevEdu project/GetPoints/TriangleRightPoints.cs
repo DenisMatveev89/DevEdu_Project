@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevEdu_project.GetPoints;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,36 +8,27 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Figure
 {
-    public class TriangleRight : AFigure//правильный треугольник
+    public class TriangleRightPoints : IGetPoints//правильный треугольник
     {
         public Point StartPoint;
         public Point EndPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-        public TriangleRight()
-        {
-            fill = new Brush.TriangleRightFill();
-            getPoints = new TriangleRightPoints();
-        }
-        public TriangleRight(Point StartPoint, Point EndPoint) 
+
+        public TriangleRightPoints() { }
+        public TriangleRightPoints(Point StartPoint, Point EndPoint) 
         {
             this.StartPoint = StartPoint;
             this.EndPoint = EndPoint;
         }
 
-        public TriangleRight(int x1, int y1, int x2, int y2)
+        public TriangleRightPoints(int x1, int y1, int x2, int y2)
         {
             this.StartPoint.X = x1;
             this.StartPoint.Y = y1;
             this.EndPoint.X = x2;
             this.EndPoint.Y = y2;
         }
-        public override void Update() { }
-        public override void Update(Point Start, Point End)
-        {
-            StartPoint = Start;
-            EndPoint = End;
-        }
-     /*   public override List<Point> GetPoints()
+        public List<Point> GetPoints()
         {
             int X0 = StartPoint.X;
             int Y0 = StartPoint.Y;
@@ -49,6 +41,6 @@ namespace DevEdu_project.Figure
             listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
             return listPoint;
            
-        }*/
+        }
     }
 }

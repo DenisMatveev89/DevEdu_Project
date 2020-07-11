@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevEdu_project.GetPoints;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,29 +8,18 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Figure
 {
-    public class TriangleEquilateral : AFigure//Треугольник Равносторонний
+    public class TriangleEqPoints : IGetPoints//Треугольник Равносторонний
     {
         public Point StartPoint;
         public Point EndPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-        public TriangleEquilateral()
-        {
-            fill = new Brush.TriangleEqFill();
-            getPoints = new TriangleEqPoints();
-        }
-        public TriangleEquilateral(Point StartPoint, Point EndPoint)
+        public TriangleEqPoints() { }
+        public TriangleEqPoints(Point StartPoint, Point EndPoint)
         {
             this.StartPoint = StartPoint;
             this.EndPoint = EndPoint;
         }
-        public override void Update(Point Start, Point End)
-        {
-            StartPoint = Start;
-            EndPoint = End;
-        }
-        public override void Update() { }
-
-       /* public override List<Point> GetPoints()
+        public List<Point> GetPoints()
         {
             int x0 = StartPoint.X;
             int y0 = StartPoint.Y;
@@ -46,6 +36,6 @@ namespace DevEdu_project.Figure
             listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(x1, y1), new Point(x2, y2)));
             listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point(x2, y2), new Point(x0, y0)));
             return listPoint;         
-        }*/
+        }
     }
 }

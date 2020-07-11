@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevEdu_project.GetPoints;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,28 +8,18 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Figure
 {
-    public class TriangleIsosceles : AFigure//Равнобедренный треугольник
+    public class TriangleIsoPoints : IGetPoints//Равнобедренный треугольник
     {
         public Point StartPoint;
         public Point EndPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-        public TriangleIsosceles()
-        {
-            fill = new Brush.TriangleIsoFill();
-            getPoints = new TriangleIsoPoints();
-        }
-        public TriangleIsosceles(Point StartPoint, Point EndPoint)
+        public TriangleIsoPoints() { }
+        public TriangleIsoPoints(Point StartPoint, Point EndPoint)
         {
             this.StartPoint = StartPoint;
             this.EndPoint = EndPoint;
         }
-        public override void Update(Point Start, Point End)
-        {
-            StartPoint = Start;
-            EndPoint = End;
-        }
-        public override void Update() { }
-      /*  public override List<Point> GetPoints()
+        public List<Point> GetPoints()
         {
             int x0 = StartPoint.X;
             int y0 = StartPoint.Y;
@@ -41,6 +32,6 @@ namespace DevEdu_project.Figure
             listPoint.AddRange(sBitmap.ConnectTwoPoints(new Point((x0 - (x1 - x0)), y1), new Point(x0, y0)));
             return listPoint;
             
-        }*/
+        }
     }
 }

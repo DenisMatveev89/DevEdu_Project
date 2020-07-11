@@ -1,4 +1,6 @@
+using DevEdu_project.Brush;
 using DevEdu_project.Figure;
+using DevEdu_project.GetPoints;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,8 +14,9 @@ namespace DevEdu_project
     public partial class BetterThanPhotoshop : Form
     {
         //Объявляем интерфейс IFigure
-        static IFigure Figure = new Pencil(); //Здесь не нужно ни к чему приравнивать Figure
 
+        AFigure figure = new Pencil();
+        
         Dialog dialog = new Dialog();
 
         Color currentColor = Color.Black;
@@ -25,6 +28,7 @@ namespace DevEdu_project
         public BetterThanPhotoshop()
         {
             InitializeComponent();
+            
         }
 
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
@@ -40,7 +44,7 @@ namespace DevEdu_project
             mousePress = true;
             PrevPoint = e.Location;            
             CurrentPoint = e.Location;
-            Figure.Update(); //это обновление нужно, чтобы карандаш работал правильно
+            figure.Update(); //это обновление нужно, чтобы карандаш работал правильно
         }
         
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
@@ -48,10 +52,11 @@ namespace DevEdu_project
             if (mousePress)
             {
                 CurrentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
-                
+                figure.StartPoint = PrevPoint;
+                figure.EndPoint = CurrentPoint;
                 sBitmap.Copy();
-                Figure.Update(PrevPoint, CurrentPoint);
-                pictureBox1.Image = sBitmap.Draw(Figure.GetPoints(), currentColor);
+                figure.Update(PrevPoint, CurrentPoint);
+                pictureBox1.Image = sBitmap.Draw(figure.GetPoints(), currentColor);
             }
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
@@ -63,20 +68,20 @@ namespace DevEdu_project
         #region ToolBox
         private void Pencil_Click(object sender, EventArgs e)
         {
-            Figure = new Pencil();            
+            figure = new Pencil();
         }
 
         private void LineButton_Click(object sender, EventArgs e)
         {
-            Figure = new StraightLine();
+            figure = new StraightLine();
         }        
         private void squareToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new RectangleSquar();
+            figure = new RectangleSquar();
         }
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new Rectangle();
+            figure = new Rectangle();
         }
 
         private void arbitraryTriangleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,31 +91,31 @@ namespace DevEdu_project
         
         private void isoscelesTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new TriangleIsosceles(PrevPoint, CurrentPoint); //равнобедренный треугольник по одной из граней
+            figure = new TriangleIsosceles(); //равнобедренный треугольник по одной из граней
         }
 
         private void rightTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new TriangleRight(PrevPoint, CurrentPoint); //прямоугольный треугольник по гипотенузе
+            figure = new TriangleRight(); //прямоугольный треугольник по гипотенузе
         }
 
         private void equilateralTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new TriangleEquilateral(PrevPoint, CurrentPoint); //равносторонний треугольник по одной стороне
+            figure = new TriangleEquilateral(); //равносторонний треугольник по одной стороне
         }
         private void EllipseButton_Click_1(object sender, EventArgs e)
         {
-            Figure = new Ellipse();
+            figure = new Ellipse();
         }
 
         private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new Ellipse();
+            figure = new Ellipse();
         }
 
         private void circleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Figure = new Circle();
+            figure = new Circle();
         }
         #endregion
 

@@ -9,14 +9,32 @@ using System.Windows.Forms;
 
 namespace DevEdu_project.Figure
 {
-    public class Pencil : AFigure //Перо
+    public class PencilPoints : IGetPoints //Перо
     {
-        public Pencil()
-        {
-            getPoints = new PencilPoints();
-        }     
+        //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
+        public Point StartPoint = new Point(0, 0);
+        public Point EndPoint = new Point(0, 0);
 
-     /*   public override List<Point> GetPoints()
+        List<Point> points = new List<Point>();
+        public void Update()
+        {
+            StartPoint = new Point(0, 0);
+        }
+        public void Update(Point Start, Point End)
+        {
+            if (StartPoint == new Point(0, 0))
+            {
+                StartPoint = Start;
+            }
+            else
+            {
+                StartPoint = EndPoint;
+            }
+
+            EndPoint = End;
+        }
+
+        public List<Point> GetPoints()
         {
             int dx = EndPoint.X - StartPoint.X;
             int dy = EndPoint.Y - StartPoint.Y;
@@ -48,12 +66,12 @@ namespace DevEdu_project.Figure
             for (int i = 0; i <= steps; i++)
             {
                 //Добавляем в лист каждую точку, полученную в ходе вычислений
-                linePoints.Add(new Point((int)X, (int)Y));
+                points.Add(new Point((int)X, (int)Y));
                 X += Xinc;
                 Y += Yinc;
             }
             
-            return linePoints;
-        }*/
+            return points;
+        }
     }
 }

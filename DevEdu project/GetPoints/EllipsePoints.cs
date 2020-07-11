@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevEdu_project.GetPoints;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,29 +8,16 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project
 {
-    public class Ellipse : AFigure
+    public class EllipsePoints : IGetPoints
     {
-        public Ellipse()
-        {
-            fill = new Brush.ElipseFill();
-            getPoints = new EllipsePoints();
-        }
+        public EllipsePoints() { }
 
         public Point StartPoint;
         public Point EndPoint;
         double RX;
         double RY;
 
-        public override void Update(Point Start, Point End)
-        {
-            StartPoint = Start;
-            EndPoint = End;
-            RX = Math.Sqrt(Math.Pow((EndPoint.X - StartPoint.X), 2));
-            RY = Math.Sqrt(Math.Pow((EndPoint.Y - StartPoint.Y), 2));
-        }
-        public override void Update() { }
-
-        /*public override List<Point> GetPoints()
+        public List<Point> GetPoints()
         {
             List<Point> ellipse = new List<Point>();
 
@@ -94,6 +82,6 @@ namespace DevEdu_project
             }
 
             return ellipse;
-        }      */  
+        }        
     }
 }

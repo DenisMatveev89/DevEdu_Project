@@ -51,7 +51,7 @@ namespace StraightLineGetPoints.Tests
         [TestCase(3, 0, 0, 0, 0)]
         public void LineGetPointsTest(int i, int x1, int y1, int x2, int y2)
         {
-            Figure = new StraightLine(x1, y1, x2, y2);
+            Figure = new StraightLinePoints(x1, y1, x2, y2);
             lineMoks lineMoks = new lineMoks();
 
             List<Point> Exp = lineMoks.Get(i);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevEdu_project.GetPoints;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -7,27 +8,13 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project
 {
-    public class Circle : AFigure
+    public class CirclePoints : IGetPoints
     {
-        public Circle()
-        {
-            fill = new Brush.CircleFill();
-            getPoints = new CirclePoints();
-        }
-
         public Point StartPoint;
         public Point EndPoint;
         double R;
 
-        public override void Update(Point Start, Point End)
-        {
-            StartPoint = Start;
-            EndPoint = End;
-            R = Math.Sqrt(Math.Pow((EndPoint.X - StartPoint.X), 2) + Math.Pow((EndPoint.Y - StartPoint.Y), 2));
-        }
-        public override void Update() { }
-
-        /*public override List<Point> GetPoints()
+        public List<Point> GetPoints()
         {
             List<Point> circle = new List<Point>();
             int X0 = StartPoint.X;
@@ -57,7 +44,7 @@ namespace DevEdu_project
                 delta += 2 * (++x - --y);
             }
             return circle;
-        }*/
+        }
 
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DevEdu_project.GetPoints;
 
 namespace DevEdu_project
 {
@@ -61,9 +62,10 @@ namespace DevEdu_project
 
         // Метод, который проходится по листу от первой до последней точки
         // и рисует каждую точку на TmpBitmap
-        public Bitmap Draw(List<Point> linePoints, Color color)
+        public Bitmap Draw(List<Point> points, Color color)
         {
-            foreach (Point i in linePoints)
+            
+            foreach (Point i in points)
             {
                 SetPixel(i.X, i.Y, color);
             }

@@ -5,15 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using DevEdu_project.Figure;
+using DevEdu_project.GetPoints;
 
 namespace DevEdu_project
 {
-    public class Rectangle : IFigure // Прямоугольник
+    public class Rectangle : AFigure // Прямоугольник
     {
+        public Rectangle()
+        {
+            fill = new Brush.RectangleFill();
+            getPoints = new RectanglePoints();
+        }
         public Point StartPoint;
         public Point EndPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-        public Rectangle() { }
         public Rectangle(Point StartPoint, Point EndPoint) 
         {
             this.StartPoint = StartPoint;
@@ -28,14 +33,14 @@ namespace DevEdu_project
             this.EndPoint.Y = y2;
         }
 
-        public void Update(Point Start, Point End)
+        public override void Update(Point Start, Point End)
         {
             StartPoint = Start;
             EndPoint = End;            
         }
-        public void Update(){}
+        public override void Update(){}
 
-        public List<Point> GetPoints()
+        /*public override List<Point> GetPoints()
         {
             int X0 = StartPoint.X;
             int Y0 = StartPoint.Y;
@@ -47,6 +52,6 @@ namespace DevEdu_project
             listPoints.AddRange(sBitmap.ConnectTwoPoints(new Point(X1, Y1), new Point(X0, Y1)));
             listPoints.AddRange(sBitmap.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
             return listPoints;
-        }
+        }*/
     }
 }

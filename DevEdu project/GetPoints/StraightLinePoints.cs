@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevEdu_project.GetPoints;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -8,38 +9,20 @@ using System.Windows.Documents;
 
 namespace DevEdu_project.Figure
 {
-    public class StraightLine: AFigure //Линия
+    public class StraightLinePoints: IGetPoints //Линия
     {
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         //В эти конструкторы нужно передавать значения точек из MouseDown, MouswMove, MouseUp
         public Point StartPoint;
         public Point EndPoint;
-        public StraightLine()
-        {
-            fill = new Brush.EmptyFill();
-            getPoints = new StraightLinePoints();
-        }
-        public override void Update(Point Start, Point End)
-        {
-            StartPoint = Start;
-            EndPoint = End;
-        }
-        public StraightLine(int x1, int y1, int x2, int y2)
-        {
-            this.StartPoint.X = x1;
-            this.StartPoint.Y = y1;
-            this.EndPoint.X = x2;
-            this.EndPoint.Y = y2;
-        }
-        public override void Update(){ }
-        
+        public StraightLinePoints() { }
 
-   /*     public override List<Point> GetPoints()
+        public List<Point> GetPoints()
         {
             return sBitmap.ConnectTwoPoints(StartPoint, EndPoint);
             #region old version
             //Записываем в этот лист первую точку
-            //linePoints.Add(StartPoint);
+            /* linePoints.Add(StartPoint);
 
              int dx = EndPoint.X - StartPoint.X;//абсолютное значение
              int dy = EndPoint.Y - StartPoint.Y;
@@ -65,7 +48,8 @@ namespace DevEdu_project.Figure
                  X += Xinc;
                  Y += Yinc;
              }
+ */
             #endregion 
-        }*/
+        }
     }
 }
