@@ -25,11 +25,11 @@ namespace DevEdu_project
         Point _currentPoint;
         Point _prevPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
+        
 
         public BetterThanPhotoshop()
         {
             InitializeComponent();
-            
         }
 
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
