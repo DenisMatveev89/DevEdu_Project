@@ -14,7 +14,7 @@ namespace DevEdu_project
     public partial class BetterThanPhotoshop : Form
     {
         //Объявляем фабрику
-        IFactory factory = new LineFactory();
+        IFactory factory = new PencilFactory();
         //Объявляем интерфейс AFigure
         AFigure figure; 
         //Диалоговые окошки
