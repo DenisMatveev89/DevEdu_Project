@@ -11,9 +11,9 @@ namespace DevEdu_project
 {
     public class RectangleSquar : AFigure //Квадрат
     {
-        public RectangleSquar()
+        public RectangleSquare()
         {
-            fill = new Brush.RectSquarFill();
+            fill = new Brush.RectSquareFill();
             getPoints = new RectSquarePoints();
         }
     }

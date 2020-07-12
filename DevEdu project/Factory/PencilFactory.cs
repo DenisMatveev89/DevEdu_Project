@@ -9,20 +9,32 @@ using System.Threading.Tasks;
 namespace DevEdu_project.Factory
 {
     public class PencilFactory : IFactory
+<<<<<<< Updated upstream
     {
-        //public AFigure Create(Point start, Point end)
-        //{
-        //    Pencil pencil = new Pencil();
-        //    //pencil.Update();
-        //    pencil.Update(start, end);
-        //    //pencil._startPoint = start;
-        //    //pencil._startPoint = pencil._endPoint;
-        //    //pencil._endPoint = end;
-        //    return pencil;
-        //}
+        Pencil pencil = new Pencil();
+        
         public AFigure Create(Point start, Point end)
         {
-            throw new NotImplementedException();
+            pencil._startPoint = start;
+            pencil._endPoint = end;
+            return pencil;
         }
+=======
+    {
+        public AFigure Create(Point start, Point end)
+        {
+            Pencil pencil = new Pencil();
+            //pencil.Update();
+            //pencil.Update(start, end);
+            pencil._startPoint = start;
+            pencil._startPoint = pencil._endPoint;
+            pencil._endPoint = end;
+            return pencil;
+        }
+        //public AFigure Create(Point start, Point end)
+        //{
+        //    throw new NotImplementedException();
+        //}
+>>>>>>> Stashed changes
     }
 }

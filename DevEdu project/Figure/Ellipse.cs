@@ -10,11 +10,13 @@ namespace DevEdu_project
 {
     public class Ellipse : AFigure
     {
-
-        public Ellipse()
+        public Ellipse() 
         {
-            fill = new Brush.ElipseFill();
-            //getPoints = new EllipsePoints();
+            getPoints = new EllipsePoints();
         }
+
+        public double RX;
+        public double RY;
+        
     }
 }

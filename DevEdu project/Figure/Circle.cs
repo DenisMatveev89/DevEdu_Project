@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 namespace DevEdu_project
 {
     public class Circle : AFigure
-
     {
         public Circle()
         {
-            fill = new Brush.CircleFill();
             getPoints = new CirclePoints();
         }
+
+        public double R;       
+
     }
 }
