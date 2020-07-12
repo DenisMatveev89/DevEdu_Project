@@ -8,6 +8,7 @@ using System.Windows.Documents;
 using System.Windows.Forms;
 using Color = System.Drawing.Color;
 using DevEdu_project.Factory;
+using System.Threading;
 
 namespace DevEdu_project
 {
@@ -38,6 +39,18 @@ namespace DevEdu_project
             sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
         }
 
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (factory is TriangleArbitrary)
+            {
+                int count = 0;
+                while(count != 3)
+                {
+
+                }
+            }
+        }
+      
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             mousePress = true;
@@ -89,7 +102,7 @@ namespace DevEdu_project
 
         private void arbitraryTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             //произвольный треугольник по трем точкам
+             factory = new TriangleArbitrary();
         }
         
         private void isoscelesTriangleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -227,6 +240,8 @@ namespace DevEdu_project
         {
             pictureBox1.Image = sBitmap.DrawAllFigures(storage.figureList);
         }
+
+        
     }
 }
 

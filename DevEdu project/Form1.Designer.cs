@@ -74,8 +74,7 @@
             this.menuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1427, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1070, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -86,14 +85,14 @@
             this.saveAsToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
             // clearCanvasToolStripMenuItem
             // 
             this.clearCanvasToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.createnew;
             this.clearCanvasToolStripMenuItem.Name = "clearCanvasToolStripMenuItem";
-            this.clearCanvasToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.clearCanvasToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.clearCanvasToolStripMenuItem.Text = "Create New";
             this.clearCanvasToolStripMenuItem.Click += new System.EventHandler(this.clearCanvasToolStripMenuItem_Click);
             // 
@@ -101,7 +100,7 @@
             // 
             this.saveAsToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.save;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
@@ -109,7 +108,7 @@
             // 
             this.exitToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(169, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -133,10 +132,10 @@
             this.FillColorButton,
             this.EraserButton,
             this.AngleButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 28);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(40, 686);
+            this.toolStrip1.Size = new System.Drawing.Size(34, 556);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -146,7 +145,7 @@
             this.PencilButton.Image = ((System.Drawing.Image)(resources.GetObject("PencilButton.Image")));
             this.PencilButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PencilButton.Name = "PencilButton";
-            this.PencilButton.Size = new System.Drawing.Size(37, 24);
+            this.PencilButton.Size = new System.Drawing.Size(31, 24);
             this.PencilButton.Text = "Pencil";
             this.PencilButton.Click += new System.EventHandler(this.Pencil_Click);
             // 
@@ -156,7 +155,7 @@
             this.LineButton.Image = ((System.Drawing.Image)(resources.GetObject("LineButton.Image")));
             this.LineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.LineButton.Name = "LineButton";
-            this.LineButton.Size = new System.Drawing.Size(37, 24);
+            this.LineButton.Size = new System.Drawing.Size(31, 24);
             this.LineButton.Text = "Line";
             this.LineButton.Click += new System.EventHandler(this.LineButton_Click);
             // 
@@ -169,7 +168,7 @@
             this.EllipseButton.Image = ((System.Drawing.Image)(resources.GetObject("EllipseButton.Image")));
             this.EllipseButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EllipseButton.Name = "EllipseButton";
-            this.EllipseButton.Size = new System.Drawing.Size(37, 24);
+            this.EllipseButton.Size = new System.Drawing.Size(31, 24);
             this.EllipseButton.Text = "Ellipse";
             this.EllipseButton.Click += new System.EventHandler(this.EllipseButton_Click_1);
             // 
@@ -177,7 +176,7 @@
             // 
             this.ellipseToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.oval;
             this.ellipseToolStripMenuItem.Name = "ellipseToolStripMenuItem";
-            this.ellipseToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
+            this.ellipseToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.ellipseToolStripMenuItem.Text = "Ellipse";
             this.ellipseToolStripMenuItem.Click += new System.EventHandler(this.ellipseToolStripMenuItem_Click);
             // 
@@ -185,7 +184,7 @@
             // 
             this.circleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.circle;
             this.circleToolStripMenuItem.Name = "circleToolStripMenuItem";
-            this.circleToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
+            this.circleToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.circleToolStripMenuItem.Text = "Circle";
             this.circleToolStripMenuItem.Click += new System.EventHandler(this.circleToolStripMenuItem_Click);
             // 
@@ -198,14 +197,14 @@
             this.RectangleDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("RectangleDropDownButton1.Image")));
             this.RectangleDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.RectangleDropDownButton1.Name = "RectangleDropDownButton1";
-            this.RectangleDropDownButton1.Size = new System.Drawing.Size(37, 24);
+            this.RectangleDropDownButton1.Size = new System.Drawing.Size(31, 24);
             this.RectangleDropDownButton1.Text = "Rectangle";
             // 
             // rectangleToolStripMenuItem
             // 
             this.rectangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.rectangle;
             this.rectangleToolStripMenuItem.Name = "rectangleToolStripMenuItem";
-            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(158, 26);
+            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.rectangleToolStripMenuItem.Text = "Rectangle";
             this.rectangleToolStripMenuItem.Click += new System.EventHandler(this.rectangleToolStripMenuItem_Click);
             // 
@@ -213,7 +212,7 @@
             // 
             this.squareToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.times_square;
             this.squareToolStripMenuItem.Name = "squareToolStripMenuItem";
-            this.squareToolStripMenuItem.Size = new System.Drawing.Size(158, 26);
+            this.squareToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.squareToolStripMenuItem.Text = "Square";
             this.squareToolStripMenuItem.Click += new System.EventHandler(this.squareToolStripMenuItem_Click);
             // 
@@ -228,13 +227,13 @@
             this.TriangleDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("TriangleDropDownButton1.Image")));
             this.TriangleDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.TriangleDropDownButton1.Name = "TriangleDropDownButton1";
-            this.TriangleDropDownButton1.Size = new System.Drawing.Size(37, 24);
+            this.TriangleDropDownButton1.Size = new System.Drawing.Size(31, 24);
             this.TriangleDropDownButton1.Text = "Triangle";
             // 
             // arbitraryTriangleToolStripMenuItem
             // 
             this.arbitraryTriangleToolStripMenuItem.Name = "arbitraryTriangleToolStripMenuItem";
-            this.arbitraryTriangleToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.arbitraryTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.arbitraryTriangleToolStripMenuItem.Text = "Arbitrary triangle";
             this.arbitraryTriangleToolStripMenuItem.ToolTipText = "произвольный треугольник по трем точкам";
             this.arbitraryTriangleToolStripMenuItem.Click += new System.EventHandler(this.arbitraryTriangleToolStripMenuItem_Click);
@@ -243,7 +242,7 @@
             // 
             this.isoscelesTriangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.img_2020_07_05_16_12_02;
             this.isoscelesTriangleToolStripMenuItem.Name = "isoscelesTriangleToolStripMenuItem";
-            this.isoscelesTriangleToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.isoscelesTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.isoscelesTriangleToolStripMenuItem.Text = "Isosceles triangle";
             this.isoscelesTriangleToolStripMenuItem.ToolTipText = "равнобедренный треугольник по одной из граней";
             this.isoscelesTriangleToolStripMenuItem.Click += new System.EventHandler(this.isoscelesTriangleToolStripMenuItem_Click);
@@ -252,7 +251,7 @@
             // 
             this.rightTriangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.play;
             this.rightTriangleToolStripMenuItem.Name = "rightTriangleToolStripMenuItem";
-            this.rightTriangleToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.rightTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.rightTriangleToolStripMenuItem.Text = "Right triangle";
             this.rightTriangleToolStripMenuItem.ToolTipText = "прямоугольный треугольник по гипотенузе";
             this.rightTriangleToolStripMenuItem.Click += new System.EventHandler(this.rightTriangleToolStripMenuItem_Click);
@@ -260,7 +259,7 @@
             // equilateralTriangleToolStripMenuItem
             // 
             this.equilateralTriangleToolStripMenuItem.Name = "equilateralTriangleToolStripMenuItem";
-            this.equilateralTriangleToolStripMenuItem.Size = new System.Drawing.Size(218, 26);
+            this.equilateralTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.equilateralTriangleToolStripMenuItem.Text = "Equilateral triangle";
             this.equilateralTriangleToolStripMenuItem.ToolTipText = "равносторонний треугольник по одной стороне";
             this.equilateralTriangleToolStripMenuItem.Click += new System.EventHandler(this.equilateralTriangleToolStripMenuItem_Click);
@@ -271,7 +270,7 @@
             this.FillColorButton.Image = ((System.Drawing.Image)(resources.GetObject("FillColorButton.Image")));
             this.FillColorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.FillColorButton.Name = "FillColorButton";
-            this.FillColorButton.Size = new System.Drawing.Size(37, 24);
+            this.FillColorButton.Size = new System.Drawing.Size(31, 24);
             this.FillColorButton.Text = "Color";
             // 
             // EraserButton
@@ -280,7 +279,7 @@
             this.EraserButton.Image = ((System.Drawing.Image)(resources.GetObject("EraserButton.Image")));
             this.EraserButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EraserButton.Name = "EraserButton";
-            this.EraserButton.Size = new System.Drawing.Size(37, 24);
+            this.EraserButton.Size = new System.Drawing.Size(31, 24);
             this.EraserButton.Text = "Eraser";
             this.EraserButton.Click += new System.EventHandler(this.EraserButton_Click);
             // 
@@ -290,7 +289,7 @@
             this.AngleButton.Image = ((System.Drawing.Image)(resources.GetObject("AngleButton.Image")));
             this.AngleButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AngleButton.Name = "AngleButton";
-            this.AngleButton.Size = new System.Drawing.Size(37, 24);
+            this.AngleButton.Size = new System.Drawing.Size(31, 24);
             this.AngleButton.Text = "Angle Modify";
             // 
             // toolStrip2
@@ -303,9 +302,9 @@
             this.toolStripButton7,
             this.toolStripButton8,
             this.toolStripButton9});
-            this.toolStrip2.Location = new System.Drawing.Point(40, 28);
+            this.toolStrip2.Location = new System.Drawing.Point(34, 24);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1387, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(1036, 25);
             this.toolStrip2.TabIndex = 9;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -316,7 +315,7 @@
             this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(29, 22);
+            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton5.Text = "toolStripButton5";
             this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
@@ -327,7 +326,7 @@
             this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(29, 22);
+            this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton6.Text = "toolStripButton6";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
@@ -338,7 +337,7 @@
             this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(29, 22);
+            this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton7.Text = "toolStripButton7";
             this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
@@ -349,7 +348,7 @@
             this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
             this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(29, 22);
+            this.toolStripButton8.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton8.Text = "toolStripButton8";
             this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
             // 
@@ -360,7 +359,7 @@
             this.toolStripButton9.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton9.Image")));
             this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(29, 22);
+            this.toolStripButton9.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton9.Text = "toolStripButton9";
             this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
             // 
@@ -368,30 +367,29 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox1.Location = new System.Drawing.Point(45, 64);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(34, 52);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1384, 657);
+            this.pictureBox1.Size = new System.Drawing.Size(1038, 534);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove_1);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseUp);
             // 
             // BetterThanPhotoshop
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1427, 714);
+            this.ClientSize = new System.Drawing.Size(1070, 580);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1445, 759);
-            this.MinimumSize = new System.Drawing.Size(527, 236);
+            this.MaximumSize = new System.Drawing.Size(1088, 624);
+            this.MinimumSize = new System.Drawing.Size(399, 199);
             this.Name = "BetterThanPhotoshop";
             this.RightToLeftLayout = true;
             this.Text = "BTN - Better Than Photoshop";
