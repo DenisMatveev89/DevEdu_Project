@@ -92,7 +92,7 @@
     </Compile>
     <Compile Include="Factory\CircleFactory.cs" />
     <Compile Include="Factory\EllipseFactory.cs" />
-    <Compile Include="Factory\IFactory.cs" />
+    <Compile Include="Factory\AFactory.cs" />
     <Compile Include="Factory\LineFactory.cs" />
     <Compile Include="GetPoints\CirclePoints.cs" />
     <Compile Include="GetPoints\ConnectPoints.cs" />

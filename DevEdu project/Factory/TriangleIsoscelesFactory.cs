@@ -14,12 +14,5 @@ namespace DevEdu_project.Factory
         {
             figure = new TriangleIsosceles();
         }
-        //public AFigure Create(Point start, Point end)
-        //{
-        //    TriangleIsosceles triangle = new TriangleIsosceles();
-        //    triangle._startPoint = start;
-        //    triangle._endPoint = end;
-        //    return triangle;
-        //}
     }
 }

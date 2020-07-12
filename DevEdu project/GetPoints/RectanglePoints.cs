@@ -23,12 +23,5 @@ namespace DevEdu_project.GetPoints
             listPoints.AddRange(cp.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
             return listPoints;
         }
-        //public RectanglePoints(int x1, int y1, int x2, int y2)
-        //{
-        //    this.startPoint.X = x1;
-        //    this.StartPoint.Y = y1;
-        //    this.EndPoint.X = x2;
-        //    this.EndPoint.Y = y2;
-        //}
     }
 }

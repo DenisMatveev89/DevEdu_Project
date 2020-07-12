@@ -13,13 +13,5 @@ namespace DevEdu_project.Factory
         {
             figure = new RectangleSquare();
         }
-
-        //public AFigure Create(Point start, Point end)
-        //{
-        //    RectangleSquar square = new RectangleSquar();
-        //    square._startPoint = start;
-        //    square._endPoint = end;
-        //    return square;
-        //}
     }
 }

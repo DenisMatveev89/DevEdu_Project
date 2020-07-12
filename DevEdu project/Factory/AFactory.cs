@@ -10,8 +10,11 @@ namespace DevEdu_project.Factory
 {
     public abstract class AFactory
     {
+        //Конкретный экземпляр класса AFigure будет созвдаваться уже внутри наследников AFactory
         public AFigure figure;
 
+        //Базовый метод, который задает настройки, одинаковые для большинства фигур
+        //При этом параметр virtual позволяет изменять реализацию метода в классах-наследниках
         public virtual AFigure Create(Point start, Point end, Color colorLine)
         {
             figure._startPoint = start;
@@ -19,12 +22,5 @@ namespace DevEdu_project.Factory
             figure._colorLine = colorLine;
             return figure;
         }
-
-    }
-
-    public interface IFactory
-    {
-        AFigure Create(Point start, Point end, Color color);
-
     }
 }

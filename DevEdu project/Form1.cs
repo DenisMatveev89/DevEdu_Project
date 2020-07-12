@@ -30,8 +30,7 @@ namespace DevEdu_project
 
         public BetterThanPhotoshop()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
 
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
@@ -42,12 +41,12 @@ namespace DevEdu_project
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             mousePress = true;
-            _prevPoint = e.Location;            
-            
-            if(factory is PencilFactory) //проверка для карандаша
+            _prevPoint = e.Location;
+
+            if (factory is PencilFactory) //проверка для карандаша
             {
                 factory = new PencilFactory();
-            }            
+            }
         }
         
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
@@ -58,13 +57,12 @@ namespace DevEdu_project
                 
                 sBitmap.Copy();
                 figure = factory.Create(_prevPoint, _currentPoint, currentColor);
-                pictureBox1.Image = sBitmap.Draw(figure.GetPoints(), currentColor);
+                pictureBox1.Image = sBitmap.DrawFigure(figure);
             }
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {            
             _currentPoint = e.Location;
-            //storage.saveFigure(figure);
             storage.saveFigures(figure);
             mousePress = false;
             sBitmap.Update();
@@ -223,6 +221,8 @@ namespace DevEdu_project
             }
         }
 
+        //Сейчас на этой кнопке вызывается метод, который возвращает все ранее нарисованные фигуры
+        //Потом моздадим для этого другие кнопки
         private void EraserButton_Click(object sender, EventArgs e)
         {
             pictureBox1.Image = sBitmap.DrawAllFigures(storage.figureList);

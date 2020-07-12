@@ -14,13 +14,5 @@ namespace DevEdu_project.Factory
         {
             figure = new TriangleRight();
         }
-
-        //public AFigure Create(Point start, Point end)
-        //{
-        //    TriangleRight triangle = new TriangleRight();
-        //    triangle._startPoint = start;
-        //    triangle._endPoint = end;
-        //    return triangle;
-        //}
     }
 }

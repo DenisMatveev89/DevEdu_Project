@@ -59,14 +59,15 @@ namespace DevEdu_project
             }
         }
 
-        // Метод, который проходится по листу от первой до последней точки
-        // и рисует каждую точку на TmpBitmap
-        public Bitmap Draw(List<Point> points, Color color)
+        //Метод, который принимает настроенную фигуру,
+        //вызывает все ее точки и рисует каждую точку
+        public Bitmap DrawFigure(AFigure figure)
         {
+            List<Point> figurePoints = figure.GetPoints();
 
-            foreach (Point i in points)
+            foreach (Point i in figurePoints)
             {
-                SetPixel(i.X, i.Y, color);
+                SetPixel(i.X, i.Y, figure._colorLine);
             }
 
             return _tmpBitmap;
@@ -77,12 +78,21 @@ namespace DevEdu_project
         {
             foreach (AFigure i in figure)
             {
-                List<Point> figurePoints = i.GetPoints();
-                foreach (Point j in figurePoints)
-                {
-                    SetPixel(j.X, j.Y, i._colorLine);
-                }
+                DrawFigure(i);
             }
+            return _tmpBitmap;
+        }        
+
+        // Старый метод, который проходится по листу от первой до последней точки
+        // и рисует каждую точку на TmpBitmap
+        public Bitmap Draw(List<Point> points, Color color)
+        {
+
+            foreach (Point i in points)
+            {
+                SetPixel(i.X, i.Y, color);
+            }
+
             return _tmpBitmap;
         }
     }

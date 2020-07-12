@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DevEdu_project.GetPoints
 {
@@ -16,6 +13,7 @@ namespace DevEdu_project.GetPoints
 
         public List<Point> GetPoints(Point startPoint, Point endPoint, double o, double o2)
         {
+            //Этим условием мы правильно задаем начальную точку и все последующие точки карандаша
             if (start == new Point(0, 0))
             {
                 start = startPoint;
@@ -26,6 +24,7 @@ namespace DevEdu_project.GetPoints
                 start = end;
                 end = endPoint;
             }
+
             int dx = end.X - start.X;//абсолютное значение
             int dy = end.Y - start.Y;
             int steps;

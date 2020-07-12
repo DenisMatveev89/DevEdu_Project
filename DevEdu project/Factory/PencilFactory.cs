@@ -10,14 +10,10 @@ namespace DevEdu_project.Factory
 {
     public class PencilFactory : AFactory
     {
-        Pencil pencil = new Pencil();
-
-        public override AFigure Create(Point start, Point end, Color color)
+        public PencilFactory()
         {
-            pencil._startPoint = start;
-            pencil._endPoint = end;
-            pencil._colorLine = color;
-            return pencil;
+            figure = new Pencil();
         }
+        
     }
 }

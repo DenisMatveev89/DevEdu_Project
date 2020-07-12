@@ -13,13 +13,5 @@ namespace DevEdu_project.Factory
         {
             figure = new Rectangle();
         }
-
-        //public AFigure Create(Point start, Point end, Color color)
-        //{
-        //    Rectangle rect = new Rectangle();
-        //    rect._startPoint = start;
-        //    rect._endPoint = end;
-        //    return rect;
-        //}
     }
 }
