@@ -15,7 +15,12 @@ namespace DevEdu_project
             getPoints = new CirclePoints();
         }
 
-        public double R;       
+        public double R;
+
+        public override List<Point> GetPoints()
+        {
+            return getPoints.GetPoints(_startPoint, _endPoint, R);
+        }
 
     }
 }

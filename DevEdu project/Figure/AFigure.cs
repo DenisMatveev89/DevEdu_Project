@@ -7,17 +7,18 @@ namespace DevEdu_project
 {
     public abstract class AFigure
     {
-        //List<Point> GetPoints();, Update();, void Update(Point Start, Point End); - 
+        //_startPoint, _endPoint, _colorLine:
         //обязательные поля для каждого класса, который унаследует IFigure
-        //реализация этого метода у каждого наследника будет своя 
 
         protected IGetPoints getPoints;
         protected Brush.IBrush fill;
 
         public Point _startPoint;
         public Point _endPoint;
+        public Color _colorLine;
 
-        public List<Point> GetPoints()
+        //virtual позволяет менять реализацию метода в классах-наследниках
+        public virtual List<Point> GetPoints()
         {
             return getPoints.GetPoints(_startPoint, _endPoint);
         }

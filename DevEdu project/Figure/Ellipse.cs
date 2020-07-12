@@ -17,6 +17,11 @@ namespace DevEdu_project
 
         public double RX;
         public double RY;
-        
+
+        public override List<Point> GetPoints()
+        {
+            return getPoints.GetPoints(_startPoint, _endPoint, RX, RY);
+        }
+
     }
 }

@@ -26,11 +26,10 @@ namespace DevEdu_project
             if (_instance == null)
             {
                 _instance = new BitmapSingletone();
-                
+
             }
             return _instance;
         }
-
 
         //Наш собственный метод SetPixel, благодаря которому не возникает ошибки при выходе за границы холста
         //Обратите внимание, он рисует на TmpBitmap
@@ -40,11 +39,11 @@ namespace DevEdu_project
             {
                 _tmpBitmap.SetPixel(x, y, color);
             }
-        }   
+        }
 
         //Метод, который заменяет TmpBitmap на Bitmap
         public void Copy()
-        {            
+        {
             if (_bitmap != null)
             {
                 _tmpBitmap = (Bitmap)_bitmap.Clone();
@@ -53,18 +52,42 @@ namespace DevEdu_project
 
         //Метод, который заменяет Bitmap на TmpBitmap
         public void Update()
-        {           
+        {
             if (_tmpBitmap != null)
             {
                 _bitmap = (Bitmap)_tmpBitmap.Clone();
             }
         }
 
-        // Метод, который проходится по листу от первой до последней точки
+        //Метод, который принимает настроенную фигуру,
+        //вызывает все ее точки и рисует каждую точку
+        public Bitmap DrawFigure(AFigure figure)
+        {
+            List<Point> figurePoints = figure.GetPoints();
+
+            foreach (Point i in figurePoints)
+            {
+                SetPixel(i.X, i.Y, figure._colorLine);
+            }
+
+            return _tmpBitmap;
+        }
+
+        //Метод, который рисует все фигуры из листа фигур
+        public Bitmap DrawAllFigures(List<AFigure> figure)
+        {
+            foreach (AFigure i in figure)
+            {
+                DrawFigure(i);
+            }
+            return _tmpBitmap;
+        }        
+
+        // Старый метод, который проходится по листу от первой до последней точки
         // и рисует каждую точку на TmpBitmap
         public Bitmap Draw(List<Point> points, Color color)
         {
-            
+
             foreach (Point i in points)
             {
                 SetPixel(i.X, i.Y, color);

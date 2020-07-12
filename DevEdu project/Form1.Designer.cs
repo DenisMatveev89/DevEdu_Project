@@ -74,7 +74,7 @@
             this.menuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1072, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1070, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -135,7 +135,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(34, 562);
+            this.toolStrip1.Size = new System.Drawing.Size(34, 556);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -210,7 +210,7 @@
             // 
             this.rectangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.rectangle;
             this.rectangleToolStripMenuItem.Name = "rectangleToolStripMenuItem";
-            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.rectangleToolStripMenuItem.Text = "Rectangle";
             this.rectangleToolStripMenuItem.ToolTipText = "прямоугольник";
             this.rectangleToolStripMenuItem.Click += new System.EventHandler(this.rectangleToolStripMenuItem_Click);
@@ -219,7 +219,7 @@
             // 
             this.squareToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.times_square;
             this.squareToolStripMenuItem.Name = "squareToolStripMenuItem";
-            this.squareToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.squareToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.squareToolStripMenuItem.Text = "Square";
             this.squareToolStripMenuItem.ToolTipText = "квадрат";
             this.squareToolStripMenuItem.Click += new System.EventHandler(this.squareToolStripMenuItem_Click);
@@ -290,6 +290,7 @@
             this.EraserButton.Name = "EraserButton";
             this.EraserButton.Size = new System.Drawing.Size(31, 24);
             this.EraserButton.Text = "Eraser";
+            this.EraserButton.Click += new System.EventHandler(this.EraserButton_Click);
             // 
             // AngleButton
             // 
@@ -312,7 +313,7 @@
             this.toolStripButton9});
             this.toolStrip2.Location = new System.Drawing.Point(34, 24);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1038, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(1036, 25);
             this.toolStrip2.TabIndex = 9;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -380,6 +381,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(1038, 534);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove_1);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseUp);
@@ -388,15 +390,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 586);
+            this.ClientSize = new System.Drawing.Size(1070, 580);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1088, 625);
-            this.MinimumSize = new System.Drawing.Size(400, 200);
+            this.MaximumSize = new System.Drawing.Size(1088, 624);
+            this.MinimumSize = new System.Drawing.Size(399, 199);
             this.Name = "BetterThanPhotoshop";
             this.RightToLeftLayout = true;
             this.Text = "BTN - Better Than Photoshop";

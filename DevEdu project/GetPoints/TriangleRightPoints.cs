@@ -10,7 +10,7 @@ namespace DevEdu_project.GetPoints
     public class TriangleRightPoints : IGetPoints
     {
         ConnectPoints cp = new ConnectPoints();
-        public List<Point> GetPoints(Point startPoint, Point endPoint)
+        public List<Point> GetPoints(Point startPoint, Point endPoint, double o, double o2)
         {
             int X0 = startPoint.X;
             int Y0 = startPoint.Y;

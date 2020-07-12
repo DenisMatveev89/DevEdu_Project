@@ -8,14 +8,11 @@ using DevEdu_project.Figure;
 
 namespace DevEdu_project.Factory
 {
-    public class TriangleRightFactory : IFactory
+    public class TriangleRightFactory : AFactory
     {
-        public AFigure Create(Point start, Point end)
+        public TriangleRightFactory()
         {
-            TriangleRight triangle = new TriangleRight();
-            triangle._startPoint = start;
-            triangle._endPoint = end;
-            return triangle;
+            figure = new TriangleRight();
         }
     }
 }

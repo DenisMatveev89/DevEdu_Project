@@ -11,10 +11,9 @@ namespace DevEdu_project.Figure
 {
     public class Pencil : AFigure //Карандаш
     {
-        PencilPoints pencilPoints = new PencilPoints();
         public Pencil()
         {
-            getPoints = pencilPoints;
+            getPoints = new PencilPoints();
         } 
                
     }

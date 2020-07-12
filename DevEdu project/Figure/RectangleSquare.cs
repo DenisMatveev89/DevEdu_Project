@@ -9,9 +9,9 @@ using DevEdu_project.GetPoints;
 
 namespace DevEdu_project
 {
-    public class RectangleSquar : AFigure //Квадрат
+    public class RectangleSquare : AFigure //Квадрат
     {
-        public RectangleSquar()
+        public RectangleSquare()
         {
             fill = new Brush.RectSquareFill();
             getPoints = new RectSquarePoints();

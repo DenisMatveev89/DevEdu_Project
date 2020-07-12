@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Factory
 {
-    public class SquareFactory : IFactory
+    public class SquareFactory : AFactory
     {
-        public AFigure Create(Point start, Point end)
+        public SquareFactory()
         {
-            RectangleSquar square = new RectangleSquar();
-            square._startPoint = start;
-            square._endPoint = end;
-            return square;
+            figure = new RectangleSquare();
         }
     }
 }

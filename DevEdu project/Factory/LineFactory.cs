@@ -8,14 +8,11 @@ using DevEdu_project.Figure;
 
 namespace DevEdu_project.Factory
 {
-    public class LineFactory : IFactory
+    public class LineFactory : AFactory
     {
-        public AFigure Create(Point start, Point end)
+        public LineFactory()
         {
-            StraightLine line = new StraightLine();
-            line._startPoint = start;
-            line._endPoint = end;
-            return line;
+            figure = new StraightLine();
         }
     }
 }

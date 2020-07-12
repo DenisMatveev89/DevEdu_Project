@@ -63,6 +63,7 @@
     <Compile Include="Factory\PencilFactory.cs" />
     <Compile Include="Factory\RectangleFactory.cs" />
     <Compile Include="Factory\SquareFactory.cs" />
+    <Compile Include="Factory\TriangleArbitrary.cs" />
     <Compile Include="Factory\TriangleEquilateralFactory.cs" />
     <Compile Include="Factory\TriangleRightFactory.cs" />
     <Compile Include="Factory\TriangleIsoscelesFactory.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Figure\AFigure.cs" />
     <Compile Include="Figure\Circle.cs" />
     <Compile Include="Figure\Ellipse.cs" />
+    <Compile Include="Figure\TriangleArbitrary.cs" />
     <Compile Include="Figure\TriangleIsosceles.cs" />
     <Compile Include="Figure\Pencil.cs" />
     <Compile Include="Figure\Rectangle.cs" />
@@ -92,7 +94,7 @@
     </Compile>
     <Compile Include="Factory\CircleFactory.cs" />
     <Compile Include="Factory\EllipseFactory.cs" />
-    <Compile Include="Factory\IFactory.cs" />
+    <Compile Include="Factory\AFactory.cs" />
     <Compile Include="Factory\LineFactory.cs" />
     <Compile Include="GetPoints\CirclePoints.cs" />
     <Compile Include="GetPoints\ConnectPoints.cs" />
@@ -110,6 +112,7 @@
     <Compile Include="Figure\RectangleSquare.cs" />
     <Compile Include="Dialog.cs" />
     <Compile Include="BitmapSingletone.cs" />
+    <Compile Include="Storage.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
