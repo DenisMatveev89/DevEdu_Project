@@ -12,7 +12,7 @@ namespace DevEdu_project.Figure
     public class StraightLinePoints : IGetPoints //Линия
     {
         ConnectPoints cp = new ConnectPoints();
-        public List<Point> GetPoints(Point startPoint, Point endPoint, double opt, double opt2)
+        public List<Point> GetPoints(Point startPoint, Point endPoint)
         {
             return cp.ConnectTwoPoints(startPoint, endPoint);
         }

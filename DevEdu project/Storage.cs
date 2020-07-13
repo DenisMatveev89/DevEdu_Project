@@ -16,5 +16,18 @@ namespace DevEdu_project
             figureList.Add(figure);
             return figureList;
         }
+
+        public AFigure figureUnderMouse(Point mouse)
+        {
+            AFigure figure = null;
+            foreach(AFigure i in figureList)
+            {
+                if (i.isMouseOnFigure(mouse))
+                {
+                    figure = i;
+                }
+            }
+            return figure;
+        }
     }
 }

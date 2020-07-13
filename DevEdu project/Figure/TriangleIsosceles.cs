@@ -16,5 +16,11 @@ namespace DevEdu_project.Figure
             fill = new Brush.TriangleIsoFill();
             getPoints = new TriangleIsoPoints();
         }
+
+        public override bool isMouseOnFigure(Point mouse)
+        {
+            bool check = false;
+            return check;
+        }
     }
 }

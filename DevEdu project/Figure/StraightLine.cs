@@ -15,5 +15,17 @@ namespace DevEdu_project.Figure
             fill = new Brush.EmptyFill();
             getPoints = new StraightLinePoints();
         }
+
+        public override bool isMouseOnFigure(Point mouse)
+        {
+            bool check = false;
+            List<Point> line = base.GetPoints();
+            foreach (Point i in line)
+            {
+                if (i == mouse)
+                    check = true;
+            }
+            return check;
+        }
     }
 }
