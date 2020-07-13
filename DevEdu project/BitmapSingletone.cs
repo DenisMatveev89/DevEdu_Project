@@ -106,7 +106,7 @@ namespace DevEdu_project
         public Bitmap EraseIndexFigure(List<AFigure> figure, AFigure currentFigure)
         {
             for (int i = 0; i < figure.Count; i++)
-            {                
+            {
                 if (figure[i] != currentFigure)
                 {
                     DrawFigure(figure[i]);
@@ -116,6 +116,13 @@ namespace DevEdu_project
                     figure.Remove(figure[i]);
                 }
             }
+            //for(int i = 0; i<figure.Count; i++)
+            //{
+            //    if(figure[i] == currentFigure)
+            //    {
+            //        figure.Remove(figure[i]);
+            //    }
+            //}
             return _tmpBitmap;
         }
 
