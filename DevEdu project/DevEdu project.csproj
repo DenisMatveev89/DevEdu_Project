@@ -63,7 +63,6 @@
     <Compile Include="Factory\PencilFactory.cs" />
     <Compile Include="Factory\RectangleFactory.cs" />
     <Compile Include="Factory\SquareFactory.cs" />
-    <Compile Include="Factory\TriangleArbitrary.cs" />
     <Compile Include="Factory\TriangleEquilateralFactory.cs" />
     <Compile Include="Factory\TriangleRightFactory.cs" />
     <Compile Include="Factory\TriangleIsoscelesFactory.cs" />
@@ -79,7 +78,6 @@
     <Compile Include="Figure\AFigure.cs" />
     <Compile Include="Figure\Circle.cs" />
     <Compile Include="Figure\Ellipse.cs" />
-    <Compile Include="Figure\TriangleArbitrary.cs" />
     <Compile Include="Figure\TriangleIsosceles.cs" />
     <Compile Include="Figure\Pencil.cs" />
     <Compile Include="Figure\Rectangle.cs" />

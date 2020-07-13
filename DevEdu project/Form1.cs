@@ -42,14 +42,14 @@ namespace DevEdu_project
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (factory is TriangleArbitrary)
+            /*if (factory is TriangleArbitrary)
             {
                 int count = 0;
                 while(count != 3)
                 {
 
                 }
-            }
+            }*/
         }
       
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -103,7 +103,7 @@ namespace DevEdu_project
 
         private void arbitraryTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             factory = new TriangleArbitrary();
+             //factory = new TriangleArbitrary();
         }
         
         private void isoscelesTriangleToolStripMenuItem_Click(object sender, EventArgs e)
