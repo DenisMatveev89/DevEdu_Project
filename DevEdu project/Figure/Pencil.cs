@@ -14,7 +14,19 @@ namespace DevEdu_project.Figure
         public Pencil()
         {
             getPoints = new PencilPoints();
-        } 
-               
+        }
+
+        public override bool isMouseOnFigure(Point mouse)
+        {
+            bool check = false;
+            List<Point> pencil = base.GetPoints();
+            foreach (Point i in pencil)
+            {
+                if (i == mouse)
+                    check = true;
+            }
+
+            return check;
+        }
     }
 }

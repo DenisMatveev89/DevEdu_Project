@@ -16,5 +16,11 @@ namespace DevEdu_project
             fill = new Brush.RectSquareFill();
             getPoints = new RectSquarePoints();
         }
+
+        public override bool isMouseOnFigure(Point mouse)
+        {
+            bool check = false;
+            return check;
+        }
     }
 }

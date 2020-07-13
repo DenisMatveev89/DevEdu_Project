@@ -13,11 +13,13 @@ namespace DevEdu_project
         //Временный и Основной битмап, на котором должны осуществляться все методы рисования
         public Bitmap _tmpBitmap;
         public Bitmap _bitmap;
+        public Bitmap _emptyBitmap;
 
         public void CreateBitmaps(int width, int height)
         {
             _bitmap = new Bitmap(width, height);
             _tmpBitmap = new Bitmap(width, height);
+            _emptyBitmap = new Bitmap(width, height);
         }
         private static BitmapSingletone _instance;
 
@@ -26,7 +28,6 @@ namespace DevEdu_project
             if (_instance == null)
             {
                 _instance = new BitmapSingletone();
-
             }
             return _instance;
         }
@@ -59,6 +60,12 @@ namespace DevEdu_project
             }
         }
 
+        public void Clear()
+        {
+            _tmpBitmap = (Bitmap)_emptyBitmap.Clone();    
+            _bitmap = (Bitmap)_emptyBitmap.Clone();
+        }
+
         //Метод, который принимает настроенную фигуру,
         //вызывает все ее точки и рисует каждую точку
         public Bitmap DrawFigure(AFigure figure)
@@ -80,8 +87,44 @@ namespace DevEdu_project
             {
                 DrawFigure(i);
             }
+            
             return _tmpBitmap;
-        }        
+        }
+
+        public Bitmap DrawIndexFigures(List<AFigure> figure, AFigure currentFigure)
+        {
+            foreach (AFigure i in figure)
+            {
+                if(i != currentFigure)
+                {
+                    DrawFigure(i);
+                }                
+            }
+            return _tmpBitmap;
+        }
+
+        public Bitmap EraseIndexFigure(List<AFigure> figure, AFigure currentFigure)
+        {
+            for (int i = 0; i < figure.Count; i++)
+            {
+                if (figure[i] != currentFigure)
+                {
+                    DrawFigure(figure[i]);
+                }
+                else
+                {
+                    figure.Remove(figure[i]);
+                }
+            }
+            //for(int i = 0; i<figure.Count; i++)
+            //{
+            //    if(figure[i] == currentFigure)
+            //    {
+            //        figure.Remove(figure[i]);
+            //    }
+            //}
+            return _tmpBitmap;
+        }
 
         // Старый метод, который проходится по листу от первой до последней точки
         // и рисует каждую точку на TmpBitmap

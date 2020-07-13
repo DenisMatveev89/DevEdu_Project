@@ -22,5 +22,8 @@ namespace DevEdu_project
         {
             return getPoints.GetPoints(_startPoint, _endPoint);
         }
+
+        public abstract bool isMouseOnFigure(Point mouse);
+        
     }
 }

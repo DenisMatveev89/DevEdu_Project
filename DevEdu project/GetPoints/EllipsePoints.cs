@@ -9,12 +9,12 @@ namespace DevEdu_project.GetPoints
 {
     public class EllipsePoints : IGetPoints
     {
-        public List<Point> GetPoints(Point start, Point end, double RX, double RY)
+        public List<Point> GetPoints(Point start, Point end)
         {
             List<Point> ellipse = new List<Point>();
 
-            //double RX = Math.Sqrt(Math.Pow((end.X - start.X), 2));
-            //double RY = Math.Sqrt(Math.Pow((end.Y - start.Y), 2));
+            double RX = Math.Sqrt(Math.Pow((end.X - start.X), 2));
+            double RY = Math.Sqrt(Math.Pow((end.Y - start.Y), 2));
 
             int centerX = start.X;
             int centerY = start.Y;

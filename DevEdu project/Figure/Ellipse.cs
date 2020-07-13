@@ -20,8 +20,13 @@ namespace DevEdu_project
 
         public override List<Point> GetPoints()
         {
-            return getPoints.GetPoints(_startPoint, _endPoint, RX, RY);
+            return getPoints.GetPoints(_startPoint, _endPoint);
         }
 
+        public override bool isMouseOnFigure(Point mouse)
+        {
+            bool check = false;
+            return check;
+        }
     }
 }

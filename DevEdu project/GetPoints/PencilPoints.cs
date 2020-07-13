@@ -11,7 +11,7 @@ namespace DevEdu_project.GetPoints
         Point start = new Point(0, 0);
         Point end = new Point(0, 0);
 
-        public List<Point> GetPoints(Point startPoint, Point endPoint, double o, double o2)
+        public List<Point> GetPoints(Point startPoint, Point endPoint)
         {
             //Этим условием мы правильно задаем начальную точку и все последующие точки карандаша
             if (start == new Point(0, 0))

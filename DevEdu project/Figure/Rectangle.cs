@@ -15,5 +15,11 @@ namespace DevEdu_project
         {
             getPoints = new RectanglePoints();
         }
+
+        public override bool isMouseOnFigure(Point mouse)
+        {
+            bool check = false;
+            return check;
+        }
     }
 }

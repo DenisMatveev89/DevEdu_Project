@@ -9,7 +9,7 @@ namespace DevEdu_project.GetPoints
         //double optional - переменные, которые нужны для круга и эллипса, через них передается радиус
         //поэтому они необязательные для всех фигур
         //радиус можно было бы считать внутри GetPoints, но это не оптимально с точки зрения производительности
-        List<Point> GetPoints(Point start, Point end, double optional = 0, double optional2 = 0);
+        List<Point> GetPoints(Point start, Point end);
         
     }
 

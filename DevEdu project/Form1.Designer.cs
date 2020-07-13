@@ -135,7 +135,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(34, 556);
+            this.toolStrip1.Size = new System.Drawing.Size(35, 686);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -145,7 +145,7 @@
             this.PencilButton.Image = ((System.Drawing.Image)(resources.GetObject("PencilButton.Image")));
             this.PencilButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PencilButton.Name = "PencilButton";
-            this.PencilButton.Size = new System.Drawing.Size(31, 24);
+            this.PencilButton.Size = new System.Drawing.Size(32, 24);
             this.PencilButton.Text = "Pencil";
             this.PencilButton.ToolTipText = "карандаш";
             this.PencilButton.Click += new System.EventHandler(this.Pencil_Click);
@@ -300,6 +300,7 @@
             this.AngleButton.Name = "AngleButton";
             this.AngleButton.Size = new System.Drawing.Size(31, 24);
             this.AngleButton.Text = "Angle Modify";
+            this.AngleButton.Click += new System.EventHandler(this.AngleButton_Click);
             // 
             // toolStrip2
             // 
@@ -311,9 +312,9 @@
             this.toolStripButton7,
             this.toolStripButton8,
             this.toolStripButton9});
-            this.toolStrip2.Location = new System.Drawing.Point(34, 24);
+            this.toolStrip2.Location = new System.Drawing.Point(35, 28);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1036, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(1392, 25);
             this.toolStrip2.TabIndex = 9;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -376,7 +377,8 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox1.Location = new System.Drawing.Point(34, 52);
+            this.pictureBox1.Location = new System.Drawing.Point(45, 64);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1038, 534);
             this.pictureBox1.TabIndex = 0;
@@ -396,6 +398,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1088, 624);
             this.MinimumSize = new System.Drawing.Size(399, 199);
