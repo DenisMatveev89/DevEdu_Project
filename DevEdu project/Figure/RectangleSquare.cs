@@ -20,7 +20,11 @@ namespace DevEdu_project
         public override bool isMouseOnFigure(Point mouse)
         {
             bool check = false;
-            return check;
+            Point node1 = _startPoint, node2 = _endPoint;
+            if (node1.X <= mouse.X && node1.Y <= mouse.Y && node2.X >= mouse.X && node2.Y >= mouse.Y)
+                return check = true;
+            else
+                return check;
         }
     }
 }

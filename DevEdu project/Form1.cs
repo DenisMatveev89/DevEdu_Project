@@ -47,14 +47,31 @@ namespace DevEdu_project
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            /*if (factory is TriangleArbitrary)
+            if (figureMoveTool)
             {
-                int count = 0;
-                while(count != 3)
+                _movingFigure = null;
+                _movingFigure = storage.figureUnderMouse(e.Location);
+                if (_movingFigure != null)
                 {
-
+                    pictureBox1.Image = null;
+                    sBitmap.Clear();
+                    pictureBox1.Image = sBitmap.DrawIndexFigures(storage.figureList, _movingFigure);
+                    sBitmap.Update();
                 }
-            }*/
+            }
+            else if (eraserTool)
+            {
+                _movingFigure = null;
+                _movingFigure = storage.figureUnderMouse(e.Location);
+                if (_movingFigure != null)
+                {
+                    pictureBox1.Image = null;
+                    sBitmap.Clear();
+                    sBitmap.Copy();
+                    pictureBox1.Image = sBitmap.EraseIndexFigure(storage.figureList, _movingFigure);
+                    sBitmap.Update();
+                }
+            }
         }
       
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -264,35 +281,6 @@ namespace DevEdu_project
         {
             figureMoveTool = true;
             eraserTool = false;
-        }
-
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (figureMoveTool)
-            {
-                _movingFigure = null;
-                _movingFigure = storage.figureUnderMouse(e.Location);
-                if (_movingFigure != null)
-                {
-                    pictureBox1.Image = null;
-                    sBitmap.Clear();
-                    pictureBox1.Image = sBitmap.DrawIndexFigures(storage.figureList, _movingFigure);
-                    sBitmap.Update();
-                }
-            }
-            else if (eraserTool)
-            {
-                _movingFigure = null;
-                _movingFigure = storage.figureUnderMouse(e.Location);
-                if (_movingFigure != null)
-                {
-                    pictureBox1.Image = null;
-                    sBitmap.Clear();
-                    sBitmap.Copy();
-                    pictureBox1.Image = sBitmap.EraseIndexFigure(storage.figureList, _movingFigure);
-                    sBitmap.Update();
-                }
-            }
         }
     }
 }
