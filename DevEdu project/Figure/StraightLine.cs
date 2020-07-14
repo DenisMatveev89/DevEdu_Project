@@ -19,13 +19,22 @@ namespace DevEdu_project.Figure
         public override bool isMouseOnFigure(Point mouse)
         {
             bool check = false;
-            List<Point> line = base.GetPoints();
-            foreach (Point i in line)
+            Point node1 = _startPoint;
+            Point node2 = _endPoint;
+            int vectorEquation = (node1.X - mouse.X) * (node2.Y - node1.Y) - (node2.X - node1.X) * (node1.Y - mouse.Y);
+            if (vectorEquation == 0)
             {
-                if (i == mouse)
-                    check = true;
+                check = true;
             }
             return check;
+
+            //List<Point> line = base.GetPoints();
+            //foreach (Point i in line)
+            //{
+            //    if (i == mouse)
+            //        check = true;
+            //}
+            //return check;
         }
     }
 }
