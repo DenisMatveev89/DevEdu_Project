@@ -36,7 +36,7 @@ namespace DevEdu_project
         Point _currentPoint;
         Point _prevPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-        
+
 
         public BetterThanPhotoshop()
         {
@@ -50,31 +50,23 @@ namespace DevEdu_project
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (figureMoveTool)
+            _movingFigure = sBitmap.figureUnderMouse(e.Location);
+            if (_movingFigure != null)
             {
-                _movingFigure = null;
-                _movingFigure = storage.figureUnderMouse(e.Location);
+                pictureBox1.Image = null;
+                sBitmap.Clear();
+                pictureBox1.Image = sBitmap.DrawIndexFigures(_movingFigure);
+                sBitmap.Update();
+            }
+            if (eraserTool==true)
+            {
+            _movingFigure = sBitmap.figureUnderMouse(e.Location);
                 if (_movingFigure != null)
                 {
-                    pictureBox1.Image = null;
-                    sBitmap.Clear();
-                    pictureBox1.Image = sBitmap.DrawIndexFigures(storage.figureList, _movingFigure);
-                    sBitmap.Update();
+                     pictureBox1.Image = sBitmap.EraseIndexFigure(_movingFigure);
                 }
-            }
-            if (eraserTool)
-            {
-                _movingFigure = null;
-                _movingFigure = storage.figureUnderMouse(e.Location);
-                if (_movingFigure != null)
-                {
-                    pictureBox1.Image = null;
-                    sBitmap.Clear();
-                    sBitmap.Copy();
-                    pictureBox1.Image = sBitmap.EraseIndexFigure(storage.figureList, _movingFigure);
-                    sBitmap.Update();
-                }
-            }
+             }
+            sBitmap.Update();
         }
       
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -297,34 +289,6 @@ namespace DevEdu_project
             figureMoveTool = true;
             eraserTool = false;
             _factory = null;
-        }
-
-        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
-        {
-            _movingFigure = null;
-
-            if (figureMoveTool)
-            {                
-                _movingFigure = sBitmap.figureUnderMouse(e.Location);
-                if (_movingFigure != null)
-                {
-                    pictureBox1.Image = null;
-                    sBitmap.Clear();
-                    pictureBox1.Image = sBitmap.DrawIndexFigures(_movingFigure);
-                    sBitmap.Update();
-                }
-            }
-            else if (eraserTool)
-            {
-                _movingFigure = sBitmap.figureUnderMouse(e.Location);
-                if (_movingFigure != null)
-                {
-                    sBitmap.Clear();
-                    pictureBox1.Image = sBitmap.EraseIndexFigure(_movingFigure);
-                }
-                
-            }
-            sBitmap.Update();            
         }
 
         private void FillColorButton_Click(object sender, EventArgs e)
