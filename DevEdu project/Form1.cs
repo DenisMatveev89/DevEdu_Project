@@ -109,62 +109,74 @@ namespace DevEdu_project
         {
             _factory = new PencilFactory();
             eraserTool = false;
+            figureMoveTool = false;
         }
 
         private void LineButton_Click(object sender, EventArgs e)
         {
             _factory = new LineFactory();
             eraserTool = false;
+            figureMoveTool = false;
         }
         private void squareToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _factory = new SquareFactory();
             eraserTool = false;
+            figureMoveTool = false;
         }
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _factory = new RectangleFactory();
             eraserTool = false;
+            figureMoveTool = false;
         }
 
         private void arbitraryTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //произвольный треугольник по трем точкам
+            eraserTool = false;
+            figureMoveTool = false;
         }
 
         private void isoscelesTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _factory = new TriangleIsoscelesFactory(); //равнобедренный треугольник по одной из граней
             eraserTool = false;
+            figureMoveTool = false;
         }
 
         private void rightTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _factory = new TriangleRightFactory(); //прямоугольный треугольник по гипотенузе
             eraserTool = false;
+            figureMoveTool = false;
         }
 
         private void equilateralTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _factory = new TriangleEquilateralFactory(); //равносторонний треугольник по одной стороне
             eraserTool = false;
+            figureMoveTool = false;
         }
         private void EllipseButton_Click_1(object sender, EventArgs e)
         {
             _factory = new EllipseFactory();
             eraserTool = false;
+            figureMoveTool = false;
         }
 
         private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _factory = new EllipseFactory();
             eraserTool = false;
+            figureMoveTool = false;
         }
 
         private void circleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _factory = new CircleFactory();
             eraserTool = false;
+            figureMoveTool = false;
         }
         #endregion
 
@@ -272,6 +284,7 @@ namespace DevEdu_project
         private void EraserButton_Click(object sender, EventArgs e)
         {
             eraserTool = true;
+            figureMoveTool = false;
 
             //Вызов метода, который возвращает все фигуры, сохраненные в листе
             //pictureBox1.Image = sBitmap.DrawAllFigures(storage.figureList);
