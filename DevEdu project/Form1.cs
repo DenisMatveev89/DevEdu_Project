@@ -286,10 +286,6 @@ namespace DevEdu_project
         {
             eraserTool = true;
             figureMoveTool = false;
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
             //Вызов метода, который возвращает все фигуры, сохраненные в листе
             //pictureBox1.Image = sBitmap.DrawAllFigures(storage.figureList);
         }
