@@ -23,7 +23,7 @@ namespace DevEdu_project.Figure
             return cp.ConnectTwoPoints(_startPoint, _endPoint);
         }
 
-        public override bool isMouseOnFigure(Point mouse)
+        public override bool IsMouseOnFigure(Point mouse)
         {
             bool check = false;
 

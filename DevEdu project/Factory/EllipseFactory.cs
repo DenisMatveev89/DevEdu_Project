@@ -9,7 +9,6 @@ namespace DevEdu_project.Factory
 {
     public class EllipseFactory : AFactory
     {
-        public override AFigure Create(Point start, Point end, Color colorLine, Color fillColor)
         public EllipseFactory()
         {
             figure = new Ellipse();
@@ -20,7 +19,7 @@ namespace DevEdu_project.Factory
             figure = new Ellipse();
         }
 
-        public override AFigure Create(Point start, Point end, Color colorLine)
+        public override AFigure Create(Point start, Point end, Color colorLine, Color fillColor)
         {
             Ellipse ellipse = new Ellipse();
             figure = ellipse;

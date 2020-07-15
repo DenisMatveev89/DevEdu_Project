@@ -32,7 +32,7 @@ namespace DevEdu_project
             return listPoints;
         }
 
-        public override bool isMouseOnFigure(Point mouse)
+        public override bool IsMouseOnFigure(Point mouse)
         {
             bool check = false;
             Point node1 = _startPoint, node2 = _endPoint;

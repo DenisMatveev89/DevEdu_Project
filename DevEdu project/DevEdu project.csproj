@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Brush\FullFill.cs" />
+    <Compile Include="Brush\TriangleRightFill.cs" />
     <Compile Include="Factory\PencilFactory.cs" />
     <Compile Include="Factory\RectangleFactory.cs" />
     <Compile Include="Factory\SquareFactory.cs" />

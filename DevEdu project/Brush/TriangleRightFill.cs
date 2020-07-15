@@ -18,19 +18,19 @@ namespace DevEdu_project.Brush
             Point left = new Point(mouse.X, mouse.Y);
             Point right = new Point(mouse.X, mouse.Y);
 
-            while(sBitmap._tmpBitmap.GetPixel(left.X-1, left.Y) == beginColor)
+            while (sBitmap._tmpBitmap.GetPixel(left.X - 1, left.Y) == beginColor)
             {
                 left.X--;
             }
             while (sBitmap._tmpBitmap.GetPixel(right.X + 1, right.Y) == beginColor)
             {
-               right.X++;
+                right.X++;
             }
 
             List<Point> linePoints = cp.ConnectTwoPoints(left, right);
             sBitmap.Draw(linePoints, fillColor);
 
-            for(int i = left.X; i <= right.X; i++)
+            for (int i = left.X; i <= right.X; i++)
             {
                 if (sBitmap._tmpBitmap.GetPixel(i, mouse.Y + 1) == beginColor)
                 {
@@ -44,32 +44,7 @@ namespace DevEdu_project.Brush
                 }
             }
 
-
-           
-
-
-
-            //    if(!IsEmpty(currentColor, mouseX, mouseY))
-            //    {
-            //        return;
-            //    }
-            //    sBitmap.SetPixel(mouseX, mouseY, fillColor);
-            //    Fill(currentColor, fillColor, mouseX - 1, mouseY);
-            //    Fill(currentColor, fillColor, mouseX + 1, mouseY);
-            //    Fill(currentColor, fillColor, mouseX, mouseY - 1);
-            //    Fill(currentColor, fillColor, mouseX, mouseY + 1);
-            //}
-
-            //public bool IsEmpty(Color currentColor, int mouseX, int mouseY)
-            //{
-            //    Color currentPxColor = sBitmap.ColorSelectPoint(mouseX, mouseY);
-            //    if (currentColor != currentPxColor)//Ошибка тут
-            //    {
-            //        return false;
-            //    }
-            //    return (sBitmap.ColorSelectPoint(mouseX, mouseY) == currentColor);
-
+            
         }
-        
     }
 }

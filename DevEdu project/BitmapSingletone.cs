@@ -23,7 +23,7 @@ namespace DevEdu_project
             AFigure figure = null;
             foreach (AFigure i in _figureList)
             {
-                if (i.isMouseOnFigure(mouse))
+                if (i.IsMouseOnFigure(mouse))
                 {
                     figure = i;
                 }
@@ -131,17 +131,8 @@ namespace DevEdu_project
 
         public Bitmap EraseIndexFigure(AFigure currentFigure)
         {
-            for (int i = 0; i < figure.Count; i++) 
-            {
-                if (figure[i] != currentFigure)
-                {
-                    DrawFigure(figure[i]);
-                }
-                else
-                {
-                    figure.Remove(figure[i]);
-                }
-            }
+            _figureList.Remove(currentFigure);
+            DrawAllFigures();
             return _tmpBitmap;
         }
 

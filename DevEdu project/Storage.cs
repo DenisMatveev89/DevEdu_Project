@@ -27,7 +27,7 @@ namespace DevEdu_project
             AFigure figure = null;
             foreach(AFigure i in figureList)
             {
-                if (i.isMouseOnFigure(mouse))
+                if (i.IsMouseOnFigure(mouse))
                 {
                     figure = i;
                 }

@@ -85,7 +85,7 @@ namespace DevEdu_project
             return ellipse;
         }
 
-        public override bool isMouseOnFigure(Point mouse)
+        public override bool IsMouseOnFigure(Point mouse)
         {
             bool check = false;
 

@@ -55,7 +55,7 @@ namespace DevEdu_project
             return circle;
         }
 
-        public override bool isMouseOnFigure(Point mouse)
+        public override bool IsMouseOnFigure(Point mouse)
         {
             bool check = false;
 
@@ -63,8 +63,7 @@ namespace DevEdu_project
             {
                 check = true;
             }
-            
             return check;
-        }
+        }   
     }
 }

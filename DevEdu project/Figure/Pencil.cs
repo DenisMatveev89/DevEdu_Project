@@ -63,7 +63,7 @@ namespace DevEdu_project.Figure
             return linePoints;
         }
 
-        public override bool isMouseOnFigure(Point mouse)
+        public override bool IsMouseOnFigure(Point mouse)
         {
             bool check = false;
             List<Point> pencil = GetPoints();

@@ -31,7 +31,7 @@ namespace DevEdu_project.Figure
             return listPoint;
         }
 
-        public override bool isMouseOnFigure(Point mouse)
+        public override bool IsMouseOnFigure(Point mouse)
         {
             bool check = false;
             Point node1 = _startPoint;
@@ -52,10 +52,6 @@ namespace DevEdu_project.Figure
                 check = true;
             }
             else if (vectorEquation1 == 0 || vectorEquation2 == 0 || vectorEquation3 == 0)
-            {
-                check = true;
-            }
-            else if (vectorEquation1 < 0 && vectorEquation2 < 0 && vectorEquation3 < 0)
             {
                 check = true;
             }

@@ -36,7 +36,7 @@ namespace DevEdu_project.Figure
             return listPoint;
         }
 
-        public override bool isMouseOnFigure(Point mouse)
+        public override bool IsMouseOnFigure(Point mouse)
         {
             bool check = false;
             double angleRadian = 60 * Math.PI / 180;

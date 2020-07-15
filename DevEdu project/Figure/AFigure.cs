@@ -1,4 +1,5 @@
-﻿using DevEdu_project.GetPoints;
+﻿using DevEdu_project.Brush;
+using DevEdu_project.GetPoints;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,9 +11,6 @@ namespace DevEdu_project
         //_startPoint, _endPoint, _colorLine:
         //обязательные поля для каждого класса, который унаследует IFigure
 
-        protected IGetPoints getPoints;
-        protected Brush.IBrush fill;
-
         public Point _startPoint;
         public Point _endPoint;
         public Color _colorLine;
@@ -21,15 +19,13 @@ namespace DevEdu_project
         protected IBrush fill;
 
         public abstract List<Point> GetPoints();
-        public abstract bool isMouseOnFigure(Point mouse);
+        public abstract bool IsMouseOnFigure(Point mouse);
 
         public virtual void Fill(Point mouse, Color fillColor)
         {
             _fillColor = fillColor;
             fill.Fill(mouse, fillColor);
         }
-
-        public abstract bool isMouseOnFigure(Point mouse);
         
     }
 }

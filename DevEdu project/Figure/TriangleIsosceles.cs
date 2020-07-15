@@ -33,7 +33,7 @@ namespace DevEdu_project.Figure
         }
 
 
-        public override bool isMouseOnFigure(Point mouse)
+        public override bool IsMouseOnFigure(Point mouse)
         {
             bool check = false;
             Point node1 = _startPoint;

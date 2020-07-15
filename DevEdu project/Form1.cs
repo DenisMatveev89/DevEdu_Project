@@ -20,7 +20,7 @@ namespace DevEdu_project
         //Объявляем интерфейс AFigure
         AFigure _figure = new Pencil();
         AFigure _currentFigure;
-        AFigure _movingFigure;
+        AFigure _onFigure;
         AFigure _fillFigure;
         //Диалоговые окошки
         Dialog dialog = new Dialog();
@@ -32,10 +32,9 @@ namespace DevEdu_project
         bool figureMoveTool = false;
         bool eraserTool = false;
         bool fillTool = false;
-        Color _fillColor = Color.Transparent;
+        Color _fillColor = Color.Red;
 
         Color _currentColor = Color.Black;
-        Color _fillColor = Color.White;
         private bool mousePress;
         Point _currentPoint;
         Point _prevPoint;
@@ -54,31 +53,31 @@ namespace DevEdu_project
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (figureMoveTool)
+            _onFigure = null;
+            if (fillTool)
             {
-                _movingFigure = null;
-                _movingFigure = storage.figureUnderMouse(e.Location);
-                if (_movingFigure != null)
+                _fillFigure = null;
+                _fillFigure = storage.figureUnderMouse(e.Location);
+                //Color currentPxColor = sBitmap.ColorSelectPoint(e.X, e.Y);
+                if (_fillFigure != null)
                 {
-                    pictureBox1.Image = null;
-                    sBitmap.Clear();
-                    pictureBox1.Image = sBitmap.DrawIndexFigures(storage.figureList, _movingFigure);
-                    sBitmap.Update();
-                }
-            }
-            else if (eraserTool)
-            {
-                _movingFigure = null;
-                _movingFigure = storage.figureUnderMouse(e.Location);
-                if (_movingFigure != null)
-                {
-                    pictureBox1.Image = null;
-                    sBitmap.Clear();
                     sBitmap.Copy();
-                    pictureBox1.Image = sBitmap.EraseIndexFigure(storage.figureList, _movingFigure);
+                    _figure.Fill(e.Location, Color.Red);
+                    pictureBox1.Image = sBitmap._tmpBitmap;
                     sBitmap.Update();
                 }
             }
+            if (eraserTool)
+            {
+                if (_currentFigure != null)
+                {
+                    _onFigure = sBitmap.figureUnderMouse(e.Location);
+                    sBitmap.Clear();
+                    pictureBox1.Image = sBitmap.EraseIndexFigure(_onFigure);
+                }
+                
+            }
+            sBitmap.Update();
         }
       
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -311,8 +310,9 @@ namespace DevEdu_project
         {
           
             eraserTool = true;
-            _factory = null;
             figureMoveTool = false;
+            fillTool = false;
+            _factory = null;
 
             //Вызов метода, который возвращает все фигуры, сохраненные в листе
             //pictureBox1.Image = sBitmap.DrawAllFigures(storage.figureList);
@@ -322,6 +322,19 @@ namespace DevEdu_project
         {
             figureMoveTool = true;
             eraserTool = false;
+            fillTool = false;
+        }
+
+        private void FillColorButton_Click(object sender, EventArgs e)
+        {
+            fillTool = true;
+            eraserTool = false;
+            figureMoveTool = false;
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.Black;
         }
     }
 }
