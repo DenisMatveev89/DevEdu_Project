@@ -1,10 +1,7 @@
-﻿using DevEdu_project.Figure;
-using DevEdu_project.GetPoints;
-using DevEdu_project.LineWidth;
+﻿using DevEdu_project.GetPoints;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using DevEdu_project.Brush;
 
 namespace DevEdu_project
 {
@@ -12,6 +9,10 @@ namespace DevEdu_project
     {
         //_startPoint, _endPoint, _colorLine:
         //обязательные поля для каждого класса, который унаследует IFigure
+
+        protected IGetPoints getPoints;
+        protected Brush.IBrush fill;
+
         public Point _startPoint;
         public Point _endPoint;
         public Color _colorLine;
@@ -28,7 +29,7 @@ namespace DevEdu_project
             fill.Fill(mouse, fillColor);
         }
 
-
-
+        public abstract bool isMouseOnFigure(Point mouse);
+        
     }
 }

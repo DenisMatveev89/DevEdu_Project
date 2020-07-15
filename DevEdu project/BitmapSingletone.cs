@@ -53,7 +53,12 @@ namespace DevEdu_project
             }
             return _instance;
         }
-
+        //Определяем цвет пикселя на который нажили в MouseClick
+        public Color ColorSelectPoint(int mouseX,int mouseY)
+        {
+            Color pixelColor = _bitmap.GetPixel(mouseX, mouseY);
+            return pixelColor;
+        }
         //Наш собственный метод SetPixel, благодаря которому не возникает ошибки при выходе за границы холста
         //Обратите внимание, он рисует на TmpBitmap
         public void SetPixel(int x, int y, Color color)
@@ -72,7 +77,7 @@ namespace DevEdu_project
                 _tmpBitmap = (Bitmap)_bitmap.Clone();
             }
         }
-
+        
         //Метод, который заменяет Bitmap на TmpBitmap
         public void Update()
         {
@@ -126,8 +131,17 @@ namespace DevEdu_project
 
         public Bitmap EraseIndexFigure(AFigure currentFigure)
         {
-            _figureList.Remove(currentFigure);
-            DrawAllFigures();
+            for (int i = 0; i < figure.Count; i++) 
+            {
+                if (figure[i] != currentFigure)
+                {
+                    DrawFigure(figure[i]);
+                }
+                else
+                {
+                    figure.Remove(figure[i]);
+                }
+            }
             return _tmpBitmap;
         }
 

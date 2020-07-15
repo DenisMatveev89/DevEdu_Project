@@ -17,11 +17,13 @@ namespace DevEdu_project.Factory
 
         //Базовый метод, который задает настройки, одинаковые для большинства фигур
         //При этом параметр virtual позволяет изменять реализацию метода в классах-наследниках
-        public virtual AFigure Create(Point start, Point end, Color colorLine)
+        public virtual AFigure Create(Point start, Point end, Color colorLine, Color fillColor)
         {
             figure._startPoint = start;
             figure._endPoint = end;
             figure._colorLine = colorLine;
+            figure._fillColor = fillColor;
+
             return figure;
         }
     }

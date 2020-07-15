@@ -9,6 +9,7 @@ namespace DevEdu_project.Factory
 {
     public class CircleFactory : AFactory
     {
+        public override AFigure Create(Point start, Point end, Color colorLine, Color fillColor)
         public CircleFactory()
         {
             figure = new Circle();
@@ -22,6 +23,8 @@ namespace DevEdu_project.Factory
         public override AFigure Create(Point start, Point end, Color colorLine)
         {
             Circle circle = new Circle();
+            figure = circle;
+            base.Create(start, end, colorLine, fillColor);     
             circle._startPoint = start;
             circle._endPoint = end;
             circle._colorLine = colorLine;
