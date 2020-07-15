@@ -7,6 +7,7 @@ using System.Net;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using Color = System.Drawing.Color;
+
 using DevEdu_project.Factory;
 using System.Threading;
 
@@ -20,6 +21,7 @@ namespace DevEdu_project
         AFigure _figure;
         AFigure _currentFigure;
         AFigure _movingFigure;
+        AFigure _fillFigure;
         //Диалоговые окошки
         Dialog dialog = new Dialog();
 
@@ -27,8 +29,10 @@ namespace DevEdu_project
 
         bool figureMoveTool = false;
         bool eraserTool = false;
+        bool fillTool = false;
 
         Color _currentColor = Color.Black;
+        Color _fillColor = Color.White;
         private bool mousePress;
         Point _currentPoint;
         Point _prevPoint;
@@ -50,6 +54,7 @@ namespace DevEdu_project
             if (figureMoveTool)
             {
                 _movingFigure = null;
+
                 _movingFigure = storage.figureUnderMouse(e.Location);
                 if (_movingFigure != null)
                 {
@@ -61,14 +66,30 @@ namespace DevEdu_project
             }
             else if (eraserTool)
             {
+                _factory = null;
                 _movingFigure = null;
                 _movingFigure = storage.figureUnderMouse(e.Location);
                 if (_movingFigure != null)
                 {
                     pictureBox1.Image = null;
                     sBitmap.Clear();
+                    //sBitmap._bitmap = null;
+                    //sBitmap._tmpBitmap = null;               
                     sBitmap.Copy();
                     pictureBox1.Image = sBitmap.EraseIndexFigure(storage.figureList, _movingFigure);
+                    sBitmap.Update();
+                }
+            }
+            else if (fillTool)
+            {
+                _fillFigure = null;
+                _fillFigure = storage.figureUnderMouse(e.Location);
+                //Color currentPxColor = sBitmap.ColorSelectPoint(e.X, e.Y);
+                if (_fillFigure != null)
+                {
+                    sBitmap.Copy();
+                    _figure.Fill(e.Location, Color.Red);
+                    pictureBox1.Image = sBitmap._tmpBitmap;
                     sBitmap.Update();
                 }
             }
@@ -92,7 +113,7 @@ namespace DevEdu_project
                 _currentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
 
                 sBitmap.Copy();
-                _figure = _factory.Create(_prevPoint, _currentPoint, _currentColor);
+                _figure = _factory.Create(_prevPoint, _currentPoint, _currentColor, _fillColor);
                 pictureBox1.Image = sBitmap.DrawFigure(_figure);
             }
         }
@@ -110,6 +131,7 @@ namespace DevEdu_project
             _factory = new PencilFactory();
             eraserTool = false;
             figureMoveTool = false;
+            fillTool = false;
         }
 
         private void LineButton_Click(object sender, EventArgs e)
@@ -117,18 +139,21 @@ namespace DevEdu_project
             _factory = new LineFactory();
             eraserTool = false;
             figureMoveTool = false;
+            fillTool = false;
         }
         private void squareToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _factory = new SquareFactory();
             eraserTool = false;
             figureMoveTool = false;
+            fillTool = false;
         }
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             _factory = new RectangleFactory();
             eraserTool = false;
             figureMoveTool = false;
+            fillTool = false;
         }
 
         private void arbitraryTriangleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -136,6 +161,7 @@ namespace DevEdu_project
             //произвольный треугольник по трем точкам
             eraserTool = false;
             figureMoveTool = false;
+            fillTool = false;
         }
 
         private void isoscelesTriangleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -143,6 +169,7 @@ namespace DevEdu_project
             _factory = new TriangleIsoscelesFactory(); //равнобедренный треугольник по одной из граней
             eraserTool = false;
             figureMoveTool = false;
+            fillTool = false;
         }
 
         private void rightTriangleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -150,6 +177,7 @@ namespace DevEdu_project
             _factory = new TriangleRightFactory(); //прямоугольный треугольник по гипотенузе
             eraserTool = false;
             figureMoveTool = false;
+            fillTool = false;
         }
 
         private void equilateralTriangleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -157,26 +185,37 @@ namespace DevEdu_project
             _factory = new TriangleEquilateralFactory(); //равносторонний треугольник по одной стороне
             eraserTool = false;
             figureMoveTool = false;
+            fillTool = false;
         }
         private void EllipseButton_Click_1(object sender, EventArgs e)
         {
             _factory = new EllipseFactory();
             eraserTool = false;
             figureMoveTool = false;
+            fillTool = false;
         }
 
         private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _factory = new EllipseFactory();
+
             eraserTool = false;
             figureMoveTool = false;
+            if (eraserTool == false && figureMoveTool == false)
+            {
+                _factory = new EllipseFactory();
+            }
+            
+
+
         }
 
         private void circleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             _factory = new CircleFactory();
             eraserTool = false;
             figureMoveTool = false;
+            fillTool = false;
         }
         #endregion
 
@@ -283,8 +322,10 @@ namespace DevEdu_project
         //Потом cоздадим для этого другие кнопки
         private void EraserButton_Click(object sender, EventArgs e)
         {
+          
             eraserTool = true;
             figureMoveTool = false;
+            fillTool = false;
 
             //Вызов метода, который возвращает все фигуры, сохраненные в листе
             //pictureBox1.Image = sBitmap.DrawAllFigures(storage.figureList);
@@ -293,6 +334,14 @@ namespace DevEdu_project
         private void AngleButton_Click(object sender, EventArgs e)
         {
             figureMoveTool = true;
+            eraserTool = false;
+            fillTool = false;
+        }
+
+        private void FillColorButton_Click(object sender, EventArgs e)
+        {
+            fillTool = true;
+            figureMoveTool = false;
             eraserTool = false;
         }
     }

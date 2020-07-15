@@ -34,7 +34,11 @@ namespace DevEdu_project.Figure
             {
                 check = true;
             }
-            else if (vectorEquation1 ==0 || vectorEquation2 == 0 || vectorEquation3 == 0)
+            else if (vectorEquation1 == 0 || vectorEquation2 == 0 || vectorEquation3 == 0)
+            {
+                check = true;
+            }
+            else if (vectorEquation1 < 0 && vectorEquation2 < 0 && vectorEquation3 < 0)
             {
                 check = true;
             }

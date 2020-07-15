@@ -135,7 +135,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(35, 686);
+            this.toolStrip1.Size = new System.Drawing.Size(34, 556);
             this.toolStrip1.TabIndex = 8;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -145,7 +145,7 @@
             this.PencilButton.Image = ((System.Drawing.Image)(resources.GetObject("PencilButton.Image")));
             this.PencilButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PencilButton.Name = "PencilButton";
-            this.PencilButton.Size = new System.Drawing.Size(32, 24);
+            this.PencilButton.Size = new System.Drawing.Size(31, 24);
             this.PencilButton.Text = "Pencil";
             this.PencilButton.ToolTipText = "карандаш";
             this.PencilButton.Click += new System.EventHandler(this.Pencil_Click);
@@ -179,7 +179,7 @@
             // 
             this.ellipseToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.oval;
             this.ellipseToolStripMenuItem.Name = "ellipseToolStripMenuItem";
-            this.ellipseToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.ellipseToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.ellipseToolStripMenuItem.Text = "Ellipse";
             this.ellipseToolStripMenuItem.ToolTipText = "элипс";
             this.ellipseToolStripMenuItem.Click += new System.EventHandler(this.ellipseToolStripMenuItem_Click);
@@ -188,7 +188,7 @@
             // 
             this.circleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.circle;
             this.circleToolStripMenuItem.Name = "circleToolStripMenuItem";
-            this.circleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.circleToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.circleToolStripMenuItem.Text = "Circle";
             this.circleToolStripMenuItem.ToolTipText = "окружность";
             this.circleToolStripMenuItem.Click += new System.EventHandler(this.circleToolStripMenuItem_Click);
@@ -242,7 +242,7 @@
             // arbitraryTriangleToolStripMenuItem
             // 
             this.arbitraryTriangleToolStripMenuItem.Name = "arbitraryTriangleToolStripMenuItem";
-            this.arbitraryTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.arbitraryTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.arbitraryTriangleToolStripMenuItem.Text = "Arbitrary triangle";
             this.arbitraryTriangleToolStripMenuItem.ToolTipText = "произвольный треугольник по трем точкам";
             this.arbitraryTriangleToolStripMenuItem.Click += new System.EventHandler(this.arbitraryTriangleToolStripMenuItem_Click);
@@ -251,7 +251,7 @@
             // 
             this.isoscelesTriangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.img_2020_07_05_16_12_02;
             this.isoscelesTriangleToolStripMenuItem.Name = "isoscelesTriangleToolStripMenuItem";
-            this.isoscelesTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.isoscelesTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.isoscelesTriangleToolStripMenuItem.Text = "Isosceles triangle";
             this.isoscelesTriangleToolStripMenuItem.ToolTipText = "равнобедренный треугольник по одной из граней";
             this.isoscelesTriangleToolStripMenuItem.Click += new System.EventHandler(this.isoscelesTriangleToolStripMenuItem_Click);
@@ -260,7 +260,7 @@
             // 
             this.rightTriangleToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.play;
             this.rightTriangleToolStripMenuItem.Name = "rightTriangleToolStripMenuItem";
-            this.rightTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.rightTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.rightTriangleToolStripMenuItem.Text = "Right triangle";
             this.rightTriangleToolStripMenuItem.ToolTipText = "прямоугольный треугольник по гипотенузе";
             this.rightTriangleToolStripMenuItem.Click += new System.EventHandler(this.rightTriangleToolStripMenuItem_Click);
@@ -268,7 +268,7 @@
             // equilateralTriangleToolStripMenuItem
             // 
             this.equilateralTriangleToolStripMenuItem.Name = "equilateralTriangleToolStripMenuItem";
-            this.equilateralTriangleToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.equilateralTriangleToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.equilateralTriangleToolStripMenuItem.Text = "Equilateral triangle";
             this.equilateralTriangleToolStripMenuItem.ToolTipText = "равносторонний треугольник по одной стороне";
             this.equilateralTriangleToolStripMenuItem.Click += new System.EventHandler(this.equilateralTriangleToolStripMenuItem_Click);
@@ -281,6 +281,7 @@
             this.FillColorButton.Name = "FillColorButton";
             this.FillColorButton.Size = new System.Drawing.Size(31, 24);
             this.FillColorButton.Text = "Color";
+            this.FillColorButton.Click += new System.EventHandler(this.FillColorButton_Click);
             // 
             // EraserButton
             // 
@@ -312,9 +313,9 @@
             this.toolStripButton7,
             this.toolStripButton8,
             this.toolStripButton9});
-            this.toolStrip2.Location = new System.Drawing.Point(35, 28);
+            this.toolStrip2.Location = new System.Drawing.Point(34, 24);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(1392, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(1036, 25);
             this.toolStrip2.TabIndex = 9;
             this.toolStrip2.Text = "toolStrip2";
             // 
