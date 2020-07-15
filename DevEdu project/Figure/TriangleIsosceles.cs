@@ -13,7 +13,7 @@ namespace DevEdu_project.Figure
     {
         public TriangleIsosceles()
         {
-            fill = new Brush.TriangleIsoFill();
+            //fill = new Brush.TriangleIsoFill();
             getPoints = new TriangleIsoPoints();
         }
 

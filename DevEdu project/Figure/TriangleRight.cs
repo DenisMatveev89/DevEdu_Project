@@ -12,7 +12,7 @@ namespace DevEdu_project.Figure
     {
         public TriangleRight()
         {
-            fill = new Brush.TriangleRightFill();
+            //fill = new Brush.TriangleRightFill();
             getPoints = new TriangleRightPoints();
         }
 

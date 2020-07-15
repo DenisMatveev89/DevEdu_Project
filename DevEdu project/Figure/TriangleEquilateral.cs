@@ -13,7 +13,7 @@ namespace DevEdu_project.Figure
     {
         public TriangleEquilateral()
         {
-            fill = new Brush.TriangleEqFill();
+            //fill = new Brush.TriangleEqFill();
             getPoints = new TriangleEqPoints();
         }
 

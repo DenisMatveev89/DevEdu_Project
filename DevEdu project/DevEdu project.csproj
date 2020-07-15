@@ -60,21 +60,15 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Brush\FullFill.cs" />
     <Compile Include="Factory\PencilFactory.cs" />
     <Compile Include="Factory\RectangleFactory.cs" />
     <Compile Include="Factory\SquareFactory.cs" />
     <Compile Include="Factory\TriangleEquilateralFactory.cs" />
     <Compile Include="Factory\TriangleRightFactory.cs" />
     <Compile Include="Factory\TriangleIsoscelesFactory.cs" />
-    <Compile Include="Brush\CircleFill.cs" />
-    <Compile Include="Brush\ElipseFill.cs" />
     <Compile Include="Brush\EmptyFill.cs" />
     <Compile Include="Brush\IBrush.cs" />
-    <Compile Include="Brush\RectangleFill.cs" />
-    <Compile Include="Brush\RectSquarFill.cs" />
-    <Compile Include="Brush\TriangleEqFill.cs" />
-    <Compile Include="Brush\TriangleIsoFill.cs" />
-    <Compile Include="Brush\TriangleRightFill.cs" />
     <Compile Include="Figure\AFigure.cs" />
     <Compile Include="Figure\Circle.cs" />
     <Compile Include="Figure\Ellipse.cs" />
@@ -166,6 +160,44 @@
   <ItemGroup>
     <None Include="Resources\img-2020-07-05-16-12-02.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transparency.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img-2020-07-15-11-26-00.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\img-2020-07-15-11-26-001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ARBITRARY.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ISOLATES.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RIGHT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EQUAL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RIGHT1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
