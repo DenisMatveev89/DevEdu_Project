@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevEdu_project.GetPoints
+namespace DevEdu_project.LineWidth
 {
-    public interface IGetPoints
+    public interface ILineWidth
     {
-        List<Point> GetPoints(Point start, Point end);
+        List<Point> LWidth(Point strat, Point end);
     }
 }

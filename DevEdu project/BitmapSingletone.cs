@@ -10,16 +10,38 @@ namespace DevEdu_project
     {
         private BitmapSingletone() { }
 
+        public List<AFigure> _figureList;
+
+        public List<AFigure> saveFigures(AFigure figure)
+        {
+            _figureList.Add(figure);
+            return _figureList;
+        }
+
+        public AFigure figureUnderMouse(Point mouse)
+        {
+            AFigure figure = null;
+            foreach (AFigure i in _figureList)
+            {
+                if (i.isMouseOnFigure(mouse))
+                {
+                    figure = i;
+                }
+            }
+            return figure;
+        }
+
         //Временный и Основной битмап, на котором должны осуществляться все методы рисования
         public Bitmap _tmpBitmap;
         public Bitmap _bitmap;
-        public Bitmap _emptyBitmap;
+        public Bitmap _emptyBitmap;        
 
         public void CreateBitmaps(int width, int height)
         {
             _bitmap = new Bitmap(width, height);
             _tmpBitmap = new Bitmap(width, height);
             _emptyBitmap = new Bitmap(width, height);
+            _figureList = new List<AFigure>();
         }
         private static BitmapSingletone _instance;
 
@@ -36,7 +58,7 @@ namespace DevEdu_project
         //Обратите внимание, он рисует на TmpBitmap
         public void SetPixel(int x, int y, Color color)
         {
-            if (x >= 0 && x < _bitmap.Width && y >= 0 && y < _bitmap.Height)
+            if (x >= 0 && x < _tmpBitmap.Width && y >= 0 && y < _tmpBitmap.Height)
             {
                 _tmpBitmap.SetPixel(x, y, color);
             }
@@ -62,7 +84,7 @@ namespace DevEdu_project
 
         public void Clear()
         {
-            _tmpBitmap = (Bitmap)_emptyBitmap.Clone();    
+            _tmpBitmap = (Bitmap)_emptyBitmap.Clone();   
             _bitmap = (Bitmap)_emptyBitmap.Clone();
         }
 
@@ -70,59 +92,42 @@ namespace DevEdu_project
         //вызывает все ее точки и рисует каждую точку
         public Bitmap DrawFigure(AFigure figure)
         {
-            List<Point> figurePoints = figure.GetPoints();
+            //List<Point> figurePoints = figure.GetPoints();
 
-            foreach (Point i in figurePoints)
+            foreach (Point i in figure.GetPoints())
             {
                 SetPixel(i.X, i.Y, figure._colorLine);
             }
-
+                        
             return _tmpBitmap;
         }
 
-        //Метод, который рисует все фигуры из листа фигур
-        public Bitmap DrawAllFigures(List<AFigure> figure)
+        //Метод, который рисует все фигуры из листа фигур        
+        public void DrawAllFigures()
         {
-            foreach (AFigure i in figure)
+            foreach (AFigure i in _figureList)
             {
                 DrawFigure(i);
-            }
-            
-            return _tmpBitmap;
+            }            
         }
 
-        public Bitmap DrawIndexFigures(List<AFigure> figure, AFigure currentFigure)
-        {
-            foreach (AFigure i in figure)
+        public Bitmap DrawIndexFigures(AFigure currentFigure)
+        {            
+            foreach (AFigure i in _figureList)
             {
                 if(i != currentFigure)
                 {
                     DrawFigure(i);
                 }                
             }
+            
             return _tmpBitmap;
         }
 
-        public Bitmap EraseIndexFigure(List<AFigure> figure, AFigure currentFigure)
+        public Bitmap EraseIndexFigure(AFigure currentFigure)
         {
-            for (int i = 0; i < figure.Count; i++)
-            {
-                if (figure[i] != currentFigure)
-                {
-                    DrawFigure(figure[i]);
-                }
-                else
-                {
-                    figure.Remove(figure[i]);
-                }
-            }
-            //for(int i = 0; i<figure.Count; i++)
-            //{
-            //    if(figure[i] == currentFigure)
-            //    {
-            //        figure.Remove(figure[i]);
-            //    }
-            //}
+            _figureList.Remove(currentFigure);
+            DrawAllFigures();
             return _tmpBitmap;
         }
 

@@ -14,5 +14,10 @@ namespace DevEdu_project.Factory
         {
             figure = new TriangleIsosceles();
         }
+
+        public override void Update()
+        {
+            figure = new TriangleIsosceles();
+        }
     }
 }

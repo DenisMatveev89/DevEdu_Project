@@ -13,7 +13,22 @@ namespace DevEdu_project.Figure
         public TriangleRight()
         {
             //fill = new Brush.TriangleRightFill();
-            getPoints = new TriangleRightPoints();
+        }
+
+        public override List<Point> GetPoints()
+        {
+            ConnectPoints cp = new ConnectPoints();
+
+            int X0 = _startPoint.X;
+            int Y0 = _startPoint.Y;
+            int X1 = _endPoint.X;
+            int Y1 = _endPoint.Y;
+            List<Point> listPoint = new List<Point>();
+
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(X0, Y0), new Point(X1, Y1)));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(X1, Y1), new Point(X0, Y1)));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
+            return listPoint;
         }
 
         public override bool isMouseOnFigure(Point mouse)
