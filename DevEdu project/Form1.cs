@@ -20,6 +20,7 @@ namespace DevEdu_project
         AFigure _figure;
         AFigure _currentFigure;
         AFigure _movingFigure;
+        IBrush _fill;
         //Диалоговые окошки
         Dialog dialog = new Dialog();
 
@@ -59,7 +60,7 @@ namespace DevEdu_project
                     sBitmap.Update();
                 }
             }
-            else if (eraserTool)
+            if (eraserTool)
             {
                 _movingFigure = null;
                 _movingFigure = storage.figureUnderMouse(e.Location);
@@ -285,7 +286,10 @@ namespace DevEdu_project
         {
             eraserTool = true;
             figureMoveTool = false;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
             //Вызов метода, который возвращает все фигуры, сохраненные в листе
             //pictureBox1.Image = sBitmap.DrawAllFigures(storage.figureList);
         }
