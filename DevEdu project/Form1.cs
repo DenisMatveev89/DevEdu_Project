@@ -25,9 +25,9 @@ namespace DevEdu_project
         Dialog dialog = new Dialog();
 
         double brushWidth = 10;
-
+        //хранилище фигур
         Storage storage = new Storage();
-
+        //Тулсы всякие
         bool figureMoveTool = false;
         bool eraserTool = false;
 
