@@ -61,14 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Brush\FullFill.cs" />
-    <Compile Include="Brush\TriangleRightFill.cs" />
     <Compile Include="Factory\PencilFactory.cs" />
     <Compile Include="Factory\RectangleFactory.cs" />
     <Compile Include="Factory\SquareFactory.cs" />
     <Compile Include="Factory\TriangleEquilateralFactory.cs" />
     <Compile Include="Factory\TriangleRightFactory.cs" />
     <Compile Include="Factory\TriangleIsoscelesFactory.cs" />
-    <Compile Include="Brush\FillFigure.cs" />
     <Compile Include="Brush\EmptyFill.cs" />
     <Compile Include="Brush\IBrush.cs" />
     <Compile Include="Figure\AFigure.cs" />

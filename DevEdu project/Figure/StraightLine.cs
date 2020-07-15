@@ -33,14 +33,6 @@ namespace DevEdu_project.Figure
                 check = true;
             }
             return check;
-
-            //List<Point> line = base.GetPoints();
-            //foreach (Point i in line)
-            //{
-            //    if (i == mouse)
-            //        check = true;
-            //}
-            //return check;
         }
         
     }

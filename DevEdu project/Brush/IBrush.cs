@@ -10,9 +10,9 @@ using Color = System.Drawing.Color;
 
 namespace DevEdu_project.Brush
 {
-    public interface IBrush
+    public abstract class IBrush
     {
-       
-        void Fill(Point mouse, Color fillColor);
+        public Color _fillColor;
+        public virtual void Fill(Point mouse, Color fillColor){ }
     }
 }

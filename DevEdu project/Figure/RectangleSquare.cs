@@ -13,7 +13,6 @@ namespace DevEdu_project
     {
         public RectangleSquare()
         {
-           // fill = new Brush.RectSquareFill();
         }
 
         public override List<Point> GetPoints()

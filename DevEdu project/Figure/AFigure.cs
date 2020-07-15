@@ -15,17 +15,10 @@ namespace DevEdu_project
         public Point _endPoint;
         public Color _colorLine;
         public Color _fillColor;
-        public double _brushWidth;
         protected IBrush fill;
+        public double _brushWidth;
 
         public abstract List<Point> GetPoints();
         public abstract bool IsMouseOnFigure(Point mouse);
-
-        public virtual void Fill(Point mouse, Color fillColor)
-        {
-            _fillColor = fillColor;
-            fill.Fill(mouse, fillColor);
-        }
-        
     }
 }

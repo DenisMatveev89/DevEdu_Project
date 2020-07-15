@@ -12,7 +12,6 @@ namespace DevEdu_project.Figure
     {
         public TriangleRight()
         {
-            //fill = new Brush.TriangleRightFill();
         }
 
         public override List<Point> GetPoints()

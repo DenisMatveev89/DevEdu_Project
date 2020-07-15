@@ -1,15 +1,9 @@
 using DevEdu_project.Brush;
 using DevEdu_project.Figure;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Net;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using Color = System.Drawing.Color;
-
 using DevEdu_project.Factory;
-using System.Threading;
 
 namespace DevEdu_project
 {
@@ -20,8 +14,7 @@ namespace DevEdu_project
         //Объявляем интерфейс AFigure
         AFigure _figure = new Pencil();
         AFigure _currentFigure;
-        AFigure _onFigure;
-        AFigure _fillFigure;
+        IBrush fill = new FullFill();
         //Диалоговые окошки
         Dialog dialog = new Dialog();
 
@@ -32,10 +25,9 @@ namespace DevEdu_project
         bool figureMoveTool = false;
         bool eraserTool = false;
         bool fillTool = false;
-        Color _fillColor = Color.Red;
-
-        Color _currentColor = Color.Black;
         private bool mousePress;
+        Color _fillColor = Color.Red;
+        Color _currentColor = Color.Black;
         Point _currentPoint;
         Point _prevPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
@@ -53,16 +45,15 @@ namespace DevEdu_project
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            _onFigure = null;
             if (fillTool)
             {
-                _fillFigure = null;
-                _fillFigure = storage.figureUnderMouse(e.Location);
+                //_fillFigure = null;
                 //Color currentPxColor = sBitmap.ColorSelectPoint(e.X, e.Y);
-                if (_fillFigure != null)
+                if (_currentFigure != null)
                 {
+                    _currentFigure = sBitmap.figureUnderMouse(e.Location);
                     sBitmap.Copy();
-                    _figure.Fill(e.Location, Color.Red);
+                    fill.Fill(e.Location, _fillColor);
                     pictureBox1.Image = sBitmap._tmpBitmap;
                     sBitmap.Update();
                 }
@@ -71,9 +62,9 @@ namespace DevEdu_project
             {
                 if (_currentFigure != null)
                 {
-                    _onFigure = sBitmap.figureUnderMouse(e.Location);
+                    _currentFigure = sBitmap.figureUnderMouse(e.Location);
                     sBitmap.Clear();
-                    pictureBox1.Image = sBitmap.EraseIndexFigure(_onFigure);
+                    pictureBox1.Image = sBitmap.EraseIndexFigure(_currentFigure);
                 }
                 
             }
@@ -114,6 +105,27 @@ namespace DevEdu_project
             }            
         }
         #region ToolBox
+        private void EraserButton_Click(object sender, EventArgs e)
+        {
+            eraserTool = true;
+            figureMoveTool = false;
+            fillTool = false;
+            _factory = null;
+        }
+
+        private void AngleButton_Click(object sender, EventArgs e)
+        {
+            figureMoveTool = true;
+            eraserTool = false;
+            fillTool = false;
+        }
+
+        private void FillColorButton_Click(object sender, EventArgs e)
+        {
+            fillTool = true;
+            eraserTool = false;
+            figureMoveTool = false;
+        }
         private void Pencil_Click(object sender, EventArgs e)
         {
             _factory = new PencilFactory();
@@ -207,7 +219,7 @@ namespace DevEdu_project
         }
         #endregion
 
-        #region Color
+        #region BorderLineColor
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
             _currentColor = Color.Red;
@@ -264,6 +276,7 @@ namespace DevEdu_project
         }
         #endregion
 
+        #region DialogBox
         private void EventClose()
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
@@ -305,36 +318,50 @@ namespace DevEdu_project
                 }
             }
         }
-                
-        private void EraserButton_Click(object sender, EventArgs e)
-        {
-          
-            eraserTool = true;
-            figureMoveTool = false;
-            fillTool = false;
-            _factory = null;
+        #endregion
 
-            //Вызов метода, который возвращает все фигуры, сохраненные в листе
-            //pictureBox1.Image = sBitmap.DrawAllFigures(storage.figureList);
-        }
-
-        private void AngleButton_Click(object sender, EventArgs e)
-        {
-            figureMoveTool = true;
-            eraserTool = false;
-            fillTool = false;
-        }
-
-        private void FillColorButton_Click(object sender, EventArgs e)
-        {
-            fillTool = true;
-            eraserTool = false;
-            figureMoveTool = false;
-        }
-
+        #region FillColorMenu
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
             _fillColor = Color.Black;
+        }
+
+        private void toolStripButton12_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.White;
+        }
+
+        private void toolStripButton13_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.Transparent;
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.Red;
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.Green;
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.Yellow;
+        }
+
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.Blue;
+        }
+        #endregion
+
+        private void toolStripButton14_Click(object sender, EventArgs e)
+        {
+            figureMoveTool = false;
+            eraserTool = false;
+            fillTool = false;
         }
     }
 }

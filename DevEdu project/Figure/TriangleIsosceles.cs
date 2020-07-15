@@ -13,7 +13,6 @@ namespace DevEdu_project.Figure
     {
         public TriangleIsosceles()
         {
-            //fill = new Brush.TriangleIsoFill();
         }
 
         public override List<Point> GetPoints()

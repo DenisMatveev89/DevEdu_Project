@@ -11,11 +11,6 @@ namespace DevEdu_project
 {
     public class Rectangle : AFigure // Прямоугольник
     {
-        //public Rectangle()
-        //{
-        //    getPoints = new RectanglePoints();
-        //}
-
         public override List<Point> GetPoints()
         {
             ConnectPoints cp = new ConnectPoints();
