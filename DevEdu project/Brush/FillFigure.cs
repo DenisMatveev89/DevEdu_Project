@@ -12,7 +12,7 @@ namespace DevEdu_project.Brush
     public class FillFigure : IBrush
     {
 
-        public void Fill(Point point, AFigure figure, Color colorLine, Color colorFill)
+        public void Fill(Point mouse, Color fillColor)
         {
             throw new NotImplementedException();
         }

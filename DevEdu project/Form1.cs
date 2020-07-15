@@ -20,7 +20,7 @@ namespace DevEdu_project
         AFigure _figure = new Pencil();
         AFigure _currentFigure;
         AFigure _movingFigure;
-        IBrush _fill;
+        AFigure _fillFigure;
         //Диалоговые окошки
         Dialog dialog = new Dialog();
 
@@ -30,6 +30,8 @@ namespace DevEdu_project
         //Тулсы всякие
         bool figureMoveTool = false;
         bool eraserTool = false;
+        bool fillTool = false;
+        Color _fillColor = Color.Transparent;
 
         Color _currentColor = Color.Black;
         private bool mousePress;
@@ -51,22 +53,28 @@ namespace DevEdu_project
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             _movingFigure = sBitmap.figureUnderMouse(e.Location);
-            if (_movingFigure != null)
+            if (fillTool)
             {
-                pictureBox1.Image = null;
-                sBitmap.Clear();
-                pictureBox1.Image = sBitmap.DrawIndexFigures(_movingFigure);
+                _fillFigure = null;
+                _fillFigure = storage.figureUnderMouse(e.Location);
+                //Color currentPxColor = sBitmap.ColorSelectPoint(e.X, e.Y);
+                if (_fillFigure != null)
+                {
+                    sBitmap.Copy();
+                    _figure.Fill(e.Location, Color.Red);
+                    pictureBox1.Image = sBitmap._tmpBitmap;
+                    sBitmap.Update();
+                }
+                if (eraserTool)
+                {
+                    _movingFigure = sBitmap.figureUnderMouse(e.Location);
+                    if (_movingFigure != null)
+                    {
+                        pictureBox1.Image = sBitmap.EraseIndexFigure(_movingFigure);
+                    }
+                }
                 sBitmap.Update();
             }
-            if (eraserTool==true)
-            {
-            _movingFigure = sBitmap.figureUnderMouse(e.Location);
-                if (_movingFigure != null)
-                {
-                     pictureBox1.Image = sBitmap.EraseIndexFigure(_movingFigure);
-                }
-             }
-            sBitmap.Update();
         }
       
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
@@ -294,6 +302,41 @@ namespace DevEdu_project
         private void FillColorButton_Click(object sender, EventArgs e)
         {
             _figure._brushWidth = brushWidth;
+        }
+
+        private void toolStripButton13_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.Transparent;
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.Black;
+        }
+
+        private void toolStripButton12_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.White;
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.Red;
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.Green;
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.Yellow;
+        }
+
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            _fillColor = Color.Blue;
         }
     }
 }

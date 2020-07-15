@@ -11,7 +11,7 @@ namespace DevEdu_project.Brush
 {
     public class EmptyFill : IBrush
     {
-        public void Fill(Point point, AFigure figure, Color colorLine, Color colorFill)
+        public void Fill(Point mouse, Color fillColor)
         {
 
         }

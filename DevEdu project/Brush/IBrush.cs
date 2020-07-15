@@ -11,6 +11,6 @@ namespace DevEdu_project.Brush
 {
     public interface IBrush
     {   
-        void Fill(Point point, AFigure figure, Color colorLine, Color colorFill);
+        void Fill(Point mouse, Color fillColor);
     }
 }

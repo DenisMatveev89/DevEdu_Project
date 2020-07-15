@@ -14,8 +14,8 @@ namespace DevEdu_project.Brush
         ConnectPoints cp = new ConnectPoints();
         BitmapSingletone bs;
         List<Point> listFillPixel = new List<Point>();
-        public void Fill(Point point, AFigure figure, Color colorLine, Color colorFill)
-        {
+        public void Fill(Point mouse, Color fillColor)
+        { 
             listFillPixel.AddRange(cp.ConnectTwoPoints(figure._startPoint, figure._endPoint));
 
         }

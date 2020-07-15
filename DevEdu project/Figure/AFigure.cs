@@ -4,6 +4,7 @@ using DevEdu_project.LineWidth;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using DevEdu_project.Brush;
 
 namespace DevEdu_project
 {
@@ -11,34 +12,23 @@ namespace DevEdu_project
     {
         //_startPoint, _endPoint, _colorLine:
         //обязательные поля для каждого класса, который унаследует IFigure
-
-        protected Brush.IBrush fill;
-
         public Point _startPoint;
         public Point _endPoint;
         public Color _colorLine;
+        public Color _fillColor;
         public double _brushWidth;
+        protected IBrush fill;
 
         public abstract List<Point> GetPoints();
         public abstract bool isMouseOnFigure(Point mouse);
-        
-        //public virtual List<Point> TestLineWidthGetPoints()
-        //{
-        //    List<Point> figurePoints;
-        //    ChangeLine sl = new ChangeLine();
 
-        //    if (_brushWidth > 0)
-        //    {
-        //        figurePoints = sl.GetWidthPoints(_startPoint, _endPoint, _brushWidth);
-        //    }
-        //    else
-        //    {
-        //        //figurePoints = getPoints.GetPoints(_startPoint, _endPoint);
-        //    }
-        //    return figurePoints;
-        //}
+        public virtual void Fill(Point mouse, Color fillColor)
+        {
+            _fillColor = fillColor;
+            fill.Fill(mouse, fillColor);
+        }
 
 
-        
+
     }
 }
