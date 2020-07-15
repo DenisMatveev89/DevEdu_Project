@@ -11,6 +11,11 @@ namespace DevEdu_project
     {        
         public List<AFigure> figureList = new List<AFigure>();
 
+        public void figureListCreate()
+        {
+            figureList = new List<AFigure>();
+        }
+
         public List<AFigure> saveFigures(AFigure figure)
         {
             figureList.Add(figure);

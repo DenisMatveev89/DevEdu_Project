@@ -14,6 +14,11 @@ namespace DevEdu_project.Factory
         {
             figure = new TriangleEquilateral();
         }
+
+        public override void Update()
+        {
+            figure = new TriangleEquilateral();
+        }
     }
 }
 

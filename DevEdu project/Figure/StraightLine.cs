@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DevEdu_project.GetPoints;
+using DevEdu_project.LineWidth;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -12,14 +14,20 @@ namespace DevEdu_project.Figure
     {
         public StraightLine()
         {
-            fill = new Brush.EmptyFill();
-            getPoints = new StraightLinePoints();
+            fill = new Brush.EmptyFill();            
+        }
+
+        public override List<Point> GetPoints()
+        {
+            ConnectPoints cp = new ConnectPoints();
+            return cp.ConnectTwoPoints(_startPoint, _endPoint);
         }
 
         public override bool isMouseOnFigure(Point mouse)
         {
             bool check = false;
-            List<Point> line = base.GetPoints();
+
+            List<Point> line = GetPoints();
             foreach (Point i in line)
             {
                 if (i == mouse)
@@ -27,5 +35,6 @@ namespace DevEdu_project.Figure
             }
             return check;
         }
+        
     }
 }

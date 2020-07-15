@@ -16,11 +16,13 @@ namespace DevEdu_project
         //Объявляем фабрику
         AFactory _factory = new PencilFactory();
         //Объявляем интерфейс AFigure
-        AFigure _figure;
+        AFigure _figure = new Pencil();
         AFigure _currentFigure;
         AFigure _movingFigure;
         //Диалоговые окошки
         Dialog dialog = new Dialog();
+
+        double brushWidth = 10;
 
         Storage storage = new Storage();
 
@@ -44,19 +46,19 @@ namespace DevEdu_project
         }
 
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            mousePress = true;
-            _prevPoint = e.Location;
-
-            if (_factory is PencilFactory) //проверка для карандаша
+        {            
+            _prevPoint = e.Location;            
+            _currentFigure = _figure;
+            if(_factory != null)
             {
-                _factory = new PencilFactory();
-            }
+                _factory.Update();
+                mousePress = true;
+            } 
         }
 
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
         {
-            if (mousePress)
+            if (mousePress && _factory != null)
             {
                 _currentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
 
@@ -68,10 +70,13 @@ namespace DevEdu_project
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             _currentPoint = e.Location;
-            storage.saveFigures(_figure);
-            _currentFigure = _figure;
-            mousePress = false;
-            sBitmap.Update();
+            if (_factory != null)
+            {
+                sBitmap.saveFigures(_figure);
+                _currentFigure = _figure;
+                mousePress = false;
+                sBitmap.Update();
+            }            
         }
         #region ToolBox
         private void Pencil_Click(object sender, EventArgs e)
@@ -235,50 +240,52 @@ namespace DevEdu_project
                 }
             }
         }
-
-        //Сейчас на этой кнопке вызывается метод, который возвращает все ранее нарисованные фигуры
-        //Потом cоздадим для этого другие кнопки
+                
         private void EraserButton_Click(object sender, EventArgs e)
         {
             eraserTool = true;
-
-            //Вызов метода, который возвращает все фигуры, сохраненные в листе
-            //pictureBox1.Image = sBitmap.DrawAllFigures(storage.figureList);
+            _factory = null;
+            figureMoveTool = false;
         }
 
         private void AngleButton_Click(object sender, EventArgs e)
         {
             figureMoveTool = true;
             eraserTool = false;
+            _factory = null;
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
+            _movingFigure = null;
+
             if (figureMoveTool)
-            {
-                _movingFigure = null;
-                _movingFigure = storage.figureUnderMouse(e.Location);
+            {                
+                _movingFigure = sBitmap.figureUnderMouse(e.Location);
                 if (_movingFigure != null)
                 {
                     pictureBox1.Image = null;
                     sBitmap.Clear();
-                    pictureBox1.Image = sBitmap.DrawIndexFigures(storage.figureList, _movingFigure);
+                    pictureBox1.Image = sBitmap.DrawIndexFigures(_movingFigure);
                     sBitmap.Update();
                 }
             }
             else if (eraserTool)
             {
-                _movingFigure = null;
-                _movingFigure = storage.figureUnderMouse(e.Location);
+                _movingFigure = sBitmap.figureUnderMouse(e.Location);
                 if (_movingFigure != null)
                 {
-                    pictureBox1.Image = null;
                     sBitmap.Clear();
-                    sBitmap.Copy();
-                    pictureBox1.Image = sBitmap.EraseIndexFigure(storage.figureList, _movingFigure);
-                    sBitmap.Update();
+                    pictureBox1.Image = sBitmap.EraseIndexFigure(_movingFigure);
                 }
+                
             }
+            sBitmap.Update();            
+        }
+
+        private void FillColorButton_Click(object sender, EventArgs e)
+        {
+            _figure._brushWidth = brushWidth;
         }
     }
 }

@@ -14,6 +14,10 @@ namespace DevEdu_project.Factory
         {
             figure = new Pencil();
         }
-        
+
+        public override void Update()
+        {
+            figure = new Pencil();
+        }
     }
 }
