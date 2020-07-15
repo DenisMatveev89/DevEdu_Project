@@ -14,5 +14,10 @@ namespace DevEdu_project.Factory
         {
             figure = new TriangleRight();
         }
+
+        public override void Update()
+        {
+            figure = new TriangleRight();
+        }
     }
 }

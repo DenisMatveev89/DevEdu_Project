@@ -13,5 +13,10 @@ namespace DevEdu_project.Factory
         {
             figure = new RectangleSquare();
         }
+
+        public override void Update()
+        {
+            figure = new RectangleSquare();
+        }
     }
 }

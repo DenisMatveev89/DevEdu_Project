@@ -14,5 +14,11 @@ namespace DevEdu_project.Factory
         {
             figure = new StraightLine();
         }
+
+        public override void Update()
+        {
+            figure = new StraightLine();
+        }
+        
     }
 }

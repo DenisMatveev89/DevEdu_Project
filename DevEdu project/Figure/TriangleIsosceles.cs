@@ -13,9 +13,25 @@ namespace DevEdu_project.Figure
     {
         public TriangleIsosceles()
         {
-            fill = new Brush.TriangleIsoFill();
-            getPoints = new TriangleIsoPoints();
+            //fill = new Brush.TriangleIsoFill();
         }
+
+        public override List<Point> GetPoints()
+        {
+            ConnectPoints cp = new ConnectPoints();
+
+            int x0 = _startPoint.X;
+            int y0 = _startPoint.Y;
+            int x1 = _endPoint.X;
+            int y1 = _endPoint.Y;
+
+            List<Point> listPoint = new List<Point>();
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(x0, y0), new Point(x1, y1)));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(x1, y1), new Point((x0 - (x1 - x0)), y1)));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point((x0 - (x1 - x0)), y1), new Point(x0, y0)));
+            return listPoint;
+        }
+
 
         public override bool isMouseOnFigure(Point mouse)
         {
