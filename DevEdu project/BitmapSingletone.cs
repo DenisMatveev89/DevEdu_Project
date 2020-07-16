@@ -26,6 +26,11 @@ namespace DevEdu_project
                 if (i.IsMouseOnFigure(mouse))
                 {
                     figure = i;
+
+                    if(figure != null)
+                    {
+                        return figure;
+                    }
                 }
             }
             return figure;
@@ -34,6 +39,7 @@ namespace DevEdu_project
         //Временный и Основной битмап, на котором должны осуществляться все методы рисования
         public Bitmap _tmpBitmap;
         public Bitmap _bitmap;
+        public Bitmap _fillBitmap;
         public Bitmap _emptyBitmap;        
 
         public void CreateBitmaps(int width, int height)
@@ -41,6 +47,7 @@ namespace DevEdu_project
             _bitmap = new Bitmap(width, height);
             _tmpBitmap = new Bitmap(width, height);
             _emptyBitmap = new Bitmap(width, height);
+            _fillBitmap = new Bitmap(width, height);
             _figureList = new List<AFigure>();
         }
         private static BitmapSingletone _instance;
@@ -69,15 +76,32 @@ namespace DevEdu_project
             }
         }
 
+        public void SetPixelOnFill(int x, int y, Color color)
+        {
+            if (x >= 0 && x < _tmpBitmap.Width && y >= 0 && y < _tmpBitmap.Height)
+            {
+                _fillBitmap.SetPixel(x, y, color);
+            }
+        }
+
         //Метод, который заменяет TmpBitmap на Bitmap
         public void Copy()
         {
             if (_bitmap != null)
-            {
+            {             
                 _tmpBitmap = (Bitmap)_bitmap.Clone();
+                _fillBitmap = (Bitmap)_tmpBitmap.Clone();
             }
         }
-        
+
+        public void CopyFromFill()
+        {
+            if (_bitmap != null)
+            {
+                _tmpBitmap = (Bitmap)_fillBitmap.Clone();
+            }
+        }
+
         //Метод, который заменяет Bitmap на TmpBitmap
         public void Update()
         {
@@ -89,6 +113,7 @@ namespace DevEdu_project
 
         public void Clear()
         {
+            _fillBitmap = (Bitmap)_tmpBitmap.Clone();
             _tmpBitmap = (Bitmap)_emptyBitmap.Clone();   
             _bitmap = (Bitmap)_emptyBitmap.Clone();
         }
@@ -143,10 +168,10 @@ namespace DevEdu_project
 
             foreach (Point i in points)
             {
-                SetPixel(i.X, i.Y, color);
+                SetPixelOnFill(i.X, i.Y, color);
             }
 
-            return _tmpBitmap;
+            return _fillBitmap;
         }
     }
 }

@@ -24,10 +24,7 @@ namespace DevEdu_project.Factory
             Ellipse ellipse = new Ellipse();
             figure = ellipse;
             base.Create(start, end, colorLine, fillColor);
-            
-            ellipse._startPoint = start;
-            ellipse._endPoint = end;
-            ellipse._colorLine = colorLine;
+            ellipse._centerPoint = start;
             ellipse.RX = Math.Sqrt(Math.Pow((end.X - start.X), 2));
             ellipse.RY = Math.Sqrt(Math.Pow((end.Y - start.Y), 2));
             
