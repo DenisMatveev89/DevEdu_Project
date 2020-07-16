@@ -100,16 +100,18 @@ namespace DevEdu_project
 
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
         {
-            if (e.X<pictureBox1.Width && e.Y < pictureBox1.Height && e.X>0 && e.Y>0)
+            if (mousePress && _factory != null)
             {
-                if (mousePress && _factory != null)
-                {
-                    _currentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
-
-                    sBitmap.Copy();
-                    _figure = _factory.Create(_prevPoint, _currentPoint, _currentColor, _fillColor);
-                    pictureBox1.Image = sBitmap.DrawFigure(_figure);
-                }
+                _currentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
+                sBitmap.Copy();
+                
+                _figure = _factory.Create(_prevPoint, _currentPoint, _currentColor, _fillColor);
+                sBitmap.DrawFigure(_figure);
+                
+                //sBitmap.Copy();
+                //_figure.FillFigure(e.Location);
+                //sBitmap.CopyFromFill();
+                pictureBox1.Image = sBitmap._tmpBitmap;
             }
             
         }
