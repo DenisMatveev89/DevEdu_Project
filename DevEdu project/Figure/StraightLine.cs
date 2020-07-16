@@ -30,7 +30,11 @@ namespace DevEdu_project.Figure
             List<Point> line = GetPoints();
             foreach (Point i in line)
             {
-                check = true;
+                if(i == mouse)
+                {
+                    check = true;
+                    return check;
+                }                
             }
             return check;
         }

@@ -11,6 +11,11 @@ namespace DevEdu_project
 {
     public class Rectangle : AFigure // Прямоугольник
     {
+        public Rectangle()
+        {
+
+        }
+
         public override List<Point> GetPoints()
         {
             ConnectPoints cp = new ConnectPoints();
@@ -24,6 +29,8 @@ namespace DevEdu_project
             listPoints.AddRange(cp.ConnectTwoPoints(new Point(X1, Y0), new Point(X1, Y1)));
             listPoints.AddRange(cp.ConnectTwoPoints(new Point(X1, Y1), new Point(X0, Y1)));
             listPoints.AddRange(cp.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
+
+            _centerPoint = new Point(X0 + ((X1 - X0) / 2), Y0 +((Y1 - Y0)/ 2));
             return listPoints;
         }
 
@@ -31,10 +38,29 @@ namespace DevEdu_project
         {
             bool check = false;
             Point node1 = _startPoint, node2 = _endPoint;
-            if (node1.X <= mouse.X && node1.Y <= mouse.Y && node2.X >= mouse.X && node2.Y >= mouse.Y)
-                return check = true;
-            else
-                return check;
+
+            if(_startPoint.X < _endPoint.X && _startPoint.Y < _endPoint.Y)
+            {
+                if (node1.X <= mouse.X && node1.Y <= mouse.Y && node2.X >= mouse.X && node2.Y >= mouse.Y)
+                    return check = true;
+            }
+            else if(_startPoint.X > _endPoint.X && _startPoint.Y < _endPoint.Y)
+            {
+                if (node2.X <= mouse.X && node1.Y <= mouse.Y && node1.X >= mouse.X && node2.Y >= mouse.Y)
+                    return check = true;
+            }
+            else if (_startPoint.X > _endPoint.X && _startPoint.Y > _endPoint.Y)
+            {
+                if (node2.X <= mouse.X && node2.Y <= mouse.Y && node1.X >= mouse.X && node1.Y >= mouse.Y)
+                    return check = true;
+            }
+            else if (_startPoint.X < _endPoint.X && _startPoint.Y > _endPoint.Y)
+            {
+                if (node1.X <= mouse.X && node2.Y <= mouse.Y && node2.X >= mouse.X && node1.Y >= mouse.Y)
+                    return check = true;
+            }
+
+            return check;
         }
     }
 }

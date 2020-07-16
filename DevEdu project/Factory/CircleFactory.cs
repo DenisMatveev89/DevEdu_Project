@@ -24,9 +24,7 @@ namespace DevEdu_project.Factory
             Circle circle = new Circle();
             figure = circle;
             base.Create(start, end, colorLine, fillColor);     
-            circle._startPoint = start;
-            circle._endPoint = end;
-            circle._colorLine = colorLine;
+            circle._centerPoint = start;    
             circle.R = Math.Sqrt(Math.Pow((end.X - start.X), 2) + Math.Pow((end.Y - start.Y), 2));
             return circle;
         }        

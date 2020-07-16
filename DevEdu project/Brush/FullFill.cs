@@ -8,42 +8,55 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Brush
 {
-    public class FullFill:IBrush
+    public class FullFill : IBrush
     {
-        public AFigure figure;
+        //public AFigure figure;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         ConnectPoints cp = new ConnectPoints();
         public override void Fill(Point mouse, Color fillColor)
         {
-            Color beginColor = sBitmap._tmpBitmap.GetPixel(mouse.X, mouse.Y);
+            Color beginColor = sBitmap._fillBitmap.GetPixel(mouse.X, mouse.Y);
             Point left = new Point(mouse.X, mouse.Y);
             Point right = new Point(mouse.X, mouse.Y);
-
-            while (sBitmap._tmpBitmap.GetPixel(left.X - 1, left.Y) == beginColor)
+            
+            //находим конечные точки влево и вправо
+            while (sBitmap._fillBitmap.GetPixel(left.X - 1, left.Y) == beginColor)
             {
                 left.X--;
             }
-            while (sBitmap._tmpBitmap.GetPixel(right.X + 1, right.Y) == beginColor)
+            while (sBitmap._fillBitmap.GetPixel(right.X + 1, right.Y) == beginColor)
             {
                 right.X++;
-            }
+            }            
 
             List<Point> linePoints = cp.ConnectTwoPoints(left, right);
             sBitmap.Draw(linePoints, fillColor);
 
-            for (int i = left.X; i <= right.X; i++)
+            if (mouse.Y > 0 && mouse.Y < sBitmap._fillBitmap.Height && mouse.X > 0 && mouse.X < sBitmap._fillBitmap.Width)
             {
-                if (sBitmap._tmpBitmap.GetPixel(i, mouse.Y + 1) == beginColor)
+                for (int i = left.X; i <= right.X; i++)
                 {
-                    Point down = new Point(i, mouse.Y + 1);
-                    Fill(down, fillColor);
-                }
-                if (sBitmap._tmpBitmap.GetPixel(i, mouse.Y - 1) == beginColor)
-                {
-                    Point up = new Point(i, mouse.Y - 1);
-                    Fill(up, fillColor);
+                    if (sBitmap._fillBitmap.GetPixel(i, mouse.Y + 1) == beginColor)
+                    {
+                        Point down = new Point(i, mouse.Y + 1);
+                        Fill(down, fillColor);
+                    }
+
+                    if (sBitmap._fillBitmap.GetPixel(i, mouse.Y - 1) == beginColor)
+                    {
+                        Point up = new Point(i, mouse.Y - 1);
+                        Fill(up, fillColor);
+                    }
                 }
             }
+            else
+            {
+                return;
+            }
+
         }
+
+
+
     }
 }
