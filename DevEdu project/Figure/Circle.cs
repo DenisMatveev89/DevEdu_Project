@@ -17,7 +17,7 @@ namespace DevEdu_project
 
         public Circle(Point centre, double radius)
         {
-            _centerPoint = centre;
+            _startPoint = centre;
             R = radius;
         }
 
@@ -26,8 +26,8 @@ namespace DevEdu_project
         public override List<Point> GetPoints()
         {
             List<Point> circle = new List<Point>();
-            int X0 = _centerPoint.X;
-            int Y0 = _centerPoint.Y;
+            int X0 = _startPoint.X;
+            int Y0 = _startPoint.Y;
             int x = 0;
             int y = (int)R;
             int delta = 1 - 2 * (int)R;
