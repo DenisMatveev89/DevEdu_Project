@@ -487,6 +487,10 @@ namespace DevEdu_project
                 }
                 pictureBox1.Image = null;
             }
+            else
+            {
+                dialog.OpenSourceDialog();
+            }
         }
 
         private void toolStripButton16_Click(object sender, EventArgs e)
