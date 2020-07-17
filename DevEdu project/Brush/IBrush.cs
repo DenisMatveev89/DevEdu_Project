@@ -13,6 +13,6 @@ namespace DevEdu_project.Brush
     public abstract class IBrush
     {
         public Color _fillColor;
-        public virtual void Fill(Point mouse, Color fillColor){ }
+        public virtual void Fill(Point mouse, Color fillColor, Color lineColor) { }
     }
 }

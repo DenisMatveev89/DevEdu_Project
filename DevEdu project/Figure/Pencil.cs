@@ -1,4 +1,5 @@
-﻿using DevEdu_project.GetPoints;
+﻿using DevEdu_project.Brush;
+using DevEdu_project.GetPoints;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,7 +14,7 @@ namespace DevEdu_project.Figure
     {
         public Pencil()
         {
-            
+
         }
 
         List<Point> linePoints = new List<Point>();
@@ -74,6 +75,11 @@ namespace DevEdu_project.Figure
             }
 
             return check;
+        }
+
+        public override void FillFigure(Point mouse)
+        {
+            fill = new EmptyFill();
         }
     }
 }
