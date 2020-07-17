@@ -469,7 +469,31 @@ namespace DevEdu_project
 
         private void openSourceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            dialog.OpenSourceDialog();
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                DialogResult result = dialog.NewDialog();
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        dialog.SaveSourceDialog();
+                        dialog.OpenSourceDialog();
+                        break;
+                    case DialogResult.No:
+                        dialog.OpenSourceDialog();
+                        
+                        break;
+                    case DialogResult.Cancel:
+                        break;
+                }
+                pictureBox1.Image = null;
+            }
+        }
+
+        private void toolStripButton16_Click(object sender, EventArgs e)
+        {
+            sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
+            sBitmap.Update();
+            pictureBox1.Image = null;
         }
     }
 }

@@ -93,6 +93,16 @@ namespace DevEdu_project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap commerce_and_shopping {
+            get {
+                object obj = ResourceManager.GetObject("commerce-and-shopping", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap createnew {
             get {
                 object obj = ResourceManager.GetObject("createnew", resourceCulture);

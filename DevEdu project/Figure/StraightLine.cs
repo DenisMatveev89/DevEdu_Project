@@ -1,6 +1,5 @@
 ﻿using DevEdu_project.Brush;
 using DevEdu_project.GetPoints;
-using DevEdu_project.LineWidth;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
