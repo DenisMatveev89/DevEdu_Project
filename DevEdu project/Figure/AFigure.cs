@@ -1,11 +1,13 @@
 ﻿using DevEdu_project.Brush;
 using DevEdu_project.GetPoints;
+using DevEdu_project.LineW;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 
 namespace DevEdu_project
 {
+    [Serializable]
     public abstract class AFigure
     {
         //_startPoint, _endPoint, _colorLine:
@@ -18,10 +20,16 @@ namespace DevEdu_project
         public Color _fillColor;
         protected IBrush fill;
         public double _brushWidth;
+        public int _lineWidth;
+        
 
         public abstract List<Point> GetPoints();
         public abstract bool IsMouseOnFigure(Point mouse);
-
+ /*       public virtual List<Point> WidthLine(Point start, Point end, int _lineWidth)
+        {
+            ILineWidth lineWidth = new LineWidth();
+            return lineWidth.LWidth(start, end, _lineWidth);
+        }*/
         public virtual void FillFigure(Point mouse)
         {
 

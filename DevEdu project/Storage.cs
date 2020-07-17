@@ -8,14 +8,23 @@ using System.Drawing;
 namespace DevEdu_project
 {
     public class Storage
-    {        
-        public List<AFigure> figureList = new List<AFigure>();
-
+    {
+        //public List<AFigure> figureList = new List<AFigure>();
+        public List<AFigure> figureList;
+        private static Storage _instance;
+        public static Storage GetInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = new Storage();
+                List<AFigure> figureList = new List<AFigure>();
+            }
+            return _instance;
+        }
         public void figureListCreate()
         {
             figureList = new List<AFigure>();
         }
-
         public List<AFigure> saveFigures(AFigure figure)
         {
             figureList.Add(figure);

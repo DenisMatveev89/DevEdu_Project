@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace DevEdu_project.Figure
 {
+    [Serializable]
     public class Pencil : AFigure //Карандаш
     {
         public Pencil()

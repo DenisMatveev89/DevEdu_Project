@@ -10,6 +10,7 @@ using Color = System.Drawing.Color;
 
 namespace DevEdu_project.Brush
 {
+    [Serializable]
     public abstract class IBrush
     {
         public Color _fillColor;

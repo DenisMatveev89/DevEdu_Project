@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.GetPoints
 {
+    [Serializable]
     public class ConnectPoints
     {
         public List<Point> ConnectTwoPoints(Point StartPoint, Point EndPoint)

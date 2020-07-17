@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Figure
 {
+    [Serializable]
     public class TriangleIsosceles : AFigure//Равнобедренный треугольник
 
     {

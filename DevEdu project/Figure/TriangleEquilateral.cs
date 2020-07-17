@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Figure
 {
+    [Serializable]
     public class TriangleEquilateral : AFigure//Треугольник Равносторонний
     {
         public TriangleEquilateral()

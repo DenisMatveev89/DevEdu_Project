@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DevEdu_project.Figure;
+using DevEdu_project.LineW;
 
 namespace DevEdu_project.Factory
 {
@@ -23,6 +24,8 @@ namespace DevEdu_project.Factory
             figure._endPoint = end;
             figure._colorLine = colorLine;
             figure._fillColor = fillColor;
+            //figure._lineWidth = lineWidth;
+
 
             return figure;
         }

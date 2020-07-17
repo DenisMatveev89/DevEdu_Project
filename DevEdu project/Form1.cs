@@ -5,6 +5,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using DevEdu_project.Factory;
 using DocumentFormat.OpenXml.Bibliography;
+using DevEdu_project.LineW;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace DevEdu_project
 {
@@ -17,11 +20,13 @@ namespace DevEdu_project
         AFigure _currentFigure;
         AFigure _movingFigure;
         IBrush fill = new FullFill();
-        //Диалоговые окошки
+        //ILineWidth lineWidth = new LineWidth();
+            //Диалоговые окошки
         Dialog dialog = new Dialog();
 
         double brushWidth = 10;
         //хранилище фигур
+        
         Storage storage = new Storage();
         //Тулсы всякие
         bool figureMoveTool = false;
@@ -33,6 +38,7 @@ namespace DevEdu_project
         Color _currentColor = Color.Black;
         Point _currentPoint;
         Point _prevPoint;
+        int widthLine = 10;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
 
 
@@ -328,7 +334,7 @@ namespace DevEdu_project
             Application.Exit();
         }
 
-        private void EventNew()
+        public void EventNew()
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
             {
@@ -393,6 +399,20 @@ namespace DevEdu_project
             figureMoveTool = false;
             eraserTool = false;
             fillTool = false;
+        }
+
+        private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                dialog.SaveSourceDialog();
+            }
+            
+        }
+
+        private void openSourceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialog.OpenSourceDialog();
         }
     }
 }

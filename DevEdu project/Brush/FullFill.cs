@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Brush
 {
+    [Serializable]
     public class FullFill : IBrush
     {
         //public AFigure figure;
@@ -20,11 +21,11 @@ namespace DevEdu_project.Brush
             Point right = new Point(mouse.X, mouse.Y);
             
             //находим конечные точки влево и вправо
-            while (sBitmap._fillBitmap.GetPixel(left.X - 1, left.Y) == beginColor)
+            while (left.X-1 > 0 && sBitmap._fillBitmap.GetPixel(left.X - 1, left.Y) == beginColor)
             {
                 left.X--;
             }
-            while (sBitmap._fillBitmap.GetPixel(right.X + 1, right.Y) == beginColor)
+            while (right.X+1<sBitmap._tmpBitmap.Width-1 && sBitmap._fillBitmap.GetPixel(right.X + 1, right.Y) == beginColor)
             {
                 right.X++;
             }            
@@ -36,13 +37,13 @@ namespace DevEdu_project.Brush
             {
                 for (int i = left.X; i <= right.X; i++)
                 {
-                    if (sBitmap._fillBitmap.GetPixel(i, mouse.Y + 1) == beginColor)
+                    if (sBitmap._fillBitmap.Height-1>mouse.Y+1 &&  sBitmap._fillBitmap.GetPixel(i, mouse.Y + 1) == beginColor)
                     {
                         Point down = new Point(i, mouse.Y + 1);
                         Fill(down, fillColor);
                     }
 
-                    if (sBitmap._fillBitmap.GetPixel(i, mouse.Y - 1) == beginColor)
+                    if (mouse.Y-1>0 &&  sBitmap._fillBitmap.GetPixel(i, mouse.Y - 1) == beginColor)
                     {
                         Point up = new Point(i, mouse.Y - 1);
                         Fill(up, fillColor);

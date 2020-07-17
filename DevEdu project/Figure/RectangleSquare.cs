@@ -9,6 +9,7 @@ using DevEdu_project.GetPoints;
 
 namespace DevEdu_project
 {
+    [Serializable]
     public class RectangleSquare : AFigure //Квадрат
     {
         public RectangleSquare()
