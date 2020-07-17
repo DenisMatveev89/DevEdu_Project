@@ -73,7 +73,6 @@ namespace DevEdu_project
                     BitmapSingletone.GetInstance()._figureList = (List<AFigure>)serializerFig.Deserialize(fs);
                     BitmapSingletone.GetInstance().DrawAllFigures();
                     BitmapSingletone.GetInstance().Update();
-                   // BitmapSingletone.GetInstance().FillAllFigures();
                 }
             }
         }

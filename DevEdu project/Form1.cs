@@ -52,6 +52,7 @@ namespace DevEdu_project
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
         {
             sBitmap.CreateBitmaps(pictureBox1.Width - 1, pictureBox1.Height - 1);
+            
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
@@ -486,10 +487,12 @@ namespace DevEdu_project
                         break;
                 }
                 pictureBox1.Image = null;
+                pictureBox1.Image = sBitmap._tmpBitmap;
             }
             else
             {
                 dialog.OpenSourceDialog();
+                pictureBox1.Image = sBitmap._tmpBitmap;
             }
         }
 
