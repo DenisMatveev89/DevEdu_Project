@@ -32,13 +32,15 @@ namespace DevEdu_project
         bool figureMoveTool = false;
         bool eraserTool = false;
         bool fillTool = false;
+        bool resizeTool = false;
         private bool mousePress;
         //Color _fillColor = Color.Red;
         Color _fillColor = Color.Transparent;
         Color _currentColor = Color.Black;
         Point _currentPoint;
         Point _prevPoint;
-        int widthLine = 10;
+        Point _startMovingPoint;
+        Point _movingPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
 
 
@@ -54,54 +56,73 @@ namespace DevEdu_project
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (figureMoveTool)
+            AFigure clickFigure = sBitmap.figureUnderMouse(e.Location);
+
+            if (fillTool && _factory == null && clickFigure != null)
             {
-                _movingFigure = sBitmap.figureUnderMouse(e.Location);
-                if (_movingFigure != null)
-                {
-                    pictureBox1.Image = null;
-                    sBitmap.Clear();
-                    pictureBox1.Image = sBitmap.DrawIndexFigures(_movingFigure);
-                }
+                _currentFigure = clickFigure;
+                sBitmap.Clear();
+                sBitmap.DrawExceptIndexFigures(_currentFigure);
+                //sBitmap.FillExceptIndexFigures(_currentFigure);
+
+                _currentFigure._fillColor = _fillColor;
+                _currentFigure.FillFigure(e.Location);
+                sBitmap.CopyFromFill();
+                pictureBox1.Image = sBitmap._tmpBitmap;
             }
-            if (fillTool)
+            else if (eraserTool && clickFigure != null && _factory == null)
             {
-                //_fillFigure = null;
-                //Color currentPxColor = sBitmap.ColorSelectPoint(e.X, e.Y);
-                
-                _currentFigure = sBitmap.figureUnderMouse(e.Location);
-                
-                if (_factory == null && _currentFigure != null)
-                {
-                    sBitmap.Clear();
-                    sBitmap.DrawIndexFigures(_currentFigure);
-                    _currentFigure._fillColor = _fillColor;
-                    _currentFigure.FillFigure(e.Location);
-                    sBitmap.CopyFromFill();
-                    pictureBox1.Image = sBitmap._tmpBitmap;
-                }
+                _currentFigure = clickFigure;
+                sBitmap.Clear();
+                pictureBox1.Image = sBitmap.EraseIndexFigure(_currentFigure);
             }
-            if (eraserTool)
-            {
-                _currentFigure = sBitmap.figureUnderMouse(e.Location);
-                if (_factory == null && _currentFigure != null)
-                {                   
-                    sBitmap.Clear();
-                    pictureBox1.Image = sBitmap.EraseIndexFigure(_currentFigure);
-                }
-                
-            }
+            
             sBitmap.Update();
         }
-      
+
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
-        {            
-            _prevPoint = e.Location; 
-            if(_factory != null)
+        {
+            _prevPoint = e.Location;
+            if (_factory != null)
             {
                 _factory.Update();
                 mousePress = true;
-            }            
+            }
+            else if(figureMoveTool || resizeTool)
+            {
+                mousePress = true;
+            }
+
+            AFigure clickFigure = sBitmap.figureUnderMouse(e.Location);
+            if (figureMoveTool && clickFigure != null && _factory == null)
+            {
+                _currentFigure = clickFigure;
+                _startMovingPoint = e.Location;
+                //очищаем битмапы, fillBitmap = прежнему tmp
+                sBitmap.Clear();
+
+                //рисуем на tmpBitmap все фигуры, кроме выбранной, потом заливаем их
+                sBitmap.DrawExceptIndexFigures(_currentFigure);
+                //sBitmap.FillExceptIndexFigures(_currentFigure);
+
+                //pictureBox1.Image = sBitmap._tmpBitmap;
+                //sBitmap.CopyFromFill();
+
+            }
+            else if (resizeTool && clickFigure != null && _factory == null)
+            {
+                _currentFigure = clickFigure;
+                //_currentFigure._startPoint = e.Location;
+                //очищаем битмапы, fillBitmap = прежнему tmp
+                sBitmap.Clear();
+
+                //рисуем на tmpBitmap все фигуры, кроме выбранной, потом заливаем их
+                sBitmap.DrawExceptIndexFigures(_currentFigure);
+                //sBitmap.FillExceptIndexFigures(_currentFigure);
+
+                pictureBox1.Image = sBitmap._tmpBitmap;
+                //sBitmap.CopyFromFill();
+            }
         }
 
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
@@ -110,16 +131,36 @@ namespace DevEdu_project
             {
                 _currentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
                 sBitmap.Copy();
-                
+                sBitmap.DrawExceptIndexFigures(_currentFigure);
+
                 _figure = _factory.Create(_prevPoint, _currentPoint, _currentColor, _fillColor);
                 sBitmap.DrawFigure(_figure);
-                
-                //sBitmap.Copy();
-                //_figure.FillFigure(e.Location);
-                //sBitmap.CopyFromFill();
+
                 pictureBox1.Image = sBitmap._tmpBitmap;
             }
-            
+            else if(mousePress && figureMoveTool)
+            {
+                //Расстояние, на которое смещаются точки
+                _movingPoint = e.Location;
+                sBitmap.Copy();
+                _currentFigure = _currentFigure.Move(_startMovingPoint, _movingPoint, _currentFigure);
+                //Изменение фигуры
+                //_currentPoint = e.Location;
+                //sBitmap.Copy();
+
+                //_currentFigure._endPoint = e.Location;
+                sBitmap.DrawFigure(_currentFigure);
+
+                pictureBox1.Image = sBitmap._tmpBitmap;
+            }
+            else if(mousePress && resizeTool)
+            {
+                _currentPoint = e.Location;
+                sBitmap.Copy();
+
+                _currentFigure._endPoint = e.Location;
+                pictureBox1.Image = sBitmap.DrawFigure(_currentFigure);
+            }
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
@@ -128,20 +169,19 @@ namespace DevEdu_project
             if (_factory != null)
             {
                 sBitmap.saveFigures(_figure);
-                _currentFigure = _figure;                
+                _currentFigure = _figure;
                 sBitmap.Update();
 
                 if (_fillColor != Color.Transparent)
-                {
+                {                    
                     sBitmap.Copy();
                     _figure.FillFigure(_currentFigure._centerPoint);
                     sBitmap.CopyFromFill();
-                    pictureBox1.Image = sBitmap._tmpBitmap;  
+                    pictureBox1.Image = sBitmap._tmpBitmap;
                 }
             }
 
             sBitmap.Update();
-
         }
         #region ToolBox
         private void EraserButton_Click(object sender, EventArgs e)
@@ -150,14 +190,17 @@ namespace DevEdu_project
             figureMoveTool = false;
             fillTool = false;
             _factory = null;
+            resizeTool = false;
         }
 
         private void AngleButton_Click(object sender, EventArgs e)
         {
-            figureMoveTool = true;
+            resizeTool = true;
+            figureMoveTool = false;
             eraserTool = false;
             fillTool = false;
             _factory = null;
+
         }
 
         private void FillColorButton_Click(object sender, EventArgs e)
@@ -166,6 +209,7 @@ namespace DevEdu_project
             eraserTool = false;
             figureMoveTool = false;
             _factory = null;
+            resizeTool = false;
         }
         private void Pencil_Click(object sender, EventArgs e)
         {
@@ -173,6 +217,7 @@ namespace DevEdu_project
             eraserTool = false;
             figureMoveTool = false;
             fillTool = false;
+            resizeTool = false;
         }
 
         private void LineButton_Click(object sender, EventArgs e)
@@ -181,6 +226,7 @@ namespace DevEdu_project
             eraserTool = false;
             figureMoveTool = false;
             fillTool = false;
+            resizeTool = false;
         }
         private void squareToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -188,6 +234,7 @@ namespace DevEdu_project
             eraserTool = false;
             figureMoveTool = false;
             fillTool = false;
+            resizeTool = false;
         }
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -195,6 +242,7 @@ namespace DevEdu_project
             eraserTool = false;
             figureMoveTool = false;
             fillTool = false;
+            resizeTool = false;
         }
 
         private void arbitraryTriangleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -203,6 +251,7 @@ namespace DevEdu_project
             eraserTool = false;
             figureMoveTool = false;
             fillTool = false;
+            resizeTool = false;
         }
 
         private void isoscelesTriangleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -211,6 +260,7 @@ namespace DevEdu_project
             eraserTool = false;
             figureMoveTool = false;
             fillTool = false;
+            resizeTool = false;
         }
 
         private void rightTriangleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -219,6 +269,7 @@ namespace DevEdu_project
             eraserTool = false;
             figureMoveTool = false;
             fillTool = false;
+            resizeTool = false;
         }
 
         private void equilateralTriangleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -227,6 +278,7 @@ namespace DevEdu_project
             eraserTool = false;
             figureMoveTool = false;
             fillTool = false;
+            resizeTool = false;
         }
         private void EllipseButton_Click_1(object sender, EventArgs e)
         {
@@ -234,25 +286,28 @@ namespace DevEdu_project
             eraserTool = false;
             figureMoveTool = false;
             fillTool = false;
+            resizeTool = false;
         }
 
         private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             eraserTool = false;
             figureMoveTool = false;
+            resizeTool = false;
+            fillTool = false;
             if (eraserTool == false && figureMoveTool == false)
             {
                 _factory = new EllipseFactory();
-            }  
+            }
         }
 
         private void circleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
             _factory = new CircleFactory();
             eraserTool = false;
             figureMoveTool = false;
             fillTool = false;
+            resizeTool = false;
         }
         #endregion
 
@@ -396,9 +451,11 @@ namespace DevEdu_project
 
         private void toolStripButton14_Click(object sender, EventArgs e)
         {
-            figureMoveTool = false;
+            figureMoveTool = true;
+            resizeTool = false;
             eraserTool = false;
             fillTool = false;
+            _factory = null;
         }
 
         private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)

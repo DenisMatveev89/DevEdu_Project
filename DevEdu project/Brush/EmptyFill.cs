@@ -13,7 +13,7 @@ namespace DevEdu_project.Brush
     [Serializable]
     public class EmptyFill : IBrush
     {
-        public override void Fill(Point mouse, Color fillColor)
+        public override void Fill(Point mouse, Color fillColor, Color lineColor)
         {
           
         }

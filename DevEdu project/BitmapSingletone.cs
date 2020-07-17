@@ -92,8 +92,8 @@ namespace DevEdu_project
         }
 
         public void SetPixelOnFill(int x, int y, Color color)
-        {
-            if (x > 0 && x < _tmpBitmap.Width && y > 0 && y < _tmpBitmap.Height)
+        {            
+            if (x >= 0 && x < _fillBitmap.Width && y >= 0 && y < _fillBitmap.Height)
             {
                 _fillBitmap.SetPixel(x, y, color);
             }
@@ -129,6 +129,7 @@ namespace DevEdu_project
         public void Clear()
         {
             _fillBitmap = (Bitmap)_tmpBitmap.Clone();
+            //_fillBitmap = (Bitmap)_emptyBitmap.Clone();
             _tmpBitmap = (Bitmap)_emptyBitmap.Clone();   
             _bitmap = (Bitmap)_emptyBitmap.Clone();
         }
@@ -137,15 +138,9 @@ namespace DevEdu_project
         //вызывает все ее точки и рисует каждую точку
         public Bitmap DrawFigure(AFigure figure)
         {
-            //List<Point> figurePoints = figure.GetPoints();
-            /* foreach (Point i in figure.WidthLine(figure._startPoint, figure._endPoint, 10))
-             {
-                 SetPixel(i.X, i.Y, figure._colorLine);
-             }*/
-
             foreach (Point i in figure.GetPoints())
             {
-                SetPixel(i.X, i.Y, figure._colorLine);
+                SetPixel(i.X, i.Y, figure._colorLine);                
             }
 
             return _tmpBitmap;
@@ -160,7 +155,15 @@ namespace DevEdu_project
             }            
         }
 
-        public Bitmap DrawIndexFigures(AFigure currentFigure)
+        public void FillAllFigures()
+        {
+            foreach (AFigure i in _figureList)
+            {
+                i.FillFigure(i._centerPoint);
+            }
+        }
+
+        public Bitmap DrawExceptIndexFigures(AFigure currentFigure)
         {            
             foreach (AFigure i in _figureList)
             {
@@ -171,6 +174,20 @@ namespace DevEdu_project
             }
             
             return _tmpBitmap;
+        }
+
+        public Bitmap FillExceptIndexFigures(AFigure currentFigure)
+        {
+            foreach (AFigure i in _figureList)
+            {
+                if (i != currentFigure)
+                {
+                    i.FillFigure(i._centerPoint);
+                    CopyFromFill();
+                }
+            }
+
+            return _fillBitmap;
         }
 
         public Bitmap EraseIndexFigure(AFigure currentFigure)
