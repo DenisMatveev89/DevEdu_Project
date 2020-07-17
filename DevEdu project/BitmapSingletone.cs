@@ -13,13 +13,13 @@ namespace DevEdu_project
 
         public List<AFigure> _figureList;
 
-        public List<AFigure> saveFigures(AFigure figure)
+        public List<AFigure> SaveFigures(AFigure figure)
         {
             _figureList.Add(figure);
             return _figureList;
         }
 
-        public AFigure figureUnderMouse(Point mouse)
+        public AFigure FigureUnderMouse(Point mouse)
         {
             AFigure figure = null;
             foreach (AFigure i in _figureList)
@@ -142,7 +142,6 @@ namespace DevEdu_project
             {
                 SetPixel(i.X, i.Y, figure._colorLine);                
             }
-
             return _tmpBitmap;
         }
 
@@ -172,7 +171,6 @@ namespace DevEdu_project
                     DrawFigure(i);
                 }                
             }
-            
             return _tmpBitmap;
         }
 
@@ -186,7 +184,6 @@ namespace DevEdu_project
                     CopyFromFill();
                 }
             }
-
             return _fillBitmap;
         }
 
@@ -206,7 +203,6 @@ namespace DevEdu_project
             {
                 SetPixelOnFill(i.X, i.Y, color);
             }
-
             return _fillBitmap;
         }
         public Bitmap DrawBorder(List<Point> points)
@@ -216,7 +212,6 @@ namespace DevEdu_project
             {
                 SetPixelOnFill(i.X, i.Y, color);
             }
-
             return _fillBitmap;
         }
 

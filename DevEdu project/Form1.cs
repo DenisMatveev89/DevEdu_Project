@@ -24,9 +24,7 @@ namespace DevEdu_project
             //Диалоговые окошки
         Dialog dialog = new Dialog();
 
-        double brushWidth = 10;
-        //хранилище фигур
-        
+        //хранилище фигур    
         Storage storage = new Storage();
         //Тулсы всякие
         bool figureMoveTool = false;
@@ -52,12 +50,11 @@ namespace DevEdu_project
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
         {
             sBitmap.CreateBitmaps(pictureBox1.Width - 1, pictureBox1.Height - 1);
-            
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            AFigure clickFigure = sBitmap.figureUnderMouse(e.Location);
+            AFigure clickFigure = sBitmap.FigureUnderMouse(e.Location);
 
             if (fillTool && _factory == null && clickFigure != null)
             {
@@ -94,7 +91,7 @@ namespace DevEdu_project
                 mousePress = true;
             }
 
-            AFigure clickFigure = sBitmap.figureUnderMouse(e.Location);
+            AFigure clickFigure = sBitmap.FigureUnderMouse(e.Location);
             if (figureMoveTool && clickFigure != null && _factory == null)
             {
                 _currentFigure = clickFigure;
@@ -169,7 +166,7 @@ namespace DevEdu_project
             mousePress = false;
             if (_factory != null)
             {
-                sBitmap.saveFigures(_figure);
+                sBitmap.SaveFigures(_figure);
                 _currentFigure = _figure;
                 sBitmap.Update();
 
