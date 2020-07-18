@@ -21,11 +21,11 @@ namespace DevEdu_project
             }
             return _instance;
         }
-        public void figureListCreate()
+        public void FigureListCreate()
         {
             figureList = new List<AFigure>();
         }
-        public List<AFigure> saveFigures(AFigure figure)
+        public List<AFigure> SaveFigures(AFigure figure)
         {
             figureList.Add(figure);
             return figureList;

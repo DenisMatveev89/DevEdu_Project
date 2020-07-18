@@ -16,15 +16,9 @@ namespace DevEdu_project.ToolBox
 
         public override void DoLogicOnMouseMove(Point preLocation, Point location, AFigure figure)
         {
-            if(sBitmap._figureList.Count > 1)
-            {
-                sBitmap.Clear();
-                sBitmap.DrawExceptIndexFigures(figure);
-                sBitmap.Copy();
-                sBitmap.FillExceptIndexFigures(figure);
-            }
+            sBitmap.Copy();
             figure._endPoint = location;
-            sBitmap.vDrawFigure(figure);            
+            sBitmap.vDrawFigure(figure);
         }
 
         public override void DoLogicOnMouseUp(AFigure figure)
@@ -34,9 +28,16 @@ namespace DevEdu_project.ToolBox
             sBitmap.CopyFromFill();
         }
 
-        public override void DoLogigOnMouseDown()
+        public override void DoLogigOnMouseDown(AFigure figure)
         {
-            
+            if (sBitmap._figureList.Count > 1)
+            {
+                sBitmap.Clear();
+                sBitmap.DrawExceptIndexFigures(figure);
+                sBitmap.Copy();
+                sBitmap.FillExceptIndexFigures(figure);
+                sBitmap.CopyFromFill();
+            }
         }
     }
 }

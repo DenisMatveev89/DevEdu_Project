@@ -3,12 +3,10 @@ using DevEdu_project.Figure;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using DevEdu_project.Factory;
+using DevEdu_project.Factory;
 using DocumentFormat.OpenXml.Bibliography;using DevEdu_project.ToolBox;
-
-using Newtonsoft.Json;
-using System.IO;
-
+using Newtonsoft.Json;
+using System.IO;
 using DevEdu_project.LineW;
 namespace DevEdu_project
 {
@@ -67,7 +65,7 @@ namespace DevEdu_project
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             _prevPoint = e.Location;            mousePress = true;
-            AFigure clickFigure = sBitmap.figureUnderMouse(e.Location);
+            AFigure clickFigure = sBitmap.FigureUnderMouse(e.Location);
 
             if (_factory != null)
             {
@@ -76,6 +74,7 @@ namespace DevEdu_project
             else if (clickFigure != null)
             {
                 _currentFigure = clickFigure;
+                tool.DoLogigOnMouseDown(_currentFigure);
             }
         }
 
@@ -104,7 +103,7 @@ namespace DevEdu_project
             mousePress = false;
             if (_factory != null)
             {
-                sBitmap.saveFigures(_currentFigure);
+                sBitmap.SaveFigures(_currentFigure);
                 sBitmap.Update();
                 if (_fillColor != Color.Transparent)
                 {                    sBitmap.Copy();
@@ -344,9 +343,7 @@ namespace DevEdu_project
         {
             _fillColor = Color.Blue;
         }
-        #endregion                
-               
-        #endregion
+        #endregion        
         private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение

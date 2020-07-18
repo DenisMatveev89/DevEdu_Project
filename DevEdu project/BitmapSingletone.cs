@@ -1,5 +1,7 @@
 using System.Drawing;
 using System.Collections.Generic;
+using DevEdu_project.GetPoints;
+using System;
 
 namespace DevEdu_project
 {
@@ -16,24 +18,6 @@ namespace DevEdu_project
             return _figureList;
         }
 
-        public AFigure FigureUnderMouse(Point mouse)
-        {
-            AFigure figure = null;
-            foreach (AFigure i in _figureList)
-            {
-                if (i.IsMouseOnFigure(mouse))
-                {
-                    figure = i;
-
-                    if(figure != null)
-                    {
-                        return figure;
-                    }
-                }
-            }
-            return figure;
-        }
-
         //Временный и Основной битмап, на котором должны осуществляться все методы рисования
         public Bitmap _tmpBitmap;
         public Bitmap _bitmap;
@@ -41,10 +25,9 @@ namespace DevEdu_project
         public Bitmap _emptyBitmap;
         ConnectPoints cp = new ConnectPoints();
         public List<Point> borderPoint;
-        
-        
-            Point startXY;
-            Point endXY;
+
+        Point startXY;
+        Point endXY;
 
         public void CreateBitmaps(int width, int height)
         {
@@ -71,7 +54,7 @@ namespace DevEdu_project
                 _instance = new BitmapSingletone();
             }
             return _instance;
-        }        
+        }
 
         //Наш собственный метод SetPixel, благодаря которому не возникает ошибки при выходе за границы холста
         //Обратите внимание, он рисует на TmpBitmap
@@ -84,7 +67,7 @@ namespace DevEdu_project
         }
 
         public void SetPixelOnFill(int x, int y, Color color)
-        {            
+        {
             if (x >= 0 && x < _fillBitmap.Width && y >= 0 && y < _fillBitmap.Height)
             {
                 _fillBitmap.SetPixel(x, y, color);
@@ -97,7 +80,7 @@ namespace DevEdu_project
             if (_bitmap != null)
             {
                 _fillBitmap = (Bitmap)_tmpBitmap.Clone();
-                _tmpBitmap = (Bitmap)_bitmap.Clone();                
+                _tmpBitmap = (Bitmap)_bitmap.Clone();
             }
         }
 
@@ -105,7 +88,8 @@ namespace DevEdu_project
         {
             if (_bitmap != null)
             {
-                _tmpBitmap = (Bitmap)_fillBitmap.Clone();                
+                _tmpBitmap = (Bitmap)_fillBitmap.Clone();
+                _bitmap = (Bitmap)_fillBitmap.Clone();
             }
         }
 
@@ -118,10 +102,28 @@ namespace DevEdu_project
             }
         }
 
+        public AFigure FigureUnderMouse(Point mouse)
+        {
+            AFigure figure = null;
+            foreach (AFigure i in _figureList)
+            {
+                if (i.IsMouseOnFigure(mouse))
+                {
+                    figure = i;
+
+                    if (figure != null)
+                    {
+                        return figure;
+                    }
+                }
+            }
+            return figure;
+        }
+
         public void Clear()
         {
             _fillBitmap = (Bitmap)_tmpBitmap.Clone();
-            _tmpBitmap = (Bitmap)_emptyBitmap.Clone();   
+            _tmpBitmap = (Bitmap)_emptyBitmap.Clone();
             _bitmap = (Bitmap)_emptyBitmap.Clone();
         }
 
@@ -131,7 +133,7 @@ namespace DevEdu_project
         {
             foreach (Point i in figure.GetPoints())
             {
-                SetPixel(i.X, i.Y, figure._colorLine);                
+                SetPixel(i.X, i.Y, figure._colorLine);
             }
             return _tmpBitmap;
         }
@@ -150,7 +152,7 @@ namespace DevEdu_project
             foreach (AFigure i in _figureList)
             {
                 DrawFigure(i);
-            }            
+            }
         }
 
         public void FillAllFigures()
@@ -162,13 +164,13 @@ namespace DevEdu_project
         }
 
         public void DrawExceptIndexFigures(AFigure currentFigure)
-        {            
+        {
             foreach (AFigure i in _figureList)
             {
-                if(i != currentFigure)
+                if (i != currentFigure)
                 {
                     DrawFigure(i);
-                }                
+                }
             }
         }
 

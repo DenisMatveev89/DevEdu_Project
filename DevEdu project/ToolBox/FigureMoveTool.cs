@@ -34,7 +34,7 @@ namespace DevEdu_project.ToolBox
             sBitmap.CopyFromFill();
         }
 
-        public override void DoLogigOnMouseDown()
+        public override void DoLogigOnMouseDown(AFigure figure)
         {
             
         }

@@ -25,7 +25,7 @@ namespace DevEdu_project.ToolBox
             
         }
 
-        public override void DoLogigOnMouseDown()
+        public override void DoLogigOnMouseDown(AFigure figure)
         {
             
         }
