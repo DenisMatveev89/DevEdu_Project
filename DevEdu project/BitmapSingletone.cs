@@ -1,8 +1,5 @@
-using System;
 using System.Drawing;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using DevEdu_project.GetPoints;
 
 namespace DevEdu_project
 {
@@ -59,13 +56,8 @@ namespace DevEdu_project
                 _instance = new BitmapSingletone();
             }
             return _instance;
-        }
-        //Определяем цвет пикселя на который нажили в MouseClick
-        public Color ColorSelectPoint(int mouseX,int mouseY)
-        {
-            Color pixelColor = _bitmap.GetPixel(mouseX, mouseY);
-            return pixelColor;
-        }
+        }        
+
         //Наш собственный метод SetPixel, благодаря которому не возникает ошибки при выходе за границы холста
         //Обратите внимание, он рисует на TmpBitmap
         public void SetPixel(int x, int y, Color color)
@@ -88,9 +80,9 @@ namespace DevEdu_project
         public void Copy()
         {
             if (_bitmap != null)
-            {             
-                _tmpBitmap = (Bitmap)_bitmap.Clone();
+            {
                 _fillBitmap = (Bitmap)_tmpBitmap.Clone();
+                _tmpBitmap = (Bitmap)_bitmap.Clone();                
             }
         }
 
@@ -98,7 +90,7 @@ namespace DevEdu_project
         {
             if (_bitmap != null)
             {
-                _tmpBitmap = (Bitmap)_fillBitmap.Clone();
+                _tmpBitmap = (Bitmap)_fillBitmap.Clone();                
             }
         }
 
@@ -114,7 +106,6 @@ namespace DevEdu_project
         public void Clear()
         {
             _fillBitmap = (Bitmap)_tmpBitmap.Clone();
-            //_fillBitmap = (Bitmap)_emptyBitmap.Clone();
             _tmpBitmap = (Bitmap)_emptyBitmap.Clone();   
             _bitmap = (Bitmap)_emptyBitmap.Clone();
         }
@@ -129,6 +120,14 @@ namespace DevEdu_project
             }
                         
             return _tmpBitmap;
+        }
+
+        public void vDrawFigure(AFigure figure)
+        {
+            foreach (Point i in figure.GetPoints())
+            {
+                SetPixel(i.X, i.Y, figure._colorLine);
+            }
         }
 
         //Метод, который рисует все фигуры из листа фигур        
@@ -148,7 +147,7 @@ namespace DevEdu_project
             }
         }
 
-        public Bitmap DrawExceptIndexFigures(AFigure currentFigure)
+        public void DrawExceptIndexFigures(AFigure currentFigure)
         {            
             foreach (AFigure i in _figureList)
             {
@@ -157,11 +156,14 @@ namespace DevEdu_project
                     DrawFigure(i);
                 }                
             }
-            
-            return _tmpBitmap;
         }
 
-        public Bitmap FillExceptIndexFigures(AFigure currentFigure)
+        public void FillFigure(AFigure figure)
+        {
+            figure.FillFigure(figure._centerPoint);
+        }
+
+        public void FillExceptIndexFigures(AFigure currentFigure)
         {
             foreach (AFigure i in _figureList)
             {
@@ -171,28 +173,22 @@ namespace DevEdu_project
                     CopyFromFill();
                 }
             }
-
-            return _fillBitmap;
         }
 
-        public Bitmap EraseIndexFigure(AFigure currentFigure)
+        public void EraseIndexFigure(AFigure currentFigure)
         {
             _figureList.Remove(currentFigure);
             DrawAllFigures();
-            return _tmpBitmap;
         }
 
         // Старый метод, который проходится по листу от первой до последней точки
         // и рисует каждую точку на TmpBitmap
-        public Bitmap Draw(List<Point> points, Color color)
+        public void Draw(List<Point> points, Color color)
         {
-
             foreach (Point i in points)
             {
                 SetPixelOnFill(i.X, i.Y, color);
             }
-
-            return _fillBitmap;
         }
     }
 }

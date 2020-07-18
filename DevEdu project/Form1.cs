@@ -4,8 +4,8 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using DevEdu_project.Factory;
-using DocumentFormat.OpenXml.Bibliography;
-
+using DocumentFormat.OpenXml.Bibliography;using DevEdu_project.ToolBox;
+
 namespace DevEdu_project
 {
     public partial class BetterThanPhotoshop : Form
@@ -13,21 +13,17 @@ namespace DevEdu_project
         //Объявляем фабрику
         AFactory _factory = new PencilFactory();
         //Объявляем интерфейс AFigure
-        AFigure _figure = new Pencil();
+        //AFigure _figure = new Pencil();
         AFigure _currentFigure;
-        AFigure _movingFigure;
+        ITool tool;
         IBrush fill = new FullFill();
         //Диалоговые окошки
         Dialog dialog = new Dialog();
 
+        //Graphics g = e.Graphics();
+
         double brushWidth = 10;
-        //хранилище фигур
-        Storage storage = new Storage();
-        //Тулсы всякие
-        bool figureMoveTool = false;
-        bool eraserTool = false;
-        bool fillTool = false;
-        bool resizeTool = false;
+                
         private bool mousePress;
         //Color _fillColor = Color.Red;
         Color _fillColor = Color.Transparent;
@@ -35,126 +31,66 @@ namespace DevEdu_project
         Point _currentPoint;
         Point _prevPoint;
         Point _startMovingPoint;
-        Point _movingPoint;
-        BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-
-
+        //Point _movingPoint;
+        BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
+
         public BetterThanPhotoshop()
         {
             InitializeComponent();
         }
 
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
-        {
-            sBitmap.CreateBitmaps(pictureBox1.Width - 1, pictureBox1.Height - 1);
+        {             
+            sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             AFigure clickFigure = sBitmap.figureUnderMouse(e.Location);
 
-            if (fillTool && _factory == null && clickFigure != null)
-            {
-                _currentFigure = clickFigure;
-                sBitmap.Clear();
-                sBitmap.DrawExceptIndexFigures(_currentFigure);
-                //sBitmap.FillExceptIndexFigures(_currentFigure);
-
-                _currentFigure._fillColor = _fillColor;
-                _currentFigure.FillFigure(e.Location);
-                sBitmap.CopyFromFill();
-                pictureBox1.Image = sBitmap._tmpBitmap;
-            }
-            else if (eraserTool && clickFigure != null && _factory == null)
-            {
+            if (clickFigure != null)
+            {
                 _currentFigure = clickFigure;
-                sBitmap.Clear();
-                pictureBox1.Image = sBitmap.EraseIndexFigure(_currentFigure);
+                //sBitmap.Clear();
+
+                tool.DoLogicOnMouseClick(e.Location, _currentFigure, _fillColor);
+                pictureBox1.Image = sBitmap._tmpBitmap;
+                sBitmap.Update();
             }
-            
-            sBitmap.Update();
+
         }
-
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            _prevPoint = e.Location;
+        {
+            _prevPoint = e.Location;            mousePress = true;
+            AFigure clickFigure = sBitmap.figureUnderMouse(e.Location);
+
             if (_factory != null)
             {
                 _factory.Update();
-                mousePress = true;
-            }
-            else if(figureMoveTool || resizeTool)
-            {
-                mousePress = true;
-            }
-
-            AFigure clickFigure = sBitmap.figureUnderMouse(e.Location);
-            if (figureMoveTool && clickFigure != null && _factory == null)
-            {
-                _currentFigure = clickFigure;
-                _startMovingPoint = e.Location;
-                //очищаем битмапы, fillBitmap = прежнему tmp
-                sBitmap.Clear();
-
-                //рисуем на tmpBitmap все фигуры, кроме выбранной, потом заливаем их
-                sBitmap.DrawExceptIndexFigures(_currentFigure);
-                //sBitmap.FillExceptIndexFigures(_currentFigure);
-
-                //pictureBox1.Image = sBitmap._tmpBitmap;
-                //sBitmap.CopyFromFill();
-
             }
-            else if (resizeTool && clickFigure != null && _factory == null)
-            {
-                _currentFigure = clickFigure;
-                //_currentFigure._startPoint = e.Location;
-                //очищаем битмапы, fillBitmap = прежнему tmp
-                sBitmap.Clear();
-
-                //рисуем на tmpBitmap все фигуры, кроме выбранной, потом заливаем их
-                sBitmap.DrawExceptIndexFigures(_currentFigure);
-                //sBitmap.FillExceptIndexFigures(_currentFigure);
-
-                pictureBox1.Image = sBitmap._tmpBitmap;
-                //sBitmap.CopyFromFill();
-            }
+            else if (clickFigure != null)
+            {
+                _currentFigure = clickFigure;
+            }
         }
 
         private void pictureBox_MouseMove_1(object sender, MouseEventArgs e)
         {
-            if (mousePress && _factory != null)
+            if(mousePress)
             {
-                _currentPoint = e.Location; //координаты нам нужно фиксировать только когда мышь нажата
-                sBitmap.Copy();
-                sBitmap.DrawExceptIndexFigures(_currentFigure);
-
-                _figure = _factory.Create(_prevPoint, _currentPoint, _currentColor, _fillColor);
-                sBitmap.DrawFigure(_figure);
-
+                _currentPoint = e.Location;
+                sBitmap.Copy();
+                if (_factory != null)
+                {
+                    _currentFigure = _factory.Create(_prevPoint, _currentPoint, _currentColor, _fillColor);
+                    sBitmap.DrawFigure(_currentFigure);
+                }
+                else
+                {
+                    tool.DoLogicOnMouseMove(_prevPoint, _currentPoint, _currentFigure);                    
+                }
+
                 pictureBox1.Image = sBitmap._tmpBitmap;
-            }
-            else if(mousePress && figureMoveTool)
-            {
-                //Расстояние, на которое смещаются точки
-                _movingPoint = e.Location;
-                sBitmap.Copy();
-                _currentFigure = _currentFigure.Move(_startMovingPoint, _movingPoint, _currentFigure);
-                //Изменение фигуры
-                //_currentPoint = e.Location;
-                //sBitmap.Copy();
-
-                //_currentFigure._endPoint = e.Location;
-                sBitmap.DrawFigure(_currentFigure);
-
-                pictureBox1.Image = sBitmap._tmpBitmap;
-            }
-            else if(mousePress && resizeTool)
-            {
-                _currentPoint = e.Location;
-                sBitmap.Copy();
-
-                _currentFigure._endPoint = e.Location;
-                pictureBox1.Image = sBitmap.DrawFigure(_currentFigure);
             }
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
@@ -163,146 +99,107 @@ namespace DevEdu_project
             mousePress = false;
             if (_factory != null)
             {
-                sBitmap.saveFigures(_figure);
-                _currentFigure = _figure;
+                sBitmap.saveFigures(_currentFigure);
                 sBitmap.Update();
-
-                if (_fillColor != Color.Transparent)
-                {                    
-                    sBitmap.Copy();
-                    _figure.FillFigure(_currentFigure._centerPoint);
-                    sBitmap.CopyFromFill();
-                    pictureBox1.Image = sBitmap._tmpBitmap;
+                if (_fillColor != Color.Transparent)
+                {                    sBitmap.Copy();
+                    _currentFigure.FillFigure(_currentFigure._centerPoint);
+                    sBitmap.CopyFromFill();
+                    pictureBox1.Image = sBitmap._tmpBitmap;
                 }
+            }            else
+            {
+                tool.DoLogicOnMouseUp(_currentFigure);
             }
-
-            sBitmap.Update();
+            sBitmap.Update();            pictureBox1.Image = sBitmap._bitmap;
         }
         #region ToolBox
         private void EraserButton_Click(object sender, EventArgs e)
         {
-            eraserTool = true;
-            figureMoveTool = false;
-            fillTool = false;
+            tool = new EraserTool();
             _factory = null;
-            resizeTool = false;
         }
 
         private void AngleButton_Click(object sender, EventArgs e)
         {
-            resizeTool = true;
-            figureMoveTool = false;
-            eraserTool = false;
-            fillTool = false;
+            tool = new ResizeTool();
+            _factory = null;  
+        }
+        private void FillColorButton_Click(object sender, EventArgs e)
+        {
+            tool = new FillTool();
             _factory = null;
-
-        }
-
-        private void FillColorButton_Click(object sender, EventArgs e)
-        {
-            fillTool = true;
-            eraserTool = false;
-            figureMoveTool = false;
-            _factory = null;
-            resizeTool = false;
         }
         private void Pencil_Click(object sender, EventArgs e)
         {
-            _factory = new PencilFactory();
-            eraserTool = false;
-            figureMoveTool = false;
-            fillTool = false;
-            resizeTool = false;
+            tool = new FigureDrawTool();
+            _factory = new PencilFactory();            
         }
 
         private void LineButton_Click(object sender, EventArgs e)
         {
+            tool = new FigureDrawTool();
             _factory = new LineFactory();
-            eraserTool = false;
-            figureMoveTool = false;
-            fillTool = false;
-            resizeTool = false;
         }
         private void squareToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tool = new FigureDrawTool();
             _factory = new SquareFactory();
-            eraserTool = false;
-            figureMoveTool = false;
-            fillTool = false;
-            resizeTool = false;
         }
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tool = new FigureDrawTool();
             _factory = new RectangleFactory();
-            eraserTool = false;
-            figureMoveTool = false;
-            fillTool = false;
-            resizeTool = false;
         }
 
         private void arbitraryTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tool = new FigureDrawTool();
             //произвольный треугольник по трем точкам
-            eraserTool = false;
-            figureMoveTool = false;
-            fillTool = false;
-            resizeTool = false;
+            
         }
 
         private void isoscelesTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tool = new FigureDrawTool();
             _factory = new TriangleIsoscelesFactory(); //равнобедренный треугольник по одной из граней
-            eraserTool = false;
-            figureMoveTool = false;
-            fillTool = false;
-            resizeTool = false;
+            
         }
 
         private void rightTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tool = new FigureDrawTool();
             _factory = new TriangleRightFactory(); //прямоугольный треугольник по гипотенузе
-            eraserTool = false;
-            figureMoveTool = false;
-            fillTool = false;
-            resizeTool = false;
+            
         }
 
         private void equilateralTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tool = new FigureDrawTool();
             _factory = new TriangleEquilateralFactory(); //равносторонний треугольник по одной стороне
-            eraserTool = false;
-            figureMoveTool = false;
-            fillTool = false;
-            resizeTool = false;
+            
         }
         private void EllipseButton_Click_1(object sender, EventArgs e)
         {
+            tool = new FigureDrawTool();
             _factory = new EllipseFactory();
-            eraserTool = false;
-            figureMoveTool = false;
-            fillTool = false;
-            resizeTool = false;
+            
         }
 
         private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            eraserTool = false;
-            figureMoveTool = false;
-            resizeTool = false;
-            fillTool = false;
-            if (eraserTool == false && figureMoveTool == false)
-            {
-                _factory = new EllipseFactory();
-            }
+            tool = new FigureDrawTool();
+            _factory = new EllipseFactory();
         }
 
         private void circleToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {            tool = new FigureDrawTool();
             _factory = new CircleFactory();
-            eraserTool = false;
-            figureMoveTool = false;
-            fillTool = false;
-            resizeTool = false;
+        }
+        private void toolStripButton14_Click(object sender, EventArgs e)
+        {
+            tool = new FigureMoveTool();
+            _factory = null;            
         }
         #endregion
 
@@ -442,16 +339,8 @@ namespace DevEdu_project
         {
             _fillColor = Color.Blue;
         }
-        #endregion
-
-        private void toolStripButton14_Click(object sender, EventArgs e)
-        {
-            figureMoveTool = true;
-            resizeTool = false;
-            eraserTool = false;
-            fillTool = false;
-            _factory = null;
-        }
+        #endregion                
+               
     }
 }
 

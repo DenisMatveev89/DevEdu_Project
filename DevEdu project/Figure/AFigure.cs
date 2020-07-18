@@ -25,7 +25,7 @@ namespace DevEdu_project
         public virtual void FillFigure(Point mouse)
         {
 
-            if(_fillColor.IsNamedColor || _fillColor != Color.Transparent)
+            if(_fillColor.IsNamedColor && _fillColor != Color.Transparent)
             {
                 fill = new FullFill();
                 fill.Fill(mouse, _fillColor, _colorLine);
@@ -48,8 +48,11 @@ namespace DevEdu_project
             int X1 = movingFigure._endPoint.X;
             int Y1 = movingFigure._endPoint.Y;            
 
-            if (end.X >= start.X && end.Y >= start.Y)
+            if (end.X > start.X && end.Y > start.Y)
             {
+                //int dx = (int)Math.Sqrt(Math.Pow((end.X - start.X), 2));
+                //int dy = (int)Math.Sqrt(Math.Pow((end.Y - start.Y), 2));
+
                 int dx = end.X - start.X;
                 int dy = end.Y - start.Y;
                 X0 += dx;
@@ -57,8 +60,10 @@ namespace DevEdu_project
                 X1 += dx;
                 Y1 += dy;
             }
-            else if (end.X >= start.X && end.Y <= start.Y)
+            else if (end.X > start.X && end.Y < start.Y)
             {
+                //int dx = (int)Math.Sqrt(Math.Pow((end.X - start.X), 2));
+                //int dy = (int)Math.Sqrt(Math.Pow((start.Y - end.Y), 2));
                 int dx = end.X - start.X;
                 int dy = start.Y - end.Y;
                 X0 += dx;
@@ -66,8 +71,11 @@ namespace DevEdu_project
                 X1 += dx;
                 Y1 -= dy;
             }
-            else if (end.X <= start.X && end.Y >= start.Y)
+            else if (end.X < start.X && end.Y > start.Y)
             {
+                //int dx = (int)Math.Sqrt(Math.Pow((start.X - end.X), 2));
+                //int dy = (int)Math.Sqrt(Math.Pow((end.Y - start.Y), 2));
+
                 int dx = start.X - end.X;
                 int dy = end.Y - start.Y;
                 X0 -= dx;
@@ -75,8 +83,10 @@ namespace DevEdu_project
                 X1 -= dx;
                 Y1 += dy;
             }
-            else
+            else if (end.X < start.X && end.Y < start.Y)
             {
+                //int dx = (int)Math.Sqrt(Math.Pow((start.X - end.X), 2));
+                //int dy = (int)Math.Sqrt(Math.Pow((start.Y - end.Y), 2));
                 int dx = start.X - end.X;
                 int dy = start.Y - end.Y;
                 X0 -= dx;

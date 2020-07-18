@@ -98,8 +98,12 @@
     <Compile Include="Dialog.cs" />
     <Compile Include="BitmapSingletone.cs" />
     <Compile Include="Storage.cs" />
+    <Compile Include="ToolBox\EraserTool.cs" />
+    <Compile Include="ToolBox\FigureDrawTool.cs" />
+    <Compile Include="ToolBox\FigureMoveTool.cs" />
     <Compile Include="ToolBox\FillTool.cs" />
-    <Compile Include="ToolBox\ATool.cs" />
+    <Compile Include="ToolBox\ITool.cs" />
+    <Compile Include="ToolBox\ResizeTool.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
