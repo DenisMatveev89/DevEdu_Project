@@ -58,8 +58,6 @@ namespace DevEdu_project
         }
         public void OpenSourceDialog()
         {
-            BitmapSingletone.GetInstance()._bitmap = null;
-            BitmapSingletone.GetInstance()._tmpBitmap = BitmapSingletone.GetInstance()._emptyBitmap;
             OpenFileDialog open = new OpenFileDialog();
             open.Title = "Open source...";
             open.CheckPathExists = true;
@@ -71,8 +69,10 @@ namespace DevEdu_project
                 using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
                 {
                     BitmapSingletone.GetInstance()._figureList = (List<AFigure>)serializerFig.Deserialize(fs);
-                    BitmapSingletone.GetInstance().DrawAllFigures();
-                    BitmapSingletone.GetInstance().Update();
+                    BitmapSingletone.GetInstance().DrawAllFigures();                    
+                    BitmapSingletone.GetInstance().Copy();
+                    BitmapSingletone.GetInstance().FillAllFigures();
+                    BitmapSingletone.GetInstance().CopyFromFill();
                 }
             }
         }

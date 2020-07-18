@@ -102,6 +102,13 @@ namespace DevEdu_project
             }
         }
 
+        public void Clear()
+        {
+            _fillBitmap = (Bitmap)_tmpBitmap.Clone();
+            _tmpBitmap = (Bitmap)_emptyBitmap.Clone();
+            _bitmap = (Bitmap)_emptyBitmap.Clone();
+        }
+
         public AFigure FigureUnderMouse(Point mouse)
         {
             AFigure figure = null;
@@ -120,12 +127,7 @@ namespace DevEdu_project
             return figure;
         }
 
-        public void Clear()
-        {
-            _fillBitmap = (Bitmap)_tmpBitmap.Clone();
-            _tmpBitmap = (Bitmap)_emptyBitmap.Clone();
-            _bitmap = (Bitmap)_emptyBitmap.Clone();
-        }
+
 
         //Метод, который принимает настроенную фигуру,
         //вызывает все ее точки и рисует каждую точку
@@ -157,6 +159,7 @@ namespace DevEdu_project
 
         public void FillAllFigures()
         {
+            //_fillBitmap = (Bitmap)_tmpBitmap.Clone();
             foreach (AFigure i in _figureList)
             {
                 i.FillFigure(i._centerPoint);
@@ -181,6 +184,8 @@ namespace DevEdu_project
 
         public void FillExceptIndexFigures(AFigure currentFigure)
         {
+            //_fillBitmap = (Bitmap)_tmpBitmap.Clone();
+
             foreach (AFigure i in _figureList)
             {
                 if (i != currentFigure)

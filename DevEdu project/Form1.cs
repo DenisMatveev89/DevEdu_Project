@@ -17,6 +17,7 @@ namespace DevEdu_project
         //Объявляем интерфейс AFigure
         //AFigure _figure = new Pencil();
         AFigure _currentFigure;
+        AFigure _clickFigure;
         ITool tool;
         IBrush fill = new FullFill();
         //ILineWidth lineWidth = new LineWidth();
@@ -49,11 +50,11 @@ namespace DevEdu_project
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            AFigure clickFigure = sBitmap.FigureUnderMouse(e.Location);
+            _clickFigure = sBitmap.FigureUnderMouse(e.Location);
 
-            if (clickFigure != null)
+            if (_clickFigure != null)
             {
-                _currentFigure = clickFigure;
+                _currentFigure = _clickFigure;
                 //sBitmap.Clear();
 
                 tool.DoLogicOnMouseClick(e.Location, _currentFigure, _fillColor);
@@ -65,15 +66,15 @@ namespace DevEdu_project
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             _prevPoint = e.Location;            mousePress = true;
-            AFigure clickFigure = sBitmap.FigureUnderMouse(e.Location);
+            _clickFigure = sBitmap.FigureUnderMouse(e.Location);
 
             if (_factory != null)
             {
                 _factory.Update();
             }
-            else if (clickFigure != null)
+            else if (_clickFigure != null)
             {
-                _currentFigure = clickFigure;
+                _currentFigure = _clickFigure;
                 tool.DoLogigOnMouseDown(_currentFigure);
             }
         }
@@ -89,7 +90,7 @@ namespace DevEdu_project
                     _currentFigure = _factory.Create(_prevPoint, _currentPoint, _currentColor, _fillColor);
                     sBitmap.DrawFigure(_currentFigure);
                 }
-                else
+                else if(_clickFigure != null)
                 {
                     tool.DoLogicOnMouseMove(_prevPoint, _currentPoint, _currentFigure);                    
                 }
@@ -113,7 +114,10 @@ namespace DevEdu_project
                 }
             }            else
             {
-                tool.DoLogicOnMouseUp(_currentFigure);
+                if(_clickFigure != null)
+                {
+                    tool.DoLogicOnMouseUp(_currentFigure);
+                }                
             }
             sBitmap.Update();            pictureBox1.Image = sBitmap._bitmap;
         }
