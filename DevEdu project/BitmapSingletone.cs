@@ -60,11 +60,18 @@ namespace DevEdu_project
             _tmpBitmap = new Bitmap(width, height);
             _emptyBitmap = new Bitmap(width, height);
             _fillBitmap = new Bitmap(width, height);
-            _figureList = new List<AFigure>();
+            _figureList = Storage.GetInstance()._figureList;
             borderPoint = new List<Point>();
             borderPoint.AddRange(cp.ConnectTwoPoints(startXY, endXY));
             DrawBorder(borderPoint);
         }
+        public void UpdateBitmap(int width, int height)
+        {
+            _bitmap = new Bitmap(width, height);
+            _tmpBitmap = new Bitmap(width, height);
+            _emptyBitmap = new Bitmap(width, height);
+        }
+
         private static BitmapSingletone _instance;
 
         public static BitmapSingletone GetInstance()

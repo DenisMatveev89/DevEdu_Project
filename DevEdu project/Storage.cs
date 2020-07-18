@@ -7,28 +7,28 @@ using System.Drawing;
 
 namespace DevEdu_project
 {
+    [Serializable]
     public class Storage
     {
         //public List<AFigure> figureList = new List<AFigure>();
-        public List<AFigure> figureList;
+        public  List<AFigure> _figureList = new List<AFigure>();
         private static Storage _instance;
         public static Storage GetInstance()
         {
             if (_instance == null)
             {
                 _instance = new Storage();
-                List<AFigure> figureList = new List<AFigure>();
             }
             return _instance;
         }
         public void figureListCreate()
         {
-            figureList = new List<AFigure>();
+            _figureList = new List<AFigure>();
         }
-        public List<AFigure> saveFigures(AFigure figure)
+        public List<AFigure> SaveFigures(AFigure figure)
         {
-            figureList.Add(figure);
-            return figureList;
+            _figureList.Add(figure);
+            return _figureList;
         }
     }
 }

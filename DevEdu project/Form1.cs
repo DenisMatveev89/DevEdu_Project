@@ -21,7 +21,8 @@ namespace DevEdu_project
         AFigure _movingFigure;
         IBrush fill = new FullFill();
         //ILineWidth lineWidth = new LineWidth();
-            //Диалоговые окошки
+        
+        //Диалоговые окошки
         Dialog dialog = new Dialog();
 
         //хранилище фигур    
@@ -310,32 +311,34 @@ namespace DevEdu_project
         #endregion
 
         #region BorderLineColor
-        private void toolStripButton5_Click(object sender, EventArgs e)
+        private void toolColorLineButtonRed_Click(object sender, EventArgs e)
         {
             _currentColor = Color.Red;
         }
 
-        private void toolStripButton6_Click(object sender, EventArgs e)
-        {
-            _currentColor = Color.Black;
-        }
-
-        private void toolStripButton7_Click(object sender, EventArgs e)
+        private void toolColorLineButtonGreen_Click(object sender, EventArgs e)
         {
             _currentColor = Color.Green;
         }
 
-        private void toolStripButton8_Click(object sender, EventArgs e)
+        private void toolColorLineButtonYellow_Click(object sender, EventArgs e)
         {
             _currentColor = Color.Yellow;
         }
 
-        private void toolStripButton9_Click(object sender, EventArgs e)
+        private void toolColorLineButtonBlue_Click(object sender, EventArgs e)
         {
             _currentColor = Color.Blue;
         }
 
-
+        private void toolColorLineButtonWhite_Click(object sender, EventArgs e)
+        {
+            _currentColor = Color.White;
+        }
+        private void toolColorLineButtonBlack_Click(object sender, EventArgs e)
+        {
+            _currentColor = Color.Black;
+        }
 
         #endregion
 
@@ -344,14 +347,6 @@ namespace DevEdu_project
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-        //Menu SaveAs
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (pictureBox1.Image != null) //если в pictureBox есть изображение
-            {
-                dialog.SaveDialog();
-            }
         }
         //Create new
         private void clearCanvasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -411,43 +406,43 @@ namespace DevEdu_project
         #endregion
 
         #region FillColorMenu
-        private void toolStripButton3_Click(object sender, EventArgs e)
+        private void toolFillColorBlack_Click(object sender, EventArgs e)
         {
             _fillColor = Color.Black;
         }
 
-        private void toolStripButton12_Click(object sender, EventArgs e)
+        private void toolFillColorWhite_Click(object sender, EventArgs e)
         {
             _fillColor = Color.White;
         }
 
-        private void toolStripButton13_Click(object sender, EventArgs e)
+        private void toolFillColorTransparent_Click(object sender, EventArgs e)
         {
             _fillColor = Color.Transparent;
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void toolFillColorRed_Click(object sender, EventArgs e)
         {
             _fillColor = Color.Red;
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void toolFillColorGreen_Click(object sender, EventArgs e)
         {
             _fillColor = Color.Green;
         }
 
-        private void toolStripButton4_Click(object sender, EventArgs e)
+        private void toolFillColorYellow_Click(object sender, EventArgs e)
         {
             _fillColor = Color.Yellow;
         }
 
-        private void toolStripButton10_Click(object sender, EventArgs e)
+        private void toolFillColorBlue_Click(object sender, EventArgs e)
         {
             _fillColor = Color.Blue;
         }
         #endregion
 
-        private void toolStripButton14_Click(object sender, EventArgs e)
+        private void toolMoveButton_Click(object sender, EventArgs e)
         {
             figureMoveTool = true;
             resizeTool = false;
@@ -458,10 +453,7 @@ namespace DevEdu_project
 
         private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (pictureBox1.Image != null) //если в pictureBox есть изображение
-            {
-                dialog.SaveSourceDialog();
-            }
+           
             
         }
 
@@ -475,15 +467,17 @@ namespace DevEdu_project
                     case DialogResult.Yes:
                         dialog.SaveSourceDialog();
                         dialog.OpenSourceDialog();
+                        pictureBox1.Image = null;
                         break;
                     case DialogResult.No:
                         dialog.OpenSourceDialog();
-                        
+                        pictureBox1.Image = null;
                         break;
                     case DialogResult.Cancel:
                         break;
                 }
-                pictureBox1.Image = null;
+                _fillColor = Color.Transparent;
+                _currentColor = Color.Black;
                 pictureBox1.Image = sBitmap._tmpBitmap;
             }
             else
@@ -493,11 +487,35 @@ namespace DevEdu_project
             }
         }
 
-        private void toolStripButton16_Click(object sender, EventArgs e)
+        private void toolEraseButton_Click(object sender, EventArgs e)
         {
             sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
             sBitmap.Update();
             pictureBox1.Image = null;
+        }
+
+        private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                dialog.SaveDialog();
+            }
+        }
+
+        private void saveAsSourceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                dialog.SaveSourceDialog();
+            }
+        }
+
+        private void BetterThanPhotoshop_SizeChanged(object sender, EventArgs e)
+        {
+            pictureBox1.Width = Size.Width - 60;
+            pictureBox1.Height = Size.Height - 100;
+            sBitmap.UpdateBitmap(pictureBox1.Width, pictureBox1.Height);
+            sBitmap.Update();
         }
     }
 }

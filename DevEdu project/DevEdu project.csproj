@@ -118,9 +118,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -202,6 +199,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\commerce-and-shopping.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open_folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open-menu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
