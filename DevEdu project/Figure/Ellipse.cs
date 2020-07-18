@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project
 {
+    [Serializable]
     public class Ellipse : AFigure
     {
         public Ellipse() 

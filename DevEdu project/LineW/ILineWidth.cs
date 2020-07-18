@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevEdu_project.LineWidth
+namespace DevEdu_project.LineW
 {
-    public interface ILineWidth
+    public abstract class ILineWidth
     {
-        List<Point> LWidth(Point strat, Point end);
+        public abstract List<Point> LWidth(Point start, Point end, int width);
     }
 }

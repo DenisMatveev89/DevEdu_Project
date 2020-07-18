@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Figure
 {
+    [Serializable]
     public class TriangleRight : AFigure//правильный треугольник
     {
         public TriangleRight()

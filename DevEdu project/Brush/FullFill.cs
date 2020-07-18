@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Brush
 {
+    [Serializable]
     public class FullFill : IBrush
     {
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();

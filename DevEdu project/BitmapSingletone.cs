@@ -3,19 +3,20 @@ using System.Collections.Generic;
 
 namespace DevEdu_project
 {
+    [Serializable]
     public class BitmapSingletone
     {
         private BitmapSingletone() { }
 
         public List<AFigure> _figureList;
 
-        public List<AFigure> saveFigures(AFigure figure)
+        public List<AFigure> SaveFigures(AFigure figure)
         {
             _figureList.Add(figure);
             return _figureList;
         }
 
-        public AFigure figureUnderMouse(Point mouse)
+        public AFigure FigureUnderMouse(Point mouse)
         {
             AFigure figure = null;
             foreach (AFigure i in _figureList)
@@ -37,15 +38,29 @@ namespace DevEdu_project
         public Bitmap _tmpBitmap;
         public Bitmap _bitmap;
         public Bitmap _fillBitmap;
-        public Bitmap _emptyBitmap;        
+        public Bitmap _emptyBitmap;
+        ConnectPoints cp = new ConnectPoints();
+        public List<Point> borderPoint;
+        
+        
+            Point startXY;
+            Point endXY;
 
         public void CreateBitmaps(int width, int height)
         {
+            startXY.X = 0;
+            startXY.Y = 0;
+            endXY.X = width;
+            endXY.Y = height;
+
             _bitmap = new Bitmap(width, height);
             _tmpBitmap = new Bitmap(width, height);
             _emptyBitmap = new Bitmap(width, height);
             _fillBitmap = new Bitmap(width, height);
             _figureList = new List<AFigure>();
+            borderPoint = new List<Point>();
+            borderPoint.AddRange(cp.ConnectTwoPoints(startXY, endXY));
+            DrawBorder(borderPoint);
         }
         private static BitmapSingletone _instance;
 
@@ -118,7 +133,6 @@ namespace DevEdu_project
             {
                 SetPixel(i.X, i.Y, figure._colorLine);                
             }
-                        
             return _tmpBitmap;
         }
 
@@ -190,5 +204,15 @@ namespace DevEdu_project
                 SetPixelOnFill(i.X, i.Y, color);
             }
         }
+        public Bitmap DrawBorder(List<Point> points)
+        {
+            Color color = Color.Black;
+            foreach (Point i in points)
+            {
+                SetPixelOnFill(i.X, i.Y, color);
+            }
+            return _fillBitmap;
+        }
+
     }
 }

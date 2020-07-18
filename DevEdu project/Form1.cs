@@ -6,6 +6,10 @@ using System.Windows.Forms;
 using DevEdu_project.Factory;
 using DocumentFormat.OpenXml.Bibliography;using DevEdu_project.ToolBox;
 
+using Newtonsoft.Json;
+using System.IO;
+
+using DevEdu_project.LineW;
 namespace DevEdu_project
 {
     public partial class BetterThanPhotoshop : Form
@@ -17,7 +21,8 @@ namespace DevEdu_project
         AFigure _currentFigure;
         ITool tool;
         IBrush fill = new FullFill();
-        //Диалоговые окошки
+        //ILineWidth lineWidth = new LineWidth();
+            //Диалоговые окошки
         Dialog dialog = new Dialog();
 
         //Graphics g = e.Graphics();
@@ -46,7 +51,7 @@ namespace DevEdu_project
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            AFigure clickFigure = sBitmap.figureUnderMouse(e.Location);
+            AFigure clickFigure = sBitmap.FigureUnderMouse(e.Location);
 
             if (clickFigure != null)
             {
@@ -281,7 +286,7 @@ namespace DevEdu_project
             Application.Exit();
         }
 
-        private void EventNew()
+        public void EventNew()
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
             {
@@ -341,6 +346,50 @@ namespace DevEdu_project
         }
         #endregion                
                
+        #endregion
+        private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                dialog.SaveSourceDialog();
+            }
+            
+        }
+
+        private void openSourceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                DialogResult result = dialog.NewDialog();
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        dialog.SaveSourceDialog();
+                        dialog.OpenSourceDialog();
+                        break;
+                    case DialogResult.No:
+                        dialog.OpenSourceDialog();
+                        
+                        break;
+                    case DialogResult.Cancel:
+                        break;
+                }
+                pictureBox1.Image = null;
+                pictureBox1.Image = sBitmap._tmpBitmap;
+            }
+            else
+            {
+                dialog.OpenSourceDialog();
+                pictureBox1.Image = sBitmap._tmpBitmap;
+            }
+        }
+
+        private void toolStripButton16_Click(object sender, EventArgs e)
+        {
+            sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
+            sBitmap.Update();
+            pictureBox1.Image = null;
+        }
     }
 }
 

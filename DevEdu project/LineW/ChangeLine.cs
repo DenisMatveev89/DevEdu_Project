@@ -6,17 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevEdu_project.LineWidth
+namespace DevEdu_project.LineW
 {
-    public class ChangeLine : ILineWidth
+    public class ChangeLine
     {
-        public List<Point> LWidth(Point strat, Point end)
+        public List<Point> LWidth(Point strat, Point end, int width)
         {
-            List<Point> width = new List<Point>();
+            List<Point> linewidth = new List<Point>();
 
 
 
-            return width;
+            return linewidth;
         }
 
         public List<Point> GetWidthPoints(Point strat, Point end, double width)

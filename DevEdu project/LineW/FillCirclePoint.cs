@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DevEdu_project.LineWidth
+namespace DevEdu_project.LineW
 {
     public class FillCirclePoint
     {
