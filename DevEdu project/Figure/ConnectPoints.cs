@@ -43,15 +43,12 @@ namespace DevEdu_project.GetPoints
             return linePoints;
         }*/
         //BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
+        List<Point> linePoints = new List<Point>();
         public List<Point> ConnectTwoPoints(Point startPoint, Point endPoint, int width, Color color)
         //public void ConnectTwoPoints(Point StartPoint, Point EndPoint, int width, Color color)
         {
-            //Создаем новый лист с точками координат
-            List<Point> linePoints = new List<Point>();
-
             int dx = endPoint.X - startPoint.X;//абсолютное значение
             int dy = endPoint.Y - startPoint.Y;
-            Point Delta = new Point(dx, dy);
             int steps;
             if (Math.Abs(dx) > Math.Abs(dy))
             {
@@ -98,7 +95,7 @@ namespace DevEdu_project.GetPoints
                     //sBitmap.SetPixel(tmp.X, tmp.Y, color);
                 }
                     //Добавляем в лист каждую точку, полученную в ходе вычислений
-                    linePoints.Add(new Point((int)X, (int)Y));
+                    //linePoints.Add(new Point((int)X, (int)Y));
                     X += Xinc;
                     Y += Yinc;
             }

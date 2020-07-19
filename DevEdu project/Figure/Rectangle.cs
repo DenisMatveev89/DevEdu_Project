@@ -26,10 +26,6 @@ namespace DevEdu_project
             int X1 = _endPoint.X;
             int Y1 = _endPoint.Y;
             List<Point> listPoints = new List<Point>();
-            //sBitmap.DrawLine(new Point(X0, Y0), new Point(X1, Y0), 10, Color.Black);
-            //sBitmap.DrawLine(new Point(X1, Y0), new Point(X1, Y1), 10, Color.Black);
-            //sBitmap.DrawLine(new Point(X1, Y1), new Point(X0, Y1), 10, Color.Black);
-            //sBitmap.DrawLine(new Point(X0, Y1), new Point(X0, Y0), 10, Color.Black);
             listPoints.AddRange(cp.ConnectTwoPoints(new Point(X0, Y0), new Point(X1, Y0), _width, _colorLine));
             listPoints.AddRange(cp.ConnectTwoPoints(new Point(X1, Y0), new Point(X1, Y1), _width, _colorLine));
             listPoints.AddRange(cp.ConnectTwoPoints(new Point(X1, Y1), new Point(X0, Y1), _width, _colorLine));

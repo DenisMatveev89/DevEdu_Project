@@ -416,15 +416,6 @@ namespace DevEdu_project
             }
         }
 
-        private void toolEraseButton_Click(object sender, EventArgs e)
-        {
-            sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
-            sBitmap.Update();
-            pictureBox1.Image = null;
-            tool = new EraserTool();
-            _factory = null;
-        }
-
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
             width = 0;
@@ -438,6 +429,19 @@ namespace DevEdu_project
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
             width = 7;
+        }
+
+        private void EraserButton_Click(object sender, EventArgs e)
+        {
+            tool = new EraserTool();
+            _factory = null;
+        }
+
+        private void toolEraseButton_Click(object sender, EventArgs e)
+        {
+            sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
+            sBitmap.Update();
+            pictureBox1.Image = null;
         }
     }
 }
