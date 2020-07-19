@@ -21,6 +21,8 @@ namespace DevEdu_project
 
         public override List<Point> GetPoints()
         {
+            _centerPoint = _startPoint;
+
             List<Point> ellipse = new List<Point>();
 
             RX = Math.Sqrt(Math.Pow((_endPoint.X - _startPoint.X), 2));

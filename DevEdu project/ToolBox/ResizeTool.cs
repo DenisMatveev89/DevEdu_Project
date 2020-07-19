@@ -30,10 +30,10 @@ namespace DevEdu_project.ToolBox
 
         public override void DoLogigOnMouseDown(AFigure figure)
         {
+            sBitmap.Clear();
+            sBitmap.DrawExceptIndexFigures(figure);
             if (sBitmap._figureList.Count > 1)
-            {
-                sBitmap.Clear();
-                sBitmap.DrawExceptIndexFigures(figure);
+            {                
                 sBitmap.Copy();
                 sBitmap.FillExceptIndexFigures(figure);
                 sBitmap.CopyFromFill();

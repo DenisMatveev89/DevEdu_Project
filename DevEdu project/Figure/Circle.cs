@@ -26,6 +26,7 @@ namespace DevEdu_project
 
         public override List<Point> GetPoints()
         {
+            _centerPoint = _startPoint;
             List<Point> circle = new List<Point>();
             int X0 = _startPoint.X;
             int Y0 = _startPoint.Y;

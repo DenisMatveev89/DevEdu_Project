@@ -88,7 +88,13 @@ namespace DevEdu_project
             {
                 _fillBitmap = (Bitmap)_tmpBitmap.Clone();
                 _tmpBitmap = (Bitmap)_bitmap.Clone();
+                //_fillBitmap = (Bitmap)_tmpBitmap.Clone();
             }
+        }
+
+        public void CopyTmpToFill()
+        {
+            _fillBitmap = (Bitmap)_tmpBitmap.Clone();
         }
 
         public void CopyFromFill()
@@ -133,8 +139,6 @@ namespace DevEdu_project
             }
             return figure;
         }
-
-
 
         //Метод, который принимает настроенную фигуру,
         //вызывает все ее точки и рисует каждую точку

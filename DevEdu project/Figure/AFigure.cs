@@ -16,13 +16,14 @@ namespace DevEdu_project
         public Point _startPoint;
         public Point _endPoint;
         public Point _centerPoint;
+        public Point _movingPoint;
+        public Point _nextMovingPoint;
         public Color _colorLine;
         public Color _fillColor;
         protected IBrush fill;
         public double _brushWidth;
         public int _lineWidth;
         
-
         public abstract List<Point> GetPoints();
         public abstract bool IsMouseOnFigure(Point mouse);
  /*       public virtual List<Point> WidthLine(Point start, Point end, int _lineWidth)
@@ -54,15 +55,24 @@ namespace DevEdu_project
             int X0 = movingFigure._startPoint.X;
             int Y0 = movingFigure._startPoint.Y;
             int X1 = movingFigure._endPoint.X;
-            int Y1 = movingFigure._endPoint.Y;            
+            int Y1 = movingFigure._endPoint.Y;
+            
+
+            if (_movingPoint == new Point(0, 0))
+            {
+                _movingPoint = start;
+                _nextMovingPoint = end;
+            }
+            else
+            {
+                _movingPoint = _nextMovingPoint;
+                _nextMovingPoint = end;           
+            }            
 
             if (end.X > start.X && end.Y > start.Y)
             {
-                //int dx = (int)Math.Sqrt(Math.Pow((end.X - start.X), 2));
-                //int dy = (int)Math.Sqrt(Math.Pow((end.Y - start.Y), 2));
-
-                int dx = end.X - start.X;
-                int dy = end.Y - start.Y;
+                int dx = end.X - _movingPoint.X;
+                int dy = end.Y - _movingPoint.Y;
                 X0 += dx;
                 Y0 += dy;
                 X1 += dx;
@@ -70,10 +80,8 @@ namespace DevEdu_project
             }
             else if (end.X > start.X && end.Y < start.Y)
             {
-                //int dx = (int)Math.Sqrt(Math.Pow((end.X - start.X), 2));
-                //int dy = (int)Math.Sqrt(Math.Pow((start.Y - end.Y), 2));
-                int dx = end.X - start.X;
-                int dy = start.Y - end.Y;
+                int dx = end.X - _movingPoint.X;
+                int dy = _movingPoint.Y - end.Y;
                 X0 += dx;
                 Y0 -= dy;
                 X1 += dx;
@@ -81,11 +89,8 @@ namespace DevEdu_project
             }
             else if (end.X < start.X && end.Y > start.Y)
             {
-                //int dx = (int)Math.Sqrt(Math.Pow((start.X - end.X), 2));
-                //int dy = (int)Math.Sqrt(Math.Pow((end.Y - start.Y), 2));
-
-                int dx = start.X - end.X;
-                int dy = end.Y - start.Y;
+                int dx = _movingPoint.X - end.X;
+                int dy = end.Y - _movingPoint.Y;
                 X0 -= dx;
                 Y0 += dy;
                 X1 -= dx;
@@ -93,10 +98,8 @@ namespace DevEdu_project
             }
             else if (end.X < start.X && end.Y < start.Y)
             {
-                //int dx = (int)Math.Sqrt(Math.Pow((start.X - end.X), 2));
-                //int dy = (int)Math.Sqrt(Math.Pow((start.Y - end.Y), 2));
-                int dx = start.X - end.X;
-                int dy = start.Y - end.Y;
+                int dx = _movingPoint.X - end.X;
+                int dy = _movingPoint.Y - end.Y;
                 X0 -= dx;
                 Y0 -= dy;
                 X1 -= dx;
@@ -104,6 +107,7 @@ namespace DevEdu_project
             }
             movingFigure._startPoint = new Point(X0, Y0);
             movingFigure._endPoint = new Point(X1, Y1);
+            
 
             return movingFigure;
         }

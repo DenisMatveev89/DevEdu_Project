@@ -56,8 +56,6 @@ namespace DevEdu_project
             if (_clickFigure != null)
             {
                 _currentFigure = _clickFigure;
-                //sBitmap.Clear();
-
                 tool.DoLogicOnMouseClick(e.Location, _currentFigure, _fillColor);
                 pictureBox1.Image = sBitmap._tmpBitmap;
                 sBitmap.Update();
@@ -93,7 +91,7 @@ namespace DevEdu_project
                 }
                 else if(_clickFigure != null)
                 {
-                    tool.DoLogicOnMouseMove(_prevPoint, _currentPoint, _currentFigure);                    
+                    tool.DoLogicOnMouseMove(_prevPoint, _currentPoint, _currentFigure);
                 }
 
                 pictureBox1.Image = sBitmap._tmpBitmap;
@@ -111,7 +109,6 @@ namespace DevEdu_project
                 {                    sBitmap.Copy();
                     _currentFigure.FillFigure(_currentFigure._centerPoint);
                     sBitmap.CopyFromFill();
-                    pictureBox1.Image = sBitmap._tmpBitmap;
                 }
             }            else
             {
