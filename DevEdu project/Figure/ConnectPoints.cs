@@ -10,7 +10,7 @@ namespace DevEdu_project.GetPoints
     [Serializable]
     public class ConnectPoints
     {
-        /*public List<Point> ConnectTwoPoints(Point StartPoint, Point EndPoint)
+        public List<Point> ConnectTwoPoints(Point StartPoint, Point EndPoint)
         {
             //Создаем новый лист с точками координат
             List<Point> linePoints = new List<Point>();
@@ -41,7 +41,7 @@ namespace DevEdu_project.GetPoints
             }
 
             return linePoints;
-        }*/
+        }
         //BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         List<Point> linePoints = new List<Point>();
         public List<Point> ConnectTwoPoints(Point startPoint, Point endPoint, int width, Color color)

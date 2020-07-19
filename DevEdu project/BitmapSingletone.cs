@@ -202,18 +202,32 @@ namespace DevEdu_project
         //вызывает все ее точки и рисует каждую точку
         public Bitmap DrawFigure(AFigure figure)
         {
-            foreach (Point i in figure.GetPoints())
+            if(figure._width == 0)
             {
-                SetPixel(i.X, i.Y, figure._colorLine);
+                foreach (Point i in figure.GetPoints())
+                {
+                    SetPixel(i.X, i.Y, figure._colorLine);
+                }
+            }
+            else
+            {
+                figure.WidthLine();
             }
             return _tmpBitmap;
         }
 
         public void vDrawFigure(AFigure figure)
         {
-            foreach (Point i in figure.GetPoints())
+            if (figure._width == 0)
             {
-                SetPixel(i.X, i.Y, figure._colorLine);
+                foreach (Point i in figure.GetPoints())
+                {
+                    SetPixel(i.X, i.Y, figure._colorLine);
+                }
+            }
+            else
+            {
+                figure.WidthLine();
             }
         }
 

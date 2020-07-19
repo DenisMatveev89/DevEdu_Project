@@ -68,7 +68,7 @@ namespace DevEdu_project
                 BinaryFormatter serializerFig = new BinaryFormatter();
                 using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
                 {
-                    BitmapSingletone.GetInstance()._tmpBitmap = BitmapSingletone.GetInstance()._emptyBitmap;
+                    //BitmapSingletone.GetInstance()._tmpBitmap = BitmapSingletone.GetInstance()._emptyBitmap;
                     BitmapSingletone.GetInstance()._figureList = (List<AFigure>)serializerFig.Deserialize(fs);
                     BitmapSingletone.GetInstance().DrawAllFigures();                    
                     BitmapSingletone.GetInstance().Copy();

@@ -22,10 +22,10 @@ namespace DevEdu_project.Figure
 
         Point start = new Point(0, 0);
         Point end = new Point(0, 0);
-        //int width = _width;
+
         public override List<Point> GetPoints()
         {
-            /*//Этим условием мы правильно задаем начальную точку и все последующие точки карандаша
+            //Этим условием мы правильно задаем начальную точку и все последующие точки карандаша
             if (start == new Point(0, 0))
             {
                 start = _startPoint;
@@ -60,8 +60,13 @@ namespace DevEdu_project.Figure
                 linePoints.Add(new Point((int)X, (int)Y));
                 X += Xinc;
                 Y += Yinc;
-            }*/
-            //Этим условием мы правильно задаем начальную точку и все последующие точки карандаша
+            }
+
+            return linePoints;
+        }
+
+        public override void WidthLine()
+        {
             if (start == new Point(0, 0))
             {
                 start = _startPoint;
@@ -74,7 +79,7 @@ namespace DevEdu_project.Figure
             }
             int dx = end.X - start.X;//абсолютное значение
             int dy = end.Y - start.Y;
-            Point Delta = new Point(dx, dy);
+            
             int steps;
             if (Math.Abs(dx) > Math.Abs(dy))
             {
@@ -96,29 +101,33 @@ namespace DevEdu_project.Figure
                 {
                     double d = Math.Sqrt(_width * _width - j * j);
                     Point tmp = new Point((int)(j + X), (int)(_width + Y));
-                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+
                     tmp = new Point((int)(j + X), (int)(-_width + Y));
-                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+
                     tmp = new Point((int)(_width + X), (int)(j + Y));
-                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+
                     tmp = new Point((int)(-_width + X), (int)(_width + Y));
-                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+
                     tmp = new Point((int)(j + X), (int)(j + Y));
-                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+
                     tmp = new Point((int)(j + X), (int)(-_width + Y));
-                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+
                     tmp = new Point((int)(_width + X), (int)(j + Y));
-                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+
                     tmp = new Point((int)(-_width + X), (int)(j + Y));
-                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
                 }
-                //Добавляем в лист каждую точку, полученную в ходе вычислений
-                linePoints.Add(new Point((int)X, (int)Y));
+                
                 X += Xinc;
                 Y += Yinc;
             }
-
-            return linePoints;
         }
 
         public override bool IsMouseOnFigure(Point mouse)

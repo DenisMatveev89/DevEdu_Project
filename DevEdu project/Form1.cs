@@ -97,6 +97,8 @@ namespace DevEdu_project
 
                 pictureBox1.Image = sBitmap._tmpBitmap;
             }
+
+            label1.Text = ($"{e.Location}");
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
@@ -442,6 +444,11 @@ namespace DevEdu_project
             sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
             sBitmap.Update();
             pictureBox1.Image = null;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

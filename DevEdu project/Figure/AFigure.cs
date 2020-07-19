@@ -23,15 +23,18 @@ namespace DevEdu_project
         public int _width;//толщина линии
         protected IBrush fill;
         public double _brushWidth;
-        public int _lineWidth;
-        
+        //public int _lineWidth;
+
+        public BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
+
         public abstract List<Point> GetPoints();
         public abstract bool IsMouseOnFigure(Point mouse);
- /*       public virtual List<Point> WidthLine(Point start, Point end, int _lineWidth)
+
+        public virtual void WidthLine()
         {
             ILineWidth lineWidth = new LineWidth();
-            return lineWidth.LWidth(start, end, _lineWidth);
-        }*/
+        }
+
         public virtual void FillFigure(Point mouse)
         {
 
@@ -45,12 +48,7 @@ namespace DevEdu_project
                 fill = new EmptyFill();
             }            
         }
-
-        public virtual void Move(Point _startMovingPoint, Point _movingPoint)
-        {
-
-        }
-
+               
         public virtual AFigure Move(Point start, Point end, AFigure movingFigure)
         {
             int X0 = movingFigure._startPoint.X;

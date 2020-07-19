@@ -9,6 +9,7 @@ namespace DevEdu_project.LineW
 {
     public abstract class ILineWidth
     {
-        public abstract List<Point> LWidth(Point start, Point end, int width);
+        public BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
+        public abstract void LWidth(Point startPoint, Point endPoint, int width, Color colorLine);
     }
 }

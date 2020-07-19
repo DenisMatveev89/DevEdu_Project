@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
+using Color = System.Drawing.Color;
 
 namespace DevEdu_project.LineW
 {
@@ -14,33 +15,60 @@ namespace DevEdu_project.LineW
     {
         ConnectPoints cp = new ConnectPoints();
 
-        public override List<Point> LWidth(Point start, Point end, int width)
+        public override void LWidth(Point startPoint, Point endPoint, int width, Color color)
         {
-            throw new NotImplementedException();
+            int dx = endPoint.X - startPoint.X;//абсолютное значение
+            int dy = endPoint.Y - startPoint.Y;
+            int steps;
+            if (Math.Abs(dx) > Math.Abs(dy))
+            {
+                steps = Math.Abs(dx); //количество шагов
+            }
+            else
+            {
+                steps = Math.Abs(dy);
+            }
+
+            float Xinc = dx / (float)steps;//приращение для каждого шага 
+            float Yinc = dy / (float)steps;
+
+            float X = startPoint.X;// кладем пиксель для каждого шага 
+            float Y = startPoint.Y;
+            for (int i = 0; i <= steps; i++)
+            {
+                for (int j = -width; j <= width; j++)
+                {
+                    double d = Math.Sqrt(width * width - j * j);
+                    Point tmp = new Point((int)(j + X), (int)(width + Y));                    
+                    sBitmap.SetPixel(tmp.X, tmp.Y, color);
+
+                    tmp = new Point((int)(j + X), (int)(-width + Y));                    
+                    sBitmap.SetPixel(tmp.X, tmp.Y, color);
+
+                    tmp = new Point((int)(width + X), (int)(j + Y));                    
+                    sBitmap.SetPixel(tmp.X, tmp.Y, color);
+
+                    tmp = new Point((int)(-width + X), (int)(width + Y));                    
+                    sBitmap.SetPixel(tmp.X, tmp.Y, color);
+
+                    tmp = new Point((int)(j + X), (int)(j + Y));                    
+                    sBitmap.SetPixel(tmp.X, tmp.Y, color);
+
+                    tmp = new Point((int)(j + X), (int)(-width + Y));                    
+                    sBitmap.SetPixel(tmp.X, tmp.Y, color);
+
+                    tmp = new Point((int)(width + X), (int)(j + Y));                    
+                    sBitmap.SetPixel(tmp.X, tmp.Y, color);
+
+                    tmp = new Point((int)(-width + X), (int)(j + Y));                    
+                    sBitmap.SetPixel(tmp.X, tmp.Y, color);
+                }
+                //Добавляем в лист каждую точку, полученную в ходе вычислений
+                //linePoints.Add(new Point((int)X, (int)Y));
+                X += Xinc;
+                Y += Yinc;
+            }
         }
-        /* public override List<Point> LWidth(Point start, Point end, int width)
-{
-   *//* int x1 = start.X;
-    int x2 = start.Y;
-    int y1 = end.Y;
-    int y2 = end.Y;
-    List<Point> widthLine = new List<Point>();
-    int a, b, l, lx1, lx2, lx3, lx4, ly1, ly2, ly3, ly4;
-    a = (x2 - x1); b = (y2 - y1);
-    l = (int)Math.Sqrt(100 * ((b * b) + (a * a)));
-    lx1 = (5+b * 100 * width / 2 / l+x1 * 10)/ 10;
-    ly1 = (5+y1 * 10 - a * 100 * width / 2 / l)/ 10;
-    lx2 = (5+b * 100 * width / 2 / l+x2 * 10)/ 10;
-    ly2 = (5+y2 * 10 - a * 100 * width / 2 / l)/ 10;
-    lx3 = (5+x1 * 10 - b * 100 * (width - (width / 2) - 1) / l)/ 10;
-    ly3 = (5+a * 100 * (width - (width / 2) - 1) / l+y1 * 10)/ 10;
-    lx4 = (5+x2 * 10 - b * 100 * (width - (width / 2) - 1) / l)/ 10;
-    ly4 = (5+a * 100 * (width - (width / 2) - 1) / l+y2 * 10)/ 10;
-    widthLine.AddRange(cp.ConnectTwoPoints(new Point (lx1, ly1), new Point(lx2,ly2), _width, _colorLine));
-    widthLine.AddRange(cp.ConnectTwoPoints(new Point (lx2, ly2), new Point(lx3,ly3), _width, _colorLine));
-    widthLine.AddRange(cp.ConnectTwoPoints(new Point (lx3, ly3), new Point(lx4,ly4), _width, _colorLine));
-    widthLine.AddRange(cp.ConnectTwoPoints(new Point (lx4, ly4), new Point(lx1,ly1), _width, _colorLine));
-    return widthLine;*//*
-}*/
+     
     }
 }

@@ -19,16 +19,16 @@ namespace DevEdu_project.Brush
             Point left = new Point(mouse.X, mouse.Y);
             Point right = new Point(mouse.X, mouse.Y);
 
-            while (left.X - 1 > 0 && sBitmap._fillBitmap.GetPixel(left.X - 1, left.Y) == beginColor && sBitmap._fillBitmap.GetPixel(left.X - 1, left.Y) != colorLine)
+            while (left.X - 1 > 0 && sBitmap._fillBitmap.GetPixel(left.X - 1, left.Y) == beginColor)
             {
                 left.X--;
             }
-            while (right.X + 1 <= sBitmap._fillBitmap.Width - 1 && sBitmap._fillBitmap.GetPixel(right.X + 1, right.Y) == beginColor && sBitmap._fillBitmap.GetPixel(right.X + 1, right.Y) != colorLine)
+            while (right.X + 1 <= sBitmap._fillBitmap.Width - 1 && sBitmap._fillBitmap.GetPixel(right.X + 1, right.Y) == beginColor)
             {
                 right.X++;
             }
             
-            List<Point> linePoints = cp.ConnectTwoPoints(left, right, _width, _colorLine);
+            List<Point> linePoints = cp.ConnectTwoPoints(left, right);
             sBitmap.Draw(linePoints, fillColor);
 
             if (mouse.Y > 0 && mouse.Y < sBitmap._fillBitmap.Height - 1 && mouse.X > 0 && mouse.X < sBitmap._fillBitmap.Width - 1)
