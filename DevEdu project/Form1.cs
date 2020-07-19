@@ -415,11 +415,6 @@ namespace DevEdu_project
 
 
         #endregion
-
-        private void BetterThanPhotoshop_SizeChanged(object sender, EventArgs e)
-        {
-            
-        }
     }
 }
 

@@ -684,7 +684,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BetterThanPhotoshop_FormClosed);
             this.Load += new System.EventHandler(this.BetterThanPhotoshop_Load);
-            this.SizeChanged += new System.EventHandler(this.BetterThanPhotoshop_SizeChanged);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
