@@ -656,7 +656,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BetterThanPhotoshop";
             this.RightToLeftLayout = true;
-            this.Text = "BTN - Better Than Photoshop";
+            this.Text = "BTN - Better Than CorelDRaw";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BetterThanPhotoshop_FormClosed);
             this.Load += new System.EventHandler(this.BetterThanPhotoshop_Load);
             this.SizeChanged += new System.EventHandler(this.BetterThanPhotoshop_SizeChanged);

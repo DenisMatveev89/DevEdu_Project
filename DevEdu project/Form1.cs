@@ -52,7 +52,7 @@ namespace DevEdu_project
         {
             sBitmap.CreateBitmaps(pictureBox1.Width - 1, pictureBox1.Height - 1);
         }
-
+        #region Events
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             AFigure clickFigure = sBitmap.FigureUnderMouse(e.Location);
@@ -182,7 +182,24 @@ namespace DevEdu_project
 
             sBitmap.Update();
         }
+        private void BetterThanPhotoshop_SizeChanged(object sender, EventArgs e)
+        {
+            pictureBox1.Width = Size.Width - 60;
+            pictureBox1.Height = Size.Height - 100;
+            sBitmap.UpdateBitmap(pictureBox1.Width, pictureBox1.Height);
+            sBitmap.Update();
+        }
+        #endregion
+
         #region ToolBox
+        private void toolMoveButton_Click(object sender, EventArgs e)
+        {
+            figureMoveTool = true;
+            resizeTool = false;
+            eraserTool = false;
+            fillTool = false;
+            _factory = null;
+        }
         private void EraserButton_Click(object sender, EventArgs e)
         {
             eraserTool = true;
@@ -308,6 +325,12 @@ namespace DevEdu_project
             fillTool = false;
             resizeTool = false;
         }
+        private void toolEraseButton_Click(object sender, EventArgs e)
+        {
+            sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
+            sBitmap.Update();
+            pictureBox1.Image = null;
+        }
         #endregion
 
         #region BorderLineColor
@@ -340,6 +363,7 @@ namespace DevEdu_project
             _currentColor = Color.Black;
         }
 
+
         #endregion
 
         #region Menu
@@ -358,6 +382,50 @@ namespace DevEdu_project
         {
             EventClose();
             Application.Exit();
+        }
+        private void openSourceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                DialogResult result = dialog.NewDialog();
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        dialog.SaveSourceDialog();
+                        dialog.OpenSourceDialog();
+                        pictureBox1.Image = null;
+                        break;
+                    case DialogResult.No:
+                        dialog.OpenSourceDialog();
+                        pictureBox1.Image = null;
+                        break;
+                    case DialogResult.Cancel:
+                        break;
+                }
+                _fillColor = Color.Transparent;
+                _currentColor = Color.Black;
+                pictureBox1.Image = sBitmap._tmpBitmap;
+            }
+            else
+            {
+                dialog.OpenSourceDialog();
+                pictureBox1.Image = sBitmap._tmpBitmap;
+            }
+        }
+        private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                dialog.SaveDialog();
+            }
+        }
+
+        private void saveAsSourceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                dialog.SaveSourceDialog();
+            }
         }
         #endregion
 
@@ -441,82 +509,6 @@ namespace DevEdu_project
             _fillColor = Color.Blue;
         }
         #endregion
-
-        private void toolMoveButton_Click(object sender, EventArgs e)
-        {
-            figureMoveTool = true;
-            resizeTool = false;
-            eraserTool = false;
-            fillTool = false;
-            _factory = null;
-        }
-
-        private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-           
-            
-        }
-
-        private void openSourceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (pictureBox1.Image != null) //если в pictureBox есть изображение
-            {
-                DialogResult result = dialog.NewDialog();
-                switch (result)
-                {
-                    case DialogResult.Yes:
-                        dialog.SaveSourceDialog();
-                        dialog.OpenSourceDialog();
-                        pictureBox1.Image = null;
-                        break;
-                    case DialogResult.No:
-                        dialog.OpenSourceDialog();
-                        pictureBox1.Image = null;
-                        break;
-                    case DialogResult.Cancel:
-                        break;
-                }
-                _fillColor = Color.Transparent;
-                _currentColor = Color.Black;
-                pictureBox1.Image = sBitmap._tmpBitmap;
-            }
-            else
-            {
-                dialog.OpenSourceDialog();
-                pictureBox1.Image = sBitmap._tmpBitmap;
-            }
-        }
-
-        private void toolEraseButton_Click(object sender, EventArgs e)
-        {
-            sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
-            sBitmap.Update();
-            pictureBox1.Image = null;
-        }
-
-        private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (pictureBox1.Image != null) //если в pictureBox есть изображение
-            {
-                dialog.SaveDialog();
-            }
-        }
-
-        private void saveAsSourceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (pictureBox1.Image != null) //если в pictureBox есть изображение
-            {
-                dialog.SaveSourceDialog();
-            }
-        }
-
-        private void BetterThanPhotoshop_SizeChanged(object sender, EventArgs e)
-        {
-            pictureBox1.Width = Size.Width - 60;
-            pictureBox1.Height = Size.Height - 100;
-            sBitmap.UpdateBitmap(pictureBox1.Width, pictureBox1.Height);
-            sBitmap.Update();
-        }
     }
 }
 
