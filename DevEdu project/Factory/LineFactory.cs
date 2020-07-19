@@ -20,11 +20,11 @@ namespace DevEdu_project.Factory
         {
             figure = new StraightLine();
         }
-        public override AFigure Create(Point start, Point end, Color colorLine, Color fillColor)
+        public override AFigure Create(Point start, Point end, Color colorLine, Color fillColor, int width)
         {
             StraightLine line = new StraightLine();
             figure = line;
-            base.Create(start, end, colorLine, fillColor);
+            base.Create(start, end, colorLine, fillColor, width);
             line._centerPoint = start;
 
             return line;

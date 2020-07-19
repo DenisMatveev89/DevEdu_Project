@@ -28,7 +28,7 @@ namespace DevEdu_project.Brush
                 right.X++;
             }
             
-            List<Point> linePoints = cp.ConnectTwoPoints(left, right);
+            List<Point> linePoints = cp.ConnectTwoPoints(left, right, _width, _colorLine);
             sBitmap.Draw(linePoints, fillColor);
 
             if (mouse.Y > 0 && mouse.Y < sBitmap._fillBitmap.Height - 1 && mouse.X > 0 && mouse.X < sBitmap._fillBitmap.Width - 1)

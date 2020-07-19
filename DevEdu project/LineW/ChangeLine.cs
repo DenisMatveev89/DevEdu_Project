@@ -19,9 +19,9 @@ namespace DevEdu_project.LineW
             return linewidth;
         }
 
-        public List<Point> GetWidthPoints(Point strat, Point end, double width)
+        /*public List<Point> GetWidthPoints(Point strat, Point end, double width)
         {
-            FillCirclePoint fs = new FillCirclePoint();
+            *//*FillCirclePoint fs = new FillCirclePoint();
             ConnectPoints cp = new ConnectPoints();
 
             List<Point> widthPoints = new List<Point>();
@@ -31,7 +31,7 @@ namespace DevEdu_project.LineW
             Circle cEnd = new Circle(end, width);
             widthPoints.AddRange(fs.FillPoint(cEnd));
 
-            List<Point> centerLine = cp.ConnectTwoPoints(cStrat._startPoint, cEnd._startPoint);
+            List<Point> centerLine = cp.ConnectTwoPoints(cStrat._startPoint, cEnd._startPoint, _width, _colorLine);
             widthPoints.AddRange(centerLine);
 
             //Точки кругов
@@ -63,9 +63,9 @@ namespace DevEdu_project.LineW
             b2.X = (c2.X * 2) - a2.X;
             b2.Y = (c2.Y * 2) - a2.Y;
 
-            List<Point> dcS = cp.ConnectTwoPoints(a1, a2);
+            List<Point> dcS = cp.ConnectTwoPoints(a1, a2, 10);
             widthPoints.AddRange(dcS);
-            List<Point> dcE = cp.ConnectTwoPoints(b1, b2);
+            List<Point> dcE = cp.ConnectTwoPoints(b1, b2, 10);
             widthPoints.AddRange(dcE);
 
             foreach (Point j in cS)
@@ -85,13 +85,13 @@ namespace DevEdu_project.LineW
                     //if ((int)delta == (int)d || (int)delta == (int)d2)
                     if (Math.Abs((int)delta) == Math.Abs((int)d))
                     {
-                        dcS = cp.ConnectTwoPoints(a1, a2);
+                        dcS = cp.ConnectTwoPoints(a1, a2, 10);
                         widthPoints.AddRange(dcS);
-                        dcE = cp.ConnectTwoPoints(b1, b2);
+                        dcE = cp.ConnectTwoPoints(b1, b2, 10);
                         widthPoints.AddRange(dcE);
                     }
                 }
-            }
+            }*//*
 
             //while (i < cS.Count)
             //{
@@ -158,7 +158,8 @@ namespace DevEdu_project.LineW
             //Point x0 = cStrat._startPoint;
             //x0.X = cStrat._startPoint.X + (int)width;
 
-            return widthPoints;
+            //return widthPoints;
         }
+        */
     }
 }

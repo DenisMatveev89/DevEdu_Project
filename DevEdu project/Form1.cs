@@ -36,6 +36,7 @@ namespace DevEdu_project
         Point _currentPoint;
         Point _prevPoint;
         Point _startMovingPoint;
+        int width = 0;
         //Point _movingPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
 
@@ -86,7 +87,7 @@ namespace DevEdu_project
                 sBitmap.Copy();
                 if (_factory != null)
                 {
-                    _currentFigure = _factory.Create(_prevPoint, _currentPoint, _currentColor, _fillColor);
+                    _currentFigure = _factory.Create(_prevPoint, _currentPoint, _currentColor, _fillColor, width);
                     sBitmap.DrawFigure(_currentFigure);
                 }
                 else if(_clickFigure != null)
@@ -422,6 +423,21 @@ namespace DevEdu_project
             pictureBox1.Image = null;
             tool = new EraserTool();
             _factory = null;
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            width = 0;
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            width = 3;
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            width = 7;
         }
     }
 }

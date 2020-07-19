@@ -82,10 +82,10 @@ namespace DevEdu_project
 
                 _centerPoint = new Point(_startPoint.X + ((_endPoint.X - _startPoint.X) / 2), _endPoint.Y + ((_startPoint.Y - _endPoint.Y) / 2));
             }
-            listPoint.AddRange(cp.ConnectTwoPoints(new Point(_startPoint.X, _startPoint.Y), new Point(twoP.X, twoP.Y)));
-            listPoint.AddRange(cp.ConnectTwoPoints(new Point(twoP.X, twoP.Y), new Point(threP.X, threP.Y)));
-            listPoint.AddRange(cp.ConnectTwoPoints(new Point(threP.X, threP.Y), new Point(fourP.X, fourP.Y)));
-            listPoint.AddRange(cp.ConnectTwoPoints(new Point(fourP.X, fourP.Y), new Point(_startPoint.X, _startPoint.Y)));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(_startPoint.X, _startPoint.Y), new Point(twoP.X, twoP.Y), _width, _colorLine));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(twoP.X, twoP.Y), new Point(threP.X, threP.Y), _width, _colorLine));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(threP.X, threP.Y), new Point(fourP.X, fourP.Y), _width, _colorLine));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(fourP.X, fourP.Y), new Point(_startPoint.X, _startPoint.Y), _width, _colorLine));
                         
             return listPoint;
         }

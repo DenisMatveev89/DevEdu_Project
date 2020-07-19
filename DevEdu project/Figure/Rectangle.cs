@@ -20,16 +20,21 @@ namespace DevEdu_project
         public override List<Point> GetPoints()
         {
             ConnectPoints cp = new ConnectPoints();
-
+            BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
             int X0 = _startPoint.X;
             int Y0 = _startPoint.Y;
             int X1 = _endPoint.X;
             int Y1 = _endPoint.Y;
             List<Point> listPoints = new List<Point>();
-            listPoints.AddRange(cp.ConnectTwoPoints(new Point(X0, Y0), new Point(X1, Y0)));
-            listPoints.AddRange(cp.ConnectTwoPoints(new Point(X1, Y0), new Point(X1, Y1)));
-            listPoints.AddRange(cp.ConnectTwoPoints(new Point(X1, Y1), new Point(X0, Y1)));
-            listPoints.AddRange(cp.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0)));
+            //sBitmap.DrawLine(new Point(X0, Y0), new Point(X1, Y0), 10, Color.Black);
+            //sBitmap.DrawLine(new Point(X1, Y0), new Point(X1, Y1), 10, Color.Black);
+            //sBitmap.DrawLine(new Point(X1, Y1), new Point(X0, Y1), 10, Color.Black);
+            //sBitmap.DrawLine(new Point(X0, Y1), new Point(X0, Y0), 10, Color.Black);
+            listPoints.AddRange(cp.ConnectTwoPoints(new Point(X0, Y0), new Point(X1, Y0), _width, _colorLine));
+            listPoints.AddRange(cp.ConnectTwoPoints(new Point(X1, Y0), new Point(X1, Y1), _width, _colorLine));
+            listPoints.AddRange(cp.ConnectTwoPoints(new Point(X1, Y1), new Point(X0, Y1), _width, _colorLine));
+            listPoints.AddRange(cp.ConnectTwoPoints(new Point(X0, Y1), new Point(X0, Y0), _width, _colorLine));
+
 
             _centerPoint = new Point(X0 + ((X1 - X0) / 2), Y0 +((Y1 - Y0)/ 2));
             return listPoints;

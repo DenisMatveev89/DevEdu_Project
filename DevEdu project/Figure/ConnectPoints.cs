@@ -10,7 +10,7 @@ namespace DevEdu_project.GetPoints
     [Serializable]
     public class ConnectPoints
     {
-        public List<Point> ConnectTwoPoints(Point StartPoint, Point EndPoint)
+        /*public List<Point> ConnectTwoPoints(Point StartPoint, Point EndPoint)
         {
             //Создаем новый лист с точками координат
             List<Point> linePoints = new List<Point>();
@@ -41,8 +41,71 @@ namespace DevEdu_project.GetPoints
             }
 
             return linePoints;
+        }*/
+        //BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
+        public List<Point> ConnectTwoPoints(Point startPoint, Point endPoint, int width, Color color)
+        //public void ConnectTwoPoints(Point StartPoint, Point EndPoint, int width, Color color)
+        {
+            //Создаем новый лист с точками координат
+            List<Point> linePoints = new List<Point>();
+
+            int dx = endPoint.X - startPoint.X;//абсолютное значение
+            int dy = endPoint.Y - startPoint.Y;
+            Point Delta = new Point(dx, dy);
+            int steps;
+            if (Math.Abs(dx) > Math.Abs(dy))
+            {
+                steps = Math.Abs(dx); //количество шагов
+            }
+            else
+            {
+                steps = Math.Abs(dy);
+            }
+            
+            float Xinc = dx / (float)steps;//приращение для каждого шага 
+            float Yinc = dy / (float)steps;
+
+            float X = startPoint.X;// кладем пиксель для каждого шага 
+            float Y = startPoint.Y;
+            for (int i = 0; i <= steps; i++)
+            {
+                for (int j=-width; j<=width; j++)
+                {
+                    double d = Math.Sqrt(width * width - j * j);
+                    Point tmp = new Point((int)(j + X), (int)(width + Y));
+                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    //sBitmap.SetPixel(tmp.X, tmp.Y, color);
+                    tmp = new Point((int)(j + X), (int)(-width + Y));
+                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    //sBitmap.SetPixel(tmp.X, tmp.Y, color);
+                    tmp = new Point((int)(width + X), (int)(j + Y));
+                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    //sBitmap.SetPixel(tmp.X, tmp.Y, color);
+                    tmp = new Point((int)(-width + X), (int)(width + Y));
+                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    //sBitmap.SetPixel(tmp.X, tmp.Y, color);
+                    tmp = new Point((int)(j + X), (int)(j + Y));
+                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    //sBitmap.SetPixel(tmp.X, tmp.Y, color);
+                    tmp = new Point((int)(j + X), (int)(-width + Y));
+                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    //sBitmap.SetPixel(tmp.X, tmp.Y, color);
+                    tmp = new Point((int)(width + X), (int)(j + Y));
+                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    //sBitmap.SetPixel(tmp.X, tmp.Y, color);
+                    tmp = new Point((int)(-width + X), (int)(j + Y));
+                    linePoints.Add(new Point(tmp.X, tmp.Y));
+                    //sBitmap.SetPixel(tmp.X, tmp.Y, color);
+                }
+                    //Добавляем в лист каждую точку, полученную в ходе вычислений
+                    linePoints.Add(new Point((int)X, (int)Y));
+                    X += Xinc;
+                    Y += Yinc;
+            }
+
+            return linePoints;
         }
 
-        
+
     }
 }

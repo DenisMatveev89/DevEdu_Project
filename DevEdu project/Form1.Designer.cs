@@ -118,7 +118,7 @@
             // 
             this.openSourceToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.open_folder;
             this.openSourceToolStripMenuItem.Name = "openSourceToolStripMenuItem";
-            this.openSourceToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.openSourceToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.openSourceToolStripMenuItem.Text = "Open Source";
             this.openSourceToolStripMenuItem.Click += new System.EventHandler(this.openSourceToolStripMenuItem_Click_1);
             // 
@@ -357,7 +357,6 @@
             this.EraserButton.Name = "EraserButton";
             this.EraserButton.Size = new System.Drawing.Size(31, 24);
             this.EraserButton.Text = "Eraser";
-           // this.EraserButton.Click += new System.EventHandler(this.EraserButton_Click);
             // 
             // AngleButton
             // 
@@ -442,22 +441,25 @@
             // 
             this.toolStripMenuItem1.Image = global::DevEdu_project.Properties.Resources.minus__3_;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(120, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(184, 26);
             this.toolStripMenuItem1.Text = "Тонкая";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Image = global::DevEdu_project.Properties.Resources.minus__1_;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(120, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(184, 26);
             this.toolStripMenuItem2.Text = "Средняя";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Image = global::DevEdu_project.Properties.Resources.minus__2_;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(120, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(184, 26);
             this.toolStripMenuItem3.Text = "Толстая";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // toolStripSeparator2
             // 

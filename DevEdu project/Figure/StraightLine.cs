@@ -21,7 +21,7 @@ namespace DevEdu_project.Figure
         public override List<Point> GetPoints()
         {
             ConnectPoints cp = new ConnectPoints();
-            return cp.ConnectTwoPoints(_startPoint, _endPoint);
+            return cp.ConnectTwoPoints(_startPoint, _endPoint, _width, _colorLine);
         }
 
         public override bool IsMouseOnFigure(Point mouse)

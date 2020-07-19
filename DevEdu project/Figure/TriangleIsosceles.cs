@@ -26,9 +26,9 @@ namespace DevEdu_project.Figure
             int y1 = _endPoint.Y;
 
             List<Point> listPoint = new List<Point>();
-            listPoint.AddRange(cp.ConnectTwoPoints(new Point(x0, y0), new Point(x1, y1)));
-            listPoint.AddRange(cp.ConnectTwoPoints(new Point(x1, y1), new Point((x0 - (x1 - x0)), y1)));
-            listPoint.AddRange(cp.ConnectTwoPoints(new Point((x0 - (x1 - x0)), y1), new Point(x0, y0)));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(x0, y0), new Point(x1, y1), _width, _colorLine));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(x1, y1), new Point((x0 - (x1 - x0)), y1), _width, _colorLine));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point((x0 - (x1 - x0)), y1), new Point(x0, y0), _width, _colorLine));
 
             double lengthSize1 = Math.Sqrt(Math.Pow((x1 - x0), 2) + Math.Pow((y1 - y0), 2));
             double lengthSize2 = Math.Sqrt(Math.Pow(((x0-(x1-x0)) - x1), 2) + Math.Pow((y1 - y1), 2));
