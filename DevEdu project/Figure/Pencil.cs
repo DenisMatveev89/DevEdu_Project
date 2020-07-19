@@ -1,5 +1,6 @@
 ﻿using DevEdu_project.Brush;
 using DevEdu_project.GetPoints;
+using DevEdu_project.LineW;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -67,6 +68,7 @@ namespace DevEdu_project.Figure
 
         public override void WidthLine()
         {
+            BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
             if (start == new Point(0, 0))
             {
                 start = _startPoint;
@@ -79,7 +81,7 @@ namespace DevEdu_project.Figure
             }
             int dx = end.X - start.X;//абсолютное значение
             int dy = end.Y - start.Y;
-            
+            Point Delta = new Point(dx, dy);
             int steps;
             if (Math.Abs(dx) > Math.Abs(dy))
             {
@@ -97,34 +99,26 @@ namespace DevEdu_project.Figure
             float Y = start.Y;
             for (int i = 0; i <= steps; i++)
             {
-                for (int j = -_width; j <= _width; j++)
+                for (int j = -_linewWidth; j <= _linewWidth; j++)
                 {
-                    double d = Math.Sqrt(_width * _width - j * j);
-                    Point tmp = new Point((int)(j + X), (int)(_width + Y));
+                    double d = Math.Sqrt(_linewWidth * _linewWidth - j * j);
+                    Point tmp = new Point((int)(j + X), (int)(_linewWidth + Y));
                     sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-
-                    tmp = new Point((int)(j + X), (int)(-_width + Y));
+                    tmp = new Point((int)(j + X), (int)(-_linewWidth + Y));
                     sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-
-                    tmp = new Point((int)(_width + X), (int)(j + Y));
+                    tmp = new Point((int)(_linewWidth + X), (int)(j + Y));
                     sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-
-                    tmp = new Point((int)(-_width + X), (int)(_width + Y));
+                    tmp = new Point((int)(-_linewWidth + X), (int)(_linewWidth + Y));
                     sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-
                     tmp = new Point((int)(j + X), (int)(j + Y));
                     sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-
-                    tmp = new Point((int)(j + X), (int)(-_width + Y));
+                    tmp = new Point((int)(j + X), (int)(-_linewWidth + Y));
                     sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-
-                    tmp = new Point((int)(_width + X), (int)(j + Y));
+                    tmp = new Point((int)(_linewWidth + X), (int)(j + Y));
                     sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-
-                    tmp = new Point((int)(-_width + X), (int)(j + Y));
+                    tmp = new Point((int)(-_linewWidth + X), (int)(j + Y));
                     sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
                 }
-                
                 X += Xinc;
                 Y += Yinc;
             }

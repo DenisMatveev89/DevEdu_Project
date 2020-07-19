@@ -46,7 +46,9 @@ namespace DevEdu_project
         }
 
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
-        {             
+        {
+            pictureBox1.Width = Size.Width - 55;
+            pictureBox1.Height = Size.Height - 117;
             sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
         }
 
@@ -97,8 +99,7 @@ namespace DevEdu_project
 
                 pictureBox1.Image = sBitmap._tmpBitmap;
             }
-
-            label1.Text = ($"{e.Location}");
+            toolStripStatusLabel1.Text = ($"Coordinates = {e.Location}");
         }
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
@@ -242,12 +243,12 @@ namespace DevEdu_project
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            width = 3;
+            width = 1;
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            width = 7;
+            width = 3;
         }
 
         private void EraserButton_Click(object sender, EventArgs e)
@@ -284,7 +285,7 @@ namespace DevEdu_project
             Application.Exit();
         }
         private void openSourceToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
+        {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
             {
                 DialogResult result = dialog.NewDialog();
@@ -296,48 +297,16 @@ namespace DevEdu_project
                         break;
                     case DialogResult.No:
                         dialog.OpenSourceDialog();
+                        break;
+                    case DialogResult.Cancel:
+                        break;
+                }
+            }
 
-                        break;
-                    case DialogResult.Cancel:
-                        break;
-                }
-                pictureBox1.Image = null;
-                pictureBox1.Image = sBitmap._tmpBitmap;
-            }
-            else
+            else
             {
-                dialog.OpenSourceDialog();
-                pictureBox1.Image = sBitmap._tmpBitmap;
-            }
-        }
-        private void openSourceToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (pictureBox1.Image != null) //если в pictureBox есть изображение
-            {
-                DialogResult result = dialog.NewDialog();
-                switch (result)
-                {
-                    case DialogResult.Yes:
-                        dialog.SaveSourceDialog();
-                        dialog.OpenSourceDialog();
-                        pictureBox1.Image = null;
-                        break;
-                    case DialogResult.No:
-                        dialog.OpenSourceDialog();
-                        pictureBox1.Image = null;
-                        break;
-                    case DialogResult.Cancel:
-                        break;
-                }
-                _fillColor = Color.Transparent;
-                _currentColor = Color.Black;
-                pictureBox1.Image = sBitmap._tmpBitmap;
-            }
-            else
-            {
-                dialog.OpenSourceDialog();
-                pictureBox1.Image = sBitmap._tmpBitmap;
-            }
+                dialog.OpenSourceDialog();
+            }
         }
         private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -442,8 +411,15 @@ namespace DevEdu_project
         private void toolFillColorBlue_Click(object sender, EventArgs e)
         {
             _fillColor = Color.Blue;
-        }
-        #endregion        
+        }
+
+
+        #endregion
+
+        private void BetterThanPhotoshop_SizeChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
 

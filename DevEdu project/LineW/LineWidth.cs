@@ -63,8 +63,6 @@ namespace DevEdu_project.LineW
                     tmp = new Point((int)(-width + X), (int)(j + Y));                    
                     sBitmap.SetPixel(tmp.X, tmp.Y, color);
                 }
-                //Добавляем в лист каждую точку, полученную в ходе вычислений
-                //linePoints.Add(new Point((int)X, (int)Y));
                 X += Xinc;
                 Y += Yinc;
             }

@@ -1,4 +1,5 @@
 using DevEdu_project.GetPoints;
+using DevEdu_project.LineW;
 using DocumentFormat.OpenXml.Drawing.Wordprocessing;
 using System;
 using System.Collections.Generic;
@@ -31,9 +32,9 @@ namespace DevEdu_project.Figure
 
             List<Point> listPoint = new List<Point>();
 
-            listPoint.AddRange(cp.ConnectTwoPoints(new Point(x0, y0), new Point(x1, y1), _width, _colorLine));
-            listPoint.AddRange(cp.ConnectTwoPoints(new Point(x1, y1), new Point(x2, y2), _width, _colorLine));
-            listPoint.AddRange(cp.ConnectTwoPoints(new Point(x2, y2), new Point(x0, y0), _width, _colorLine));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(x0, y0), new Point(x1, y1)));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(x1, y1), new Point(x2, y2)));
+            listPoint.AddRange(cp.ConnectTwoPoints(new Point(x2, y2), new Point(x0, y0)));
 
             double lengthSize1 = Math.Sqrt(Math.Pow((x1 - x0), 2) + Math.Pow((y1 - y0), 2));
             double lengthSize2 = Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
@@ -45,7 +46,32 @@ namespace DevEdu_project.Figure
 
             return listPoint;
         }
+        public override void WidthLine()
+        {
+            ILineWidth lineWidth = new LineWidth();
+            int x0 = _startPoint.X;
+            int y0 = _startPoint.Y;
+            int x1 = _endPoint.X;
+            int y1 = _endPoint.Y;
+            double angleRadian = 60 * Math.PI / 180;
+            //Находим вторую пару координат линии, которую мы разворачиваем на 60 градусов.
+            int x2 = (int)((x0 - x1) * Math.Cos(angleRadian) - (y0 - y1) * Math.Sin(angleRadian) + x1);
+            int y2 = (int)((x0 - x1) * Math.Sin(angleRadian) + (y0 - y1) * Math.Cos(angleRadian) + y1);
 
+            List<Point> listPoint = new List<Point>();
+
+            lineWidth.LWidth(new Point(x0, y0), new Point(x1, y1), _linewWidth, _colorLine);
+            lineWidth.LWidth(new Point(x1, y1), new Point(x2, y2), _linewWidth, _colorLine);
+            lineWidth.LWidth(new Point(x2, y2), new Point(x0, y0), _linewWidth, _colorLine);
+
+            double lengthSize1 = Math.Sqrt(Math.Pow((x1 - x0), 2) + Math.Pow((y1 - y0), 2));
+            double lengthSize2 = Math.Sqrt(Math.Pow((x2 - x1), 2) + Math.Pow((y2 - y1), 2));
+            double lengthSize3 = Math.Sqrt(Math.Pow((x0 - x2), 2) + Math.Pow((y0 - y2), 2));
+
+            _centerPoint.X = (int)((lengthSize1 * x2 + lengthSize2 * x0 + lengthSize3 * x1) / (lengthSize1 + lengthSize2 + lengthSize3));
+            _centerPoint.Y = (int)((lengthSize1 * y2 + lengthSize2 * y0 + lengthSize3 * y1) / (lengthSize1 + lengthSize2 + lengthSize3));
+            _centerPoint = new Point(_centerPoint.X, _centerPoint.Y);
+        }
         public override bool IsMouseOnFigure(Point mouse)
         {
             bool check = false;

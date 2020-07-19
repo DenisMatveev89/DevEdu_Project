@@ -43,7 +43,7 @@ namespace DevEdu_project.GetPoints
             return linePoints;
         }
         //BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-        List<Point> linePoints = new List<Point>();
+        /*List<Point> linePoints = new List<Point>();
         public List<Point> ConnectTwoPoints(Point startPoint, Point endPoint, int width, Color color)
         //public void ConnectTwoPoints(Point StartPoint, Point EndPoint, int width, Color color)
         {
@@ -101,7 +101,7 @@ namespace DevEdu_project.GetPoints
             }
 
             return linePoints;
-        }
+        }*/
 
 
     }

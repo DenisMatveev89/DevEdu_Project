@@ -60,67 +60,6 @@ namespace DevEdu_project
             return _instance;
         }
 
-        public void DrawLine(Point startPoint, Point endPoint, int width, Color color)
-        {
-            int dx = endPoint.X - startPoint.X;//абсолютное значение
-            int dy = endPoint.Y - startPoint.Y;
-            Point Delta = new Point(dx, dy);
-            int steps;
-            if (Math.Abs(dx) > Math.Abs(dy))
-            {
-                steps = Math.Abs(dx); //количество шагов
-            }
-            else
-            {
-                steps = Math.Abs(dy);
-            }
-            float Xinc = dx / (float)steps;//приращение для каждого шага 
-            float Yinc = dy / (float)steps;
-
-            float X = startPoint.X;// кладем пиксель для каждого шага 
-            float Y = startPoint.Y;
-            for (int i = 0; i <= steps; i++)
-            {
-                for (int j = -width; j <= width; j++)
-                {
-                    double d = Math.Sqrt(width * width - j * i);
-                    Point tmp = new Point((int)(j + X), (int)(width + Y));
-                    //linePoints.Add(new Point(tmp.X, tmp.Y));
-                    SetPixel(tmp.X, tmp.Y, color);
-                    tmp = new Point((int)(i + X), (int)(-width + Y));
-                    //linePoints.Add(new Point(tmp.X, tmp.Y));
-                    SetPixel(tmp.X, tmp.Y, color);
-                    tmp = new Point((int)(width + X), (int)(j + Y));
-                    //linePoints.Add(new Point(tmp.X, tmp.Y));
-                    SetPixel(tmp.X, tmp.Y, color);
-                    tmp = new Point((int)(-width + X), (int)(width + Y));
-                    //linePoints.Add(new Point(tmp.X, tmp.Y));
-                    SetPixel(tmp.X, tmp.Y, color);
-                    tmp = new Point((int)(j + X), (int)(j + Y));
-                    //linePoints.Add(new Point(tmp.X, tmp.Y));
-                    SetPixel(tmp.X, tmp.Y, color);
-                    tmp = new Point((int)(j + X), (int)(-width + Y));
-                    //linePoints.Add(new Point(tmp.X, tmp.Y));
-                    SetPixel(tmp.X, tmp.Y, color);
-                    tmp = new Point((int)(width + X), (int)(j + Y));
-                    //linePoints.Add(new Point(tmp.X, tmp.Y));
-                    SetPixel(tmp.X, tmp.Y, color);
-                    tmp = new Point((int)(-width + X), (int)(j + Y));
-                    //linePoints.Add(new Point(tmp.X, tmp.Y));
-                    SetPixel(tmp.X, tmp.Y, color);
-                }
-                //Добавляем в лист каждую точку, полученную в ходе вычислений
-               // linePoints.Add(new Point((int)X, (int)Y));
-                X += Xinc;
-                Y += Yinc;
-            }
-
-           // return linePoints;
-        }
-    
-
-
-
         //Наш собственный метод SetPixel, благодаря которому не возникает ошибки при выходе за границы холста
         //Обратите внимание, он рисует на TmpBitmap
         public void SetPixel(int x, int y, Color color)
@@ -202,7 +141,7 @@ namespace DevEdu_project
         //вызывает все ее точки и рисует каждую точку
         public Bitmap DrawFigure(AFigure figure)
         {
-            if(figure._width == 0)
+            if(figure._linewWidth == 0)
             {
                 foreach (Point i in figure.GetPoints())
                 {
@@ -218,7 +157,7 @@ namespace DevEdu_project
 
         public void vDrawFigure(AFigure figure)
         {
-            if (figure._width == 0)
+            if (figure._linewWidth == 0)
             {
                 foreach (Point i in figure.GetPoints())
                 {

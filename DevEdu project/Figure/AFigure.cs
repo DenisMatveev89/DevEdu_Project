@@ -20,10 +20,9 @@ namespace DevEdu_project
         public Point _nextMovingPoint;
         public Color _colorLine;
         public Color _fillColor;
-        public int _width;//толщина линии
+        public int _linewWidth;//толщина линии
         protected IBrush fill;
         public double _brushWidth;
-        //public int _lineWidth;
 
         public BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
 

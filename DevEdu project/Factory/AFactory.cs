@@ -24,7 +24,7 @@ namespace DevEdu_project.Factory
             figure._endPoint = end;
             figure._colorLine = colorLine;
             figure._fillColor = fillColor;
-            figure._width = width;
+            figure._linewWidth = width;
             //figure._lineWidth = lineWidth;
 
 

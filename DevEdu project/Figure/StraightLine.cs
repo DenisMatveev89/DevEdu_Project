@@ -1,5 +1,6 @@
 ﻿using DevEdu_project.Brush;
 using DevEdu_project.GetPoints;
+using DevEdu_project.LineW;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,7 +22,12 @@ namespace DevEdu_project.Figure
         public override List<Point> GetPoints()
         {
             ConnectPoints cp = new ConnectPoints();
-            return cp.ConnectTwoPoints(_startPoint, _endPoint, _width, _colorLine);
+            return cp.ConnectTwoPoints(_startPoint, _endPoint);
+        }
+        public override void WidthLine()
+        {
+            ILineWidth lineWidth = new LineWidth();
+            lineWidth.LWidth(_startPoint, _endPoint, _linewWidth, _colorLine);
         }
 
         public override bool IsMouseOnFigure(Point mouse)
