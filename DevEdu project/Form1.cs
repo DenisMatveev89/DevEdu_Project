@@ -288,23 +288,33 @@ namespace DevEdu_project
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
             {
+                _fillColor = Color.Transparent;
                 DialogResult result = dialog.NewDialog();
                 switch (result)
                 {
                     case DialogResult.Yes:
                         dialog.SaveSourceDialog();
+                        sBitmap.Clear();
+                        sBitmap.Update();
                         dialog.OpenSourceDialog();
                         break;
                     case DialogResult.No:
+                        sBitmap.Clear();
+                        sBitmap.Update();
                         dialog.OpenSourceDialog();
                         break;
                     case DialogResult.Cancel:
                         break;
                 }
+                pictureBox1.Image = null;
+                
             }
 
             else
             {
+                pictureBox1.Image = null;
+                _fillColor = Color.Transparent;
+                sBitmap.Clear();
                 dialog.OpenSourceDialog();
             }
         }

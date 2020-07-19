@@ -93,8 +93,6 @@
     <Compile Include="Factory\AFactory.cs" />
     <Compile Include="Factory\LineFactory.cs" />
     <Compile Include="Figure\ConnectPoints.cs" />
-    <Compile Include="LineW\ChangeLine.cs" />
-    <Compile Include="LineW\FillCirclePoint.cs" />
     <Compile Include="LineW\ILineWidth.cs" />
     <Compile Include="LineW\LineWidth.cs" />
     <Compile Include="Program.cs" />

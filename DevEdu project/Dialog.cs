@@ -69,6 +69,7 @@ namespace DevEdu_project
                 using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
                 {
                     //BitmapSingletone.GetInstance()._tmpBitmap = BitmapSingletone.GetInstance()._emptyBitmap;// эта строчка важна при открытии исходников
+
                     BitmapSingletone.GetInstance().Clear();
                     BitmapSingletone.GetInstance()._figureList = (List<AFigure>)serializerFig.Deserialize(fs);
                     BitmapSingletone.GetInstance().DrawAllFigures();

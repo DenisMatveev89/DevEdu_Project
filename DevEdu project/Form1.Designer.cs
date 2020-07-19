@@ -121,7 +121,7 @@
             // 
             this.openSourceToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.open_folder;
             this.openSourceToolStripMenuItem.Name = "openSourceToolStripMenuItem";
-            this.openSourceToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.openSourceToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.openSourceToolStripMenuItem.Text = "Open Source";
             this.openSourceToolStripMenuItem.Click += new System.EventHandler(this.openSourceToolStripMenuItem_Click_1);
             // 
@@ -129,7 +129,7 @@
             // 
             this.clearCanvasToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.createnew;
             this.clearCanvasToolStripMenuItem.Name = "clearCanvasToolStripMenuItem";
-            this.clearCanvasToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.clearCanvasToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.clearCanvasToolStripMenuItem.Text = "Create New";
             this.clearCanvasToolStripMenuItem.Click += new System.EventHandler(this.clearCanvasToolStripMenuItem_Click);
             // 
@@ -140,7 +140,7 @@
             this.saveAsSourceToolStripMenuItem});
             this.saveAsToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.save;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.saveAsToolStripMenuItem.Text = "Save image as..";
             // 
             // saveAsImageToolStripMenuItem
@@ -163,7 +163,7 @@
             // 
             this.exitToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -345,6 +345,7 @@
             // FillColorButton
             // 
             this.FillColorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.FillColorButton.Enabled = false;
             this.FillColorButton.Image = ((System.Drawing.Image)(resources.GetObject("FillColorButton.Image")));
             this.FillColorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.FillColorButton.Name = "FillColorButton";
