@@ -16,7 +16,7 @@ namespace DevEdu_project
         AFactory _factory = new PencilFactory();
         //Объявляем интерфейс AFigure
         //AFigure _figure = new Pencil();
-        AFigure _currentFigure;
+        AFigure _currentFigure = new Pencil();
         AFigure _clickFigure;
         ITool tool;
         IBrush fill = new FullFill();

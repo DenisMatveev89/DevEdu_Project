@@ -16,7 +16,7 @@ namespace DevEdu_project.Figure
     {
         public StraightLine()
         {
-            fill = new Brush.EmptyFill();            
+            _fill = new Brush.EmptyFill();            
         }
 
         public override List<Point> GetPoints()
@@ -45,7 +45,7 @@ namespace DevEdu_project.Figure
 
         public override void FillFigure(Point mouse)
         {
-            fill = new EmptyFill();
+            _fill = new EmptyFill();
         }
     }
 }

@@ -139,7 +139,7 @@ namespace DevEdu_project.Figure
 
         public override void FillFigure(Point mouse)
         {
-            fill = new EmptyFill();
+            _fill = new EmptyFill();
         }
     }
 }

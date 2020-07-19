@@ -12,7 +12,7 @@ namespace DevEdu_project
     {
         //_startPoint, _endPoint, _colorLine:
         //обязательные поля для каждого класса, который унаследует IFigure
-        public AFigure figure;
+        public AFigure _figure;
         public Point _startPoint;
         public Point _endPoint;
         public Point _centerPoint;
@@ -21,7 +21,7 @@ namespace DevEdu_project
         public Color _colorLine;
         public Color _fillColor;
         public int _linewWidth;//толщина линии
-        protected IBrush fill;
+        protected IBrush _fill;
         public double _brushWidth;
 
         public BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
@@ -39,12 +39,12 @@ namespace DevEdu_project
 
             if(_fillColor.IsNamedColor && _fillColor != Color.Transparent)
             {
-                fill = new FullFill();
-                fill.Fill(mouse, _fillColor, _colorLine);
+                _fill = new FullFill();
+                _fill.Fill(mouse, _fillColor, _colorLine);
             }
             else
             {
-                fill = new EmptyFill();
+                _fill = new EmptyFill();
             }            
         }
                
