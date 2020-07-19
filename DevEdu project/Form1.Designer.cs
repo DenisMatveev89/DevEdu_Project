@@ -651,18 +651,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 689);
+            this.label1.Location = new System.Drawing.Point(624, 500);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 10;
             this.label1.Text = "label1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // BetterThanPhotoshop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1427, 715);
+            this.ClientSize = new System.Drawing.Size(1070, 581);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.toolStrip1);

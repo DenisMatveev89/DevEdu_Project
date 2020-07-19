@@ -122,7 +122,7 @@ namespace DevEdu_project
             }
             sBitmap.Update();            pictureBox1.Image = sBitmap._bitmap;
         }
-
+        #region Toolbox
         private void AngleButton_Click(object sender, EventArgs e)
         {
             tool = new ResizeTool();
@@ -199,6 +199,7 @@ namespace DevEdu_project
         {            tool = new FigureDrawTool();
             _factory = new CircleFactory();
         }
+        #endregion
 
         #region BorderLineColor
         private void toolColorLineButtonRed_Click(object sender, EventArgs e)
@@ -229,6 +230,38 @@ namespace DevEdu_project
         {
             _currentColor = Color.Black;
         }
+        private void toolMoveButton_Click(object sender, EventArgs e)
+        {
+            tool = new FigureMoveTool();
+            _factory = null;
+        }
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            width = 0;
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            width = 3;
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            width = 7;
+        }
+
+        private void EraserButton_Click(object sender, EventArgs e)
+        {
+            tool = new EraserTool();
+            _factory = null;
+        }
+
+        private void toolEraseButton_Click(object sender, EventArgs e)
+        {
+            sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
+            sBitmap.Update();
+            pictureBox1.Image = null;
+        }
 
 
         #endregion
@@ -249,7 +282,34 @@ namespace DevEdu_project
         {
             EventClose();
             Application.Exit();
-        }
+        }
+        private void openSourceToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                DialogResult result = dialog.NewDialog();
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        dialog.SaveSourceDialog();
+                        dialog.OpenSourceDialog();
+                        break;
+                    case DialogResult.No:
+                        dialog.OpenSourceDialog();
+
+                        break;
+                    case DialogResult.Cancel:
+                        break;
+                }
+                pictureBox1.Image = null;
+                pictureBox1.Image = sBitmap._tmpBitmap;
+            }
+            else
+            {
+                dialog.OpenSourceDialog();
+                pictureBox1.Image = sBitmap._tmpBitmap;
+            }
+        }
         private void openSourceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
@@ -293,10 +353,18 @@ namespace DevEdu_project
             {
                 dialog.SaveSourceDialog();
             }
-        }
+        }
+
         #endregion
 
         #region DialogBox
+        private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (pictureBox1.Image != null) //если в pictureBox есть изображение
+            {
+                dialog.SaveSourceDialog();
+            }
+        }
         private void EventClose()
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
@@ -339,7 +407,7 @@ namespace DevEdu_project
             }
         }
         #endregion
-
+
         #region FillColorMenu
         private void toolFillColorBlack_Click(object sender, EventArgs e)
         {
@@ -376,80 +444,6 @@ namespace DevEdu_project
             _fillColor = Color.Blue;
         }
         #endregion        
-        private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (pictureBox1.Image != null) //если в pictureBox есть изображение
-            {
-                dialog.SaveSourceDialog();
-            }
-        }
-
-        private void toolMoveButton_Click(object sender, EventArgs e)
-        {
-            tool = new FigureMoveTool();
-            _factory = null;
-        }
-
-        private void openSourceToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            if (pictureBox1.Image != null) //если в pictureBox есть изображение
-            {
-                DialogResult result = dialog.NewDialog();
-                switch (result)
-                {
-                    case DialogResult.Yes:
-                        dialog.SaveSourceDialog();
-                        dialog.OpenSourceDialog();
-                        break;
-                    case DialogResult.No:
-                        dialog.OpenSourceDialog();
-
-                        break;
-                    case DialogResult.Cancel:
-                        break;
-                }
-                pictureBox1.Image = null;
-                pictureBox1.Image = sBitmap._tmpBitmap;
-            }
-            else
-            {
-                dialog.OpenSourceDialog();
-                pictureBox1.Image = sBitmap._tmpBitmap;
-            }
-        }
-
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            width = 0;
-        }
-
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            width = 3;
-        }
-
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            width = 7;
-        }
-
-        private void EraserButton_Click(object sender, EventArgs e)
-        {
-            tool = new EraserTool();
-            _factory = null;
-        }
-
-        private void toolEraseButton_Click(object sender, EventArgs e)
-        {
-            sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
-            sBitmap.Update();
-            pictureBox1.Image = null;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
 
