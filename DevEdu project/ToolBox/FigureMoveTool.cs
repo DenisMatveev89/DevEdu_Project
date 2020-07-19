@@ -13,30 +13,34 @@ namespace DevEdu_project.ToolBox
         {
             
         }
+        
 
         public override void DoLogicOnMouseMove(Point preLocation, Point location, AFigure figure)
         {
-            sBitmap.Clear();
-            if (sBitmap._figureList.Count > 1)
-            {                
-                sBitmap.DrawExceptIndexFigures(figure);
-                sBitmap.Copy();
-                sBitmap.FillExceptIndexFigures(figure);
-            }                
+            sBitmap.Copy();
             figure.Move(preLocation, location, figure);
             sBitmap.vDrawFigure(figure);
         }
 
         public override void DoLogicOnMouseUp(AFigure figure)
         {
-            sBitmap.Copy();
+            sBitmap.Copy();          
             sBitmap.FillFigure(figure);
             sBitmap.CopyFromFill();
+            figure._movingPoint = new Point(0, 0);
         }
 
         public override void DoLogigOnMouseDown(AFigure figure)
         {
-            
+            sBitmap.Clear();
+            sBitmap.DrawExceptIndexFigures(figure);
+            if (sBitmap._figureList.Count > 1)
+            {                
+                sBitmap.Copy();
+                sBitmap.FillExceptIndexFigures(figure);
+                sBitmap.CopyFromFill();
+            }           
+
         }
     }
 }
