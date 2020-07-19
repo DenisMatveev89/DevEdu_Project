@@ -119,11 +119,6 @@ namespace DevEdu_project
             }
             sBitmap.Update();            pictureBox1.Image = sBitmap._bitmap;
         }
-        private void EraserButton_Click(object sender, EventArgs e)
-        {
-            tool = new EraserTool();
-            _factory = null;
-        }
 
         private void AngleButton_Click(object sender, EventArgs e)
         {
@@ -201,7 +196,6 @@ namespace DevEdu_project
         {            tool = new FigureDrawTool();
             _factory = new CircleFactory();
         }
-        #endregion
 
         #region BorderLineColor
         private void toolColorLineButtonRed_Click(object sender, EventArgs e)
@@ -380,15 +374,20 @@ namespace DevEdu_project
         }
         #endregion        
         private void saveAsToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
+        {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
             {
                 dialog.SaveSourceDialog();
             }
-            
         }
-
-        private void openSourceToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void toolMoveButton_Click(object sender, EventArgs e)
+        {
+            tool = new FigureMoveTool();
+            _factory = null;
+        }
+
+        private void openSourceToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
             {
@@ -401,7 +400,7 @@ namespace DevEdu_project
                         break;
                     case DialogResult.No:
                         dialog.OpenSourceDialog();
-                        
+
                         break;
                     case DialogResult.Cancel:
                         break;
@@ -414,14 +413,16 @@ namespace DevEdu_project
                 dialog.OpenSourceDialog();
                 pictureBox1.Image = sBitmap._tmpBitmap;
             }
-        }
-
-        private void toolStripButton16_Click(object sender, EventArgs e)
-        {
+        }
+
+        private void toolEraseButton_Click(object sender, EventArgs e)
+        {
             sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
             sBitmap.Update();
-            pictureBox1.Image = null;
-        }
+            pictureBox1.Image = null;
+            tool = new EraserTool();
+            _factory = null;
+        }
     }
 }
 

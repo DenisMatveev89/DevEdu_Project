@@ -118,9 +118,9 @@
             // 
             this.openSourceToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.open_folder;
             this.openSourceToolStripMenuItem.Name = "openSourceToolStripMenuItem";
-            this.openSourceToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.openSourceToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.openSourceToolStripMenuItem.Text = "Open Source";
-            this.openSourceToolStripMenuItem.Click += new System.EventHandler(this.openSourceToolStripMenuItem_Click);
+            this.openSourceToolStripMenuItem.Click += new System.EventHandler(this.openSourceToolStripMenuItem_Click_1);
             // 
             // clearCanvasToolStripMenuItem
             // 
@@ -357,7 +357,7 @@
             this.EraserButton.Name = "EraserButton";
             this.EraserButton.Size = new System.Drawing.Size(31, 24);
             this.EraserButton.Text = "Eraser";
-            this.EraserButton.Click += new System.EventHandler(this.EraserButton_Click);
+           // this.EraserButton.Click += new System.EventHandler(this.EraserButton_Click);
             // 
             // AngleButton
             // 
@@ -659,7 +659,6 @@
             this.Text = "BTN - Better Than CorelDRaw";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BetterThanPhotoshop_FormClosed);
             this.Load += new System.EventHandler(this.BetterThanPhotoshop_Load);
-            this.SizeChanged += new System.EventHandler(this.BetterThanPhotoshop_SizeChanged);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
