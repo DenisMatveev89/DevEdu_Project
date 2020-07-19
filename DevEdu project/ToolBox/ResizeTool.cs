@@ -4,37 +4,40 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DevEdu_project.ToolBox
 {
-    public class FillTool : ITool
-    {        
-
+    public class ResizeTool : ITool
+    {
         public override void DoLogicOnMouseClick(Point location, AFigure figure, Color color)
         {
             
-            sBitmap.Copy();
-            //sBitmap.DrawExceptIndexFigures(figure);
-            //sBitmap.FillExceptIndexFigures(_currentFigure);
-            figure._fillColor = color;
-            figure.FillFigure(location);
-            sBitmap.CopyFromFill();
         }
 
         public override void DoLogicOnMouseMove(Point preLocation, Point location, AFigure figure)
         {
-            
+            sBitmap.Copy();
+            figure._endPoint = location;
+            sBitmap.vDrawFigure(figure);
         }
 
         public override void DoLogicOnMouseUp(AFigure figure)
         {
-            
+            sBitmap.Copy();
+            sBitmap.FillFigure(figure);
+            sBitmap.CopyFromFill();
         }
 
         public override void DoLogigOnMouseDown(AFigure figure)
         {
-            
+            if (sBitmap._figureList.Count > 1)
+            {
+                sBitmap.Clear();
+                sBitmap.DrawExceptIndexFigures(figure);
+                sBitmap.Copy();
+                sBitmap.FillExceptIndexFigures(figure);
+                sBitmap.CopyFromFill();
+            }
         }
     }
 }

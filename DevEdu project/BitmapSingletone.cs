@@ -1,8 +1,7 @@
-using System;
 using System.Drawing;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using DevEdu_project.GetPoints;
+using System;
 
 namespace DevEdu_project
 {
@@ -19,24 +18,6 @@ namespace DevEdu_project
             return _figureList;
         }
 
-        public AFigure FigureUnderMouse(Point mouse)
-        {
-            AFigure figure = null;
-            foreach (AFigure i in _figureList)
-            {
-                if (i.IsMouseOnFigure(mouse))
-                {
-                    figure = i;
-
-                    if(figure != null)
-                    {
-                        return figure;
-                    }
-                }
-            }
-            return figure;
-        }
-
         //Временный и Основной битмап, на котором должны осуществляться все методы рисования
         public Bitmap _tmpBitmap;
         public Bitmap _bitmap;
@@ -44,10 +25,9 @@ namespace DevEdu_project
         public Bitmap _emptyBitmap;
         ConnectPoints cp = new ConnectPoints();
         public List<Point> borderPoint;
-        
-        
-            Point startXY;
-            Point endXY;
+
+        Point startXY;
+        Point endXY;
 
         public void CreateBitmaps(int width, int height)
         {
@@ -82,12 +62,7 @@ namespace DevEdu_project
             }
             return _instance;
         }
-        //Определяем цвет пикселя на который нажили в MouseClick
-        public Color ColorSelectPoint(int mouseX,int mouseY)
-        {
-            Color pixelColor = _bitmap.GetPixel(mouseX, mouseY);
-            return pixelColor;
-        }
+
         //Наш собственный метод SetPixel, благодаря которому не возникает ошибки при выходе за границы холста
         //Обратите внимание, он рисует на TmpBitmap
         public void SetPixel(int x, int y, Color color)
@@ -99,7 +74,7 @@ namespace DevEdu_project
         }
 
         public void SetPixelOnFill(int x, int y, Color color)
-        {            
+        {
             if (x >= 0 && x < _fillBitmap.Width && y >= 0 && y < _fillBitmap.Height)
             {
                 _fillBitmap.SetPixel(x, y, color);
@@ -110,9 +85,9 @@ namespace DevEdu_project
         public void Copy()
         {
             if (_bitmap != null)
-            {             
-                _tmpBitmap = (Bitmap)_bitmap.Clone();
+            {
                 _fillBitmap = (Bitmap)_tmpBitmap.Clone();
+                _tmpBitmap = (Bitmap)_bitmap.Clone();
             }
         }
 
@@ -121,6 +96,7 @@ namespace DevEdu_project
             if (_bitmap != null)
             {
                 _tmpBitmap = (Bitmap)_fillBitmap.Clone();
+                _bitmap = (Bitmap)_fillBitmap.Clone();
             }
         }
 
@@ -136,10 +112,29 @@ namespace DevEdu_project
         public void Clear()
         {
             _fillBitmap = (Bitmap)_tmpBitmap.Clone();
-            //_fillBitmap = (Bitmap)_emptyBitmap.Clone();
-            _tmpBitmap = (Bitmap)_emptyBitmap.Clone();   
+            _tmpBitmap = (Bitmap)_emptyBitmap.Clone();
             _bitmap = (Bitmap)_emptyBitmap.Clone();
         }
+
+        public AFigure FigureUnderMouse(Point mouse)
+        {
+            AFigure figure = null;
+            foreach (AFigure i in _figureList)
+            {
+                if (i.IsMouseOnFigure(mouse))
+                {
+                    figure = i;
+
+                    if (figure != null)
+                    {
+                        return figure;
+                    }
+                }
+            }
+            return figure;
+        }
+
+
 
         //Метод, который принимает настроенную фигуру,
         //вызывает все ее точки и рисует каждую точку
@@ -147,9 +142,17 @@ namespace DevEdu_project
         {
             foreach (Point i in figure.GetPoints())
             {
-                SetPixel(i.X, i.Y, figure._colorLine);                
+                SetPixel(i.X, i.Y, figure._colorLine);
             }
             return _tmpBitmap;
+        }
+
+        public void vDrawFigure(AFigure figure)
+        {
+            foreach (Point i in figure.GetPoints())
+            {
+                SetPixel(i.X, i.Y, figure._colorLine);
+            }
         }
 
         //Метод, который рисует все фигуры из листа фигур        
@@ -158,31 +161,38 @@ namespace DevEdu_project
             foreach (AFigure i in _figureList)
             {
                 DrawFigure(i);
-            }            
+            }
         }
 
         public void FillAllFigures()
         {
+            //_fillBitmap = (Bitmap)_tmpBitmap.Clone();
             foreach (AFigure i in _figureList)
             {
                 i.FillFigure(i._centerPoint);
             }
         }
 
-        public Bitmap DrawExceptIndexFigures(AFigure currentFigure)
-        {            
+        public void DrawExceptIndexFigures(AFigure currentFigure)
+        {
             foreach (AFigure i in _figureList)
             {
-                if(i != currentFigure)
+                if (i != currentFigure)
                 {
                     DrawFigure(i);
-                }                
+                }
             }
-            return _tmpBitmap;
         }
 
-        public Bitmap FillExceptIndexFigures(AFigure currentFigure)
+        public void FillFigure(AFigure figure)
         {
+            figure.FillFigure(figure._centerPoint);
+        }
+
+        public void FillExceptIndexFigures(AFigure currentFigure)
+        {
+            //_fillBitmap = (Bitmap)_tmpBitmap.Clone();
+
             foreach (AFigure i in _figureList)
             {
                 if (i != currentFigure)
@@ -191,26 +201,22 @@ namespace DevEdu_project
                     CopyFromFill();
                 }
             }
-            return _fillBitmap;
         }
 
-        public Bitmap EraseIndexFigure(AFigure currentFigure)
+        public void EraseIndexFigure(AFigure currentFigure)
         {
             _figureList.Remove(currentFigure);
             DrawAllFigures();
-            return _tmpBitmap;
         }
 
         // Старый метод, который проходится по листу от первой до последней точки
         // и рисует каждую точку на TmpBitmap
-        public Bitmap Draw(List<Point> points, Color color)
+        public void Draw(List<Point> points, Color color)
         {
-
             foreach (Point i in points)
             {
                 SetPixelOnFill(i.X, i.Y, color);
             }
-            return _fillBitmap;
         }
         public Bitmap DrawBorder(List<Point> points)
         {

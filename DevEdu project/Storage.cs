@@ -21,7 +21,7 @@ namespace DevEdu_project
             }
             return _instance;
         }
-        public void figureListCreate()
+        public void FigureListCreate()
         {
             _figureList = new List<AFigure>();
         }

@@ -70,9 +70,10 @@ namespace DevEdu_project
                 {
                     BitmapSingletone.GetInstance()._tmpBitmap = BitmapSingletone.GetInstance()._emptyBitmap;
                     BitmapSingletone.GetInstance()._figureList = (List<AFigure>)serializerFig.Deserialize(fs);
-                    BitmapSingletone.GetInstance().DrawAllFigures();
-                    //BitmapSingletone.GetInstance().FillAllFigures();
-                    //BitmapSingletone.GetInstance().Update();
+                    BitmapSingletone.GetInstance().DrawAllFigures();                    
+                    BitmapSingletone.GetInstance().Copy();
+                    BitmapSingletone.GetInstance().FillAllFigures();
+                    BitmapSingletone.GetInstance().CopyFromFill();
                 }
             }
         }

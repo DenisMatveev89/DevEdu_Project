@@ -23,6 +23,9 @@ namespace DevEdu_project
         {
             List<Point> ellipse = new List<Point>();
 
+            RX = Math.Sqrt(Math.Pow((_endPoint.X - _startPoint.X), 2));
+            RY = Math.Sqrt(Math.Pow((_endPoint.Y - _startPoint.Y), 2));
+
             int centerX = _startPoint.X;
             int centerY = _startPoint.Y;
             int radiusX = (int)RX;
