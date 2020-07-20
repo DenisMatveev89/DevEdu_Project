@@ -192,19 +192,30 @@ namespace DevEdu_project
         {            tool = new FigureDrawTool();
             _factory = new CircleFactory();
         }
-        private void toolTurnButton_Click(object sender, EventArgs e)
-        {
-            _currentFigure._angle = 90 * Math.PI / 180;
-            sBitmap.Clear();
-            sBitmap.DrawExceptIndexFigures(_currentFigure);
-            _currentFigure.Rotate();
-            sBitmap.DrawFigure(_currentFigure);
-
-            pictureBox1.Image = sBitmap._tmpBitmap;
-            sBitmap.Update();
-            _currentFigure._angle = 0;
-            _factory = null;
-        }
+ 
+        //private void toolTurnButton_Click(object sender, EventArgs e)
+        //{
+        //    _factory = null;
+        //    _currentFigure._angle = 90 * Math.PI / 180;
+        //    sBitmap.Clear();
+        //    sBitmap.DrawExceptIndexFigures(_currentFigure);
+        //    sBitmap.Copy();
+        //    sBitmap.FillExceptIndexFigures(_currentFigure);
+        //    sBitmap.CopyFromFill();
+        //    pictureBox1.Image = sBitmap._tmpBitmap;
+        //    sBitmap.Update();
+        //    _currentFigure.Rotate();
+        //    sBitmap.Copy();
+        //    sBitmap.vDrawFigure(_currentFigure);
+        //    sBitmap.Copy();
+        //    sBitmap.FillFigure(_currentFigure);
+        //    sBitmap.CopyFromFill();
+        //    sBitmap.Update();
+        //    pictureBox1.Image = sBitmap._bitmap;
+            
+        //    //_currentFigure._angel = 0;
+           
+        //}
         #endregion
 
         #region BorderLineColor
@@ -436,7 +447,90 @@ namespace DevEdu_project
 
         #endregion
 
-        
+        private void Rotate30_Click(object sender, EventArgs e)
+        {
+            _factory = null;
+            _currentFigure._angle = 30 * Math.PI / 180;
+            sBitmap.Clear();
+            sBitmap.DrawExceptIndexFigures(_currentFigure);
+            sBitmap.Copy();
+            sBitmap.FillExceptIndexFigures(_currentFigure);
+            sBitmap.CopyFromFill();
+            pictureBox1.Image = sBitmap._tmpBitmap;
+            sBitmap.Update();
+            _currentFigure.Rotate();
+            sBitmap.Copy();
+            sBitmap.vDrawFigure(_currentFigure);
+            sBitmap.Copy();
+            sBitmap.FillFigure(_currentFigure);
+            sBitmap.CopyFromFill();
+            sBitmap.Update();
+            pictureBox1.Image = sBitmap._bitmap;
+
+        }
+
+        private void Rotate45_Click(object sender, EventArgs e)
+        {
+            _factory = null;
+            _currentFigure._angle = 45 * Math.PI / 180;
+            sBitmap.Clear();
+            sBitmap.DrawExceptIndexFigures(_currentFigure);
+            sBitmap.Copy();
+            sBitmap.FillExceptIndexFigures(_currentFigure);
+            sBitmap.CopyFromFill();
+            pictureBox1.Image = sBitmap._tmpBitmap;
+            sBitmap.Update();
+            _currentFigure.Rotate();
+            sBitmap.Copy();
+            sBitmap.vDrawFigure(_currentFigure);
+            sBitmap.Copy();
+            sBitmap.FillFigure(_currentFigure);
+            sBitmap.CopyFromFill();
+            sBitmap.Update();
+            pictureBox1.Image = sBitmap._bitmap;
+        }
+
+        private void Rotate90_Click(object sender, EventArgs e)
+        {
+            _factory = null;
+            _currentFigure._angle = 90 * Math.PI / 180;
+            sBitmap.Clear();
+            sBitmap.DrawExceptIndexFigures(_currentFigure);
+            sBitmap.Copy();
+            sBitmap.FillExceptIndexFigures(_currentFigure);
+            sBitmap.CopyFromFill();
+            pictureBox1.Image = sBitmap._tmpBitmap;
+            sBitmap.Update();
+            _currentFigure.Rotate();
+            sBitmap.Copy();
+            sBitmap.vDrawFigure(_currentFigure);
+            sBitmap.Copy();
+            sBitmap.FillFigure(_currentFigure);
+            sBitmap.CopyFromFill();
+            sBitmap.Update();
+            pictureBox1.Image = sBitmap._bitmap;
+        }
+
+        private void Rotate180_Click(object sender, EventArgs e)
+        {
+            _factory = null;
+            _currentFigure._angle = 180 * Math.PI / 180;
+            sBitmap.Clear();
+            sBitmap.DrawExceptIndexFigures(_currentFigure);
+            sBitmap.Copy();
+            sBitmap.FillExceptIndexFigures(_currentFigure);
+            sBitmap.CopyFromFill();
+            pictureBox1.Image = sBitmap._tmpBitmap;
+            sBitmap.Update();
+            _currentFigure.Rotate();
+            sBitmap.Copy();
+            sBitmap.vDrawFigure(_currentFigure);
+            sBitmap.Copy();
+            sBitmap.FillFigure(_currentFigure);
+            sBitmap.CopyFromFill();
+            sBitmap.Update();
+            pictureBox1.Image = sBitmap._bitmap;
+        }
     }
 }
 
