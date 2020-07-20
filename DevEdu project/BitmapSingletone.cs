@@ -98,7 +98,9 @@ namespace DevEdu_project
         {
             if (_bitmap != null)
             {
+                //_tmpBitmap = (Bitmap)_fillBitmap.Clone();
                 _tmpBitmap = (Bitmap)_fillBitmap.Clone();
+                //_bitmap = (Bitmap)_fillBitmap.Clone();
                 _bitmap = (Bitmap)_fillBitmap.Clone();
             }
         }

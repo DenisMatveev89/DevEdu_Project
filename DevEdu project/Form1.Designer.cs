@@ -345,7 +345,6 @@
             // FillColorButton
             // 
             this.FillColorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.FillColorButton.Enabled = false;
             this.FillColorButton.Image = ((System.Drawing.Image)(resources.GetObject("FillColorButton.Image")));
             this.FillColorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.FillColorButton.Name = "FillColorButton";
