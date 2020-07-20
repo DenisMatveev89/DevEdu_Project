@@ -60,16 +60,19 @@ namespace DevEdu_project
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             _prevPoint = e.Location;            mousePress = true;
-            _clickFigure = sBitmap.FigureUnderMouse(e.Location);
 
             if (_factory != null)
             {
                 _factory.Update();
             }
-            else if (_clickFigure != null)
+            else
             {
-                _currentFigure = _clickFigure;
-                tool.DoLogigOnMouseDown(_currentFigure);
+                _clickFigure = sBitmap.FigureUnderMouse(e.Location);
+                if(_clickFigure != null)
+                {
+                    _currentFigure = _clickFigure;
+                    tool.DoLogigOnMouseDown(_currentFigure);
+                }                
             }
         }
 
@@ -82,7 +85,7 @@ namespace DevEdu_project
                 if (_factory != null)
                 {
                     _currentFigure = _factory.Create(_prevPoint, _currentPoint, _currentColor, _fillColor, width);
-                    sBitmap.vDrawFigure(_currentFigure);
+                    sBitmap.DrawFigure(_currentFigure);
                 }
                 else if(_clickFigure != null)
                 {

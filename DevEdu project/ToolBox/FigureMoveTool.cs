@@ -11,7 +11,7 @@ namespace DevEdu_project.ToolBox
     {
         public override void DoLogicOnMouseClick(Point location, AFigure figure, Color color)
         {
-            sBitmap.DrawFigure(figure);
+            sBitmap.vDrawFigure(figure);
         }
         
 

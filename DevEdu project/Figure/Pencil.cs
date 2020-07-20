@@ -18,10 +18,11 @@ namespace DevEdu_project.Figure
         {
             start = new Point(0, 0);
             end = new Point(0, 0);
+            linePoints = new List<Point>();
         }
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
-        List<Point> linePoints = new List<Point>();
-
+        
+        List<Point> linePoints;
         Point start;
         Point end;
 
@@ -67,72 +68,80 @@ namespace DevEdu_project.Figure
         }
 
         public override void WidthLine()
-        {           
-            if (start == new Point(0, 0))
-            {
-                start = _startPoint;
-            }
-            else
-            {
-                start = end;
-            }
-
-            end = _endPoint;
-
-            int dx = end.X - start.X;//абсолютное значение
-            int dy = end.Y - start.Y;
-            Point Delta = new Point(dx, dy);
-            int steps;
-            if (Math.Abs(dx) > Math.Abs(dy))
-            {
-                steps = Math.Abs(dx); //количество шагов
-            }
-            else
-            {
-                steps = Math.Abs(dy);
-            }
-
-            float Xinc = dx / (float)steps;//приращение для каждого шага 
-            float Yinc = dy / (float)steps;
-
-            float X = start.X;// кладем пиксель для каждого шага 
-            float Y = start.Y;
-            for (int i = 0; i <= steps; i++)
-            {
-                for (int j = -_linewWidth; j <= _linewWidth; j++)
+        {
+                if (start == new Point(0, 0))
                 {
-                    double d = Math.Sqrt(_linewWidth * _linewWidth - j * j);
-                    Point tmp = new Point((int)(j + X), (int)(_linewWidth + Y));
-                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-                    tmp = new Point((int)(j + X), (int)(-_linewWidth + Y));
-                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-                    tmp = new Point((int)(_linewWidth + X), (int)(j + Y));
-                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-                    tmp = new Point((int)(-_linewWidth + X), (int)(_linewWidth + Y));
-                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-                    tmp = new Point((int)(j + X), (int)(j + Y));
-                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-                    tmp = new Point((int)(j + X), (int)(-_linewWidth + Y));
-                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-                    tmp = new Point((int)(_linewWidth + X), (int)(j + Y));
-                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
-                    tmp = new Point((int)(-_linewWidth + X), (int)(j + Y));
-                    sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+                    start = _startPoint;
                 }
-                X += Xinc;
-                Y += Yinc;
-            }
-            sBitmap.Update();
+                else
+                {
+                    start = end;
+                }
+
+                end = _endPoint;
+
+                int dx = end.X - start.X;//абсолютное значение
+                int dy = end.Y - start.Y;
+                Point Delta = new Point(dx, dy);
+                int steps;
+                if (Math.Abs(dx) > Math.Abs(dy))
+                {
+                    steps = Math.Abs(dx); //количество шагов
+                }
+                else
+                {
+                    steps = Math.Abs(dy);
+                }
+
+                float Xinc = dx / (float)steps;//приращение для каждого шага 
+                float Yinc = dy / (float)steps;
+
+                float X = start.X;// кладем пиксель для каждого шага 
+                float Y = start.Y;
+                for (int i = 0; i <= steps; i++)
+                {
+                    for (int j = -_linewWidth; j <= _linewWidth; j++)
+                    {
+                        double d = Math.Sqrt(_linewWidth * _linewWidth - j * j);
+                        Point tmp = new Point((int)(j + X), (int)(_linewWidth + Y));
+                        sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+                        linePoints.Add(new Point(tmp.X, tmp.Y));
+                        tmp = new Point((int)(j + X), (int)(-_linewWidth + Y));
+                        sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+                        linePoints.Add(new Point(tmp.X, tmp.Y));
+                        tmp = new Point((int)(_linewWidth + X), (int)(j + Y));
+                        sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+                        linePoints.Add(new Point(tmp.X, tmp.Y));
+                        tmp = new Point((int)(-_linewWidth + X), (int)(_linewWidth + Y));
+                        sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+                        linePoints.Add(new Point(tmp.X, tmp.Y));
+                        tmp = new Point((int)(j + X), (int)(j + Y));
+                        sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+                        linePoints.Add(new Point(tmp.X, tmp.Y));
+                        tmp = new Point((int)(j + X), (int)(-_linewWidth + Y));
+                        sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+                        linePoints.Add(new Point(tmp.X, tmp.Y));
+                        tmp = new Point((int)(_linewWidth + X), (int)(j + Y));
+                        sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+                        linePoints.Add(new Point(tmp.X, tmp.Y));
+                        tmp = new Point((int)(-_linewWidth + X), (int)(j + Y));
+                        sBitmap.SetPixel(tmp.X, tmp.Y, _colorLine);
+                        linePoints.Add(new Point(tmp.X, tmp.Y));
+                    }
+                    X += Xinc;
+                    Y += Yinc;
+                }
+                sBitmap.Update();
         }
 
         public override bool IsMouseOnFigure(Point mouse)
         {
             bool check = false;
-            List<Point> pencil = GetPoints();
-            foreach (Point i in pencil)
+            //List<Point> pencil = GetPoints();
+            foreach (Point i in linePoints)
             {
                 if (i == mouse)
-                    check = true;
+                    return check = true;
             }
 
             return check;
@@ -146,6 +155,11 @@ namespace DevEdu_project.Figure
         public override void Rotate()
         {
             throw new NotImplementedException();
+        }
+
+        public override AFigure Move(Point start, Point end, AFigure movingFigure)
+        {
+            return movingFigure;
         }
     }
 }
