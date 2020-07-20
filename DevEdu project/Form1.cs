@@ -39,7 +39,7 @@ namespace DevEdu_project
 
         private void BetterThanPhotoshop_Load(object sender, EventArgs e)
         {
-            pictureBox1.Width = Size.Width - 55;
+            pictureBox1.Width = Size.Width - 60;
             pictureBox1.Height = Size.Height - 117;
             sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
         }
@@ -418,6 +418,20 @@ namespace DevEdu_project
 
 
         #endregion
+
+        private void toolTurnButton_Click(object sender, EventArgs e)
+        {
+            _currentFigure._angel = 90 * Math.PI / 180;
+            sBitmap.Clear();
+            sBitmap.DrawExceptIndexFigures(_currentFigure);
+            _currentFigure.Rotate();
+            sBitmap.DrawFigure(_currentFigure);
+
+            pictureBox1.Image = sBitmap._tmpBitmap;
+            sBitmap.Update();
+            _currentFigure._angel = 0;
+            _factory = null;
+        }
     }
 }
 

@@ -103,5 +103,10 @@ namespace DevEdu_project
 
             return check;
         }
+
+        public override void Rotate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -22,6 +22,7 @@ namespace DevEdu_project
         public int _linewWidth;//толщина линии
         protected IBrush _fill;
         public double _brushWidth;
+        public double _angel;
 
         public BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
 
@@ -46,7 +47,8 @@ namespace DevEdu_project
                 _fill = new EmptyFill();
             }            
         }
-               
+        public abstract void Rotate();
+
         public virtual AFigure Move(Point start, Point end, AFigure movingFigure)
         {
             int X0 = movingFigure._startPoint.X;
