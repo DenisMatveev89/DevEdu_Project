@@ -141,5 +141,10 @@ namespace DevEdu_project.Figure
         {
             _fill = new EmptyFill();
         }
+
+        public override void Rotate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

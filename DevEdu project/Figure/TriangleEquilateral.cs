@@ -103,5 +103,9 @@ namespace DevEdu_project.Figure
             }
             return check;
         }
+        public override void Rotate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

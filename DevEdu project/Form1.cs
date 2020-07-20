@@ -425,6 +425,20 @@ namespace DevEdu_project
 
 
         #endregion
+
+        private void Rotation30_Click(object sender, EventArgs e)
+        {
+            _currentFigure._angel = 90 * Math.PI / 180;
+            sBitmap.Clear();
+            sBitmap.DrawExceptIndexFigures(_currentFigure);
+            _currentFigure.Rotate();
+            sBitmap.DrawFigure(_currentFigure);
+
+            pictureBox1.Image = sBitmap._tmpBitmap;
+            sBitmap.Update();
+            _currentFigure._angel = 0;
+            _factory = null;
+        }
     }
 }
 

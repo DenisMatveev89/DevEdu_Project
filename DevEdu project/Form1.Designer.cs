@@ -58,7 +58,6 @@
             this.FillColorButton = new System.Windows.Forms.ToolStripButton();
             this.EraserButton = new System.Windows.Forms.ToolStripButton();
             this.AngleButton = new System.Windows.Forms.ToolStripButton();
-            this.toolTurnButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolEraseButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
@@ -87,6 +86,12 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolTurnButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
@@ -121,7 +126,7 @@
             // 
             this.openSourceToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.open_folder;
             this.openSourceToolStripMenuItem.Name = "openSourceToolStripMenuItem";
-            this.openSourceToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.openSourceToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.openSourceToolStripMenuItem.Text = "Open Source";
             this.openSourceToolStripMenuItem.Click += new System.EventHandler(this.openSourceToolStripMenuItem_Click_1);
             // 
@@ -129,7 +134,7 @@
             // 
             this.clearCanvasToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.createnew;
             this.clearCanvasToolStripMenuItem.Name = "clearCanvasToolStripMenuItem";
-            this.clearCanvasToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.clearCanvasToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.clearCanvasToolStripMenuItem.Text = "Create New";
             this.clearCanvasToolStripMenuItem.Click += new System.EventHandler(this.clearCanvasToolStripMenuItem_Click);
             // 
@@ -140,7 +145,7 @@
             this.saveAsSourceToolStripMenuItem});
             this.saveAsToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.save;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.saveAsToolStripMenuItem.Text = "Save image as..";
             // 
             // saveAsImageToolStripMenuItem
@@ -163,7 +168,7 @@
             // 
             this.exitToolStripMenuItem.Image = global::DevEdu_project.Properties.Resources.exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -372,15 +377,6 @@
             this.AngleButton.Size = new System.Drawing.Size(31, 24);
             this.AngleButton.Text = "Angle Modify";
             this.AngleButton.Click += new System.EventHandler(this.AngleButton_Click);
-            // 
-            // toolTurnButton
-            // 
-            this.toolTurnButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolTurnButton.Image = global::DevEdu_project.Properties.Resources.img_2020_07_15_11_26_001;
-            this.toolTurnButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolTurnButton.Name = "toolTurnButton";
-            this.toolTurnButton.Size = new System.Drawing.Size(31, 24);
-            this.toolTurnButton.Text = "toolStripButton15";
             // 
             // toolStrip2
             // 
@@ -666,6 +662,52 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(71, 17);
             this.toolStripStatusLabel1.Text = "Coordinates";
             // 
+            // toolTurnButton
+            // 
+            this.toolTurnButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolTurnButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem5,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7,
+            this.toolStripMenuItem8,
+            this.toolStripMenuItem9});
+            this.toolTurnButton.Image = global::DevEdu_project.Properties.Resources.img_2020_07_15_11_26_001;
+            this.toolTurnButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolTurnButton.Name = "toolTurnButton";
+            this.toolTurnButton.Size = new System.Drawing.Size(31, 24);
+            this.toolTurnButton.Text = "toolStripButton15";
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem5.Text = "30°";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.Rotation30_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem6.Text = "45°";
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem7.Text = "60°";
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem8.Text = "90°";
+            // 
+            // toolStripMenuItem9
+            // 
+            this.toolStripMenuItem9.Name = "toolStripMenuItem9";
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem9.Text = "180°";
+            // 
             // BetterThanPhotoshop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -749,7 +791,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton toolFillColorTransparent;
         private System.Windows.Forms.ToolStripButton toolMoveButton;
-        private System.Windows.Forms.ToolStripButton toolTurnButton;
         private System.Windows.Forms.ToolStripMenuItem openSourceToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolEraseButton;
@@ -758,6 +799,12 @@
         private System.Windows.Forms.ToolStripMenuItem saveAsSourceToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripDropDownButton toolTurnButton;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem8;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
     }
 }
 
