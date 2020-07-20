@@ -407,10 +407,6 @@
             this.toolStrip2.Size = new System.Drawing.Size(809, 27);
             this.toolStrip2.TabIndex = 9;
             this.toolStrip2.Text = "toolStrip2";
-            // 
-<<<<<<< HEAD
-            // toolStripSeparator4
-            // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
             // 
@@ -477,8 +473,6 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(71, 17);
             this.toolStripStatusLabel1.Text = "Coordinates";
             // 
-=======
->>>>>>> Different_angles
             // toolEraseButton
             // 
             this.toolEraseButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
