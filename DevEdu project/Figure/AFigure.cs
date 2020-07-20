@@ -1,25 +1,114 @@
-﻿using DevEdu_project.GetPoints;
+﻿using DevEdu_project.Brush;
+using DevEdu_project.GetPoints;
+using DevEdu_project.LineW;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 
 namespace DevEdu_project
 {
+    [Serializable]
     public abstract class AFigure
-    {
-        //List<Point> GetPoints();, Update();, void Update(Point Start, Point End); - 
+    {        
         //обязательные поля для каждого класса, который унаследует IFigure
-        //реализация этого метода у каждого наследника будет своя 
-
-        protected IGetPoints getPoints;
-        protected Brush.IBrush fill;
-
+        public AFigure _figure;
         public Point _startPoint;
         public Point _endPoint;
+        public Point _centerPoint;
+        public Point _movingPoint;
+        public Point _nextMovingPoint;
+        public Color _colorLine;
+        public Color _fillColor;
+        public int _linewWidth;//толщина линии
+        protected IBrush _fill;
+        public double _brushWidth;
+        public double _angle;//угол поворота
 
-        public List<Point> GetPoints()
+        public BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
+
+        public abstract List<Point> GetPoints();
+        public abstract bool IsMouseOnFigure(Point mouse);
+
+        public virtual void WidthLine()
         {
-            return getPoints.GetPoints(_startPoint, _endPoint);
+            //ILineWidth lineWidth = new LineWidth();
+        }
+
+        public virtual void FillFigure(Point mouse)
+        {
+
+            if(_fillColor.IsNamedColor && _fillColor != Color.Transparent)
+            {
+                _fill = new FullFill();
+                _fill.Fill(mouse, _fillColor, _colorLine);
+            }
+            else
+            {
+                _fill = new EmptyFill();
+            }            
+        }
+        public abstract void Rotate();
+
+        public virtual AFigure Move(Point start, Point end, AFigure movingFigure)
+        {
+            int X0 = movingFigure._startPoint.X;
+            int Y0 = movingFigure._startPoint.Y;
+            int X1 = movingFigure._endPoint.X;
+            int Y1 = movingFigure._endPoint.Y;
+            
+
+            if (_movingPoint == new Point(0, 0))
+            {
+                _movingPoint = start;
+                _nextMovingPoint = end;
+            }
+            else
+            {
+                _movingPoint = _nextMovingPoint;
+                _nextMovingPoint = end;           
+            }            
+
+            if (end.X >= start.X && end.Y >= start.Y)
+            {
+                int dx = end.X - _movingPoint.X;
+                int dy = end.Y - _movingPoint.Y;
+                X0 += dx;
+                Y0 += dy;
+                X1 += dx;
+                Y1 += dy;
+            }
+            else if (end.X >= start.X && end.Y <= start.Y)
+            {
+                int dx = end.X - _movingPoint.X;
+                int dy = _movingPoint.Y - end.Y;
+                X0 += dx;
+                Y0 -= dy;
+                X1 += dx;
+                Y1 -= dy;
+            }
+            else if (end.X <= start.X && end.Y >= start.Y)
+            {
+                int dx = _movingPoint.X - end.X;
+                int dy = end.Y - _movingPoint.Y;
+                X0 -= dx;
+                Y0 += dy;
+                X1 -= dx;
+                Y1 += dy;
+            }
+            else if (end.X <= start.X && end.Y <= start.Y)
+            {
+                int dx = _movingPoint.X - end.X;
+                int dy = _movingPoint.Y - end.Y;
+                X0 -= dx;
+                Y0 -= dy;
+                X1 -= dx;
+                Y1 -= dy;
+            }
+            movingFigure._startPoint = new Point(X0, Y0);
+            movingFigure._endPoint = new Point(X1, Y1);
+            
+
+            return movingFigure;
         }
     }
 }

@@ -8,15 +8,16 @@ using System.Threading.Tasks;
 
 namespace DevEdu_project.Factory
 {
-    public class PencilFactory : IFactory
+    public class PencilFactory : AFactory
     {
-        Pencil pencil = new Pencil();
-
-        public AFigure Create(Point start, Point end)
+        public PencilFactory()
         {
-            pencil._startPoint = start;
-            pencil._endPoint = end;
-            return pencil;
+            figure = new Pencil();
+        }
+
+        public override void Update()
+        {
+            figure = new Pencil();
         }
     }
 }

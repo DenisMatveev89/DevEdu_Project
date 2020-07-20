@@ -5,17 +5,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DevEdu_project.Figure;
+using DevEdu_project.LineW;
 
 namespace DevEdu_project.Factory
 {
-    public class LineFactory : IFactory
+    public class LineFactory : AFactory
     {
-        public AFigure Create(Point start, Point end)
+        public LineFactory()
+        {
+            figure = new StraightLine();
+        }
+
+        public override void Update()
+        {
+            figure = new StraightLine();
+        }
+        public override AFigure Create(Point start, Point end, Color colorLine, Color fillColor, int width)
         {
             StraightLine line = new StraightLine();
-            line._startPoint = start;
-            line._endPoint = end;
+            figure = line;
+            base.Create(start, end, colorLine, fillColor, width);
+            line._centerPoint = start;
+
             return line;
         }
+
     }
 }

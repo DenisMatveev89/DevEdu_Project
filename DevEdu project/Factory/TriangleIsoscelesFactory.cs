@@ -8,14 +8,16 @@ using DevEdu_project.Figure;
 
 namespace DevEdu_project.Factory
 {
-    public class TriangleIsoscelesFactory : IFactory
+    public class TriangleIsoscelesFactory : AFactory
     {
-        public AFigure Create(Point start, Point end)
+        public TriangleIsoscelesFactory()
         {
-            TriangleIsosceles triangle = new TriangleIsosceles();
-            triangle._startPoint = start;
-            triangle._endPoint = end;
-            return triangle;
+            figure = new TriangleIsosceles();
+        }
+
+        public override void Update()
+        {
+            figure = new TriangleIsosceles();
         }
     }
 }
