@@ -111,14 +111,14 @@ namespace DevEdu_project.Figure
             _centerPoint.Y = (int)((lengthSize1 * y1 + lengthSize2 * y0 + lengthSize3 * y1) / (lengthSize1 + lengthSize2 + lengthSize3));
             _centerPoint = new Point(_centerPoint.X, _centerPoint.Y);
 
-            double tmpX = (x0 - node3.X) * Math.Cos(_angel) - (y0 - node3.Y) * Math.Sin(_angel) + node3.X;
-            double tmpY = (x0 - node3.X) * Math.Sin(_angel) + (y0 - node3.Y) * Math.Cos(_angel) + node3.Y;
+            double tmpX = (x0 - node3.X) * Math.Cos(_angle) - (y0 - node3.Y) * Math.Sin(_angle) + node3.X;
+            double tmpY = (x0 - node3.X) * Math.Sin(_angle) + (y0 - node3.Y) * Math.Cos(_angle) + node3.Y;
 
             x0 = (int)tmpX;
             y0 = (int)tmpY;
 
-            tmpX = (x1 - node3.X) * Math.Cos(_angel) - (y1 - node3.Y) * Math.Sin(_angel) + node3.X;
-            tmpY = (x1 - node3.X) * Math.Sin(_angel) + (y1 - node3.Y) * Math.Cos(_angel) + node3.Y;
+            tmpX = (x1 - node3.X) * Math.Cos(_angle) - (y1 - node3.Y) * Math.Sin(_angle) + node3.X;
+            tmpY = (x1 - node3.X) * Math.Sin(_angle) + (y1 - node3.Y) * Math.Cos(_angle) + node3.Y;
             x1 = (int)tmpX;
             y1 = (int)tmpY;
 

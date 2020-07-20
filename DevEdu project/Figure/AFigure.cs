@@ -22,7 +22,7 @@ namespace DevEdu_project
         public int _linewWidth;//толщина линии
         protected IBrush _fill;
         public double _brushWidth;
-        public double _angel;
+        public double _angle;//угол поворота
 
         public BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
 

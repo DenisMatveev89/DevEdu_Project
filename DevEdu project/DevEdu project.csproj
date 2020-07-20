@@ -208,5 +208,11 @@
   <ItemGroup>
     <None Include="Resources\open-menu.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transparent-designer-must-have-fake-background-39672616.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fon.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
