@@ -19,5 +19,17 @@ namespace DevEdu_project.Factory
         {
             figure = new TriangleRight();
         }
+
+        public override AFigure Create(Point start, Point end, Color colorLine, Color fillColor, int width)
+        {
+            TriangleRight triangleRight = new TriangleRight();
+            figure = triangleRight;
+            base.Create(start, end, colorLine, fillColor, width);
+            triangleRight.node3.X = start.X;
+            triangleRight.node3.Y = end.Y;
+            return triangleRight;
+
+
+        }
     }
 }

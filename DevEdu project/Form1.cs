@@ -192,18 +192,29 @@ namespace DevEdu_project
         {            tool = new FigureDrawTool();
             _factory = new CircleFactory();
         }
+ 
         private void toolTurnButton_Click(object sender, EventArgs e)
         {
+            _factory = null;
             _currentFigure._angle = 90 * Math.PI / 180;
             sBitmap.Clear();
             sBitmap.DrawExceptIndexFigures(_currentFigure);
-            _currentFigure.Rotate();
-            sBitmap.DrawFigure(_currentFigure);
-
+            sBitmap.Copy();
+            sBitmap.FillExceptIndexFigures(_currentFigure);
+            sBitmap.CopyFromFill();
             pictureBox1.Image = sBitmap._tmpBitmap;
             sBitmap.Update();
-            _currentFigure._angle = 0;
-            _factory = null;
+            _currentFigure.Rotate();
+            sBitmap.Copy();
+            sBitmap.vDrawFigure(_currentFigure);
+            sBitmap.Copy();
+            sBitmap.FillFigure(_currentFigure);
+            sBitmap.CopyFromFill();
+            sBitmap.Update();
+            pictureBox1.Image = sBitmap._bitmap;
+            
+            //_currentFigure._angel = 0;
+           
         }
         #endregion
 
@@ -432,7 +443,6 @@ namespace DevEdu_project
 
         #endregion
 
-        
     }
 }
 
