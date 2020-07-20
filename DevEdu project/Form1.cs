@@ -82,13 +82,13 @@ namespace DevEdu_project
                 if (_factory != null)
                 {
                     _currentFigure = _factory.Create(_prevPoint, _currentPoint, _currentColor, _fillColor, width);
-                    sBitmap.DrawFigure(_currentFigure);
+                    sBitmap.vDrawFigure(_currentFigure);
                 }
                 else if(_clickFigure != null)
                 {
                     tool.DoLogicOnMouseMove(_prevPoint, _currentPoint, _currentFigure);
                 }
-
+                
                 pictureBox1.Image = sBitmap._tmpBitmap;
             }
             toolStripStatusLabel1.Text = ($"Coordinates = {e.Location}");

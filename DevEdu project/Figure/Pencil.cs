@@ -16,27 +16,27 @@ namespace DevEdu_project.Figure
     {
         public Pencil()
         {
-
+            start = new Point(0, 0);
+            end = new Point(0, 0);
         }
-
+        BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
         List<Point> linePoints = new List<Point>();
 
-        Point start = new Point(0, 0);
-        Point end = new Point(0, 0);
+        Point start;
+        Point end;
 
         public override List<Point> GetPoints()
         {
             //Этим условием мы правильно задаем начальную точку и все последующие точки карандаша
             if (start == new Point(0, 0))
             {
-                start = _startPoint;
-                end = _endPoint;
+                start = _startPoint;                
             }
             else
             {
                 start = end;
-                end = _endPoint;
             }
+            end = _endPoint;
 
             int dx = end.X - start.X;//абсолютное значение
             int dy = end.Y - start.Y;
@@ -67,18 +67,18 @@ namespace DevEdu_project.Figure
         }
 
         public override void WidthLine()
-        {
-            BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
+        {           
             if (start == new Point(0, 0))
             {
                 start = _startPoint;
-                end = _endPoint;
             }
             else
             {
                 start = end;
-                end = _endPoint;
             }
+
+            end = _endPoint;
+
             int dx = end.X - start.X;//абсолютное значение
             int dy = end.Y - start.Y;
             Point Delta = new Point(dx, dy);
@@ -122,6 +122,7 @@ namespace DevEdu_project.Figure
                 X += Xinc;
                 Y += Yinc;
             }
+            sBitmap.Update();
         }
 
         public override bool IsMouseOnFigure(Point mouse)
