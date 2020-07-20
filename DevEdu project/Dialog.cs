@@ -49,7 +49,7 @@ namespace DevEdu_project
             {
                 BinaryFormatter serializerFig = new BinaryFormatter();
                 string path = savedialog.FileName;
-                List<AFigure> listSave = BitmapSingletone.GetInstance()._figureList;
+                List <AFigure> listSave = BitmapSingletone.GetInstance()._figureList;
                 using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate))
                 {
                     serializerFig.Serialize(fs, listSave);
@@ -71,6 +71,7 @@ namespace DevEdu_project
                     //BitmapSingletone.GetInstance()._tmpBitmap = BitmapSingletone.GetInstance()._bitmap;// эта строчка важна при открытии исходников
                     
                     BitmapSingletone.GetInstance().Clear();
+                    BitmapSingletone.GetInstance()._figureList = null;
                     BitmapSingletone.GetInstance()._figureList = (List<AFigure>)serializerFig.Deserialize(fs);
                     BitmapSingletone.GetInstance().DrawAllFigures();
                     BitmapSingletone.GetInstance().Copy();

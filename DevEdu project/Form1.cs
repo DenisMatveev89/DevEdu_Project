@@ -293,36 +293,40 @@ namespace DevEdu_project
         {
             if (pictureBox1.Image != null) //если в pictureBox есть изображение
             {
+                //BitmapSingletone.GetInstance().Clear();
+                //pictureBox1.Image = null;
+                _currentFigure = new Pencil();
                 _fillColor = Color.Transparent;
                 DialogResult result = dialog.NewDialog();
                 switch (result)
                 {
                     case DialogResult.Yes:
                         dialog.SaveSourceDialog();
-                        //sBitmap.Clear();
-                        //sBitmap.Update();
+                        sBitmap.Clear();
+                        sBitmap.Update();
                         dialog.OpenSourceDialog();
                         break;
                     case DialogResult.No:
-                        //sBitmap.Clear();
-                        //sBitmap.Update();
+                        sBitmap.Clear();
+                        sBitmap.Update();
                         dialog.OpenSourceDialog();
                         break;
                     case DialogResult.Cancel:
                         break;
                 }
-                pictureBox1.Image = sBitmap._bitmap;
+                //pictureBox1.Image = sBitmap._bitmap;
                 
             }
 
             else
             {
-                //pictureBox1.Image = null;
+                pictureBox1.Image = null;
                 _fillColor = Color.Transparent;
                 sBitmap.Clear();
                 dialog.OpenSourceDialog();
-                pictureBox1.Image = sBitmap._bitmap;
+                //pictureBox1.Image = sBitmap._bitmap;
             }
+            pictureBox1.Image = null;
         }
         private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -379,12 +383,12 @@ namespace DevEdu_project
                 {
                     case DialogResult.Yes:
                         dialog.SaveDialog();
-                        //pictureBox1.Image = null;
-                        //sBitmap._bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                        pictureBox1.Image = null;
+                        sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
                         break;
                     case DialogResult.No:
-                        //pictureBox1.Image = null;
-                        //sBitmap._bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                        pictureBox1.Image = null;
+                        sBitmap.CreateBitmaps(pictureBox1.Width, pictureBox1.Height);
                         break;
                     case DialogResult.Cancel:
                         break;
