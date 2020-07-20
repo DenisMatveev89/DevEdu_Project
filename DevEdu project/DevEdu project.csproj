@@ -95,7 +95,6 @@
     <Compile Include="Figure\ConnectPoints.cs" />
     <Compile Include="LineW\ILineWidth.cs" />
     <Compile Include="LineW\LineWidth.cs" />
-    <Compile Include="LineW\RectangleLineW.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Figure\RectangleSquare.cs" />

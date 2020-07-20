@@ -99,6 +99,11 @@ namespace DevEdu_project
                 check = true;
             }
             return check;
-        }   
+        }
+
+        public override void Rotate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
