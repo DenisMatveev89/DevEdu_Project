@@ -450,7 +450,7 @@ namespace DevEdu_project
         private void Rotate30_Click(object sender, EventArgs e)
         {
             _factory = null;
-            _currentFigure._angle = 30 * Math.PI / 180;
+            _currentFigure._angle = -30 * Math.PI / 180;
             sBitmap.Clear();
             sBitmap.DrawExceptIndexFigures(_currentFigure);
             sBitmap.Copy();
@@ -472,7 +472,7 @@ namespace DevEdu_project
         private void Rotate45_Click(object sender, EventArgs e)
         {
             _factory = null;
-            _currentFigure._angle = 45 * Math.PI / 180;
+            _currentFigure._angle = -45 * Math.PI / 180;
             sBitmap.Clear();
             sBitmap.DrawExceptIndexFigures(_currentFigure);
             sBitmap.Copy();
@@ -493,7 +493,7 @@ namespace DevEdu_project
         private void Rotate90_Click(object sender, EventArgs e)
         {
             _factory = null;
-            _currentFigure._angle = 90 * Math.PI / 180;
+            _currentFigure._angle = -90 * Math.PI / 180;
             sBitmap.Clear();
             sBitmap.DrawExceptIndexFigures(_currentFigure);
             sBitmap.Copy();
@@ -514,7 +514,7 @@ namespace DevEdu_project
         private void Rotate180_Click(object sender, EventArgs e)
         {
             _factory = null;
-            _currentFigure._angle = 180 * Math.PI / 180;
+            _currentFigure._angle = -180 * Math.PI / 180;
             sBitmap.Clear();
             sBitmap.DrawExceptIndexFigures(_currentFigure);
             sBitmap.Copy();
