@@ -15,29 +15,21 @@ namespace DevEdu_project
         //Объявляем фабрику
         AFactory _factory = new PencilFactory();
         //Объявляем интерфейс AFigure
-        //AFigure _figure = new Pencil();
         AFigure _currentFigure = new Pencil();
         AFigure _clickFigure;
         ITool tool;
-        IBrush fill = new FullFill();
-        //ILineWidth lineWidth = new LineWidth();
         
         //Диалоговые окошки
         Dialog dialog = new Dialog();
 
-        //Graphics g = e.Graphics();
-
-        double brushWidth = 10;
+        //Graphics g = e.Graphics();        
                 
         private bool mousePress;
-        //Color _fillColor = Color.Red;
         Color _fillColor = Color.Transparent;
         Color _currentColor = Color.Black;
         Point _currentPoint;
         Point _prevPoint;
-        Point _startMovingPoint;
         int width = 0;
-        //Point _movingPoint;
         BitmapSingletone sBitmap = BitmapSingletone.GetInstance();
 
         public BetterThanPhotoshop()
@@ -56,7 +48,7 @@ namespace DevEdu_project
         {
             _clickFigure = sBitmap.FigureUnderMouse(e.Location);
 
-            if (_clickFigure != null)
+            if (_clickFigure != null && _currentFigure._startPoint != new Point(0,0))
             {
                 _currentFigure = _clickFigure;
                 tool.DoLogicOnMouseClick(e.Location, _currentFigure, _fillColor);
@@ -294,28 +286,29 @@ namespace DevEdu_project
                 {
                     case DialogResult.Yes:
                         dialog.SaveSourceDialog();
-                        sBitmap.Clear();
-                        sBitmap.Update();
+                        //sBitmap.Clear();
+                        //sBitmap.Update();
                         dialog.OpenSourceDialog();
                         break;
                     case DialogResult.No:
-                        sBitmap.Clear();
-                        sBitmap.Update();
+                        //sBitmap.Clear();
+                        //sBitmap.Update();
                         dialog.OpenSourceDialog();
                         break;
                     case DialogResult.Cancel:
                         break;
                 }
-                pictureBox1.Image = null;
+                pictureBox1.Image = sBitmap._bitmap;
                 
             }
 
             else
             {
-                pictureBox1.Image = null;
+                //pictureBox1.Image = null;
                 _fillColor = Color.Transparent;
                 sBitmap.Clear();
                 dialog.OpenSourceDialog();
+                pictureBox1.Image = sBitmap._bitmap;
             }
         }
         private void saveAsImageToolStripMenuItem_Click(object sender, EventArgs e)
@@ -373,12 +366,12 @@ namespace DevEdu_project
                 {
                     case DialogResult.Yes:
                         dialog.SaveDialog();
-                        pictureBox1.Image = null;
-                        sBitmap._bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                        //pictureBox1.Image = null;
+                        //sBitmap._bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
                         break;
                     case DialogResult.No:
-                        pictureBox1.Image = null;
-                        sBitmap._bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+                        //pictureBox1.Image = null;
+                        //sBitmap._bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
                         break;
                     case DialogResult.Cancel:
                         break;

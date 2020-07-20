@@ -215,7 +215,7 @@ namespace DevEdu_project
                 if (i != currentFigure)
                 {
                     i.FillFigure(i._centerPoint);
-                    CopyFromFill();
+                    //CopyFromFill();
                 }
             }
         }

@@ -9,8 +9,7 @@ namespace DevEdu_project
 {
     [Serializable]
     public abstract class AFigure
-    {
-        //_startPoint, _endPoint, _colorLine:
+    {        
         //обязательные поля для каждого класса, который унаследует IFigure
         public AFigure _figure;
         public Point _startPoint;
