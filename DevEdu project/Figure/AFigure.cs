@@ -31,7 +31,7 @@ namespace DevEdu_project
 
         public virtual void WidthLine()
         {
-            ILineWidth lineWidth = new LineWidth();
+            //ILineWidth lineWidth = new LineWidth();
         }
 
         public virtual void FillFigure(Point mouse)
@@ -68,7 +68,7 @@ namespace DevEdu_project
                 _nextMovingPoint = end;           
             }            
 
-            if (end.X > start.X && end.Y > start.Y)
+            if (end.X >= start.X && end.Y >= start.Y)
             {
                 int dx = end.X - _movingPoint.X;
                 int dy = end.Y - _movingPoint.Y;
@@ -77,7 +77,7 @@ namespace DevEdu_project
                 X1 += dx;
                 Y1 += dy;
             }
-            else if (end.X > start.X && end.Y < start.Y)
+            else if (end.X >= start.X && end.Y <= start.Y)
             {
                 int dx = end.X - _movingPoint.X;
                 int dy = _movingPoint.Y - end.Y;
@@ -86,7 +86,7 @@ namespace DevEdu_project
                 X1 += dx;
                 Y1 -= dy;
             }
-            else if (end.X < start.X && end.Y > start.Y)
+            else if (end.X <= start.X && end.Y >= start.Y)
             {
                 int dx = _movingPoint.X - end.X;
                 int dy = end.Y - _movingPoint.Y;
@@ -95,7 +95,7 @@ namespace DevEdu_project
                 X1 -= dx;
                 Y1 += dy;
             }
-            else if (end.X < start.X && end.Y < start.Y)
+            else if (end.X <= start.X && end.Y <= start.Y)
             {
                 int dx = _movingPoint.X - end.X;
                 int dy = _movingPoint.Y - end.Y;
