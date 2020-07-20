@@ -11,7 +11,7 @@ namespace DevEdu_project.ToolBox
     {
         public override void DoLogicOnMouseClick(Point location, AFigure figure, Color color)
         {
-            
+            sBitmap.DrawFigure(figure);
         }
         
 
@@ -28,6 +28,7 @@ namespace DevEdu_project.ToolBox
             sBitmap.FillFigure(figure);
             sBitmap.CopyFromFill();
             figure._movingPoint = new Point(0, 0);
+            figure._nextMovingPoint = new Point(0, 0);
         }
 
         public override void DoLogigOnMouseDown(AFigure figure)
